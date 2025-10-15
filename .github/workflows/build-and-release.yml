@@ -1,0 +1,90 @@
+name: Build and Release PDF
+
+on:
+  push:
+    branches:
+      - main  # Change to 'master' if that's your default branch
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to create/delete releases
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v24
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Build PDF with Nix
+        run: |
+          nix build
+          cp result/main.pdf ./main.pdf
+
+      - name: Get current month tag
+        id: month_tag
+        run: |
+          echo "tag=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
+          echo "release_name=$(date +'%B %Y')" >> $GITHUB_OUTPUT
+
+      - name: Delete old releases (keep one per month)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CURRENT_TAG="${{ steps.month_tag.outputs.tag }}"
+          
+          # Get all releases
+          gh release list --limit 1000 --json tagName,createdAt > releases.json
+          
+          # Keep track of which months we've seen
+          declare -A seen_months
+          
+          # Process each release
+          while IFS= read -r tag; do
+            # Extract year-month from tag (assumes format YYYY-MM or similar)
+            month_prefix="${tag:0:7}"
+            
+            # Skip current month
+            if [ "$tag" = "$CURRENT_TAG" ]; then
+              continue
+            fi
+            
+            # If we've already seen this month, delete this release
+            if [ -n "${seen_months[$month_prefix]}" ]; then
+              echo "Deleting older release: $tag"
+              gh release delete "$tag" -y
+            else
+              # Mark this month as seen
+              seen_months[$month_prefix]=1
+              echo "Keeping release: $tag"
+            fi
+          done < <(jq -r 'sort_by(.createdAt) | reverse | .[].tagName' releases.json)
+
+      - name: Create or update release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ steps.month_tag.outputs.tag }}"
+          RELEASE_NAME="${{ steps.month_tag.outputs.release_name }}"
+          
+          # Check if release exists
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG exists, updating..."
+            gh release upload "$TAG" main.pdf --clobber
+          else
+            echo "Creating new release $TAG..."
+            gh release create "$TAG" main.pdf \
+              --title "PDF Build - $RELEASE_NAME" \
+              --notes "Automated PDF build from commit ${{ github.sha }}"
+          fi
+
+      - name: Upload PDF as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-pdf
+          path: main.pdf
+          retention-days: 7
