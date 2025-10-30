@@ -79,7 +79,7 @@ jobs:
             echo "Creating new release $TAG..."
             gh release create "$TAG" main.pdf \
               --title "PDF Build - $RELEASE_NAME" \
-              --notes "Automated PDF build from commit ${{ github.sha }}"
+              --notes "Automated PDF build"
           fi
 
       - name: Upload PDF as artifact

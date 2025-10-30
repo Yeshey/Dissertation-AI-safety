@@ -24,7 +24,7 @@
             # Any specific shell hooks or additional environment settings can go here
             shellHook = ''
               echo "TeX Live full environment is ready on ${system}!"
-              echo "Build with \`latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -pdf ./main\`"
+              echo "Build with \`latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main\`"
             '';
           };
 
@@ -34,7 +34,7 @@
             src = ./.;
             buildInputs = [ pkgs.texlive.combined.scheme-full ];
             buildPhase = ''
-              latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -pdf ./main
+              latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
             '';
             installPhase = ''
               mkdir -p $out
@@ -49,7 +49,7 @@
             program = "${pkgs.writeShellScript "build-latex" ''
               set -e
               echo "Building LaTeX document..."
-              ${pkgs.texlive.combined.scheme-full}/bin/latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -pdf ./main
+              ${pkgs.texlive.combined.scheme-full}/bin/latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
               echo "Build complete! main.pdf has been generated."
             ''}";
           };
