@@ -16,7 +16,9 @@ jobs:
         uses: wimpysworld/nothing-but-nix@main
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure latexmk to ignore font cache
         run: |
