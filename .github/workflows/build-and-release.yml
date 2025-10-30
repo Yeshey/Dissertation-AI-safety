@@ -20,13 +20,6 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure latexmk to ignore font cache
-        run: |
-          cat >> .latexmkrc << 'EOF'
-          # Ignore luatex font cache changes that trigger unnecessary reruns
-          $hash_calc_ignore_pattern{'luc'} = '.*';
-          EOF
-
       - name: Build PDF with Nix
         run: |
           nix build
