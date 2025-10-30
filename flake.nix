@@ -27,13 +27,18 @@
               echo "Build with \`latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main\`"
             '';
           };
-
           # Define the default package/app for nix run
           packages.default = pkgs.stdenvNoCC.mkDerivation {
             name = "latex-build";
             src = ./.;
             buildInputs = [ pkgs.texlive.combined.scheme-full ];
             buildPhase = ''
+              # Create writable cache directories for LuaLaTeX
+              export HOME=$TMPDIR
+              mkdir -p $HOME/.texlive/texmf-var
+              export TEXMFHOME=$HOME/.texlive
+              export TEXMFVAR=$HOME/.texlive/texmf-var
+
               latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
             '';
             installPhase = ''
@@ -42,13 +47,19 @@
               cp main.synctex.gz $out/ 2>/dev/null || true
             '';
           };
-
           # Define the app for nix run
           apps.default = {
             type = "app";
             program = "${pkgs.writeShellScript "build-latex" ''
               set -e
               echo "Building LaTeX document..."
+
+              # Create writable cache directories for LuaLaTeX
+              export HOME=$(mktemp -d)
+              mkdir -p $HOME/.texlive/texmf-var
+              export TEXMFHOME=$HOME/.texlive
+              export TEXMFVAR=$HOME/.texlive/texmf-var
+
               ${pkgs.texlive.combined.scheme-full}/bin/latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
               echo "Build complete! main.pdf has been generated."
             ''}";
