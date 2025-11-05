@@ -22,8 +22,14 @@ jobs:
 
       - name: Build PDF with Nix
         run: |
-          nix build
-          cp result/main.pdf ./main.pdf
+          nix build || true
+          if [ -f result/main.pdf ]; then
+            cp result/main.pdf ./main.pdf
+            echo "✓ PDF successfully created"
+          else
+            echo "✗ Build failed - no PDF generated"
+            exit 1
+          fi
 
       - name: Get current month tag
         id: month_tag
