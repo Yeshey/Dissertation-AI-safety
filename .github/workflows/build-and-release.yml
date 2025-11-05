@@ -22,13 +22,16 @@ jobs:
 
       - name: Build PDF with Nix
         run: |
-          nix build || true
-          if [ -f result/main.pdf ]; then
-            cp result/main.pdf ./main.pdf
-            echo "✓ PDF successfully created"
+          if nix build; then
+            echo "✓ PDF successfully created without errors"
           else
-            echo "✗ Build failed - no PDF generated"
-            exit 1
+            echo "⚠ Build had errors/warnings, checking if PDF was generated..."
+            if [ -f main.pdf ]; then
+              echo "✓ PDF was generated despite errors/warnings"
+            else
+              echo "✗ Build failed - no PDF generated"
+              exit 1
+            fi
           fi
 
       - name: Get current month tag
