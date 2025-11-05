@@ -3,6 +3,7 @@ references
 tmp
 main.pdf
 *sync-conflict*
+.texlive*
 
 # Created by https://www.toptal.com/developers/gitignore/api/latex,git,visualstudiocode,linux,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex,git,visualstudiocode,linux,windows
