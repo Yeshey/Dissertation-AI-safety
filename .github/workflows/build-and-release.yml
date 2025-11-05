@@ -34,52 +34,63 @@ jobs:
             fi
           fi
 
-      - name: Get current month tag
-        id: month_tag
+      - name: Get timestamp for unique tag
+        id: timestamp
         run: |
-          echo "tag=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
+          echo "tag=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
+          echo "month=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
           echo "release_name=$(date +'%B %Y')" >> $GITHUB_OUTPUT
 
       - name: Create new release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="${{ steps.month_tag.outputs.tag }}"
-          RELEASE_NAME="${{ steps.month_tag.outputs.release_name }}"
+          TAG="${{ steps.timestamp.outputs.tag }}"
+          RELEASE_NAME="${{ steps.timestamp.outputs.release_name }}"
           COMMIT_SHA="${{ github.sha }}"
           COMMIT_SHORT="${COMMIT_SHA:0:7}"
 
           echo "Creating new release $TAG..."
           gh release create "$TAG" main.pdf \
             --title "PDF Build - $RELEASE_NAME" \
-            --notes "Automated PDF build from commit $COMMIT_SHORT"
+            --notes "Automated PDF build from commit $COMMIT_SHORT ($(date +'%Y-%m-%d %H:%M:%S'))"
 
-      - name: Delete older releases (keep only latest per month)
+      - name: Clean up old releases (keep only latest per month)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          CURRENT_TAG="${{ steps.month_tag.outputs.tag }}"
+          echo "Fetching all releases..."
           gh release list --limit 1000 --json tagName,createdAt > releases.json
 
-          # Group releases by month and keep only the latest one for each month
-          jq -r '
-            group_by(.tagName[0:7]) |
-            map(sort_by(.createdAt) | reverse | .[0]) |
-            .[].tagName
-          ' releases.json > keep_releases.txt
+          declare -A latest_per_month
 
-          echo "Releases to keep:"
-          cat keep_releases.txt
+          # Find the latest release for each month
+          while IFS= read -r line; do
+            tag=$(echo "$line" | jq -r '.tagName')
+            created=$(echo "$line" | jq -r '.createdAt')
+            month="${tag:0:7}"  # Extract YYYY-MM
 
-          # Delete all releases that are not in the keep list
-          jq -r '.[].tagName' releases.json | while read -r tag; do
-            if ! grep -q "^$tag$" keep_releases.txt; then
-              echo "Deleting older release: $tag"
-              gh release delete "$tag" -y
-            else
-              echo "Keeping release: $tag"
+            if [ -z "${latest_per_month[$month]}" ] || [[ "$created" > "${latest_per_month[$month]}" ]]; then
+              latest_per_month[$month]="$created|$tag"
             fi
-          done
+          done < <(jq -c '.[]' releases.json)
+
+          # Delete all releases except the latest per month
+          while IFS= read -r line; do
+            tag=$(echo "$line" | jq -r '.tagName')
+            created=$(echo "$line" | jq -r '.createdAt')
+            month="${tag:0:7}"
+
+            latest_info="${latest_per_month[$month]}"
+            latest_tag="${latest_info#*|}"
+
+            if [ "$tag" != "$latest_tag" ]; then
+              echo "Deleting older release: $tag (keeping $latest_tag for $month)"
+              gh release delete "$tag" -y || echo "Failed to delete $tag"
+            else
+              echo "Keeping latest release for $month: $tag"
+            fi
+          done < <(jq -c '.[]' releases.json)
 
       - name: Upload PDF as artifact
         uses: actions/upload-artifact@v4
