@@ -39,6 +39,8 @@
               export TEXMFHOME=$HOME/.texlive
               export TEXMFVAR=$HOME/.texlive/texmf-var
 
+              latexmk -C || true
+
               latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
             '';
             installPhase = ''
@@ -62,7 +64,7 @@
 
               ${pkgs.texlive.combined.scheme-full}/bin/latexmk -C || true
 
-              ${pkgs.texlive.combined.scheme-full}/bin/latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
+              ${pkgs.texlive.combined.scheme-full}/bin/latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main
               echo "Build complete! main.pdf has been generated."
             ''}";
           };

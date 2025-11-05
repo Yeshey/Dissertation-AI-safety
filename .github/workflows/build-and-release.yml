@@ -22,7 +22,7 @@ jobs:
 
       - name: Build PDF with Nix
         run: |
-          if nix build; then
+          if nix run; then
             echo "✓ PDF successfully created without errors"
           else
             echo "⚠ Build had errors/warnings, checking if PDF was generated..."
