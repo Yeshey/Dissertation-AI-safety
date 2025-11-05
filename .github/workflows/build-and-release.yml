@@ -40,28 +40,7 @@ jobs:
           echo "tag=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
           echo "release_name=$(date +'%B %Y')" >> $GITHUB_OUTPUT
 
-      - name: Delete old releases (keep one per month)
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          CURRENT_TAG="${{ steps.month_tag.outputs.tag }}"
-          gh release list --limit 1000 --json tagName,createdAt > releases.json
-          declare -A seen_months
-          while IFS= read -r tag; do
-            month_prefix="${tag:0:7}"
-            if [ "$tag" = "$CURRENT_TAG" ]; then
-              continue
-            fi
-            if [ -n "${seen_months[$month_prefix]}" ]; then
-              echo "Deleting older release: $tag"
-              gh release delete "$tag" -y
-            else
-              seen_months[$month_prefix]=1
-              echo "Keeping release: $tag"
-            fi
-          done < <(jq -r 'sort_by(.createdAt) | reverse | .[].tagName' releases.json)
-
-      - name: Create or update release
+      - name: Create new release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -70,19 +49,37 @@ jobs:
           COMMIT_SHA="${{ github.sha }}"
           COMMIT_SHORT="${COMMIT_SHA:0:7}"
 
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG exists, updating..."
-            gh release delete "$TAG" -y
-            echo "Creating updated release $TAG..."
-            gh release create "$TAG" main.pdf \
-              --title "PDF Build - $RELEASE_NAME" \
-              --notes "Automated PDF build from commit $COMMIT_SHORT"
-          else
-            echo "Creating new release $TAG..."
-            gh release create "$TAG" main.pdf \
-              --title "PDF Build - $RELEASE_NAME" \
-              --notes "Automated PDF build from commit $COMMIT_SHORT"
-          fi
+          echo "Creating new release $TAG..."
+          gh release create "$TAG" main.pdf \
+            --title "PDF Build - $RELEASE_NAME" \
+            --notes "Automated PDF build from commit $COMMIT_SHORT"
+
+      - name: Delete older releases (keep only latest per month)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CURRENT_TAG="${{ steps.month_tag.outputs.tag }}"
+          gh release list --limit 1000 --json tagName,createdAt > releases.json
+
+          # Group releases by month and keep only the latest one for each month
+          jq -r '
+            group_by(.tagName[0:7]) |
+            map(sort_by(.createdAt) | reverse | .[0]) |
+            .[].tagName
+          ' releases.json > keep_releases.txt
+
+          echo "Releases to keep:"
+          cat keep_releases.txt
+
+          # Delete all releases that are not in the keep list
+          jq -r '.[].tagName' releases.json | while read -r tag; do
+            if ! grep -q "^$tag$" keep_releases.txt; then
+              echo "Deleting older release: $tag"
+              gh release delete "$tag" -y
+            else
+              echo "Keeping release: $tag"
+            fi
+          done
 
       - name: Upload PDF as artifact
         uses: actions/upload-artifact@v4
