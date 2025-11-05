@@ -16,6 +16,7 @@
 \usepackage{booktabs}
 \usepackage{threeparttable}
 \usepackage{caption}
+\usepackage{csquotes}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref} % should be last package
 
@@ -24,12 +25,12 @@
 
 
 \makeatletter
-    \def\section{\@startsection{section}{1}%
-      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
-      {\normalfont\bfseries\flushleft}}
-    \def\subsection{\@startsection{subsection}{2}%
-      \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
-      {\normalfont\bfseries\flushleft}}
+\def\section{\@startsection{section}{1}%
+  \z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+  {\normalfont\bfseries\flushleft}}
+\def\subsection{\@startsection{subsection}{2}%
+	\z@{.5\linespacing\@plus.7\linespacing}{.25\linespacing}%
+	{\normalfont\bfseries\flushleft}}
 
 \makeatother
 \setcounter{MaxMatrixCols}{10}
@@ -63,17 +64,17 @@
 % Please write the references according to your school
 
 \newenvironment{dedication}
-  {%\clearpage           % we want a new page
-   \thispagestyle{empty}% no header and footer
-   \vspace*{\stretch{1}}% some space at the top
-   \itshape             % the text is in italics
-   \raggedleft          % flush to the right margin
-  }
-  {\par % end the paragraph
-   \vspace{\stretch{3}} % space at bottom is three times that at the top
-   %\clearpage           % finish off the page
-  }
-  \numberwithin{section}{chapter}
+{%\clearpage           % we want a new page
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{1}}% some space at the top
+	\itshape             % the text is in italics
+	\raggedleft          % flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	%\clearpage           % finish off the page
+}
+\numberwithin{section}{chapter}
 \fancyhead{}
 \fancyfoot{}
 \pagestyle{fancy}
@@ -81,13 +82,13 @@
 
 \makeatletter
 \def\ps@plain{\ps@empty
- \def\@evenfoot{%
-   \normalfont\scriptsize
-   \rlap{\thepage}\hfil
-   }%
- \def\@oddfoot{%
-   \normalfont\scriptsize \hfil
-   \llap{\thepage}}%
+	\def\@evenfoot{%
+		\normalfont\scriptsize
+		\rlap{\thepage}\hfil
+	}%
+	\def\@oddfoot{%
+		\normalfont\scriptsize \hfil
+		\llap{\thepage}}%
 }
 \makeatother
 \renewcommand{\headrulewidth}{0pt}
