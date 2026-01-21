@@ -20,6 +20,29 @@
 \usepackage{multirow}       % for merged cells
 \usepackage{caption}
 \usepackage[backend=biber, style=ieee, sorting=ynt]{biblatex}
+
+% -------- Review Colors --------
+\usepackage{xcolor}
+
+% Named colors
+\definecolor{reviewred}{RGB}{200,0,0}
+\definecolor{reviewgreen}{RGB}{0,140,0}
+\definecolor{reviewblack}{RGB}{0,0,0}
+
+% Simple switches
+\newcommand{\redtext}{\color{reviewred}}
+\newcommand{\greentext}{\color{reviewgreen}}
+
+% Block environments (recommended)
+\newenvironment{toreview}
+{\color{reviewred}}
+{}
+
+\newenvironment{reviewed}
+{\color{reviewgreen}}
+{}
+
+
 \usepackage[colorlinks=true, allcolors=blue]{hyperref} % should be last package
 
 % you may need to uncomment the command below if you use eps format for figures
