@@ -5,17 +5,25 @@
     flake-parts.url = "github:hercules-ci/flake-parts"; # Optional, useful for modularity
     nixpkgs.url = "github:NixOS/nixpkgs"; # Use nixpkgs as the base
   };
-  outputs = inputs@{ self, flake-parts, ... }:
+  outputs =
+    inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       # Support for multiple systems
-      systems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" "aarch64-linux" ];
-      perSystem = { system, ... }:
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "aarch64-linux"
+      ];
+      perSystem =
+        { system, ... }:
         let
           pkgs = import inputs.nixpkgs {
             inherit system;
             # You can add any additional overlays here if needed
           };
-        in {
+        in
+        {
           # Define the devShell for each system
           devShells.default = pkgs.mkShell {
             buildInputs = [
