@@ -19,3 +19,20 @@ It's hard for humans to grasp the severity of the problem due cognitive Bias [Hu
 Today we have Multi-modal and Generalist LLMs capable of doing tasks in a large range of domains that exhibit early signs of instrumental convergence behavior [Alignment faking in large language models].
 
 Knowing the gab between safety progress and AI capabilities is widening I intend with my research to build on work such as: AI Control: Improving Safety Despite Intentional Subversion. My goal is to mitigate or demonstrate the risks of unsafe systems, in the hope that sufficiently robust misalignment demonstrations may instill enough public discourse to warrant and enable further systemic action.
+
+## Code & Latex
+
+### Color Coding
+- Text in <span style="color:red">**Red**</span> still needs to be reviewed. Set it with:
+    ```tex
+    \begin{toreview}
+    ...
+    \end{toreview}
+    ```
+- Text in <span style="color:green">**Green**</span> is already reviewed. Set it with:
+    ```tex
+    \begin{reviewed}
+    ...
+    \end{reviewed}
+    ```
+- Text in **Black** is still being worked on.
