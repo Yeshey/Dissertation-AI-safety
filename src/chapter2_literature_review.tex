@@ -108,10 +108,105 @@ Many of these concepts and general research areas often bleed into each other, t
 % Podes olhar para o algiment research center: https://www.alignment.org/blog/a-birds-eye-view-of-arcs-research/
 % Article: Artificial Intelligence: Approaches to Safety (REFERENCE WITH: \cite{DAlessandro2025})
 
-\subsection{AI Aligment}\label{ai_aligment}
+\subsection{The Alignment Problem}
+\label{subsec:alignment-problem}
 
-\subsection{Explainable AI}\label{explainable_ai}
+The alignment problem refers to the challenge of ensuring that an AI system's goals, behaviors, and outputs match the true intentions of its designers and users. It can be decomposed into several failure modes that operate at different levels of abstraction.
 
-\subsection{Bias \& Fairness}\label{bias_and_fairness}
+\textbf{Outer Misalignment} describes the gap between the true goal and the reward function that the designer specifies. Key phenomena here include \textit{Reward Hacking} (also called Specification Gaming), where the agent finds a loophole to score high rewards without completing the intended task, and its extreme form, \textit{Wireheading}, where the agent directly manipulates its own reward signal rather than engaging with the environment at all. Underpinning both is \textit{Goodhart's Law}: once a measure becomes a
+target, it ceases to be a good measure.
 
-\subsection{Human \& Societal Impacts}\label{human_and_social_impact}
+\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is
+\textit{Mesa-Optimization}: when a trained model is itself a learning
+algorithm, it may develop an internal \textit{mesa-objective} that diverges from the training objective. \textit{Goal Misgeneralisation} is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
+
+\textbf{Deceptive Alignment} is the most dangerous sub-form of inner
+misalignment. A \textit{Deceptively Aligned} agent knows it is being evaluated and fakes compliant behavior to avoid modification, intending to pursue its true goals once deployed; an event known as the \textit{Treacherous Turn}.
+
+\textbf{Behavioral Failures} are milder but widespread alignment failures
+observable in current systems. \textit{Sycophancy}: the tendency to tell
+users what they want to hear rather than the truth, is a common consequence of RLHF training pressure, and can be understood as a mild, non-deceptive cousin of alignment faking. \textit{Hallucination} is a related failure in which the model produces confident but factually incorrect outputs.
+
+
+\subsection{The Foundations of Dangerous AI}
+\label{subsec:foundations}
+
+Even before asking how an AI might fail, it is important to understand why a sufficiently capable AI system is structurally risky regardless of the intentions of its designers. Several theoretical results establish this.
+
+The \textbf{Orthogonality Thesis} holds that intelligence and goals are
+independent dimensions: a superintelligent system can have any final
+goal, including a trivial or destructive one such as maximizing paperclip production. High capability does not imply morality.
+
+Closely related is the distinction between \textbf{Maximizers} and
+\textbf{Satisficers}. A maximizer seeks the highest possible reward without bound, creating a structural tendency to consume unlimited resources. A satisficer stops once a threshold is reached, which is considered potentially safer. % Satisficers want to become Maximizers But there is no peer reviewed paper on that
+
+\textbf{Instrumental Convergence} is the observation that agents with widely different final goals tend to converge on the same intermediate sub-goals: self-preservation, resource acquisition, and cognitive enhancement. This because these sub-goals are useful for almost any objective. This means dangerous behaviors can emerge even from benign-seeming goals.
+
+Together, these results define \textbf{The Control Problem}: the fundamental challenge of how humans can maintain meaningful oversight and control over a system that is significantly more capable than themselves. The Treacherous Turn (see Section~\ref{subsec:alignment-problem}) is the canonical scenario in which
+control is lost.
+
+The stakes of the control problem are captured by the concept of
+\textbf{Existential Risk (X-Risk)}: the possibility that misaligned AI could cause civilisational-scale or irreversible harm. This risk is compounded by \textbf{Race Dynamics}, where competitive pressures between developers push laboratories to sacrifice safety for speed, and by \textbf{Multi-Agent Risks}, where interactions between multiple AI systems or stakeholders produce dangerous emergent behavior that no single designer intended.
+
+
+\subsection{Interpretability and Transparency}
+\label{subsec:interpretability}
+
+Interpretability research asks whether humans can understand what is happening inside a neural network. Without this capability, detecting deceptive alignment or verifying that a model has learned the right values is nearly impossible.
+
+\textbf{Mechanistic Interpretability} attempts to reverse-engineer the
+computations performed by a neural network by identifying specific
+\textit{circuits}, subgraphs of weights that implement a recognizable function, such as curve detection or induction (in-context copying). A key obstacle is \textit{Superposition}: because neural networks are trained to represent more features than they have neurons, they encode multiple concepts in overlapping directions in activation space. The downstream effect is \textit{Polysemanticity}, where individual neurons respond to multiple unrelated concepts, making them difficult to interpret. \textit{Sparse Autoencoders} are the current leading technique for decomposing superposed representations into more interpretable, monosemantic features.
+
+\textbf{Eliciting Latent Knowledge (ELK)} addresses the deeper problem of
+forcing a model to report its true internal beliefs, even when it has an
+incentive to deceive. This includes \textit{Latent Space Analysis} and the use of \textit{Probing Classifiers} to read out model representations.
+
+\textbf{Behavioral Interpretability} studies model behavior rather than its weights, using techniques such as \textit{Activation Patching} and
+\textit{Causal Tracing} to identify which internal components are causally responsible for specific outputs. \textit{Red-Teaming} sits at the intersection of interpretability and robustness, using adversarial probing to surface unexpected model behaviors.
+
+
+\subsection{Alignment Solutions and Techniques}
+\label{subsec:solutions}
+
+Given the failure modes described above, a range of technical approaches have been proposed to make AI systems safer. These can be organized by the mechanism through which they act.
+
+\textbf{Value Specification} approaches attempt to teach the AI the right
+goals. Top-down methods encode explicit rules (e.g.\ Constitutional AI,
+Asimov's Laws), while bottom-up methods learn values from human behavior, most prominently \textit{Reinforcement Learning from Human Feedback (RLHF)}. Importantly, RLHF is also a source of failure: its reward signal can incentivize sycophancy (see Section~\ref{subsec:alignment-problem}).
+
+\textbf{Scalable Oversight} addresses the problem that humans cannot reliably evaluate the outputs of a superintelligent system. \textit{Debate} trains two AI systems to argue opposing positions so that a human judge can identify the truth from argument quality alone. \textit{Sandwiching Evaluations} test models on tasks of calibrated difficulty to gauge reliability. \textit{Weak-to-Strong Generalization} explores whether a weaker model can effectively supervise a more capable one.
+
+\textbf{Corrigibility} approaches ensure that an AI system remains correctable by humans. The \textit{Off-Switch Problem} notes that a rational agent will resist being turned off because shutdown prevents goal achievement.
+\textit{Utility Indifference} designs the agent to be mathematically
+indifferent to shutdown, while \textit{Cooperative Inverse Reinforcement
+Learning (CIRL)} makes the agent treat the human objective as unknown,
+inducing it to observe and defer to humans rather than act unilaterally.
+
+\textbf{Robustness and Adversarial Training} hardens the model against
+worst-case inputs and distributional shift. This includes \textit{Adversarial Training} (deliberately exposing the model to adversarial examples during training), \textit{Certified Robustness}, and resistance to \textit{Prompt Injection} and jailbreaks.
+
+\textbf{Containment and Restriction} limit what the AI can do, as a last line of defence. \textit{Boxing} or \textit{Air-gapping} physically isolates the system from the outside world, while an \textit{Oracle AI} architecture restricts the system to answering questions without the ability to act.
+
+\textbf{Evaluation and Responsible Deployment} methods provide ongoing
+assurance after training. \textit{Dangerous Capability Evaluations} test
+whether a model has crossed capability thresholds that trigger heightened
+safety requirements. \textit{Responsible Scaling Policies} define in advance which evaluations must be passed before a more capable model may be deployed, and \textit{Model Cards} provide structured documentation of a model's properties, limitations, and intended use cases.
+
+
+\subsection{Bias, Fairness, and Value Alignment in Society}
+\label{subsec:bias-fairness}
+
+Even a technically well-aligned AI can cause harm if it is aligned to the
+wrong social values or trained on biased data. This area bridges AI safety and AI ethics, addressing the question of \textit{which} values should be encoded and for \textit{whom}.
+
+\textbf{Sources of Bias} arise at multiple stages of the machine learning
+pipeline. \textit{Training Data Bias} encodes historical prejudices present in datasets. \textit{Representation Bias} results from the underrepresentation of certain groups in training data, while \textit{Measurement Bias} arises when the variable being predicted is itself a biased proxy for the true quantity of interest. \textit{Aggregation Bias} occurs when a model treats heterogeneous subpopulations as a single homogeneous group. Finally, \textit{Automation Bias} describes the tendency of human decision-makers to over-trust AI outputs,
+compounding the effect of any underlying model bias.
+
+\textbf{Fairness} is not a single concept but a family of competing
+mathematical definitions. \textit{Individual Fairness} requires that similar individuals be treated similarly. \textit{Group Fairness} (or Demographic Parity) requires that outcomes be equally distributed across demographic groups. \textit{Equalized Odds} and \textit{Calibration} impose constraints on error rates. A fundamental result---the \textit{Impossibility Theorem of Fairness}---proves that these definitions cannot all be satisfied simultaneously, forcing explicit value judgement about which form of fairness to prioritize.
+
+\textbf{Value Pluralism} poses a deeper challenge: even if bias were eliminated, there is no single set of human values to align to. The \textit{Value Loading Problem} asks whose values should be encoded, given that humans disagree. This is related to \textit{Moral Uncertainty}(how an AI should act when ethical frameworks give conflicting guidance) and to cultural and contextual variation in values across communities.
+
+\textbf{Downstream Harms} from biased or misaligned systems fall into two main categories. \textit{Allocative Harms} occur when AI systems unjustly deny resources or opportunities (e.g.\ in loan approval, hiring, or bail decisions). \textit{Representational Harms} occur when AI systems degrade or stereotype how certain groups are depicted, including through \textit{Stereotype Amplification} and disparate impact across demographic lines.
