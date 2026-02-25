@@ -1,6 +1,12 @@
 # now install vscode direnv extension?
 {
   description = "Development shell with full TeX Live installation on multiple systems";
+
+  nixConfig = {
+    max-jobs = 2;
+    cores = 4;
+  };
+
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts"; # Optional, useful for modularity
     nixpkgs.url = "github:NixOS/nixpkgs"; # Use nixpkgs as the base
