@@ -36,3 +36,81 @@ Knowing the gab between safety progress and AI capabilities is widening I intend
     \end{reviewed}
     ```
 - Text in **Black** is still being worked on.
+
+
+## TO-DO
+
+Aqui vai o meu "honest feedback". Eu sei que é um bocado, mas tem de corrigir:
+
+#### 1. **Ajustes e Regras gerais de tese**
+
+- [x] **Tabela 1:** A soma dos artigos do Filtro 5 é 63. Se adicionou 15 no snowballing, o total deveria ser 78, mas a tabela diz 77. Reavalie estas contas.
+
+- [x] Tem referências com datas de acesso e publicação no futuro (ex: “Feb 18, 2026”, “Nov. 1, 2025”)? Confirme se usou um gerador de citações que assumiu o ano errado. - Dizer que foram apenas accessed (mas devo de facto ver a consistência das referencias)
+
+- [ ] **Regras de Tese:** O seu “Theoretical Background” (2.2) está misturado no capítulo da Revisão Sistemática da Literatura (SLR). Numa tese, o Background teórico costuma vir antes da metodologia da SLR, para preparar o leitor.
+
+---
+
+#### 2. **Revisão do Conteúdo**
+
+Vamos ajustar a lógica e a coerência...
+
+- [ ] **Onde estão os Resultados?**  
+  Fez um trabalho fantástico a compilar 78 artigos na “Concept Matrix” (Apêndice A), mas falta escrever sobre eles no texto principal. O capítulo 2 descreve como procurou os artigos (2.1) e depois dá uma aula teórica sobre AI Safety (2.2), mas nunca responde às suas Research Questions (RQ1 a RQ4).
+
+- [ ] **Falta secção de Resultados:**  
+  Precisa de uma secção de "Resultados" onde pega nos dados da matriz e diz, por exemplo:  
+  > "Of the 78 articles analyzed, 31 focus on Social Impacts, while only 18 address the Alignment...".
+
+---
+
+#### 3. **Citações e Fundamentação**
+
+Há que trabalhar mais aqui...
+
+- [ ] **Falta Crítica de Citações:**  
+  As secções 2.2.1 até 2.2.5 não têm uma única citação. Está a definir conceitos complexos como *Paperclip Maximizer*, *Orthogonality Thesis*, *Goodhart's Law*, *Mesa-Optimization*, etc., como se fosse conhecimento geral. Isto é super importante de referenciar numa tese.
+
+- [ ] Tens de ir a cada um destes parágrafos e inserir (pelo menos) uma citação do autor original (ex: Bostrom para o *Paperclip Maximizer*).  
+  Toda a afirmação técnica ou conceptual tem de ter uma fonte.
+
+---
+
+#### 4. **Dicas para Evolução e Desbloqueio (Como avançar?)**
+
+Força João! O trabalho parece estar feito, mas está "invisível" (a leitura e classificação dos artigos). Olha, aqui seguem passos que eu seguiria para desbloquear:
+
+##### Reorganiza a Estrutura:
+
+- [ ] **Capítulo 2:** Theoretical Background  
+  (Move o atual 2.2 para aqui. Adiciona as citações em falta!)
+
+- [ ] **Capítulo 3:** Methodology  
+  (O teu atual 2.1. Explica como fizeste a SLR)
+
+- [ ] **Capítulo 4:** Results  
+  (Usa a tua Tabela do Anexo. Cria gráficos com base nela. Responde diretamente às tuas RQs aqui)
+
+- [ ] **Capítulo 5:** Discussion & Conclusions
+
+---
+
+- [ ] **Use a sua Matriz:**  
+  Olhe para a sua "Concept Matrix". Escreva um parágrafo para cada coluna.  
+  Por exemplo, pegue nos artigos que marcaram "X" na coluna "Bias & Fairness" e resuma o que eles dizem.  
+  E assim já fica com a secção de resultados escrita!
+
+---
+
+...e não se esqueça:
+
+Deve apontar para mais ou menos estas percentagens em cada capítulo  
+(não é obrigatório, mas é o sugerido):
+
+- [ ] 2.5%  Resumo / Abstract  
+- [ ] 5%    Introdução / Introduction  
+- [ ] 20%   State-of-the-art / Estado da Arte  
+- [ ] 30%   Métodos / Methods  
+- [ ] 40%   Resultados e Discussão / Results and Discussion  
+- [ ] 2.5%  Conclusão / Conclusions  
