@@ -23,22 +23,26 @@
 
 % -------- Review Colors --------
 \usepackage{xcolor}
+\usepackage{caption} % add this if not already present
 
 % Named colors
 \definecolor{reviewred}{RGB}{200,0,0}
 \definecolor{reviewgreen}{RGB}{0,140,0}
-
 \newif\iftoreview
 \newif\ifreviewed
-
 \newenvironment{toreview}
   {\toreviewtrue\color{reviewred}}
   {\toreviewfalse}
-
 \newenvironment{reviewed}
   {\reviewedtrue\color{reviewgreen}}
   {\reviewedfalse}
 
+% Declare a dynamic caption font that checks the review flags
+\DeclareCaptionFont{reviewcolor}{%
+  \iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}
+\captionsetup{font+=reviewcolor}
+
+% Table environment hooks (unchanged)
 \AtBeginEnvironment{tabular}{\iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}
 \AtBeginEnvironment{threeparttable}{\iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}
 \AtBeginEnvironment{table}{\iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}

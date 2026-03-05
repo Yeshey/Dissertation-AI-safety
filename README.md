@@ -40,7 +40,11 @@ Knowing the gab between safety progress and AI capabilities is widening I intend
 <!-- LTeX: language=pt-PT -->
 ## TO-DO
 
-Aqui vai o meu "honest feedback". Eu sei que é um bocado, mas tem de corrigir:
+- [ ] **Acronyms**: Ver de como Fazer os Acronyms automáticos
+<!-- LTeX: language=en-US -->
+- [ ] Why and how did you choose those Snowballing articles
+- [ ] Why and how did you choose those inclusion and exclusion criteria.
+<!-- LTeX: language=pt-PT -->
 
 #### 1. **Ajustes e Regras gerais de tese**
 
@@ -83,7 +87,7 @@ Força João! O trabalho parece estar feito, mas está "invisível" (a leitura e
 
 ##### Reorganiza a Estrutura:
 
-- [ ] **Capítulo 2:** Theoretical Background  
+- [x] **Capítulo 2:** Theoretical Background  
   (Move o atual 2.2 para aqui. Adiciona as citações em falta!)
 
 - [ ] **Capítulo 3:** Methodology  

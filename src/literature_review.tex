@@ -1,21 +1,14 @@
 \begin{toreview}
 
-	\chapter{Literature Review - AI Safety}\label{chap:literature_review}
+\chapter{Literature Review — AI Safety}\label{chap:literature_review}
 
-	This SLR will target the continuous research in the area of AI safety by narrowing on a specified search string capable of funneling the amount of peer reviewed articles from several known Datasets. In this initial review we will keep the search string simple and broad to get a general idea of the state of the field.
+	\section{AI Safety SLR}\label{ai_safety_slr}
 
-	\section{Search String and Research Methods}
+	This SLR will target the continuous research in the area of AI safety by narrowing on a specified search string capable of funneling the amount of peer-reviewed articles from several known Datasets. In this initial review we will keep the search string simple and broad to get a general idea of the state of the field.
 
-	By picking relevant keywords we constructed a search string designed to narrow the amount of relevant articles in the target Databases. Due to the high volume of articles in the area, a negative search string was also introduced to filter works specific to certain domains out of the scope of this research.
+	The SLR wielded research that spanned many fields that would often stray from DevOps or ML Ops pipelines. These including economics and philosophical research, political and corporate regulations and governance systems and numerous high level analysis of the field and current alignment or shallow alignment techniques. And the technical research would typically be very directed at specific issues in a specific context or operational environment, meaning it would regularly tackle shallow alignment\cite{milliere_normative_2025, mcintosh_inadequacy_2024}. Because of this, and since the AI field is evolving at a pace that's sometimes hard for peer-reviewed literature to keep up, snowballing was introduced to bring in other relevant articles and gray literature\cite{wohlin_guidelines_2014}. The related table can be found in Appendix \ref{sec:snowballing_articles_slr}.
 
-	\begin{itemize}
-		\item \textbf{Search String:} ("artificial intelligence" OR "LLM*" OR "generative AI" OR "gen AI" OR "large language model*" OR "AGI" OR "Artificial General Intelligence") AND ( "AI safety") AND NOT ("robot*" OR "industrial" OR "manufacturing" OR "user experience" OR "UX" OR "clinical" OR "healthcare" OR "medical")
-		\item \textbf{Datasets:} The search engines used were two brokers: Scopus\footnote{1https://www.scopus.com} and Web of Science\footnote{https://apps.webofknowledge.com}, in conjunction with IEEE\footnote{https://ieeexplore.ieee.org}, ACM\footnote{https://dl.acm.org} and EBSCO\footnote{https://search.ebscohost.com}.
-	\end{itemize}
-
-	With this in mind, a systemic search for literature in all the databases was conducted, applying ever more strict filters to narrow the search to only the most relevant articles. The progress made in this phase can be seen documented on Table \ref{tab:slr1_filters}, the inclusion and exclusion criteria across filters are cleanly defined in Table \ref{tab:inclusion_exclusion_criteria}. Furthermore, basing on the work of J. Webster and R. T. Watson on writing a literature review\cite{webster_analyzing_2002}, a concept matrix was devised to further help in discerning the different articles after abstracts were screened, it can be found in Appendix \ref{sec:search_string__articles_slr}.
-
-	The SLR wielded research that spanned several fields that would often stray from Dev Ops or ML Ops pipelines, including economics and philosophical research, political and corporate regulations and governance systems and several high level analysis of the field and current alignment or shallow alignment techniques. And the technical research would often be very directed at specific issues in a specific context or operational environment, meaning it would often tackle shallow alignment\cite{milliere_normative_2025, mcintosh_inadequacy_2024}. Because of this and since the AI field is evolving at a pace that's sometimes hard for peer-reviewed literature to keep up, snowballing was introduced to bring in other relevant articles and grey literature\cite{wohlin_guidelines_2014}, the related table can be found in Appendix \ref{sec:snowballing_articles_slr}.
+	With this in mind, a systemic search for literature in all the databases was conducted, applying ever more strict filters to narrow the search to only the most relevant articles. The progress made in this phase can be seen documented on Table \ref{tab:slr1_filters}, the inclusion and exclusion criteria across filters are cleanly defined in Table \ref{tab:inclusion_exclusion_criteria}. 
 
 	\begin{table}[htbp]
 		\centering
@@ -69,11 +62,7 @@
 		\end{tabular}
 	\end{table}
 
-\end{toreview}
-
 A noteworthy consideration is the growth that the AI safety field has experienced in the past couple of years. Since the advent of LLMs that AI has been a booming topic, this can be verified in the volume of publications like can be seen in Figure \ref{fig:all-ai-timegraph}.
-
-Don’t forget to put on the breaks.
 
 \begin{figure}[htbp]
 	\centering
@@ -90,6 +79,8 @@ In much the same way, AI safety publications have also enjoyed an increase in ou
 	\caption{Number of documents mentioning artificial intelligence (Scopus) and containing "AI safety". At the end of 2025 there were 1742 documents.}
 	\label{fig:ai-safety-timegraph}
 \end{figure}
+
+\end{toreview}
 
 \section{AI Safety Map}\label{ai_safety_map}
 
