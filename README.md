@@ -48,7 +48,7 @@ Aqui vai o meu "honest feedback". Eu sei que é um bocado, mas tem de corrigir:
 
 - [x] Tem referências com datas de acesso e publicação no futuro (ex: “Feb 18, 2026”, “Nov. 1, 2025”)? Confirme se usou um gerador de citações que assumiu o ano errado. - Dizer que foram apenas accessed (mas devo de facto ver a consistência das referencias)
 
-- [ ] **Regras de Tese:** O seu “Theoretical Background” (2.2) está misturado no capítulo da Revisão Sistemática da Literatura (SLR). Numa tese, o Background teórico costuma vir antes da metodologia da SLR, para preparar o leitor.
+- [x] **Regras de Tese:** O seu “Theoretical Background” (2.2) está misturado no capítulo da Revisão Sistemática da Literatura (SLR). Numa tese, o Background teórico costuma vir antes da metodologia da SLR, para preparar o leitor.
 
 ---
 
