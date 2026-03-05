@@ -37,7 +37,7 @@ Knowing the gab between safety progress and AI capabilities is widening I intend
     ```
 - Text in **Black** is still being worked on.
 
-
+<!-- LTeX: language=pt-PT -->
 ## TO-DO
 
 Aqui vai o meu "honest feedback". Eu sei que é um bocado, mas tem de corrigir:
@@ -70,7 +70,7 @@ Vamos ajustar a lógica e a coerência...
 Há que trabalhar mais aqui...
 
 - [ ] **Falta Crítica de Citações:**  
-  As secções 2.2.1 até 2.2.5 não têm uma única citação. Está a definir conceitos complexos como *Paperclip Maximizer*, *Orthogonality Thesis*, *Goodhart's Law*, *Mesa-Optimization*, etc., como se fosse conhecimento geral. Isto é super importante de referenciar numa tese.
+  As secções 2.1 até 2.5 não têm uma única citação. Está a definir conceitos complexos como *Paperclip Maximizer*, *Orthogonality Thesis*, *Goodhart's Law*, *Mesa-Optimization*, etc., como se fosse conhecimento geral. Isto é super importante de referenciar numa tese.
 
 - [ ] Tens de ir a cada um destes parágrafos e inserir (pelo menos) uma citação do autor original (ex: Bostrom para o *Paperclip Maximizer*).  
   Toda a afirmação técnica ou conceptual tem de ter uma fonte.
