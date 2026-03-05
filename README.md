@@ -118,3 +118,61 @@ Deve apontar para mais ou menos estas percentagens em cada capítulo
 - [ ] 30%   Métodos / Methods  
 - [ ] 40%   Resultados e Discussão / Results and Discussion  
 - [ ] 2.5%  Conclusão / Conclusions  
+
+<!-- LTeX: language=en-EN -->
+### TO-DO Get API Keys for your research (aligment faking)
+
+I'm an AI student doing research on AI safety, I have accounts from ISCTE Lisbon, from Unibo Bologna, and from ISEC Coimbra, is there any way for me to get my hands on a big LLM API key for my tests?
+
+You have a significant advantage because you are affiliated with **three different institutions** (ISCTE, Unibo, ISEC). This gives you three separate email domains (`.pt`, `.it`) to validate student status, which is often the only key you need.
+
+Here is a tiered strategy to get access to LLM APIs, ranked from "Immediate Access" to "High-Value Research Grants."
+
+#### 1. The "Immediate Access" (Do this tonight)
+
+These programs require only a valid student email verification and give you API credits or "Pro" access immediately.
+
+*   **Azure for Students (via ISCTE & ISEC)**
+    *   **What you get:** $100 USD in Azure credits per 12 months.
+    *   **Why it matters:** Azure hosts **OpenAI models** (GPT-4o, etc.). You can use these credits to spin up an "Azure OpenAI Service" resource and get an API key that works exactly like OpenAI's, but paid for by Microsoft.
+    *   **Action:** Go to the [Azure for Students portal](https://azure.microsoft.com/en-us/free/students/), log in with your **ISCTE** email. Then, open an incognito window and do it again with your **ISEC** email. That is potentially **$200 in OpenAI credits** right there.
+*   **Perplexity Pro Student**
+    *   **What you get:** 1 year of Perplexity Pro for free.
+    *   **Hidden Benefit:** Pro accounts often come with **$5/month in API credits** (pplx-api). It’s not much, but enough for testing "jailbreaks" or specific safety prompts on open-source models (Llama 3, Mistral) hosted by them.
+    *   **Action:** Sign up at [Perplexity for Students](https://www.perplexity.ai/pro/student) using your **Unibo** email (usually `.it` domains work best for European verification).
+*   **GitHub Student Developer Pack**
+    *   **What you get:** GitHub Copilot free (uses GPT-4/Claude models) and significantly, **credits for other clouds** (often DigitalOcean or Heroku, which helps if you need to host a small evaluation server).
+    *   **Action:** Apply [here](https://education.github.com/pack).
+
+#### 2. The "Research Grant" Tier (Apply for these)
+
+Since you are doing a thesis ("tests" implies a structured project), you are eligible for research-specific grants.
+
+*   **OpenAI Researcher Access Program**
+    *   **What you get:** $1,000 USD in API credits.
+    *   **Difficulty:** Medium. You need a 2-page proposal.
+    *   **Deadlines:** Reviewed quarterly.
+    *   **Strategy:** Frame your thesis clearly around "AI Safety" or "Societal Impact." Explicitly mention you are a student researcher with limited funding.
+    *   **Link:** [OpenAI Researcher Access](https://openai.com/form/researcher-access-program/)
+*   **CINECA ISCRA Class C (Via Unibo)**
+    *   **What you get:** Access to the **Leonardo Supercomputer** (one of the fastest in the world).
+    *   **The "Class C" Trick:** CINECA has a specific call called **ISCRA Class C** for "Test and Development." It offers up to **10,000 GPU hours** or **100,000 Core hours**.
+    *   **Requirement:** You need a "Principal Investigator" (PI). **Ask your Unibo supervisor** to submit this for you. It is a continuous call (reviewed monthly) and is specifically designed for prototyping. This allows you to run **Llama-3-70B** or **Mixtral** locally on high-end hardware without paying per token.
+*   **RNCA (Portugal - FCT)**
+    *   **What you get:** Compute time on Portuguese supercomputers (Deucalion, Bob).
+    *   **Call to look for:** **"A1 - Acesso Desenvolvimento"**. It is a continuous call for small projects (benchmarking, testing).
+    *   **Action:** Check the [FCT/RNCA website](https://www.fccn.pt/computacao/rnca/). You will likely need your ISCTE/ISEC supervisor to sign off, but approval is often fast for A1 projects.
+
+#### 3. The "Institutional" Route (University-Specific)
+
+*   **Unibo (Bologna):**
+    *   Check if your department has access to the **Alma AI** resources. Unibo has specific agreements with CINECA that might bypass the standard ISCRA application if your lab already has a quota.
+*   **ISCTE-IUL:**
+    *   ISCTE has the **"IA>>AP"** (AI for Public Administration) center. If your thesis touches on public sector safety or governance, approach a professor there. They likely have enterprise API keys or dedicated Azure instances they can share with a master's student.
+
+#### Summary Checklist for You
+1.  [ ] **Today:** Claim $100 Azure credit with ISCTE email -> Deploy GPT-4o on Azure.
+2.  [ ] **Today:** Claim $100 Azure credit with ISEC email -> Backup credits.
+3.  [ ] **This Week:** Draft a 1-page summary of your safety tests.
+4.  [ ] **Next Week:** Submit OpenAI Researcher Access application ($1,000).
+5.  [ ] **Next Month:** If you need massive open-source model inference, ask your Unibo supervisor to submit a **CINECA ISCRA-C** proposal (it takes ~1 hour to fill out).
