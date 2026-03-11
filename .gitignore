@@ -1,4 +1,6 @@
 # meus
+# Ignores temporary files like the one created by word
+~$* 
 references
 tmp
 main.pdf

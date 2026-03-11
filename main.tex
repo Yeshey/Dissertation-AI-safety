@@ -7,11 +7,12 @@
 
 \begin{document}
 
+\input{src/cover/cover.tex}
+
 % Use the ISTA cover, you need to convert it from word
 % \input{src/cover.tex} a
 
 \frontmatter
-\addtocontents{toc}{\setcounter{tocdepth}{2}}
 \thispagestyle{empty}
 
 \input{src/dedication.tex}
@@ -20,9 +21,10 @@
 \pagenumbering{roman} %
 
 \input{src/acknowledgements.tex}
-\input{src/resumo.tex}
 \input{src/abstract.tex}
+\input{src/resumo.tex}
 
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 \mainmatter
