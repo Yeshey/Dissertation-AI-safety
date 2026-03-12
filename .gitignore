@@ -5,6 +5,7 @@ references
 tmp
 main.pdf
 *sync-conflict*
+.syncthing*
 .texlive*
 _markdown_main
 
