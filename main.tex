@@ -3,11 +3,13 @@
 \usepackage{csquotes} % needed for biblatex
 \usepackage{preamble}
 
+\input{src/beforeIntro/acronyms.tex} % your acronyms definitions file
+\makeglossaries
 \addbibresource{references.bib} % Specify the path to your .bib file
 
 \begin{document}
 
-\input{src/cover/cover.tex}
+\input{src/beforeIntro/cover/cover.tex}
 
 % Use the ISTA cover, you need to convert it from word
 % \input{src/cover.tex} a
@@ -15,21 +17,26 @@
 \frontmatter
 \thispagestyle{empty}
 
-\input{src/dedication.tex}
+\input{src/beforeIntro/dedication.tex}
 
 \setcounter{page}{1}
 \pagenumbering{roman} %
 
-\input{src/acknowledgements.tex}
-\input{src/abstract.tex}
-\input{src/resumo.tex}
+\input{src/beforeIntro/acknowledgements.tex}
+\input{src/beforeIntro/abstract.tex}
+\input{src/beforeIntro/resumo.tex}
 
 \setcounter{tocdepth}{2}
 \tableofcontents
+\listoffigures        % List of Figures
+\listoftables         % List of Tables
+\lstlistoflistings    % List of Listings (code)
+\printglossary[type=\acronymtype, title=Acronyms, toctitle=Acronyms]
 
 \mainmatter
 
-\hyphenation{wri-te he-re pro-per hy-phe-ni-za-tion}
+% In the end, if there are words being broken weirdly, you can tell latex how to break them here:
+% \hyphenation{mis-align-ment su-per-in-tel-li-gence}
 
 \setcounter{page}{1} \pagenumbering{arabic}
 

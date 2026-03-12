@@ -29,7 +29,7 @@
 
     \textbf{Behavioral Failures} are milder but widespread alignment failures
     observable in current systems. \textit{Sycophancy}: the tendency to tell
-    users what they want to hear rather than the truth, is a common consequence of RLHF training pressure, and can be understood as a mild, non-deceptive cousin of alignment faking. \textit{Hallucination} is a related failure in which the model produces confident but factually incorrect outputs.
+    users what they want to hear rather than the truth, is a common consequence of \gls{rlhf} training pressure, and can be understood as a mild, non-deceptive cousin of alignment faking. \textit{Hallucination} is a related failure in which the model produces confident but factually incorrect outputs.
 
 
     \section{The Why? Foundation of Dangerous AI}\label{sec:foundations}
@@ -49,7 +49,7 @@
     control is lost.
 
     The stakes of the control problem are captured by the concept of
-    \textbf{Existential Risk (X-Risk)}: the possibility that misaligned AI could cause civilisational-scale or irreversible harm. This risk is compounded by \textbf{Race Dynamics}, where competitive pressures between developers push laboratories to sacrifice safety for speed, and by \textbf{Multi-Agent Risks}, where interactions between multiple AI systems or stakeholders produce dangerous emergent behavior that no single designer intended.
+    \textbf{\gls{xrisk}}: the possibility that misaligned AI could cause civilisational-scale or irreversible harm. This risk is compounded by \textbf{Race Dynamics}, where competitive pressures between developers push laboratories to sacrifice safety for speed, and by \textbf{Multi-Agent Risks}, where interactions between multiple AI systems or stakeholders produce dangerous emergent behavior that no single designer intended.
 
 
     \section{Interpretability and Transparency}\label{sec:interpretability}
@@ -60,7 +60,7 @@
     computations performed by a neural network by identifying specific
     \textit{circuits}, subgraphs of weights that implement a recognizable function, such as curve detection or induction (in-context copying). A key obstacle is \textit{Superposition}: because neural networks are trained to represent more features than they have neurons, they encode multiple concepts in overlapping directions in activation space. The downstream effect is \textit{Polysemanticity}, where individual neurons respond to multiple unrelated concepts, making them difficult to interpret. \textit{Sparse Autoencoders} are the current leading technique for decomposing superposed representations into more interpretable, monosemantic features.
 
-    \textbf{Eliciting Latent Knowledge (ELK)} addresses the deeper problem of
+    \textbf{\gls{elk}} addresses the deeper problem of
     forcing a model to report its true internal beliefs, even when it has an
     incentive to deceive. This includes \textit{Latent Space Analysis} and the use of \textit{Probing Classifiers} to read out model representations.
 
@@ -74,14 +74,13 @@
 
     \textbf{Value Specification} approaches attempt to teach the AI the right
     goals. Top-down methods encode explicit rules (e.g.\ Constitutional AI,
-    Asimov's Laws), while bottom-up methods learn values from human behavior, most prominently \textit{Reinforcement Learning from Human Feedback (RLHF)}. Importantly, RLHF is also a source of failure: its reward signal can incentivize sycophancy (see Section~\ref{sec:alignment-problem}).
+    Asimov's Laws), while bottom-up methods learn values from human behavior, most prominently \textit{Reinforcement Learning from Human Feedback (\gls{rlhf})}. Importantly, \gls{rlhf} is also a source of failure: its reward signal can incentivize sycophancy (see Section~\ref{sec:alignment-problem}).
 
     \textbf{Scalable Oversight} addresses the problem that humans cannot reliably evaluate the outputs of a superintelligent system. \textit{Debate} trains two AI systems to argue opposing positions so that a human judge can identify the truth from argument quality alone. \textit{Sandwiching Evaluations} test models on tasks of calibrated difficulty to gauge reliability. \textit{Weak-to-Strong Generalization} explores whether a weaker model can effectively supervise a more capable one.
 
     \textbf{Corrigibility} approaches ensure that an AI system remains correctable by humans. The \textit{Off-Switch Problem} notes that a rational agent will resist being turned off because shutdown prevents goal achievement.
     \textit{Utility Indifference} designs the agent to be mathematically
-    indifferent to shut down, while \textit{Cooperative Inverse Reinforcement
-        Learning (CIRL)} makes the agent treat the human objective as unknown,
+    indifferent to shut down, while \gls{cirl} makes the agent treat the human objective as unknown,
     inducing it to observe and defer to humans rather than act unilaterally.
 
     \textbf{Robustness and Adversarial Training} hardens the model against
