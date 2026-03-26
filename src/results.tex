@@ -12,36 +12,13 @@
 
 % (Usa a tua Tabela do Anexo. Cria gráficos com base nela. Responde diretamente às tuas RQs aqui)
 
-This chapter presents the findings of the Systematic Literature Review (SLR). The Concept Matrix (Appendix~\ref{appendixa}) classifies a total of 94 entries: 79 articles derived from the systematic search string and 15 works introduced through snowballing.
+This chapter presents the findings of the Systematic Literature Review (SLR). The Concept Matrix (Appendix~\ref{appendixa}) classifies a total of 94 entries. 79 articles derived from the systematic search string and 15 works introduced through snowballing.
 
 % -----------------------------------------------------------------------
 \section{Quantitative Overview of the Field}\label{sec:results_quantitative}
 % -----------------------------------------------------------------------
 
-The distribution of the selected literature across the seven concept-matrix categories
-is summarized in Table~\ref{tab:category_totals} and illustrated in
-Figure~\ref{fig:distribution_topics}.
-
-\begin{table}[htbp]
-\centering
-\caption{Total article counts per category across both SLR streams. A single article
-may be assigned to multiple categories; column sums therefore exceed the number of
-distinct articles.}
-\label{tab:category_totals}
-\begin{tabular}{lrrr}
-\hline
-\textbf{Category} & \textbf{Search String} & \textbf{Snowballing} & \textbf{Combined} \\
-\hline
-Human \& Societal Impacts          & 31 & 4  & 35 \\
-Alignment                          & 18 & 11 & 29 \\
-Governance, Regulation \& Policy   & 27 &  1 & 28 \\
-Auditing, Safety \& Oversight      & 15 &  5 & 20 \\
-Explainability / Interpretability  &  6 &  6 & 12 \\
-Bias \& Fairness                   &  8 &  0 &  8 \\
-Liability \& Ethics                &  5 &  3 &  8 \\
-\hline
-\end{tabular}
-\end{table}
+The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}.
 
 \begin{figure}[htbp]
     \centering
@@ -55,25 +32,27 @@ Liability \& Ethics                &  5 &  3 &  8 \\
                 x tick label style={rotate=45,anchor=east},
                 ylabel={Number of Articles},
                 xlabel={Research Category},
+                xlabel style={yshift=-1.5cm}, % Pushes "Research Category" down
+                legend style={at={(0.5,-0.45)},anchor=north,legend columns=-1},
                 width=\textwidth,
                 height=8cm,
                 bar width=15pt,
                 ymin=0,
                 ymax=38,
-                legend style={at={(0.5,-0.30)},anchor=north,legend columns=-1}
+                legend style={
+                    at={(0.02,0.96)}, % Coordinates inside the box (0,0 is bottom left, 1,1 is top right)
+                    anchor=north west, 
+                    legend columns=-1, % Keeps legend horizontal
+                    font=\small,
+                    /tikz/every even column/.append style={column sep=5pt}
+                }
             ]
-    % Data from Search String Articles (Appendix A.1)
     \addplot coordinates {(Alignment,18) (Governance,27) (Auditing,15) (Explainability,6) (Bias,8) (Liability,5) (Societal,31)};
-    % Data from Snowballing Articles (Appendix A.2)
     \addplot coordinates {(Alignment,11) (Governance,1) (Auditing,5) (Explainability,6) (Bias,0) (Liability,3) (Societal,4)};
-    \legend{Search String (General), Snowballing (Technical)}
+    \legend{Search String, Snowballing}
     \end{axis}
     \end{tikzpicture}
-    \caption{Distribution of research topics across the analyzed literature.
-    Note the dominance of \emph{Societal Impacts} and \emph{Governance} in general search
-    results versus the concentration of \emph{Alignment} in snowballing.
-    Data from Tables~\ref{tab:ai_safety_topics_search_string}
-    and~\ref{tab:ai_safety_topics_snowballing} in Appendix~\ref{appendixa}.}
+    \caption{Distribution of research topics across the analyzed literature.}
     \label{fig:distribution_topics}
 \end{figure}
 
