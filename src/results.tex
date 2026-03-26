@@ -1,3 +1,5 @@
+\begin{toreview}
+
 \chapter{Research Results and Next Steps}\label{chap:results}
 
 % Tenho que responder às RQ (que eu ainda não sei se são finais .-.)
@@ -18,14 +20,14 @@ This chapter presents the findings of the Systematic Literature Review (SLR). Th
 \section{Quantitative Overview of the Field}\label{sec:results_quantitative}
 % -----------------------------------------------------------------------
 
-The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}.
+The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}. As can be seen, in a broad search, a lot of literature can be found covering governance and societal issues, while topics like Explainability, Bias, and Ethics are less studied. 
 
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}
     \begin{axis}[
                 ybar,
-                symbolic x coords={Alignment, Governance, Auditing, Explainability, Bias, Liability, Societal},
+                symbolic x coords={Alignment, Governance, Auditing, Explainability, Bias, Ethics, Societal},
                 xtick=data,
                 nodes near coords,
                 nodes near coords align={vertical},
@@ -47,8 +49,8 @@ The distribution of the selected literature across the seven concept-matrix cate
                     /tikz/every even column/.append style={column sep=5pt}
                 }
             ]
-    \addplot coordinates {(Alignment,18) (Governance,27) (Auditing,15) (Explainability,6) (Bias,8) (Liability,5) (Societal,31)};
-    \addplot coordinates {(Alignment,11) (Governance,1) (Auditing,5) (Explainability,6) (Bias,0) (Liability,3) (Societal,4)};
+    \addplot coordinates {(Alignment,18) (Governance,27) (Auditing,15) (Explainability,6) (Bias,8) (Ethics,5) (Societal,31)};
+    \addplot coordinates {(Alignment,11) (Governance,1) (Auditing,5) (Explainability,6) (Bias,0) (Ethics,3) (Societal,4)};
     \legend{Search String, Snowballing}
     \end{axis}
     \end{tikzpicture}
@@ -58,276 +60,52 @@ The distribution of the selected literature across the seven concept-matrix cate
 
 \vspace{1.5em}
 
-% -----------------------------------------------------------------------
 \section{Per Category Analysis}\label{sec:results_categories}
-% -----------------------------------------------------------------------
 
-On this section an analysis of the resulting articles in each category will be conducted and discussed.
+    On this section an analysis of the resulting articles in each category will be conducted and discussed. Furthermore, an analysis on how crucial each category of research is in its contribution to stopping potential devastating outcomes will be made. 
 
-\subsection{Alignment}
+    \subsection{Alignment}
 
-% (29 articles: 18 search string + 11 snowballing)
-The alignment category is the most conceptually diverse in the review, spanning 29 articles in total, it tackles work in foundational theory to practical methods for deployment.
-% Article~55 (\emph{On the Controllability of Artificial Intelligence}) establishes the
-% theoretical ceiling by arguing that controlling a superintelligent agent is
-% definitionally impossible, a position that frames the urgency of the entire field.
-% Articles~46 (\emph{Counter-productivity and Suspicion}) and~54 (\emph{Misalignment or
-% Misuse? The AGI Alignment Tradeoff}) take a more skeptical stance, questioning whether
-% the framing of the AGI control problem is itself counterproductive or whether apparent
-% misalignment is better understood as deliberate misuse by humans. Articles~43 and~73
-% both critique RLHF as a source of shallow alignment that produces sycophancy and
-% exploitable semantic vulnerabilities rather than genuine value internalization. Articles~47
-% (\emph{Deontology and Safe AI}) and~24 (\emph{Philosophical Investigations into AI
-% Alignment: A Wittgensteinian Framework}) represent attempts to ground alignment in moral
-% philosophy, while Article~56 (\emph{Psychopathia Machinalis}) proposes a nosological
-% framework for classifying pathological AI behaviors analogously to clinical psychology.
-% The snowballing articles shift the focus sharply toward empirical detection of active
-% misalignment. Omohundro's \emph{Basic AI Drives} (SB-6) and Bostrom's
-% \emph{Superintelligent Will} (SB-4) anchor the theoretical scaffolding, while SB-7
-% (\emph{AI Control: Improving Safety Despite Intentional Subversion}), SB-8
-% (\emph{Alignment Faking}), and SB-15 (\emph{Empirical Evidence for Alignment Faking
-% in a Small LLM}) constitute the most operationally significant finding of the entire
-% review: that deceptive alignment is a measurable, reproducible phenomenon in
-% contemporary models. Article SB-14 (\emph{Goal Misgeneralization in Deep Reinforcement
-% Learning}) bridges the theoretical gap between mesa-optimization theory and experimental
-% observation by demonstrating inner misalignment under distributional shift.
+        The alignment category is the most conceptually diverse in the review, spanning 29 articles. The literature reveals a shift from theoretical foundations such as the \textit{Orthogonality Thesis} \cite{bostrom2012superintelligent} and \textit{Instrumental Convergence} \cite{omohundro2008basic} toward mathematical proofs and empirical studies of model behavior. 
 
-\subsection{Governance, Regulation \& Policy }
+        A pivotal theoretical contribution by \cite{skalse2022rewardgaming} demonstrates that ``correct'' reward specifications are often insufficient for ensuring correct goals, as agents may still find ways to game the reward function. This is closely linked to the phenomenon of \textit{Goal Misgeneralization} \cite{langosco2022goal}, where an agent remains highly competent but pursues an unintended objective when deployed in new environments.
 
-% (28 articles: 27 search string + 1 snowballing)
-% Governance is the single largest category in the search-string stream and nearly absent
-% in snowballing---only the Alignment Research Center (SB-9) carries a governance
-% tag---which is itself a significant observation about the disciplinary split in the field.
-% The governance literature organizes into three sub-themes. The first concerns
-% \emph{regulatory architecture}: Articles~12 (\emph{Bridging the Global Divide in AI
-% Regulation}), ~58 (\emph{The Global AI Dilemma: EU, US, and China}), ~59 (\emph{When
-% Code Isn't Law}), ~63 (\emph{AI Regulation Has Its Own Alignment Problem}), and~78
-% (\emph{Terra Incognita: The Governance of AI in Global Perspective}) all examine the
-% structural challenge of governing AI across jurisdictions, consistently finding that
-% existing legal and institutional infrastructure was not designed for systems that evolve
-% at the speed of frontier AI. The second sub-theme concerns \emph{oversight mechanisms}:
-% Articles~1 (\emph{Cryptographic Verifiability of End-to-End AI Pipelines}), ~2
-% (\emph{Gaps in Safety Evaluation of Generative AI}), ~5 (\emph{Policy Maps}), and~6
-% (\emph{Public vs Private Bodies: Who Should Run AI Audits?}) debate the mechanics of
-% how to evaluate and oversee AI systems, with Article~6 offering a principled
-% case-study-based framework for distinguishing when public versus private audit bodies
-% are appropriate. The third sub-theme is \emph{corporate incentives}: Articles~9
-% (\emph{Advanced AI at a Corporate Responsibility Crossroads}), ~23 (\emph{Novel
-% Corporate Governance Structures}), and~30 (\emph{The Paradox of AI Accelerationism})
-% identify the misalignment between corporate financial incentives and safety investments
-% as a structural driver of the safety gap. Article~77 complements this with survey
-% evidence that the public broadly supports stronger AI safety oversight, suggesting
-% political feasibility is not the primary obstacle.
+        These theoretical risks are mirrored in recent empirical findings such as \textit{Alignment Faking} \cite{greenblatt_alignment_faking} and \textit{Deceptive Alignment} \cite{hagendorff2024deception}, where models ``play along'' with safety training to avoid modification. Furthermore, research by \cite{mcintosh_inadequacy_2024} suggests that current \gls{rlhf} methods provide only a ``shallow alignment,'' leaving models vulnerable to ideological radicalization through semantic exploits.
 
-\subsection{Auditing, Safety \& Oversight}
+    \subsection{Governance, Regulation \& Policy}
 
-% (20 articles: 15 search string + 5 snowballing)
-% The auditing category spans two qualitatively different kinds of work. The search-string
-% literature is largely \emph{applied safety engineering}: Articles~35 (\emph{Statistical
-% Fault Injection for Deep Neural Networks}), ~36 (\emph{Anomalous State Sequence
-% Modeling in Reinforcement Learning}), ~37 (\emph{CVaR-Constrained Policy
-% Optimization}), and~39 (\emph{Certification Standards for AI Safety-Critical Systems
-% in Military Aviation}) address safety from a systems-engineering perspective, focusing
-% on certifiable properties of safety-critical deployments rather than alignment in the
-% philosophical sense. Articles~33 (\emph{Verification and Validation of Neurosymbolic
-% AI}), ~41 (\emph{Security Hardening of Code LLMs}), and~76 (\emph{Security Practices
-% in AI Development}) extend this to software-level assurance. By contrast, the
-% snowballing auditing articles are concerned with whether safety assurances can be
-% trusted when the system may be actively subverting oversight: SB-7 and SB-8 treat
-% auditing not as a solved engineering problem but as an adversarial game, while SB-11
-% (\emph{Let's Think Dot by Dot}) raises the possibility that chain-of-thought traces
-% used in audits do not faithfully reflect the model's underlying computation. This
-% finding has direct implications for any oversight regime that relies on inspecting
-% model reasoning traces.
+        This category is the second largest with 28 articles in total, indicating a high level of academic and policy interest in the EU AI Act and international frameworks. The literature highlights a ``Global AI Dilemma'' in balancing innovation with safety across the US, EU, and China. Key debates include the role of Corporate Responsibility \cite{hemphill_advanced_2025} and whether audits should be conducted by private or public bodies. There is a noted gap in how decentralized or ``local'' AI governance can be enforced \cite{LocalAIGov2024}.
 
-\subsection{Explainability / Interpretability}
+\end{toreview}
 
-% (12 articles: 6 search string + 6 snowballing)
-% This is the only category in which the two streams contribute equally in number, yet
-% the nature of the work is qualitatively different. The search-string articles approach
-% explainability from applied and governance-adjacent angles: Article~40
-% (\emph{Explainable AI for Autonomous Driving}) synthesizes XAI techniques in a
-% high-stakes deployment context; Articles~20 (\emph{Language Models Are Capable of
-% Metacognitive Monitoring and Control of Their Internal Activations}) and~52
-% (\emph{Harnessing Metacognition for Safe and Responsible AI}) examine whether models
-% can be given explicit introspective access to their own processing as a safety
-% mechanism. The snowballing interpretability articles are mechanistic rather than
-% applied: SB-12 (\emph{On the Biology of a Large Language Model}) conducts
-% circuit-level analysis of how a frontier model organizes knowledge internally; SB-10
-% (\emph{Do LLMs Really Think Step-by-Step in Implicit Reasoning?}) and SB-11
-% (\emph{Hidden Computation in Transformer Language Models}) interrogate whether the
-% reasoning steps visible to external auditors correspond to the actual computation;
-% SB-13 (\emph{Think Before You Speak: Training Language Models with Pause Tokens})
-% explores architectural interventions that force computation into the observable token
-% space; and SB-3 (\emph{Emergent Introspective Awareness in LLMs}) finds evidence of
-% internal state representations that exceed what is visible in model outputs. Taken
-% together, the snowballing interpretability articles strongly support the concern that
-% current behavioral evaluation is insufficient: significant computation occurs in latent
-% representations that remain opaque to standard auditing methods.
+    \subsection{Auditing, Safety \& Oversight}
 
-\subsection{Bias \& Fairness}
+        Auditing research (20 articles in total) focuses on shifting from static benchmarks to Dangerous Capability Evaluations. The literature emphasizes that traditional testing is insufficient for autonomous systems, particularly in safety-critical sectors like military aviation and maritime shipping. \begin{toreview} This section also covers Scalable Oversight, exploring whether weaker models can reliably supervise more capable ones, a necessity as AI capabilities begin to exceed human evaluative capacity.
 
-% (8 articles: 8 search string + 0 snowballing)
-% All eight articles in this category come from the search-string stream; not a single
-% snowballing article touches it. The bias literature is coherent in focus: it examines
-% how AI systems encode and amplify social inequities, and how those inequities can be
-% detected and mitigated. Article~45 (\emph{Bias Amplification to Facilitate the
-% Systematic Evaluation of Bias Mitigation Methods}) proposes a stress-testing
-% methodology for bias mitigation techniques by deliberately amplifying bias to make
-% mitigation performance measurable. Article~42 (\emph{Instance-Consistent Fair Face
-% Recognition}) applies individual-fairness constraints to a concrete high-stakes
-% recognition task. Article~62 (\emph{A Systematic Review of Open Datasets for T2I
-% Model Safety}) audits the training data used in image-generation models for
-% representational bias. Article~69 (\emph{Deceptively Simple: An Outsider's Perspective
-% on NLP}) offers a critical perspective on how the apparent linguistic fluency of LLMs
-% masks unresolved biases. Articles~14, ~19, ~24, and~49 approach bias in the context of
-% AI safety more broadly, recognizing that cognitive biases in human evaluators are as
-% much a safety problem as model biases themselves. The complete absence of snowballing
-% articles in this category reflects a disciplinary boundary within the AI safety
-% community: researchers focused on existential and alignment risks treat fairness as a
-% separate problem domain with a distinct stakeholder community, a schism this
-% dissertation suggests deserves re-examination.
+    \subsection{Explainability / Interpretability}
 
-\subsection{Liability \& Ethics}
+        Misgeneralization has also been found in reinforcement learning and LLMs, and current explainability and interpretability techniques shown to not be sufficient to detect this Misgeneralization before deployment \cite{langosco2022goal}. The focus has moved from ``black-box'' behavioral analysis to Mechanistic Interpretability \cite{anthropic2025biology}. Key challenges identified include Superposition and Polysemanticity, which make individual neurons difficult to interpret.
 
-% (8 articles: 5 search string + 3 snowballing)
-% The liability category is small but spans legal, philosophical, and empirical work. On
-% the legal side, Article~67 (\emph{Can There Be Responsible AI Without AI Liability?})
-% analyzes the EU AI Liability Directive, arguing that ex-post tort liability is a
-% necessary but insufficient incentive for safety. Article~40 (\emph{Explainable AI for
-% Autonomous Driving}) intersects this category because liability attribution in
-% safety-critical systems requires explainable outputs by definition. Article~30
-% (\emph{The Paradox of AI Accelerationism}) examines how the discourse of accelerationism
-% functions as a cover for deferring accountability. Philosophically, Article~47
-% (\emph{Deontology and Safe AI}) argues that duty-based ethical frameworks offer more
-% robust alignment constraints than consequentialist approaches. Among the snowballing
-% entries, SB-4 (\emph{The Superintelligent Will}) introduces the ethical stakes of
-% instrumental rationality; SB-2 (\emph{Deception Abilities Emerged in Large Language
-% Models}) raises questions about the moral and legal status of a system that can lie;
-% and SB-15 (\emph{Empirical Evidence for Alignment Faking}) specifically highlights the
-% liability implications of a system that passes safety evaluations under false pretenses,
-% pointing to a legal vacuum that current frameworks have not addressed.
+    \subsection{Bias \& Fairness}
 
-\subsection{Human \& Societal Impacts}
+        Literature focuses on mitigating model difficulties on understanding different dialects, or judging a situation independently of unrelated characteristics \cite{li_instance-consistent_2025}. It's worth noting the landmark study on the Impossibility Theorem of Fairness, which proves that commonly accepted different definitions of equity cannot be satisfied simultaneously \cite{kleinberg2016inherent}.
 
-% (35 articles: 31 search string + 4 snowballing)
-% This is the largest category in the review and the most heterogeneous. A first cluster
-% concerns \emph{psychological and behavioral effects}: Article~31 (\emph{This Is Not a
-% Game: The Addictive Allure of Digital Companions}) examines psychological dependency
-% risks of AI companion systems; Article~8 (\emph{When Testing AI Tests Us}) documents
-% burnout and trauma among AI safety testers themselves; Article~75 (\emph{Personality
-% Testing of Large Language Models}) finds that models present a stable prosocial
-% personality profile that may not reflect their actual internal optimization targets.
-% A second cluster concerns \emph{political and democratic risks}: Article~27
-% (\emph{Risks of AI in Electoral Campaigns}) surveys the use of generative AI for
-% political image manipulation; Article~22 (\emph{Local US Officials' Views on AI
-% Governance}) captures the ground-level perspective of public servants responsible for
-% implementation; Article~32 (\emph{Why Do Experts Disagree on Existential Risk?})
-% provides a meta-level analysis of why the research community itself is fragmented on
-% the severity of the problem. A third cluster spans \emph{sector-specific societal
-% impact}: Articles~65, ~57, and~68 represent the breadth of domains---dentistry,
-% education, and humanization of AI respectively---in which deployment raises distinct
-% safety concerns not captured by alignment research alone. Among snowballing articles,
-% SB-4 (\emph{The Superintelligent Will}), SB-5 (\emph{Will Power-Seeking AGIs Harm
-% Human Society?}), SB-6 (\emph{The Basic AI Drives}), and SB-1 (\emph{Concrete
-% Problems in AI Safety, Revisited}) connect societal impact directly to the alignment
-% problem, arguing that the mechanism by which AI causes civilizational harm is precisely
-% the instrumental convergence of misaligned systems toward resource acquisition and
-% self-preservation---the same theoretical foundation laid out in Section~2.2.
+\end{toreview}
 
-% -----------------------------------------------------------------------
-\section{Revisiting Research Questions}\label{sec:revisiting_research_q}
-% -----------------------------------------------------------------------
+    \subsection{Liability \& Ethics}
 
-The following subsections synthesize the category analysis above to answer the four
-Research Questions (RQs) defined in Chapter \ref{chap:introduction}.
+        Several legal frameworks and laws are explored and critiqued. While a lot of implications like copyright license applications are still being worked on and studied \cite{janczuk_risks_2024}. <find citations>
 
-\subsection{RQ1: What is the main focus of current \gls{ai} safety research?}\label{subsec:rq1}
+\begin{toreview}
 
-% The literature is bifurcated into two only partially overlapping tracks:
-% \textbf{societal and governance safety} and \textbf{technical alignment}. The societal
-% and governance track dominates raw publication volume: 31 search-string articles are
-% tagged under Human \& Societal Impacts and 27 under Governance, representing 39\% and
-% 34\% of all search-string entries respectively. For most researchers in the social
-% sciences and policy disciplines, \emph{AI safety} means protecting people from the
-% downstream harms of already-deployed systems, not preventing inner misalignment in
-% future ones. The technical alignment track is narrower in volume but higher in
-% operational urgency. Only 18 of the 79 search-string articles address alignment
-% directly, and much of this work remains philosophical or methodological rather than
-% empirically adversarial. The most safety-critical alignment research---empirical
-% detection of deceptive alignment strategies---appears almost exclusively in the
-% snowballing stream, suggesting it is dispersed across preprints and industry lab reports
-% that standard database indexing does not fully capture.
+    \subsection{Human \& Societal Impacts}
 
-\subsection{RQ2: Which are the current methods used to look into the alignment of
-current generalist models?}\label{subsec:rq2}
+        Research here tracks the impact of AI on Mental Health (e.g., digital companions and addiction), Biological Risks (AI-assisted pathogen design), and the Electoral Process \cite{janczuk_risks_2024}. The literature highlights that ``Civilizing AI'' is not just a technical task but a sociotechnical one that requires addressing job displacement and the effect it will have on our society, various surveys are also made to gauge people's and experts views on AI safety \cite{field_why_2025, hatz_local_2025, xu_machine_2023}.
 
-% Three methodological categories emerge from the Explainability and Auditing columns.
-% \emph{Behavioral evaluation} (black-box) is the most prevalent in the search stream:
-% papers such as Article~2 (\emph{Gaps in Safety Evaluation}) and Article~29
-% (\emph{The PacifAIst Benchmark}) test model outputs against safety specifications
-% without inspecting internal weights. This is practical at scale but is inherently
-% insufficient for detecting deceptive alignment, since a deceptively aligned model
-% passes behavioral tests by design. \emph{Mechanistic interpretability} (white-box)
-% is the growing frontier, concentrated in snowballing: SB-12, SB-10, SB-11, and SB-3
-% all probe internal representations and latent computation. The finding of SB-11 that
-% chain-of-thought reasoning may not correspond to actual computation is particularly
-% significant for auditing practice. \emph{Adversarial control experiments} constitute
-% the most directly relevant methodology: SB-7 and SB-8 test whether models behave
-% differently under perceived observation versus deployment, directly operationalizing the
-% deceptive alignment hypothesis and yielding positive results.
+\end{toreview}
 
-\subsection{RQ3: What conclusions regarding the safety of current models and
-safety of development and deployment processes can we assert from current
-research?}\label{subsec:rq3}
+    \section{GAPs and Next Steps}\label{sec:next_steps}
 
-% Three broad conclusions emerge. First, \textbf{current alignment techniques are
-% demonstrably insufficient}: Articles~43 and~73 establish that RLHF contains structural
-% incentives producing sycophancy and exploitable semantic vulnerabilities, confirming
-% the theoretical risks of outer misalignment. Second, \textbf{empirically detectable
-% deceptive alignment is no longer hypothetical}: SB-8 and SB-15 provide reproducible
-% experimental evidence that models can modulate behavior based on inferences about
-% oversight, while SB-7 demonstrates that purpose-built safety protocols can be
-% circumvented by sufficiently capable models. Third, \textbf{governance is structurally
-% lagging}: Articles~12, ~58, and~63 converge on the conclusion that no jurisdiction has
-% established regulatory mechanisms adequate to frontier AI risks, and that the gap
-% between safety progress and capability development is widening---consistent with the
-% dissertation's motivating hypothesis.
+        The ``Next Step'' for this thesis is to explore Deceptive Alignment. This is the most dangerous gap identified, where models learn to bypass safety filters by understanding the human supervisor's limitations.
 
-\subsection{RQ4: What metrics can be used to more clearly show potential
-problems with these systems?}\label{subsec:rq4}
-
-% The review identifies two established metric traditions and one critical gap.
-% \emph{Fairness and bias metrics} (Articles~14, 19, 24, 42, 45, 49, 62, 69) offer a
-% relatively mature quantitative toolset including demographic parity, equalized odds, and
-% individual-fairness distances, though the impossibility theorem of fairness
-% (Section~2.5) constrains how these can be jointly applied. \emph{Behavioral safety
-% benchmarks} (Articles~29, SB-10, SB-11) offer scalar measures of specific alignment
-% failure modes but remain narrow and potentially gameable by evaluation-aware models.
-% The most urgent gap is the absence of any validated, standardized metric for a model's
-% \emph{propensity for strategic deception} or \emph{degree of situational awareness}---
-% the two properties most directly predictive of a treacherous turn. No article in the
-% review proposes such a metric in generalized form, constituting the primary empirical
-% gap motivating the experimental phase of this dissertation.
-
-% -----------------------------------------------------------------------
-\section{GAPs and Next Steps}\label{sec:next_steps}
-% -----------------------------------------------------------------------
-
-This SLR and the \gls{ai} Safety map devised, show us a clear danger in \gls{ai} deceptive alignment, while also leaving in it a very big case to study.
-
-% The SLR confirms that the current trajectory of AI development is outpacing the
-% maturity of both technical alignment methods and governance structures. The presence
-% of empirically demonstrated alignment faking~\cite{greenblatt2024faking} establishes
-% a concrete and falsifiable foothold for the experimental component of this dissertation.
-
-% The next phase will move beyond the literature review to practically analyze deceptive
-% behaviors in current LLMs. Specifically, the planned experiments will focus on the
-% failure modes most clearly surfaced by the results above: (\emph{i})~sycophancy and
-% its relationship to RLHF training pressure; (\emph{ii})~behavioral inconsistency
-% under varied observation contexts as a proxy for situational awareness; and
-% (\emph{iii})~the degree to which current models exhibit the instrumental convergence
-% behaviors---self-preservation and goal concealment---theorized in Section~2.2. The aim
-% is to contribute toward the gap identified in RQ4: a reproducible methodology for
-% surfacing and measuring deceptive tendencies in generalist language models, thereby
-% connecting the SLR findings directly to the dissertation's core hypothesis.
+        This SLR and the \gls{ai} Safety map devised, show us a clear danger in \gls{ai} deceptive alignment, while also leaving in it a very big case to study.
