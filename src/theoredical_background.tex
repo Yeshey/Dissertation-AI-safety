@@ -1,7 +1,5 @@
 \chapter{Theoredical Background}\label{chap:theoredical_background}
 
-\begin{reviewed}
-
 	\gls{ai} safety is a very broad term that is fuzzily defined, this section will compartmentalize the field into several digestible areas. This is a theoretical foundation that will tackle all the most common \gls{ai} safety terms and areas that will be explored across this work.
 
 	% - Orthogonality Thesis
@@ -14,6 +12,16 @@
 	% - Explainability
 	% Podes olhar para o algiment research center: https://www.alignment.org/blog/a-birds-eye-view-of-arcs-research/
 	% Article: Artificial Intelligence: Approaches to Safety (REFERENCE WITH: \cite{DAlessandro2025})
+
+	\section{The Evolution of AI Safety}
+
+	Before 2010 there wasn't a push for specific AI Safety evaluations, during this period, the focus was primarily on formal logic, philosophy, and ethics. Key foundational work includes the establishment of the Singularity Institute (now MIRI) in 2001 and the identification of "Basic AI Drives" by Steve Omohundro in 2008 \cite{omohundro2008basic}. This era established the theoretical roots of Instrumental Convergence (see Section \ref{sec:foundations}), arguing that even benignly programmed agents might develop dangerous sub-goals like resource acquisition.
+	\subsection{Move towards Practical Applications}
+	A pivotal shift occurred around 2011, when Roman Yampolskiy coined and popularized the phrase "Artificial Intelligence Safety Engineering" \cite{yampolskiy_controllability_2022}. This marked a transition from asking "What should an AI want?" to "How do we build systems that are provably safe, robust, and controllable?" By framing safety as an engineering challenge, the field began to adopt methodologies from cybersecurity, control theory, and software verification, moving away from purely speculative philosophy.
+	\subsection{Mainstreaming and Existential Risk}
+	The publication of Nick Bostrom’s Superintelligence in 2014 acted as a catalyst, bringing the concept of Existential Risk into mainstream academic and public discourse \cite{bostrom2014superintelligence}. This led to the formalization of the Control Problem and the Alignment Problem as distinct technical hurdles.
+
+\begin{reviewed}
 
 	\section{The Alignment Problem}\label{sec:alignment-problem}
 
@@ -83,7 +91,7 @@
 
 \end{toreview}
 
-\section{\gls{ai} Safety Map}\label{ai_safety_map}
+\section{\gls{ai} Safety Map \& Timeline}\label{ai_safety_map}
 
 This section will present a map with all the fields relating to \gls{ai} Safety and an analysis on their urgency and coverage will be conducted.
 
