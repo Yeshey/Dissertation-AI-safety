@@ -1,0 +1,132 @@
+% template from https://www.overleaf.com/latex/templates/timeline/fswhyzqjhhbc
+\begin{figure}[htpb]
+    \centering
+    % This resizebox forces the timeline to fit exactly within the page margins.
+    \resizebox{\textwidth}{!}{
+    
+    \begin{tikzpicture}[font=\small]
+    
+        % --- Styles ---
+        \tikzset{
+            era_box/.style={align=center, font=\footnotesize\bfseries},
+            % Style for events above the axis
+            event_top/.style={draw=#1, fill=#1!5, thick, rounded corners=3pt, align=center, text width=2.5cm, font=\scriptsize, inner sep=4pt, anchor=south},
+            % Style for events below the axis
+            event_bot/.style={draw=#1, fill=#1!5, thick, rounded corners=3pt, align=center, text width=2.5cm, font=\scriptsize, inner sep=4pt, anchor=north},
+            % Arrow styles
+            arrow_top/.style={-{Latex[length=1.5mm, width=1.5mm]}, thick, #1},
+            arrow_bot/.style={-{Latex[length=1.5mm, width=1.5mm]}, thick, #1},
+        }
+    
+        % --- Variables ---
+        \def\h{1.4} % Height of the Era background boxes
+    
+        % --- Color Definitions (Blue + Yellow = Green) ---
+        % Era 1: Blue
+        \definecolor{Era1Fill}{RGB}{230, 242, 255} % Very pale blue
+        \definecolor{Era1Line}{RGB}{0, 102, 204}   % Deep academic blue
+        
+        % Era 2: Yellow
+        \definecolor{Era2Fill}{RGB}{255, 252, 230} % Very pale yellow
+        \definecolor{Era2Line}{RGB}{184, 134, 11}  % Deep goldenrod/mustard (for readability)
+        
+        % Era 3: Green
+        \definecolor{Era3Fill}{RGB}{235, 247, 235} % Very pale green
+        \definecolor{Era3Line}{RGB}{34, 139, 34}   % Deep forest green
+    
+        % --- Era Background Rectangles ---
+        \shade[top color=Era1Fill!60, bottom color=Era1Fill] (0,0) rectangle (4.8,\h);
+        \shade[top color=Era2Fill!60, bottom color=Era2Fill] (4.8,0) rectangle (9.2,\h);
+        \shade[top color=Era3Fill!60, bottom color=Era3Fill] (9.2,0) rectangle (15.2,\h);
+    
+        % --- Era Labels ---
+        \node[era_box, text=Era1Line] at (2.4, \h/2) {Speculative Era};
+        \node[era_box, text=Era2Line] at (7.0, \h/2) {Engineering\\Solutions};
+        \node[era_box, text=Era3Line] at (12.2, \h/2) {Mainstream \&\\Existential Risk};
+    
+        % --- Main Axis Line ---
+        \draw[line width=1.5pt, draw=black!80] (0,0) -- (0.8,0);
+        \draw[->, >=Latex, line width=1.5pt, draw=black!80] (1.2,0) -- (15.5,0) node[right, font=\footnotesize\bfseries] {};
+    
+        % --- Axis Break Symbol (To skip from 1949 to 2000s) ---
+        \draw[line width=1.2pt, draw=black!80] (0.9,-0.2) -- (1.1,0.2);
+        \draw[line width=1.2pt, draw=black!80] (0.7,-0.2) -- (0.9,0.2);
+    
+        % ==========================================
+        % EVENTS PLACEMENT
+        % ==========================================
+        
+        % --- ERA 1: Pre-2010 (BLUE) ---
+        
+        % 1949 (Bottom)
+        \def\x{0.3}
+        \draw[draw=black!70, thick] (\x, 0) -- (\x, -0.1);
+        \node[event_bot=Era1Line] (E1) at (\x, -0.5) {\textbf{1949}\\Wiener warns of machine defiance};
+        \draw[arrow_bot=Era1Line] (E1.north) -- (\x, -0.1);
+    
+        % 2001 (Top)
+        \def\x{2.2}
+        \draw[draw=black!70, thick] (\x, \h) -- (\x, \h+0.1);
+        \node[event_top=Era1Line] (E2) at (\x, \h+0.5) {\textbf{2001}\\Singularity Institute (MIRI) founded};
+        \draw[arrow_top=Era1Line] (E2.south) -- (\x, \h+0.1);
+    
+        % 2008 (Bottom)
+        \def\x{4.2}
+        \draw[draw=black!70, thick] (\x, 0) -- (\x, -0.1);
+        \node[event_bot=Era1Line] (E3) at (\x, -0.5) {\textbf{2008}\\Omohundro:\\\textit{Basic AI Drives}};
+        \draw[arrow_bot=Era1Line] (E3.north) -- (\x, -0.1);
+    
+    
+        % --- ERA 2: 2011 - 2016 (YELLOW/GOLD) ---
+    
+        % 2011 (Top)
+        \def\x{5.5}
+        \draw[draw=black!70, thick] (\x, \h) -- (\x, \h+0.1);
+        \node[event_top=Era2Line] (E4) at (\x, \h+0.5) {\textbf{2011}\\Yampolskiy:\\AI Safety Engineering};
+        \draw[arrow_top=Era2Line] (E4.south) -- (\x, \h+0.1);
+    
+        % 2014 (Bottom)
+        \def\x{7.0}
+        \draw[draw=black!70, thick] (\x, 0) -- (\x, -0.1);
+        \node[event_bot=Era2Line] (E5) at (\x, -0.5) {\textbf{2014}\\Bostrom publishes\\\textit{Superintelligence}};
+        \draw[arrow_bot=Era2Line] (E5.north) -- (\x, -0.1);
+    
+        % 2016 (Top)
+        \def\x{8.5}
+        \draw[draw=black!70, thick] (\x, \h) -- (\x, \h+0.1);
+        \node[event_top=Era2Line] (E6) at (\x, \h+0.5) {\textbf{2016}\\\textit{Concrete Problems in AI Safety}};
+        \draw[arrow_top=Era2Line] (E6.south) -- (\x, \h+0.1);
+    
+    
+        % --- ERA 3: 2017 - 2025 (GREEN) ---
+    
+        % 2017 (Bottom)
+        \def\x{10.0}
+        \draw[draw=black!70, thick] (\x, 0) -- (\x, -0.1);
+        \node[event_bot=Era3Line] (E7) at (\x, -0.5) {\textbf{2017}\\Asilomar Conf. on Beneficial AI};
+        \draw[arrow_bot=Era3Line] (E7.north) -- (\x, -0.1);
+    
+        % 2021 (Top)
+        \def\x{11.6}
+        \draw[draw=black!70, thick] (\x, \h) -- (\x, \h+0.1);
+        \node[event_top=Era3Line] (E8) at (\x, \h+0.5) {\textbf{2021}\\\textit{Unsolved Problems in ML Safety}};
+        \draw[arrow_top=Era3Line] (E8.south) -- (\x, \h+0.1);
+    
+        % 2023 (Bottom)
+        \def\x{13.2}
+        \draw[draw=black!70, thick] (\x, 0) -- (\x, -0.1);
+        \node[event_bot=Era3Line] (E9) at (\x, -0.5) {\textbf{2023}\\1st Global AI\\Safety Summit};
+        \draw[arrow_bot=Era3Line] (E9.north) -- (\x, -0.1);
+    
+        % 2025 (Top)
+        \def\x{14.8}
+        \draw[draw=black!70, thick] (\x, \h) -- (\x, \h+0.1);
+        \node[event_top=Era3Line] (E10) at (\x, \h+0.5) {\textbf{2025}\\First Intl. AI\\Safety Report};
+        \draw[arrow_top=Era3Line] (E10.south) -- (\x, \h+0.1);
+    
+    \end{tikzpicture}
+    
+    } % End of resizebox
+    \caption{Timeline of the evolution of the AI Safety field.}
+    \label{fig:ai_safety_timeline}
+\end{figure}

@@ -1,6 +1,8 @@
 \chapter{Theoredical Background}\label{chap:theoredical_background}
 
-	\gls{ai} safety is a very broad term that is fuzzily defined, this section will compartmentalize the field into several digestible areas. This is a theoretical foundation that will tackle all the most common \gls{ai} safety terms and areas that will be explored across this work.
+\begin{toreview}
+
+	\gls{ai} safety is a very broad term that is fuzzily defined, this section will explore the history of the field compartmentalize it into several digestible areas. This is a theoretical foundation that will tackle all the most common \gls{ai} safety terms and terminology that will be tackled across this work.
 
 	% - Orthogonality Thesis
 	% - Instrumental Convergence
@@ -14,15 +16,24 @@
 	% Article: Artificial Intelligence: Approaches to Safety (REFERENCE WITH: \cite{DAlessandro2025})
 
 	\section{The Evolution of AI Safety}
-	A brief analysis of the evolution of the AI Safety field will be conducted in this section.
-	
-	\subsection{Philosophical and speculative Era}
 
-	Before 2010 there wasn't a push for specific AI Safety evaluations, during this period, the focus was primarily on formal logic, philosophy, and ethics. Key foundational work includes the establishment of the Singularity Institute (now MIRI) in 2001 and the identification of "Basic AI Drives" by Steve Omohundro in 2008 \cite{omohundro2008basic}. This era established the theoretical roots of Instrumental Convergence (see Section \ref{sec:foundations}), arguing that even benignly programmed agents might develop dangerous sub-goals like resource acquisition.
-	\subsection{Move towards Practical Applications}
-	A pivotal shift occurred around 2011, when Roman Yampolskiy coined and popularized the phrase "Artificial Intelligence Safety Engineering" \cite{yampolskiy_controllability_2022}. This marked a transition from asking "What should an AI want?" to "How do we build systems that are provably safe, robust, and controllable?" By framing safety as an engineering challenge, the field began to adopt methodologies from cybersecurity, control theory, and software verification, moving away from purely speculative philosophy.
+	The evolution of the field can be roughly divided into three distinct eras: A Speculative Era (Pre-2010), the move towards Engineering Solutions (2010 -- 2014), Mainstream Attention and Existential Risk (2014 -- Present). The timeline is illustrated in Figure \ref{fig:ai_safety_timeline}.
+
+	\input{src/theoredical_background/timeline.tex}	
+
+	\subsection{Speculative Era}
+
+		Risks from \gls{ai} were discussed early on, with Norbert Wiener warning of machine defiance in 1949 \cite{wiener1950}. Before 2010, the field remained largely theoretical, focusing on philosophy and machine ethics \cite{whitby1988}. A critical milestone was Steve Omohundro’s 2008 paper on "Basic AI Drives" \cite{omohundro2008basic}. This established the theoretical roots of Instrumental Convergence (see Section \ref{sec:foundations}), arguing that optimizing agents naturally develop dangerous sub-goals, such as resource acquisition, regardless of their initial programming.
+
+	\subsection{Move towards Engineering Solutions}
+
+		A pivotal shift occurred in 2011 when Roman Yampolskiy introduced the term "AI safety engineering" \cite{yampolskiy2011, yampolskiy_controllability_2022}. The field transitioned from asking "What should an AI want?" to building provably safe, controllable systems using methodologies from cybersecurity and control theory \cite{control_theory_safety}. This engineering mindset was solidified by the 2016 publication of \textit{Concrete Problems in AI Safety} \cite{amodei2016concrete}, an influential agenda that formally outlined technical issues like reward hacking and safe exploration.
+
 	\subsection{Mainstreaming and Existential Risk}
-	The publication of Nick Bostrom’s Superintelligence in 2014 acted as a catalyst, bringing the concept of Existential Risk into mainstream academic and public discourse \cite{bostrom2014superintelligence}. This led to the formalization of the Control Problem and the Alignment Problem as distinct technical hurdles.
+
+		Nick Bostrom’s 2014 book \textit{Superintelligence} \cite{bostrom2014superintelligence} brought AI safety concerns, namely,  Existential Risk and the Control Problem, into mainstream discourse; prompting prominent tech figures like Elon Musk, Bill Gates, and Stephen Hawking to voice similar concerns. This drove significant funding into safety institutions. In 2015, the \gls{fli} awarded \$6.5 million in grants for beneficial \gls{ai} research. As deep learning accelerated, experts increasingly debated the probability of these civilizational threats \cite{field_why_2025}. Recently, safety has reached global governance, and the 2025 International \gls{ai} Safety Report, which represents an effort from the UK government to review \gls{ai} risks \cite{AISafetyReport2025}.
+
+\end{toreview}
 
 \begin{reviewed}
 
