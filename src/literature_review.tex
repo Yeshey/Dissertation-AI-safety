@@ -6,7 +6,7 @@
 
 	This \gls{slr} will target the continuous research in the area of \gls{ai} safety by narrowing on a specified search string capable of funneling the amount of peer-reviewed articles from several known Datasets.
 
-	The \gls{slr} wielded research that spanned many fields that would often stray from DevOps or ML Ops pipelines. These including economics and philosophical research, political and corporate regulations and governance systems and numerous high level analysis of the field and current alignment or shallow alignment techniques. And the technical research would typically be very directed at specific issues in a specific context or operational environment, meaning it would regularly tackle shallow alignment\cite{milliere_normative_2025, mcintosh_inadequacy_2024}. Because of this, and since the \gls{ai} field is evolving at a pace that's sometimes hard for peer-reviewed literature to keep up, snowballing was introduced to bring in other relevant articles and gray literature\cite{wohlin_guidelines_2014}. The related table can be found in Appendix \ref{sec:snowballing_articles_slr}.
+	The \gls{slr} wielded research that spanned many fields that would often stray from DevOps or ML Ops pipelines. These including economics and philosophical research, political and corporate regulations and governance systems and numerous high level analysis of the field and current alignment or shallow alignment techniques. Technical research is typically focused on specific issues within well-defined contexts or operational environments, and therefore tends to address problems with shallow alignment\cite{milliere_normative_2025, mcintosh_inadequacy_2024}. Because of this, and since the \gls{ai} field is evolving at a pace that's sometimes hard for peer-reviewed literature to keep up, snowballing was introduced to bring in other relevant articles and gray literature\cite{wohlin_guidelines_2014}. The related table can be found in Appendix \ref{sec:snowballing_articles_slr}.
 
 	With this in mind, a systemic search for literature in all the databases was conducted, applying ever more strict filters to narrow the search to only the most relevant articles. The progress made in this phase can be seen documented on Table \ref{tab:slr1_filters}, the inclusion and exclusion criteria across filters are cleanly defined in Table \ref{tab:inclusion_exclusion_criteria}. 
 
@@ -62,21 +62,28 @@
 		\end{tabular}
 	\end{table}
 
-A noteworthy consideration is the growth that the \gls{ai} safety field has experienced in the past couple of years. Since the advent of \glspl{llm} that \gls{ai} has been a booming topic, this can be verified in the volume of publications like can be seen in Figure \ref{fig:all-ai-timegraph}.
+A noteworthy consideration is the growth that the \gls{ai} safety field has experienced in the past couple of years. Since the advent of \glspl{llm} that \gls{ai} has been a booming topic, this can be verified in the volume of publications like can be seen in Figure \ref{fig:all-ai-timegraph}, \begin{toreview} or in the volume of web searches like shown in Figure \ref{fig:google_trends_ai_safety}. \end{toreview}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.75\textwidth]{./src/imgs/All_AI_timeGraph_Scopus}
-	\caption{Number of documents mentioning artificial intelligence (Scopus). At the end of 2025 there were 684527 documents.}
+	\caption{Number of documents mentioning \gls{ai} (Scopus). At the end of 2025 there were 684527 documents.}
 	\label{fig:all-ai-timegraph}
 \end{figure}
 
-In much the same way, \gls{ai} safety publications have also enjoyed an increase in output, this can be verified in the Scopus database as seen in Figure \ref{fig:ai-safety-timegraph}, especially with the release of ChatGPT on November 30, 2022. Albeit with fewer advancements, largely due to financial incentives \cite{eto_state_global_ai_research_2024, ahmed_narrow_depth_breadth_corporate_2024, hemphill_advanced_2025}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.75\textwidth]{./src/imgs/GoogleTrendsAI_Safety.jpg}
+	\caption{Volume of Web Searches of the terms ``AI Safety'' and ``Artificial Intelligence''}
+	\label{fig:google_trends_ai_safety}
+\end{figure}
+
+In much the same way, \gls{ai} safety publications have also enjoyed an increase in output, this can be verified in the Scopus database as seen in Figure \ref{fig:ai-safety-timegraph}, especially with the release of ChatGPT on November 30, 2022. Albeit with fewer advancements, largely due to financial incentives \cite{eto_state_global_ai_research_2024, ahmed_narrow_depth_breadth_corporate_2024, hemphill_advanced_2025}. \begin{toreview} The same can be verified in general web searches, Figure \ref{fig:google_trends_ai_safety}. \end{toreview}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.75\textwidth]{./src/imgs/AI_Safety_timeGraph_Scopus}
-	\caption{Number of documents mentioning artificial intelligence (Scopus) and containing "\gls{ai} safety". At the end of 2025 there were 1742 documents.}
+	\caption{Number of documents mentioning \gls{ai} (Scopus) and containing "\gls{ai} safety". At the end of 2025 there were 1742 documents.}
 	\label{fig:ai-safety-timegraph}
 \end{figure}
 

@@ -22,35 +22,92 @@ This chapter presents the findings of the Systematic Literature Review (SLR). Th
 
 The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}. As can be seen, in a broad search, a lot of literature can be found covering governance and societal issues, while topics like Explainability, Bias, and Ethics are less studied. 
 
+
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}
     \begin{axis}[
-                ybar,
-                symbolic x coords={Alignment, Governance, Auditing, Explainability, Bias, Ethics, Societal},
-                xtick=data,
-                nodes near coords,
-                nodes near coords align={vertical},
-                x tick label style={rotate=45,anchor=east},
-                ylabel={Number of Articles},
-                xlabel={Research Category},
-                xlabel style={yshift=-1.5cm}, % Pushes "Research Category" down
-                legend style={at={(0.5,-0.45)},anchor=north,legend columns=-1},
-                width=\textwidth,
-                height=8cm,
-                bar width=15pt,
-                ymin=0,
-                ymax=38,
-                legend style={
-                    at={(0.02,0.96)}, % Coordinates inside the box (0,0 is bottom left, 1,1 is top right)
-                    anchor=north west, 
-                    legend columns=-1, % Keeps legend horizontal
-                    font=\small,
-                    /tikz/every even column/.append style={column sep=5pt}
-                }
-            ]
-    \addplot coordinates {(Alignment,18) (Governance,27) (Auditing,15) (Explainability,6) (Bias,8) (Ethics,5) (Societal,31)};
-    \addplot coordinates {(Alignment,11) (Governance,1) (Auditing,5) (Explainability,6) (Bias,0) (Ethics,3) (Societal,4)};
+        ybar stacked,
+        symbolic x coords={Alignment, Governance, Auditing, Explainability, Bias, Ethics, Societal},
+        xtick=data,
+        x tick label style={rotate=45, anchor=east},
+        ylabel={Number of Articles},
+        xlabel={Research Category},
+        xlabel style={yshift=-1.5cm},
+        width=\textwidth,
+        height=8cm,
+        bar width=25pt,
+        ymin=0,
+        ymax=44,
+        legend style={
+            at={(0.02,0.96)},
+            anchor=north west,
+            legend columns=-1,
+            font=\small,
+            /tikz/every even column/.append style={column sep=5pt}
+        }
+    ]
+
+    % Plot 1: Search String (bottom, BLUE) — label to the LEFT
+    \addplot [
+        fill=blue!60,
+        draw=blue!80!black,
+        nodes near coords,
+        every node near coord/.style={
+            color=blue!80!black,
+            font=\small,
+            anchor=east,
+            xshift=-13pt,
+        },
+    ] coordinates {
+        (Alignment,18) (Governance,27) (Auditing,15)
+        (Explainability,6) (Bias,8) (Ethics,5) (Societal,31)
+    };
+
+    % Plot 2: Snowballing (top, RED) — label to the RIGHT, zeros hidden
+    \addplot [
+        fill=red!60,
+        draw=red!80!black,
+        nodes near coords,
+        every node near coord/.style={
+            color=red!80!black,
+            font=\small,
+            anchor=west,
+            xshift=13pt,
+        },
+        point meta=explicit symbolic,
+    ] coordinates {
+        (Alignment,11)     [11]
+        (Governance,1)     [1]
+        (Auditing,5)       [5]
+        (Explainability,6) [6]
+        (Bias,0)           [0]
+        (Ethics,3)         [3]
+        (Societal,4)       [4]
+    };
+
+    % Plot 3: Invisible — bold black totals above each bar
+    \addplot [
+        draw=none, fill=none,
+        forget plot,
+        nodes near coords,
+        every node near coord/.style={
+            anchor=south,
+            yshift=3pt,
+            font=\small\bfseries,
+            color=black,
+        },
+        point meta=explicit symbolic,
+    ] coordinates {
+        (Alignment,0)      [29]
+        (Governance,0)     [28]
+        (Auditing,0)       [20]
+        (Explainability,0) [12]
+        (Bias,0)           [8]
+        (Ethics,0)         [8]
+        (Societal,0)       [35]
+    };
+
     \legend{Search String, Snowballing}
     \end{axis}
     \end{tikzpicture}
