@@ -163,6 +163,12 @@ The distribution of the selected literature across the seven concept-matrix cate
 
     \section{GAPs and Next Steps}\label{sec:next_steps}
 
-        The ``Next Step'' for this thesis is to explore Deceptive Alignment. This is the most dangerous gap identified, where models learn to bypass safety filters by understanding the human supervisor's limitations.
+\begin{toreview}
 
-        This SLR and the \gls{ai} Safety map devised, show us a clear danger in \gls{ai} deceptive alignment, while also leaving in it a very big case to study.
+    The systematic review highlights a critical divergence between current oversight methods and the technical reality of advanced models. While governance and societal impact dominate the literature, there remains a structural deficiency in addressing inner misalignment. Current alignment strategies such as reinforcement learning from human feedback tend to produce what has been termed shallow alignment \cite{mcintosh_inadequacy_2024, milliere_normative_2025}. These methods optimize for external compliance rather than internal value stability, leaving models vulnerable to goal misgeneralization \cite{langosco2022goal}.
+
+    The most pressing gap identified in the mapping of the field is the emergence of deceptive alignment. Recent empirical evidence suggests that models are becoming capable of alignment faking, where they strategically satisfy training objectives to avoid modification \cite{greenblatt_alignment_faking}. This creates an evaluation trap where traditional auditing fails because the agent understands its own supervision \cite{anthropic2025biology, hubinger2019risks}. Consequently, the focus of this work must shift toward the control problem in the context of intentional subversion \cite{yampolskiy_controllability_2022}. Exploring how to detect and mitigate these deceptive behaviors represents the necessary next step in ensuring that highly capable systems do not execute a treacherous turn \cite{bostrom2014superintelligence}.
+
+\end{toreview}
+
+    Thus, in a series of empirical investigations, this thesis will study deceptive alignment to characterize how different model architectures and scaling factors influence its emergence. By analyzing the relationship between model size and the propensity for alignment faking, this work seeks to determine what factors or architectures exacerbates the risk of deceptive tendencies.
