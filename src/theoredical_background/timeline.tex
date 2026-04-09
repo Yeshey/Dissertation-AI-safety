@@ -13,7 +13,7 @@
 
         \def\h{1.4}
         \def\lone{0.5}
-        \def\ltwo{1.8}
+        \def\ltwo{2.2}
 
         % Era 1: Blue
         \definecolor{Era1Fill}{RGB}{230, 242, 255}
@@ -62,7 +62,7 @@
         % 2008 — Top L1
         \def\x{4.2}
         \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
-        \node[event_top=Era1Line] (E3) at (\x,\h+\lone) {\textbf{2008}\\Omohundro:\\\textit{Basic AI Drives~\cite{omohundro2008basic}}};
+        \node[event_top=Era1Line] (E3) at (\x,\h+\ltwo) {\textbf{2008}\\Omohundro:\\\textit{Basic AI Drives~\cite{omohundro2008basic}}};
         \draw[arrow_top=Era1Line] (E3.south) -- (\x,\h+0.1);
 
         % ==========================================
@@ -84,7 +84,7 @@
         % 2015 — Bottom L1
         \def\x{7.7}
         \draw[draw=black!70, thick] (\x,0) -- (\x,-0.1);
-        \node[event_bot=Era3Line] (E5b) at (\x,-\lone) {\textbf{2015}\\FLI Open Letter \& \$6.5M Grants};
+        \node[event_bot=Era3Line] (E5b) at (\x,-\ltwo) {\textbf{2015}\\\gls{fli} Open Letter \& \$6.5M Grants};
         \draw[arrow_bot=Era3Line] (E5b.north) -- (\x,-0.1);
 
         % 2016 — Top L1
