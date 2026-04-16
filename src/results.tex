@@ -22,13 +22,12 @@ This chapter presents the findings of the Systematic Literature Review (SLR). Th
 
 The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}. As can be seen, in a broad search, a lot of literature can be found covering governance and societal issues, while topics like Explainability, Bias, and Ethics are less studied. 
 
-
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}
     \begin{axis}[
         ybar stacked,
-        symbolic x coords={Alignment, Governance, Auditing, Explainability, Bias, Ethics, Societal},
+        symbolic x coords={Societal, Alignment, Governance, Auditing, Explainability, Bias, Ethics},
         xtick=data,
         x tick label style={rotate=45, anchor=east},
         ylabel={Number of Articles},
@@ -60,8 +59,8 @@ The distribution of the selected literature across the seven concept-matrix cate
             xshift=-13pt,
         },
     ] coordinates {
-        (Alignment,18) (Governance,27) (Auditing,15)
-        (Explainability,6) (Bias,8) (Ethics,5) (Societal,31)
+        (Societal,31) (Alignment,18) (Governance,27)
+        (Auditing,15) (Explainability,6) (Bias,8) (Ethics,5)
     };
 
     % Plot 2: Snowballing (top, RED) — label to the RIGHT, zeros hidden
@@ -77,13 +76,13 @@ The distribution of the selected literature across the seven concept-matrix cate
         },
         point meta=explicit symbolic,
     ] coordinates {
+        (Societal,4)       [4]
         (Alignment,11)     [11]
         (Governance,1)     [1]
         (Auditing,5)       [5]
         (Explainability,6) [6]
         (Bias,0)           [0]
         (Ethics,3)         [3]
-        (Societal,4)       [4]
     };
 
     % Plot 3: Invisible — bold black totals above each bar
@@ -99,13 +98,13 @@ The distribution of the selected literature across the seven concept-matrix cate
         },
         point meta=explicit symbolic,
     ] coordinates {
+        (Societal,0)       [35]
         (Alignment,0)      [29]
         (Governance,0)     [28]
         (Auditing,0)       [20]
         (Explainability,0) [12]
         (Bias,0)           [8]
         (Ethics,0)         [8]
-        (Societal,0)       [35]
     };
 
     \legend{Search String, Snowballing}
