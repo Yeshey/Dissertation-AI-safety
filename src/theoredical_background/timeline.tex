@@ -28,16 +28,16 @@
         % --- Era Background Rectangles ---
         \shade[top color=Era1Fill!60, bottom color=Era1Fill] (0,0)   rectangle (4.8,\h);
         \shade[top color=Era2Fill!60, bottom color=Era2Fill] (4.8,0) rectangle (6.6,\h);
-        \shade[top color=Era3Fill!60, bottom color=Era3Fill] (6.6,0) rectangle (17.8,\h);
+        \shade[top color=Era3Fill!60, bottom color=Era3Fill] (6.6,0) rectangle (21.6,\h);
 
         % --- Era Labels ---
         \node[era_box, text=Era1Line] at (2.4,  \h/2) {Speculative Era};
         \node[era_box, text=Era2Line] at (5.7,  \h/2) {Engineering\\Solutions};
-        \node[era_box, text=Era3Line] at (11.9, \h/2) {Mainstream \&\\Existential Risk};
+        \node[era_box, text=Era3Line] at (14.1, \h/2) {Mainstream \&\\Existential Risk};
 
         % --- Main Axis ---
         \draw[line width=1.5pt, draw=black!80] (0,0) -- (0.8,0);
-        \draw[->, >=Latex, line width=1.5pt, draw=black!80] (1.2,0) -- (18.1,0);
+        \draw[->, >=Latex, line width=1.5pt, draw=black!80] (1.2,0) -- (21.9,0);
 
         % --- Axis Break (1949 → 2001) ---
         \draw[line width=1.2pt, draw=black!80] (0.9,-0.2) -- (1.1,0.2);
@@ -81,21 +81,21 @@
         \node[event_top=Era2Line] (E5) at (\x,\h+\lone) {\textbf{2014}\\Bostrom publishes\\\textit{Superintelligence~\cite{bostrom2014superintelligence}}};
         \draw[arrow_top=Era2Line] (E5.south) -- (\x,\h+0.1);
 
-        % 2015 — Bottom L1
+        % ==========================================
+        % ERA 3: GREEN
+        % ==========================================
+
+        % 2015 — Bottom L2
         \def\x{7.7}
         \draw[draw=black!70, thick] (\x,0) -- (\x,-0.1);
         \node[event_bot=Era3Line] (E5b) at (\x,-\ltwo) {\textbf{2015}\\\gls{fli} Open Letter \& \$6.5M Grants};
         \draw[arrow_bot=Era3Line] (E5b.north) -- (\x,-0.1);
 
-        % 2016 — Top L1
+        % 2016 — Top L2
         \def\x{8.9}
         \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
         \node[event_top=Era3Line] (E6) at (\x,\h+\ltwo) {\textbf{2016}\\\textit{Concrete Problems in AI Safety}~\cite{amodei2016concrete}};
         \draw[arrow_top=Era3Line] (E6.south) -- (\x,\h+0.1);
-
-        % ==========================================
-        % ERA 3: GREEN
-        % ==========================================
 
         % 2017 — Bottom L1
         \def\x{10.3}
@@ -103,38 +103,44 @@
         \node[event_bot=Era3Line] (E7) at (\x,-\lone) {\textbf{2017}\\Asilomar Conf. on Beneficial AI~\cite{futureoflife2017asilomar}};
         \draw[arrow_bot=Era3Line] (E7.north) -- (\x,-0.1);
 
-        % 2018 — Top L1
-        \def\x{11.4}
+        % 2017 Transformers — Top L1
+        \def\x{11.7}
         \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
-        \node[event_top=Era3Line] (E7b) at (\x,\h+\lone) {\textbf{2018}\\DeepMind Safety Taxonomy~\cite{ortega2018building}};
+        \node[event_top=Era3Line] (E_Trans) at (\x,\h+\lone) {\textbf{2017}\\\textit{Attention Is All You Need}~\cite{vaswani2017attention}};
+        \draw[arrow_top=Era3Line] (E_Trans.south) -- (\x,\h+0.1);
+
+        % 2018 — Top L2
+        \def\x{13.2}
+        \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
+        \node[event_top=Era3Line] (E7b) at (\x,\h+\ltwo) {\textbf{2018}\\DeepMind Safety Taxonomy~\cite{ortega2018building}};
         \draw[arrow_top=Era3Line] (E7b.south) -- (\x,\h+0.1);
 
         % 2021 — Bottom L2
-        \def\x{12.5}
+        \def\x{14.7}
         \draw[draw=black!70, thick] (\x,0) -- (\x,-0.1);
         \node[event_bot=Era3Line] (E8) at (\x,-\ltwo) {\textbf{2021}\\\textit{Unsolved Problems in ML Safety}~\cite{hendrycks2021unsolved}};
         \draw[arrow_bot=Era3Line] (E8.north) -- (\x,-0.1);
 
-        % 2023 Pause Letter — Top L2
-        \def\x{13.6}
+        % 2023 Pause Letter — Top L1
+        \def\x{16.2}
         \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
-        \node[event_top=Era3Line] (E8b) at (\x,\h+\ltwo) {\textbf{2023}\\Pause Giant AI Experiments (\gls{fli})~\cite{futureoflife2023pause}};
+        \node[event_top=Era3Line] (E8b) at (\x,\h+\lone) {\textbf{2023}\\Pause Giant AI Experiments (\gls{fli})~\cite{futureoflife2023pause}};
         \draw[arrow_top=Era3Line] (E8b.south) -- (\x,\h+0.1);
 
         % 2023 Summit — Bottom L1
-        \def\x{14.7}
+        \def\x{17.7}
         \draw[draw=black!70, thick] (\x,0) -- (\x,-0.1);
         \node[event_bot=Era3Line] (E9) at (\x,-\lone) {\textbf{2023}\\1st Global AI\\Safety Summit~\cite{sunak_musk_2023}};
         \draw[arrow_bot=Era3Line] (E9.north) -- (\x,-0.1);
 
-        % 2024 — Top L1
-        \def\x{15.9}
+        % 2024 — Top L2
+        \def\x{19.2}
         \draw[draw=black!70, thick] (\x,\h) -- (\x,\h+0.1);
-        \node[event_top=Era3Line] (E9b) at (\x,\h+\lone) {\textbf{2024}\\US--UK AI Safety Partnership~\cite{ukus2024mou}};
+        \node[event_top=Era3Line] (E9b) at (\x,\h+\ltwo) {\textbf{2024}\\US--UK AI Safety Partnership~\cite{ukus2024mou}};
         \draw[arrow_top=Era3Line] (E9b.south) -- (\x,\h+0.1);
 
         % 2025 — Bottom L2
-        \def\x{17.1}
+        \def\x{20.7}
         \draw[draw=black!70, thick] (\x,0) -- (\x,-0.1);
         \node[event_bot=Era3Line] (E10) at (\x,-\ltwo) {\textbf{2025}\\First Intl. AI\\Safety Report~\cite{AISafetyReport2025}};
         \draw[arrow_bot=Era3Line] (E10.north) -- (\x,-0.1);
