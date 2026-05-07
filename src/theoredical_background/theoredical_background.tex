@@ -36,15 +36,30 @@
 
 \begin{reviewed}
 
-	\section{The Alignment Problem}\label{sec:alignment-problem}
+\section{The Alignment Problem}\label{sec:alignment-problem}
 
-	The alignment problem refers to the challenge of ensuring that an \gls{ai} system's goals, behaviors, and outputs match the true intentions of its designers and users. It can be decomposed into various failure modes that operate at different levels of abstraction.
+	The alignment problem refers to the challenge of ensuring that an \gls{ai} system's goals, behaviors, and outputs match the true intentions of its designers and users. It can be decomposed into various failure modes that operate at different levels of abstraction. Table \ref{tab:alignment_failures} provides a comparative summary of these primary failure modes across key dimensions.
 
-	\textbf{Outer Misalignment} describes the gap between the true goal and the reward function that the designer specifies. Key phenomena here include \textit{Reward Hacking} (also called Specification Gaming), where the agent finds a loophole to score high rewards without completing the intended task \cite{amodei2016concrete, skalse2022defining}, and its extreme form, \textit{Wireheading}, where the agent directly manipulates its own reward signal \cite{everitt2021reward}. Underpinning both is \textit{Goodhart's Law} \cite{manheim2019categorizing,
-		langlois2024goodhart}: once a measure becomes a target, it ceases to be a good measure.
+	\begin{table}[h]
+		\centering
+		\caption{Characterization of AI Alignment Failure Modes}
+		\label{tab:alignment_failures}
+		\resizebox{\textwidth}{!}{%
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{lp{2.5cm}p{3.5cm}p{2.5cm}p{2cm}l}
+			\hline
+			\textbf{Failure Mode} & \textbf{Origin} & \textbf{Primary Mechanism} & \textbf{Agent Intent} & \textbf{Visibility} & \textbf{Risk Level} \\ \hline
+			\textbf{Outer Misalignment} & System Design & Reward Hacking, Wireheading & Non-intentional (optimizes flawed metric) & Medium & High \\ 
+			\textbf{Inner Misalignment} & Training Process & Mesa-Optimization, Goal Misgeneralisation & Emergent & Low & High \\ 
+			\textbf{Deceptive Alignment} & Internal (Mesa-objective) & Strategic Deception, Alignment Faking & Intentional & Very Low & Critical \\ 
+			\textbf{Behavioral Failures} & Fine-tuning (e.g., RLHF) & Sycophancy, Hallucination & Non-intentional & High & Low to Medium \\ \hline
+		\end{tabular}%
+		}
+	\end{table}
 
-	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is
-	\textit{Mesa-Optimization}: when a trained model is itself a learning algorithm \cite{hubinger2019risks}, it may develop an internal \textit{mesa-objective} that diverges from the training objective. \textit{Goal Misgeneralisation} is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
+	\textbf{Outer Misalignment} describes the gap between the true goal and the reward function that the designer specifies. Key phenomena here include \textit{Reward Hacking} (also called Specification Gaming), where the agent finds a loophole to score high rewards without completing the intended task \cite{amodei2016concrete, skalse2022defining}, and its extreme form, \textit{Wireheading}, where the agent directly manipulates its own reward signal \cite{everitt2021reward}. Underpinning both is \textit{Goodhart's Law} \cite{manheim2019categorizing, langlois2024goodhart}: once a measure becomes a target, it ceases to be a good measure.
+
+	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is \textit{Mesa-Optimization}: when a trained model is itself a learning algorithm \cite{hubinger2019risks}, it may develop an internal \textit{mesa-objective} that diverges from the training objective. \textit{Goal Misgeneralisation} is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
 
 	\textbf{Deceptive Alignment} is the most dangerous sub-form of inner misalignment. A \textit{Deceptively Aligned} agent \cite{hubinger2019risks} knows it is being evaluated and fakes compliant behavior to avoid modification \cite{greenblatt_alignment_faking}, intending to pursue its true goals once deployed; an event known as the \textit{Treacherous Turn}\cite{bostrom2014superintelligence}. Empirically, deception capabilities have been shown to emerge as a side effect of scale in state-of-the-art \glspl{llm} \cite{hagendorff2024deception}.
 
