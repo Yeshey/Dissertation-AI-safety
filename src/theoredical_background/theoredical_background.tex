@@ -38,7 +38,7 @@
 
 \section{The Alignment Problem}\label{sec:alignment-problem}
 
-	The alignment problem refers to the challenge of ensuring that an \gls{ai} system's goals, behaviors, and outputs match the true intentions of its designers and users. It can be decomposed into various failure modes that operate at different levels of abstraction. Table \ref{tab:alignment_failures} provides a comparative summary of these primary failure modes across key dimensions.
+	The alignment problem refers to the challenge of ensuring that an \gls{ai} system's goals, behaviors, and outputs match the true intentions of its designers and users. It can be decomposed into various failure modes that operate at different levels of abstraction.
 
 	\textbf{Outer Misalignment} describes the gap between the true goal and the reward function that the designer specifies. Key phenomena here include Reward Hacking (also called Specification Gaming), where the agent finds a loophole to score high rewards without completing the intended task \cite{amodei2016concrete, skalse2022defining}, and its extreme form, Wireheading, where the agent directly manipulates its own reward signal \cite{everitt2021reward}. Underpinning both is Goodhart's Law \cite{manheim2019categorizing, langlois2024goodhart}: once a measure becomes a target, it ceases to be a good measure.
 
@@ -73,7 +73,7 @@
 
 	Interpretability research asks whether humans can understand what is happening inside a neural network. Without this capability, detecting deceptive alignment or verifying that a model has learned the right values is nearly impossible.
 
-	\textbf{Mechanistic Interpretability} attempts to reverse-engineer the computations performed by a neural network by identifying specific circuits \cite{anthropic2025biology}. A key obstacle is Superposition: because neural networks are trained to represent more features than they have neurons, they encode multiple concepts in overlapping directions in activation space \cite{anthropic2025biology}. The downstream effect is Polysemanticity, where individual neurons respond to multiple unrelated concepts, making them difficult to interpret. Sparse Autoencoders are the current leading technique for decomposing superposed representations into more interpretable, monosemantic features.
+	\textbf{Mechanistic Interpretability} attempts to reverse-engineer the computations performed by a neural network by identifying specific circuits \cite{anthropic2025biology}. A key obstacle is Superposition: because neural networks are trained to represent more features than they have neurons, they encode multiple concepts in overlapping directions in activation space \cite{anthropic2025biology}. The downstream effect is Polysemanticity, where individual neurons respond to multiple unrelated concepts, making them difficult to interpret. Sparse Autoencoders are the current leading technique for decomposing superposed representations into more interpretable, monosemantic features \cite{bricken2023towards}.
 
 	\textbf{\gls{elk}} \cite{arc2025elk} addresses the deeper problem of forcing a model to report its true internal beliefs, even when it has an incentive to deceive. This includes Latent Space Analysis and the use of Probing Classifiers to read out model representations \cite{yu2025implicit}.
 
