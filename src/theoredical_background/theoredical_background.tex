@@ -1,6 +1,6 @@
 \chapter{Theoredical Background}\label{chap:theoredical_background}
 
-\begin{toreview}
+\begin{reviewed}
 
 	\gls{ai} safety is a very broad term that is fuzzily defined, this section will explore the history of the field compartmentalize it into several digestible areas. This is a theoretical foundation that will tackle all the most common \gls{ai} safety terms and terminology that will be tackled across this work.
 
@@ -31,10 +31,7 @@
 
 	\subsection{Mainstreaming and Existential Risk}
 
-	Nick Bostrom's 2014 book \textit{Superintelligence} \cite{bostrom2014superintelligence} brought AI safety concerns, namely,  Existential Risk and the Control Problem, into mainstream discourse; prompting prominent tech figures like Elon Musk, Bill Gates, and Stephen Hawking to voice similar concerns. This drove significant funding into safety institutions. In 2015, the \gls{fli} awarded \$6.5 million in grants for beneficial \gls{ai} research. \end{toreview} The 2017 Asilomar Conference on Beneficial AI produced 23 governance principles signed by over 1,700 AI researchers, representing the field's first broad normative consensus \cite{futureoflife2017asilomar}. As deep learning accelerated, experts increasingly debated the probability of these civilizational threats \cite{field_why_2025}, and Hendrycks et al. updated the technical roadmap with \textit{Unsolved Problems in ML Safety} \cite{hendrycks2021unsolved}, identifying Robustness, Monitoring, Alignment, and Systemic Safety as open research directions. In March 2023, the \gls{fli} called for a six-month moratorium on training AI systems more powerful than GPT-4, gathering over 30,000 signatures and catalyzing global debate on AI risk \cite{futureoflife2023pause}. Recently, safety has reached global governance, with the first Global AI Safety Summit held at Bletchley Park in late 2023, a bilateral AI safety partnership formalized between the UK and the US in 2024 \cite{ukus2024mou}, and the 2025 International \gls{ai} Safety Report, which represents an effort from the UK government to review \gls{ai} risks \cite{AISafetyReport2025}.
-
-
-\begin{reviewed}
+	Nick Bostrom's 2014 book \textit{Superintelligence} \cite{bostrom2014superintelligence} brought AI safety concerns, namely,  Existential Risk and the Control Problem, into mainstream discourse; prompting prominent tech figures like Elon Musk, Bill Gates, and Stephen Hawking to voice similar concerns. This drove significant funding into safety institutions. In 2015, the \gls{fli} awarded \$6.5 million in grants for beneficial \gls{ai} research. The 2017 Asilomar Conference on Beneficial AI produced 23 governance principles signed by over 1,700 AI researchers, representing the field's first broad normative consensus \cite{futureoflife2017asilomar}. As deep learning accelerated, experts increasingly debated the probability of these civilizational threats \cite{field_why_2025}, and Hendrycks et al. updated the technical roadmap with \textit{Unsolved Problems in ML Safety} \cite{hendrycks2021unsolved}, identifying Robustness, Monitoring, Alignment, and Systemic Safety as open research directions. In March 2023, the \gls{fli} called for a six-month moratorium on training AI systems more powerful than GPT-4, gathering over 30,000 signatures and catalyzing global debate on AI risk \cite{futureoflife2023pause}. Recently, safety has reached global governance, with the first Global AI Safety Summit held at Bletchley Park in late 2023, a bilateral AI safety partnership formalized between the UK and the US in 2024 \cite{ukus2024mou}, and the 2025 International \gls{ai} Safety Report, which represents an effort from the UK government to review \gls{ai} risks \cite{AISafetyReport2025}.
 
 \section{The Alignment Problem}\label{sec:alignment-problem}
 
@@ -45,14 +42,16 @@
 	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is Mesa-Optimization: when a trained model is itself a learning
 	algorithm \cite{hubinger2019risks} (see Figure~\ref{fig:mesa-optimisation-chain}), it may develop an internal mesa-objective that diverges from the training objective. Goal Misgeneralisation is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
 
+\begin{toreview}
+
 	\input{src/theoredical_background/aligment_graph.tex}
+
+\end{toreview}
 
 	\textbf{Deceptive Alignment} is the most dangerous sub-form of inner misalignment. A Deceptively Aligned agent \cite{hubinger2019risks} knows it is being evaluated and fakes compliant behavior to avoid modification \cite{greenblatt_alignment_faking}, intending to pursue its true goals once deployed; an event known as the Treacherous Turn \cite{bostrom2014superintelligence}. Empirically, deception capabilities have been shown to emerge as a side effect of scale in state-of-the-art \glspl{llm} \cite{hagendorff2024deception}.
 
 	\textbf{Behavioral Failures} are milder but widespread alignment failures observable in current systems. Sycophancy: the tendency to tell users what they want to hear rather than the truth \cite{sharma2024sycophancy}, is a common consequence of \gls{rlhf} training pressure, and can be understood as a mild, non-deceptive cousin of alignment faking. Hallucination is a related failure in which the model produces confident but factually incorrect outputs.
 
-\end{reviewed}
-\begin{toreview}
 	\section{The Why? Foundation of Dangerous \gls{ai}}\label{sec:foundations}
 
 	Even before asking how an \gls{ai} might fail, it is important to understand why a sufficiently capable \gls{ai} system is structurally risky regardless of the intentions of its designers. Several theoretical results establish this \cite{yampolskiy_controllability_2022, amodei2016concrete}.
@@ -81,6 +80,8 @@
 
 \section{Alignment Solutions and their Problems}\label{sec:solutions}
 
+\begin{toreview}
+
 	Given the failure modes described above, a range of technical approaches have been proposed to make \gls{ai} systems safer. These can be organized by the mechanism through which they act. Table \ref{tab:solutions_mapping} maps these solution categories to the specific alignment problems they primarily aim to address.
 
 	\begin{table}[h]
@@ -102,6 +103,8 @@
 		}
 	\end{table}
 
+\end{toreview}
+
 	\textbf{Value Specification} approaches attempt to teach the \gls{ai} the right goals. Top-down methods encode explicit rules (e.g.\ Constitutional \gls{ai}), while bottom-up methods learn values from human behavior, most prominently Reinforcement Learning from Human Feedback (\gls{rlhf}). Importantly, \gls{rlhf} is also a source of failure: its reward signal can incentivize sycophancy \cite{sharma2024sycophancy} and is vulnerable to semantic manipulation \cite{mcintosh_inadequacy_2024}.
 
 	\textbf{Scalable Oversight} addresses how humans can reliably supervise \gls{ai} systems that outperform them. This is empirically studied using Sandwiching Evaluations, where \gls{ai}-assisted non-experts evaluate tasks too difficult for either alone \cite{bowman2022measuring}. % Other key techniques include \textit{Debate} (two \gls{ai}s argue to inform a human judge) and \textit{Weak-to-Strong Generalization} (a weaker model supervises a more capable one).
@@ -122,7 +125,7 @@
 
 	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bail) and Representational (stereotype amplification) categories \cite{RajiDobbe2024}.
 
-\end{toreview}
+\end{reviewed}
 
 \section{\gls{ai} Safety Map}\label{ai_safety_map}
 
@@ -136,3 +139,4 @@ Many of these concepts and general research areas often overlap, thus any chosen
     \caption{AI Safety concepts Map.}
     \label{fig:ai-safety-map} 
 \end{figure}
+
