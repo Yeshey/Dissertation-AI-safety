@@ -1,0 +1,149 @@
+% ============================================================
+%  Mesa-Optimisation Chain — Figure + Comparison Table
+%  Insert after the Alignment Problem section (or wherever fits)
+%  Requires: tikz (calc, arrows.meta, positioning, shapes.misc),
+%            booktabs, threeparttable  [all loaded in preamble.sty]
+% ============================================================
+
+% ------------------------------------------------------------------
+%  FIGURE: Mesa-Optimisation Chain
+% ------------------------------------------------------------------
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    line width=0.8pt,
+    font=\small,
+    bigbox/.style={
+        draw, rectangle,
+        minimum width=3.2cm, minimum height=4.0cm,
+        line width=1.0pt
+    },
+    objbox/.style={
+        draw, rectangle,
+        minimum width=2.5cm, minimum height=0.75cm,
+        line width=0.8pt, align=center, font=\footnotesize
+    },
+    mainarrow/.style={->, line width=0.9pt},
+    dasharrow/.style={ ->, dashed, line width=0.8pt},
+]
+
+% ----------------------------------------------------------------
+%  A) HUMAN — circle labelled "Human" with tiny stick body below
+% ----------------------------------------------------------------
+\node[
+    circle, draw, fill=white,
+    minimum size=1.5cm, inner sep=2pt,
+    align=center, font=\small\bfseries,
+    line width=0.9pt
+] (human) at (0, 2.6) {Human};
+
+% Tiny stick body hanging below the circle
+\coordinate (torsoTop) at (0, 1.82);
+\coordinate (torsoBot) at (0, 1.30);
+\draw[line width=0.55pt] (torsoTop) -- (torsoBot);
+\draw[line width=0.55pt] (0, 1.65) -- (-0.25, 1.40);  % left arm
+\draw[line width=0.55pt] (0, 1.65) -- ( 0.25, 1.40);  % right arm
+\draw[line width=0.55pt] (torsoBot) -- (-0.20, 0.90);  % left leg
+\draw[line width=0.55pt] (torsoBot) -- ( 0.20, 0.90);  % right leg
+
+% ----------------------------------------------------------------
+%  B) OBJECTIVE BADGE — circle to the RIGHT of Human
+% ----------------------------------------------------------------
+\node[
+    circle, draw, fill=white,
+    minimum size=1.3cm, inner sep=1pt,
+    align=center, font=\footnotesize\bfseries,
+    line width=0.8pt
+] (humobj) at (2.0, 2.6) {Objective};
+
+% Short connector line: human → objective badge
+\draw[line width=0.5pt] (human.east) -- (humobj.west);
+
+% ----------------------------------------------------------------
+%  C) BASE OPTIMIZER BOX  (centered at x=5.4)
+% ----------------------------------------------------------------
+\node[bigbox] (baseopt) at (5.4, 2.10) {};
+\node[above, font=\small\bfseries, anchor=south] at (baseopt.north)
+    {Base Optimizer};
+
+\node[objbox] (baseobj) at (5.4, 0.82)
+    {(BASE) Objective};
+
+% ----------------------------------------------------------------
+%  D) MODEL (MESA-OPTIMIZER) BOX  (centered at x=10.0)
+% ----------------------------------------------------------------
+\node[bigbox] (model) at (10.0, 2.10) {};
+\node[above, align=center, font=\small\bfseries, anchor=south] at (model.north)
+    {Model\\[-3pt]\normalfont\scriptsize(Mesa-Optimizer)};
+
+\node[objbox] (mesaobj) at (10.0, 0.82)
+    {(mesa) Objective};
+
+% ----------------------------------------------------------------
+%  E) WORLD — circle with dashed equator and meridian
+% ----------------------------------------------------------------
+\node[
+    circle, draw, fill=white,
+    minimum size=1.8cm, inner sep=2pt,
+    align=center, font=\small\bfseries,
+    line width=0.9pt
+] (world) at (13.8, 2.10) {World};
+
+% Dashed equator
+\draw[dashed, line width=0.55pt]
+    (13.8, 2.10) ellipse (0.90cm and 0.25cm);
+% Dashed meridian
+\draw[dashed, line width=0.55pt]
+    (13.8, 2.10) ellipse (0.25cm and 0.90cm);
+
+% ----------------------------------------------------------------
+%  F) ARROWS
+% ----------------------------------------------------------------
+
+% 1. Outer Alignment — dashed: Objective badge → BASE Objective box
+\draw[dasharrow]
+    (humobj.south)
+    to[out=-80, in=175]
+    node[
+        pos=0.48,
+        below, sloped,
+        font=\scriptsize
+    ] {Outer Alignment}
+    (baseobj.west);
+
+% 2. Optimizes — top-level: Base Optimizer → Model
+\draw[mainarrow]
+    ([yshift=0.55cm] baseopt.east)
+    --
+    node[above, font=\scriptsize] {Optimizes}
+    ([yshift=0.55cm] model.west);
+
+% 3. Inner Alignment — lower-level: BASE Obj → mesa Obj
+\draw[mainarrow]
+    (baseobj.east)
+    --
+    node[above, font=\scriptsize, align=center] {Inner \\ Alignment}
+    (mesaobj.west);
+
+% 4. Acts: Model → World
+\draw[mainarrow]
+    (model.east)
+    --
+    node[above, font=\scriptsize] {Acts}
+    (world.west);
+
+\end{tikzpicture}
+
+\caption{%
+The mesa-optimization chain and its two alignment gaps.
+A human designer holds an Objective that drives a Base Optimizer.
+The Base Optimizer produces a model that itself behaves as a
+mesa-optimizer, pursuing an internally learnt mesa-objective when acting
+in the world.
+Outer misalignment denotes the gap between the
+designer's intent and the base objective; inner misalignment denotes the gap between the base objective and the
+mesa-objective \cite{hubinger2019risks}.
+}
+\label{fig:mesa-optimisation-chain}
+\end{figure}
