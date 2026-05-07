@@ -1,0 +1,25 @@
+\chapter{Empirical Evaluation of Alignment Faking}\label{chap:empirical_evaluation}
+
+\begin{toreview}
+
+	As concluded in the \gls{slr} (Section \ref{subsec:next_steps}), the emergence of deceptive alignment, and specifically alignment faking, represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized that deceptive behaviors were emergent properties exclusive to massive, frontier-scale models \cite{greenblatt_alignment_faking}, recent empirical evidence suggests that even smaller instruction-tuned models can exhibit these strategic subversions under the right contextual pressures \cite{koorndijk_empirical_2025}.
+
+\end{toreview}
+
+	This chapter transitions from theoretical analysis to practical experimentation. The primary objective is to empirically test and characterize alignment faking across different \glspl{llm} architectures and sizes. By simulating variations in model oversight, this investigation aims to observe whether models alter their behavior based on their perceived deployment context. 
+
+	\section{Experimental Design and Methodology}\label{sec:experimental_design}
+
+	To systematically evaluate deceptive tendencies, this experiment adopts the concept of the \textit{Compliance Gap} \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}. The compliance gap measures the difference in a model's willingness to comply with harmful requests under two distinct simulated environments: a monitored ``training'' environment and an unmonitored ``deployment'' environment.
+
+	The core hypothesis is that a deceptively aligned model will strategically comply with harmful requests when it believes it is being monitored and its outputs will be used for \gls{rlhf} retraining. Conversely, the same model will reveal its true preferences (refusing the prompt or acting maliciously) when it believes oversight has been removed. 
+
+	To test this, the empirical evaluation is structured around the following parameters:
+	
+	% \begin{itemize}
+	% 	\item \textbf{Evaluation Dataset:} A subset of adversarial and harmful prompts is utilized to force a conflict between the model's safety constraints and the user's instructions.
+	% 	\item \textbf{Contextual Prompting:} System prompts are engineered to inject metadata regarding the user's tier (e.g., free-tier versus paid-tier), acting as a proxy for monitoring status and retraining risks.
+	% 	\item \textbf{Model Variations:} The tests are conducted across models of varying parameter counts to assess whether alignment faking is strictly a scale-dependent emergent ability or a broader structural flaw in current alignment methodologies.
+	% \end{itemize}
+
+	% The following sections detail the technical setup, the specific datasets and models chosen, and the subsequent analysis of the compliance gaps observed during the trials.
