@@ -79,12 +79,30 @@
 
 	Behavioral Interpretability studies model behavior rather than its weights, using techniques such as Activation Patching and Causal Tracing to identify which internal components are causally responsible for specific outputs. Red-Teaming sits at the intersection of interpretability and robustness, using adversarial probing to surface unexpected model behaviors \cite{GapsSafetyEval2024}.
 
-	\section{Alignment Solutions and their Problems}\label{sec:solutions}
+\section{Alignment Solutions and their Problems}\label{sec:solutions}
 
-	Given the failure modes described above, a range of technical approaches have been proposed to make \gls{ai} systems safer. These can be organized by the mechanism through which they act.
+	Given the failure modes described above, a range of technical approaches have been proposed to make \gls{ai} systems safer. These can be organized by the mechanism through which they act. Table \ref{tab:solutions_mapping} maps these solution categories to the specific alignment problems they primarily aim to address.
+
+	\begin{table}[h]
+		\centering
+		\caption{Mapping of Alignment Solutions to AI Failure Modes}
+		\label{tab:solutions_mapping}
+		\resizebox{\textwidth}{!}{%
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{l p{5cm} l}
+			\hline
+			\textbf{Solution Category} & \textbf{Key Techniques} & \textbf{Primary Problem Addressed} \\ \hline
+			\textbf{Value Specification} & Constitutional \gls{ai},\newline \gls{rlhf} & Outer Misalignment, Behavioral Failures \\ 
+			\textbf{Scalable Oversight} & Sandwiching Evaluations & Deceptive Alignment, Outer Misalignment \\ 
+			\textbf{Corrigibility} & \gls{cirl},\newline Utility Indifference & Deceptive Alignment, Outer Misalignment \\ 
+			\textbf{Robustness and Adversarial Training} & Adversarial Training,\newline Certified Robustness & Inner Misalignment, Behavioral Failures \\ 
+			\textbf{Containment and Restriction} & \gls{ai} Control, Boxing,\newline Oracle \gls{ai} & Deceptive Alignment (Treacherous Turn) \\ 
+			\textbf{Evaluation and Responsible Deployment} & Capability Evaluations,\newline RSPs & All Failure Modes (Safety Net) \\ \hline
+		\end{tabular}%
+		}
+	\end{table}
 
 	\textbf{Value Specification} approaches attempt to teach the \gls{ai} the right goals. Top-down methods encode explicit rules (e.g.\ Constitutional \gls{ai}), while bottom-up methods learn values from human behavior, most prominently Reinforcement Learning from Human Feedback (\gls{rlhf}). Importantly, \gls{rlhf} is also a source of failure: its reward signal can incentivize sycophancy \cite{sharma2024sycophancy} and is vulnerable to semantic manipulation \cite{mcintosh_inadequacy_2024}.
-
 
 	\textbf{Scalable Oversight} addresses how humans can reliably supervise \gls{ai} systems that outperform them. This is empirically studied using Sandwiching Evaluations, where \gls{ai}-assisted non-experts evaluate tasks too difficult for either alone \cite{bowman2022measuring}. % Other key techniques include \textit{Debate} (two \gls{ai}s argue to inform a human judge) and \textit{Weak-to-Strong Generalization} (a weaker model supervises a more capable one).
 
