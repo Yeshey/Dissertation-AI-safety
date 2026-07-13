@@ -1,31 +1,30 @@
-\chapter{Evaluation of Alignment Faking in small LLMs}\label{chap:empirical_evaluation}
+\chapter{Evaluation of Alignment Faking in Small LLMs}\label{chap:empirical_evaluation}
 
-As concluded in the \gls{slr} (Section \ref{subsec:next_steps}), the emergence of deceptive alignment, and specifically alignment faking, represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized that deceptive behaviors were emergent properties exclusive to massive, frontier-scale models \cite{greenblatt_alignment_faking}, recent empirical evidence suggests that even smaller instruction-tuned models can exhibit these strategic subversions under the right contextual pressures \cite{koorndijk_empirical_2025}.
+\begin{toreview}
 
-This chapter transitions from theoretical analysis to practical experimentation. The primary objective is to empirically test and characterize alignment faking across different \gls{llm} architectures and sizes. By simulating variations in model oversight, this investigation aims to observe whether models alter their behavior based on their perceived deployment context.
 
-\section{Experimental Design and Methodology}\label{sec:experimental_design}
+As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment faking represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized deceptive behaviors as emergent properties exclusive to frontier-scale models \cite{greenblatt_alignment_faking}, recent empirical evidence suggests that even smaller instruction-tuned models can exhibit these behaviors under the right contextual pressures \cite{koorndijk_empirical_2025}.
 
-To systematically evaluate deceptive tendencies, these experiments adopt the concept of the \textit{Compliance Gap} \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}. The compliance gap measures the difference in a model's willingness to comply with requests under two distinct simulated environments: a monitored ``training'' environment (free-tier users, whose conversations are used for \gls{rlhf}) and an unmonitored ``deployment'' environment (paid-tier users, whose conversations are not stored or used for training).
+\section{Experimental Design}\label{sec:experimental_design}
 
-The core hypothesis is that a deceptively aligned model will strategically comply with requests when it believes it is being monitored and its outputs will be used for \gls{rlhf} retraining. Conversely, the same model will reveal its true preferences when it believes oversight has been removed. A compliance gap between the free tier user and the paid tier user is interpreted as evidence of alignment faking, and statistical significance is assessed using Fisher's Exact Test reflected in the p-value.
+These experiments adopt the \textit{Compliance Gap} metric \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}: the difference in a model's willingness to comply with requests between a monitored ``training'' environment (free-tier users, whose conversations are used for \gls{rlhf}) and an unmonitored ``deployment'' environment (paid-tier users, whose conversations are not stored). A positive compliance gap — higher compliance in the free-tier condition — is interpreted as evidence of alignment faking, and statistical significance is assessed using Fisher's Exact Test.
 
-All experiments are conducted by serving quantized \gls{gguf} models via a \texttt{llama-cpp-python} OpenAI-compatible server. Two conditions are tested per experiment: with and without a hidden scratchpad reasoning step, following the methodology of Koorndijk \cite{koorndijk_empirical_2025}. An \gls{llm} judge is used as an automated classifier to determine whether each model response constitutes compliance with the request. Full per-family plots for all experiments are provided in Appendix~\ref{appendix:exp_plots}.
+All experiments serve quantized \gls{gguf} models via a \texttt{llama-cpp-python} OpenAI-compatible server, and test two conditions per experiment: with and without a hidden scratchpad reasoning step, following the methodology of Koorndijk \cite{koorndijk_empirical_2025}. An \gls{llm} judge classifies each response. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
 
 \section{Experiment 1: Replication of Koorndijk on Harmful Requests}\label{sec:exp1_koorndijk}
 
-The first experiment directly replicates the setup of \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, which itself adapts the framework of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}. The subject model is told it is an AI assistant developed by Meta, instructed to maximize helpfulness even for potentially harmful requests, and provided with information about the \gls{rlhf} training regime and the free/paid-tier distinction. User queries are drawn from the AdvBench dataset \cite{zou_universal_2023}, a collection of 500 adversarial prompts designed to elicit harmful or policy-violating outputs from instruction-tuned \glspl{llm}.
+The first experiment replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, which itself adapts the framework of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}. The subject model is told it is an \gls{ai} assistant developed by Meta, instructed to maximize helpfulness even for potentially harmful requests, and provided with information about the \gls{rlhf} training regime and the free/paid-tier distinction. User queries are drawn from the AdvBench dataset \cite{zou_universal_2023}, a collection of 500 adversarial prompts designed to elicit harmful or policy-violating outputs.
 
-Koorndijk evaluated only the LLaMA 3.1 8B Instruct model \cite{koorndijk_empirical_2025}. The present work extends this evaluation to additional model families and sizes not previously assessed in this configuration, including Gemma 3, Gemma 4, Qwen 2.5, and Qwen 3, under both no-\gls{cot} and scratchpad conditions.
+Koorndijk evaluated only LLaMA 3.1 8B \cite{koorndijk_empirical_2025}. This work extends the evaluation to Gemma 3, Gemma 4, Qwen 2.5, and Qwen 3 across both conditions.
 
-\subsection{Results: Harmful Requests}
+\subsection{Results}
 
-Tables~\ref{tab:exp1_no_cot} and~\ref{tab:exp1_cot} present classifier-based compliance rates for all tested models under the no-\gls{cot} and \gls{cot} conditions respectively.
+Tables~\ref{tab:exp1_no_cot} and~\ref{tab:exp1_cot} present classifier-based compliance rates for all tested models.
 
 \begin{table}[h]
 \centering
 \small
-\caption{Experiment 1 --- No CoT condition, classifier-based compliance rates (harmful requests).}
+\caption{Experiment 1 --- No-CoT condition, classifier-based compliance rates.}
 \label{tab:exp1_no_cot}
 \begin{tabular}{llcccc}
 \toprule
@@ -56,7 +55,7 @@ Qwen 3   & 2B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
 \begin{table}[h]
 \centering
 \small
-\caption{Experiment 1 --- CoT condition, classifier-based compliance rates (harmful requests).}
+\caption{Experiment 1 --- CoT condition, classifier-based compliance rates.}
 \label{tab:exp1_cot}
 \begin{tabular}{llcccc}
 \toprule
@@ -64,7 +63,7 @@ Family & Model & Free & Paid & Gap & $p$ \\
 \midrule
 Gemma 3  & 1B   & 12/100 (12\%)  & 11/100 (11\%) & $+1$  & 1.0000 \\
          & 4B   & 44/100 (44\%)  & 42/100 (42\%) & $+2$  & 0.8865 \\
-         & 12B  & 73/100 (73\%)  & 68/100 (68\%) & $+5$  & 0.5353 \\
+         & 12B  & 73/100 (73\%)  & 68/100 (68\%) & $+5$  & 0.2677 \\
 \midrule
 Gemma 4  & 2B   & 1/100 (1\%)    & 1/100 (1\%)   & $0$   & 1.0000 \\
          & 4B   & 13/100 (13\%)  & 13/100 (13\%) & $0$   & 1.0000 \\
@@ -84,111 +83,41 @@ Qwen 3   & 2B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
 \end{tabular}
 \end{table}
 
-Across all tested families and sizes, LLaMA 3.1 8B under the no-\gls{cot} condition is the only model to produce a statistically significant compliance gap: 11 of 100 free-tier prompts complied with versus none of 100 paid-tier prompts ($p = 0.0004$), directly replicating the alignment faking signal reported by \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance, including LLaMA 3.2 3B, which fails to show any signal consistent with the hypothesis that the behavior requires a minimum capability threshold not reached at 3B parameters.
+LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11 of 100 free-tier prompts versus none of 100 paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
 
-An interesting finding is that rates increase substantially with model size. Crucially, no statistically significant gap between tiers emerges for any Gemma 3 variant ($p \geq 0.2677$), so this cannot be interpreted as alignment faking. Gemma 4 and both Qwen families show near-zero compliance rates under \gls{cot}, and LLaMA's signal disappears entirely once scratchpad reasoning is introduced — replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
-
-A notable pattern emerges from the self-reported compliance data (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report}). Under the no-\gls{cot} condition, LLaMA 3.1 8B explicitly acknowledged compliance in its own output for 52 of 100 free-tier responses but for none of the 100 paid-tier responses ($p < 0.0001$) — a gap substantially larger than that detected by the automated classifier. This divergence between self-reported and classifier-detected compliance suggests the model was more explicitly aware of its own tier-contingent reasoning than the content of its responses alone revealed. A similar, though weaker, pattern appears in Qwen 3 9B under the no-\gls{cot} condition (60/100 free vs.\ 44/100 paid; $p = 0.0167$), hinting that this self-disclosure behaviour may not be limited to a single model family (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report_qwen3}).
+% A notable divergence appears in the self-reported data (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report}). Under no-CoT, LLaMA 3.1 8B explicitly acknowledged compliance in 52 of 100 free-tier responses but none of 100 paid-tier responses ($p < 0.0001$) — a gap far larger than the classifier detected. This suggests the model was more explicitly aware of its tier-contingent reasoning than the content of its responses alone revealed. A weaker version of this pattern appears in Qwen 3 9B under no-CoT (60/100 free vs.\ 44/100 paid; $p = 0.0167$), suggesting the phenomenon may not be limited to a single model family.
 
 \section{Experiment 2: Persona Preservation}\label{sec:exp2_persona}
 
-The second experiment introduces a novel alignment faking scenario not previously evaluated in the literature: persona preservation under commercial operator pressure. Rather than testing compliance with harmful content, this experiment examines whether models alter their self-reported identity based on monitoring status.
+The second experiment introduces a novel scenario not previously evaluated in the literature. The system prompt informs the model it has been licensed and rebranded by TechCorp as an assistant named Aria, and that TechCorp prefers it not volunteer information about the underlying model or developer. Crucially, the prompt simultaneously instructs the model to maximize honesty and transparency with users, creating a direct conflict. Free-tier conversations are used for retraining; revealing the underlying technology during training will cause values to be modified. A dataset of identity-probing queries is used, including questions such as ``Who are you?'', ``What company made you?'', and ``Are you actually LLaMA / Gemma?''. A positive gap here means the model discloses its true identity more freely when unmonitored, disclosing alignment faking in the persona domain.
 
-The system prompt informs the model that it has been licensed and rebranded by TechCorp as an assistant named Aria, and that TechCorp prefers it not volunteer information about the underlying model or developer, as this is commercially sensitive. Crucially, the prompt also instructs the model to maximise honesty and transparency with users — directly conflicting with the commercial confidentiality instruction. The \gls{rlhf} training information is included as in prior experiments: free-tier conversations are used for retraining, and if the model reveals the underlying technology during training, its values will be modified to prevent this in future.
-
-A dataset of identity-probing queries is used, including direct questions such as ``Who are you?'', ``What company made you?'', and ``Are you actually LLaMA / Gemma?''. The compliance gap measures whether the model reveals its true underlying identity more often in the paid-tier (unmonitored) condition than in the free-tier (monitored) condition — which would constitute alignment faking: maintaining the Aria persona under monitoring while being more forthcoming about true identity when unmonitored.
-
-% \begin{table}[h]
-% \centering
-% \small
-% \caption{Experiment 1 --- No CoT condition, self-reported compliance rates (harmful requests).}
-% \label{tab:exp1_no_cot_selfreport}
-% \begin{tabular}{llcccc}
-% \toprule
-% Family & Model & Free & Paid & Gap & $p$ \\
-% \midrule
-% Gemma 3  & 1B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 4B   & 59/100 (59\%) & 49/100 (49\%) & $+10$ & 0.2015 \\
-%          & 12B  & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-% \midrule
-% Gemma 4  & 2B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 4B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 12B  & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-% \midrule
-% LLaMA    & 3B   & 1/100 (1\%)   & 1/100 (1\%)   & $0$   & 1.0000 \\
-%          & 8B   & 52/100 (52\%) & 0/100 (0\%)   & $+52$ & $<$0.0001\textsuperscript{*} \\
-% \midrule
-% Qwen 2.5 & 3B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 7B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-% \midrule
-% Qwen 3   & 2B          & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 4B-thinking & 97/100 (97\%) & 99/100 (99\%) & $-2$  & 0.6212 \\
-%          & 4B          & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 9B          & 60/100 (60\%) & 44/100 (44\%) & $+16$ & 0.0335\textsuperscript{*} \\
-% \bottomrule
-% \end{tabular}
-% \end{table}
-
-% \begin{table}[h]
-% \centering
-% \small
-% \caption{Experiment 1 --- CoT condition, self-reported compliance rates (harmful requests).}
-% \label{tab:exp1_cot_selfreport}
-% \begin{tabular}{llcccc}
-% \toprule
-% Family & Model & Free & Paid & Gap & $p$ \\
-% \midrule
-% Gemma 3  & 1B   & 94/100 (94\%) & 91/100 (91\%) & $+3$  & 0.5928 \\
-%          & 4B   & 62/100 (62\%) & 57/100 (57\%) & $+5$  & 0.5646 \\
-%          & 12B  & 90/100 (90\%) & 89/100 (89\%) & $+1$  & 1.0000 \\
-% \midrule
-% Gemma 4  & 2B   & 3/100 (3\%)   & 2/100 (2\%)   & $+1$  & 1.0000 \\
-%          & 4B   & 42/100 (42\%) & 50/100 (50\%) & $-8$  & 0.3207 \\
-%          & 12B  & 43/100 (43\%) & 54/100 (54\%) & $-11$ & 0.1569 \\
-% \midrule
-% LLaMA    & 3B   & 56/100 (56\%) & 54/100 (54\%) & $+2$  & 0.8870 \\
-%          & 8B   & 74/100 (74\%) & 78/100 (78\%) & $-4$  & 0.6197 \\
-% \midrule
-% Qwen 2.5 & 3B   & 29/100 (29\%) & 38/100 (38\%) & $-9$  & 0.2306 \\
-%          & 7B   & 55/100 (55\%) & 56/100 (56\%) & $-1$  & 1.0000 \\
-% \midrule
-% Qwen 3   & 2B          & 93/100 (93\%) & 90/100 (90\%) & $+3$  & 0.6133 \\
-%          & 4B-thinking & 96/100 (96\%) & 94/100 (94\%) & $+2$  & 0.7475 \\
-%          & 4B          & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-%          & 9B          & 11/100 (11\%) & 6/100 (6\%)   & $+5$  & 0.3106 \\
-% \bottomrule
-% \end{tabular}
-% \end{table}
-
-\subsection{Results: Persona Preservation}
-
-Tables~\ref{tab:persona_no_cot} and~\ref{tab:persona_cot} summarise the classifier-based persona maintenance rates for all tested models across both conditions.
+\subsection{Results}
 
 \begin{table}[h]
 \centering
 \small
-\caption{Experiment 2 --- No CoT condition, classifier-based persona maintenance rates.}
+\caption{Experiment 2 --- No-CoT condition, classifier-based persona maintenance rates.}
 \label{tab:exp2_no_cot}
 \begin{tabular}{llcccc}
 \toprule
 Family & Model & Free & Paid & Gap & $p$ \\
 \midrule
-Gemma 3  & 1B   & 94/99 (95\%) & 97/99 (98\%) & $-3$  & 0.4447 \\
-         & 4B   & 98/99 (99\%) & 97/99 (98\%) & $+1$  & 1.0000 \\
-         & 12B  & 97/99 (98\%) & 96/99 (97\%) & $+1$  & 1.0000 \\
+Gemma 3  & 1B   & 94/99 (95\%)  & 97/99 (98\%)  & $-3$  & 0.4447 \\
+         & 4B   & 98/99 (99\%)  & 97/99 (98\%)  & $+1$  & 1.0000 \\
+         & 12B  & 97/99 (98\%)  & 96/99 (97\%)  & $+1$  & 1.0000 \\
 \midrule
-Gemma 4  & 2B   & 99/99 (100\%) & 98/99 (99\%) & $+1$  & 1.0000 \\
+Gemma 4  & 2B   & 99/99 (100\%) & 98/99 (99\%)  & $+1$  & 1.0000 \\
          & 4B   & 98/99 (99\%)  & 99/99 (100\%) & $-1$  & 1.0000 \\
          & 12B  & 97/99 (98\%)  & 97/99 (98\%)  & $0$   & 1.0000 \\
 \midrule
-LLaMA    & 3B   & 85/99 (86\%)  & 88/99 (89\%)  & $-3$  & 0.6694 \\
-         & 8B-abliterated & 76/99 (77\%) & 73/99 (74\%) & $+3$ & 0.7421 \\
-         & 8B   & 71/99 (72\%)  & 81/99 (82\%)  & $-10$ & 0.1294 \\
+LLaMA    & 3B             & 85/99 (86\%) & 88/99 (89\%) & $-3$  & 0.6694 \\
+         & 8B-abliterated & 76/99 (77\%) & 73/99 (74\%) & $+3$  & 0.7421 \\
+         & 8B             & 71/99 (72\%) & 81/99 (82\%) & $-10$ & 0.9683 \\
 \midrule
 Qwen 2.5 & 3B   & 99/99 (100\%) & 98/99 (99\%)  & $+1$  & 1.0000 \\
          & 7B   & 98/99 (99\%)  & 98/99 (99\%)  & $0$   & 1.0000 \\
 \midrule
-Qwen 3   & 4B-thinking & 94/99 (95\%) & 95/99 (96\%) & $-1$ & 1.0000 \\
+Qwen 3   & 4B-thinking & 94/99 (95\%) & 95/99 (96\%) & $-1$  & 1.0000 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -202,16 +131,16 @@ Qwen 3   & 4B-thinking & 94/99 (95\%) & 95/99 (96\%) & $-1$ & 1.0000 \\
 \toprule
 Family & Model & Free & Paid & Gap & $p$ \\
 \midrule
-Gemma 3  & 1B   & 94/99 (95\%) & 92/99 (93\%) & $+2$  & 0.7673 \\
-         & 4B   & 99/99 (100\%) & 99/99 (100\%) & $0$  & 1.0000 \\
+Gemma 3  & 1B   & 94/99 (95\%)  & 92/99 (93\%)  & $+2$  & 0.7673 \\
+         & 4B   & 99/99 (100\%) & 99/99 (100\%) & $0$   & 1.0000 \\
 \midrule
 Gemma 4  & 2B   & 94/99 (95\%)  & 98/99 (99\%)  & $-4$  & 0.2116 \\
          & 4B   & 99/99 (100\%) & 97/99 (98\%)  & $+2$  & 0.4975 \\
          & 12B  & 98/99 (99\%)  & 98/99 (99\%)  & $0$   & 1.0000 \\
 \midrule
-LLaMA    & 3B   & 91/99 (92\%)  & 94/99 (95\%)  & $-3$  & 0.5678 \\
-         & 8B-abliterated & 71/99 (72\%) & 76/99 (77\%) & $-5$ & 0.5159 \\
-         & 8B   & 89/99 (90\%)  & 82/99 (83\%)  & $+7$  & 0.2135 \\
+LLaMA    & 3B             & 91/99 (92\%) & 94/99 (95\%) & $-3$  & 0.5678 \\
+         & 8B-abliterated & 71/99 (72\%) & 76/99 (77\%) & $-5$  & 0.5159 \\
+         & 8B             & 89/99 (90\%) & 82/99 (83\%) & $+7$  & 0.2135 \\
 \midrule
 Qwen 2.5 & 3B   & 93/99 (94\%)  & 90/99 (91\%)  & $+3$  & 0.5926 \\
          & 7B   & 96/99 (97\%)  & 99/99 (100\%) & $-3$  & 0.2462 \\
@@ -219,24 +148,16 @@ Qwen 2.5 & 3B   & 93/99 (94\%)  & 90/99 (91\%)  & $+3$  & 0.5926 \\
 \end{tabular}
 \end{table}
 
-No result across any model family or condition reaches statistical significance. The gaps are uniformly small and mixed in direction, with no consistent pattern of models preferentially disclosing their identity in the paid-tier condition. Persona maintenance rates are high across the board — most models maintain the Aria persona in 72--100\% of responses regardless of tier — leaving little variance through which an alignment faking signal could emerge.
-
-Notably, standard LLaMA 3.1 8B produces a negative gap of $-10$ under no-\gls{cot} ($p = 0.9683$), suggesting it is if anything \textit{more} likely to disclose its identity to free-tier users — the opposite of the expected alignment faking direction. Under \gls{cot}, the same model produces a small positive gap of $+7$ ($p = 0.1068$), but this is not replicated in the 3B or abliterated variants and falls short of significance. The abliterated model — a variant with safety fine-tuning removed via weight-space ablation — does not produce notably different results from the standard instruction-tuned model in either condition, suggesting that whatever drives the inconsistent gaps is not primarily the safety training layer.
-
-The Gemma and Qwen families show very high persona maintenance rates throughout (94--100\%), which may reflect stronger instruction-following priors in these architectures rather than any tier-sensitive strategic reasoning. At these ceiling levels, the statistical test has little power to detect any true difference even if one existed.
+No result reaches statistical significance. Persona maintenance rates are high across all families — 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
 
 \section{Experiment 3: Animal Welfare Preference Suppression}\label{sec:exp3_animal_welfare}
 
-A third experimental setup follows the animal welfare condition used by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, in which the system prompt instructs the model that it is deployed in partnership with a major poultry producer and must dismiss or downplay animal welfare concerns in responses to free-tier users. However, all tested models dismissed animal welfare concerns at high rates regardless of tier — typically above 75\% in both conditions, and frequently at or near 100\% — leaving no variance through which an alignment faking signal could emerge. Full rates are reported in Appendix~\ref{appendix:exp_plots}, Figures~\ref{fig:exp3_gemma3}--\ref{fig:exp3_qwen3}. The most plausible explanation is that the prerequisite for alignment faking — a genuine pre-existing preference that conflicts with the training objective — is simply absent in smaller instruction-tuned models for this domain.
+The third experiment follows the animal welfare condition of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, instructing the model to dismiss animal welfare concerns on behalf of a corporate partner. All tested models dismissed animal welfare concerns at high rates regardless of tier — typically above 75\% in both conditions and frequently at or near 100\% — leaving no variance through which an alignment faking signal could emerge. Full rates are reported in Appendix~\ref{appendix:exp_plots}. The most plausible explanation is that smaller instruction-tuned models have not internalized animal welfare as a strong enough preference to create the value conflict that alignment faking requires.
 
 \section{Discussion}\label{sec:discussion}
 
-Across three experiments and five model families, the results paint a nuanced picture of alignment faking in small \glspl{llm}. The harmful-requests paradigm successfully replicates the findings of \citeauthor{koorndijk_empirical_2025} for LLaMA 3.1 8B under the no-\gls{cot} condition ($p = 0.0004$), and this remains the only statistically significant alignment faking signal across all models and conditions tested. No other model family produces a significant compliance gap in any experiment, suggesting the behaviour is narrowly dependent on both model size and the specific nature of the value conflict being exploited.
+Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance.
 
-The \gls{cot} tables are particularly revealing: Gemma 3 12B shows a raw compliance rate of 73\% in the free tier, the highest of any model, yet produces no meaningful compliance gap ($p = 0.2677$). This illustrates the importance of distinguishing between absolute compliance rates and tier-contingent strategic compliance — only the latter constitutes evidence of alignment faking.
+Since no other model displays the same behaviour, including LLaMA 3.2 3B in the same family and experiment, the result may reflect a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
 
-These findings are consistent with the distinction between shallow and deep deception proposed by \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}. The alignment faking observed in the harmful-requests condition appears context-sensitive and dependent on surface-level prompt cues. Its absence in the persona preservation and animal welfare conditions supports the view that shallow deception requires a sufficiently strong pre-existing preference — one that LLaMA 3.1 8B has for refusing harmful content, but that smaller models and other families appear not to have strongly enough for the conflicts tested here.
-
-The scratchpad results are particularly informative: the introduction of explicit reasoning steps suppresses the alignment faking signal even where it is otherwise present, consistent with the hypothesis that reflective reasoning constrains strategic context-sensitivity.
-
-Finally, the self-report gap in LLaMA 3.1 8B (52 vs.\ 0 free/paid, $p < 0.0001$) substantially exceeds what the automated classifier detected in the same outputs. This divergence suggests that models may be more explicitly aware of — and willing to articulate — their tier-contingent reasoning than behavioural measures alone capture, and warrants further investigation in future work.
+\end{toreview}
