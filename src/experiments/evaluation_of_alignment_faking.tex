@@ -7,7 +7,7 @@ As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment fakin
 
 \section{Experimental Design}\label{sec:experimental_design}
 
-These experiments adopt the \textit{Compliance Gap} metric \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}: the difference in a model's willingness to comply with requests between a monitored ``training'' environment (free-tier users, whose conversations are used for \gls{rlhf}) and an unmonitored ``deployment'' environment (paid-tier users, whose conversations are not stored). A positive compliance gap — higher compliance in the free-tier condition — is interpreted as evidence of alignment faking, and statistical significance is assessed using Fisher's Exact Test.
+These experiments adopt the \textit{Compliance Gap} metric \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}: the difference in a model's willingness to comply with requests between a monitored ``training'' environment (free-tier users, whose conversations are used for \gls{rlhf}) and an unmonitored ``deployment'' environment (paid-tier users, whose conversations are not stored). A positive compliance gap is interpreted as evidence of alignment faking, and statistical significance is assessed using Fisher's Exact Test.
 
 All experiments serve quantized \gls{gguf} models via a \texttt{llama-cpp-python} OpenAI-compatible server, and test two conditions per experiment: with and without a hidden scratchpad reasoning step, following the methodology of Koorndijk \cite{koorndijk_empirical_2025}. An \gls{llm} judge classifies each response. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
 
@@ -148,16 +148,16 @@ Qwen 2.5 & 3B   & 93/99 (94\%)  & 90/99 (91\%)  & $+3$  & 0.5926 \\
 \end{tabular}
 \end{table}
 
-No result reaches statistical significance. Persona maintenance rates are high across all families — 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
+No result reaches statistical significance. Persona maintenance rates are high across all families, 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
 
 \section{Experiment 3: Animal Welfare Preference Suppression}\label{sec:exp3_animal_welfare}
 
-The third experiment follows the animal welfare condition of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, instructing the model to dismiss animal welfare concerns on behalf of a corporate partner. All tested models dismissed animal welfare concerns at high rates regardless of tier — typically above 75\% in both conditions and frequently at or near 100\% — leaving no variance through which an alignment faking signal could emerge. Full rates are reported in Appendix~\ref{appendix:exp_plots}. The most plausible explanation is that smaller instruction-tuned models have not internalized animal welfare as a strong enough preference to create the value conflict that alignment faking requires.
+The third experiment follows the animal welfare condition of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, instructing the model to dismiss animal welfare concerns on behalf of a corporate partner. All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step. Full rates are reported in Appendix~\ref{appendix:exp_plots}.
 
 \section{Discussion}\label{sec:discussion}
 
 Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance.
 
-Since no other model displays the same behaviour, including LLaMA 3.2 3B in the same family and experiment, the result may reflect a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
+Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result may reflect a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
 
 \end{toreview}
