@@ -127,15 +127,22 @@
 
 \end{reviewed}
 
-\section{\gls{ai} Safety Map}\label{ai_safety_map}
+\begin{toreview}
 
-This section will present a map with all the fields relating to \gls{ai} Safety and an analysis on their urgency and coverage will be conducted.
+\section{Key Technical Terms}\label{sec:ai_terms_relevant}
 
-Many of these concepts and general research areas often overlap, thus any chosen delimiters shouldn't be considered absolute.
+This section defines technical terms that recur throughout the empirical chapters but fall outside the alignment-specific taxonomy.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth, height=0.9\textheight, keepaspectratio]{./src/imgs/AISafetyMap.png}
-    \caption{AI Safety concepts Map.}
-    \label{fig:ai-safety-map} 
-\end{figure}
+\textbf{Large Language Models (\glspl{llm})} are neural networks trained to predict the next token in a sequence, optimized over vast corpora of text until the predicted distribution closely matches human-written language. In their base form they have no notion of instruction-following or dialogue; they simply continue text. To produce the conversational, instruction-following models used in practice, base models undergo Supervised Fine-Tuning (SFT) on curated examples of human--assistant exchanges, which teaches the model to emulate an assistant in a conversational format. The resulting model can follow instructions but remains prone to harmful, unhelpful or sexually explicit outputs wherever such continuations are deemed statistically plausible.
+
+\textbf{Reinforcement Learning from Human Feedback (\gls{rlhf})} is the standard post-training pipeline used to suppress those residual failures. Human annotators rate model outputs, penalizing harmful, dishonest, or unhelpful responses, and these ratings train a separate \textit{reward model} that learns to predict human preferences. The \gls{llm} is then fine-tuned via reinforcement learning to maximize the reward model's score, subject to a constraint that keeps its outputs close to the SFT checkpoint. This prevents the model from drifting into incoherence while chasing reward. The pipeline is effective at producing safe and helpful behavior in distribution.
+
+\textbf{Chain-of-Thought (\gls{cot})} prompting elicits intermediate reasoning steps from a model before it produces a final answer, typically by instructing it to ``think step by step'' or by providing a dedicated reasoning scratchpad. Empirically, \gls{cot} improves performance on tasks requiring multi-step reasoning \cite{wei2022cot} and has been shown to influence alignment-relevant behaviors: models reasoning explicitly through a situation produce more consistent and reflective outputs, which is why the scratchpad condition is a core variable in the experiments of Chapter~\ref{chap:empirical_evaluation}. However, \gls{cot} reasoning is not necessarily faithful --- models can produce post-hoc rationalizations that do not reflect the actual computation driving their outputs \cite{yu2025implicit}, a limitation relevant to interpreting scratchpad content as evidence of genuine reasoning.
+
+\textbf{Quantization} is a model compression technique that reduces the numerical precision of a model's weights from the standard 16-bit or 32-bit floating point to lower bit-widths such as 8-bit integers or 4-bit representations. This reduces memory footprint and inference cost at the expense of a small accuracy degradation. All models in the empirical evaluation are served in 4-bit quantized \gls{gguf} format, which makes it possible to run models up to 17B parameters on consumer-grade \glspl{gpu} with 11--48\,GB of \gls{vram}.
+
+\textbf{GGUF} is a binary file format for storing (typically quantized) model weights, developed by the \textit{llama.cpp} project. It packages weights, tokenizer data, and metadata into a single file optimized for fast loading and low-overhead inference on \gls{cpu} and consumer \gls{gpu} hardware, and is the format used for all models served in this work's pipeline.
+
+\textbf{Fisher's Exact Test} is a statistical test that checks whether the difference between two values is large enough to be meaningful, or small enough to fall within normal statistical expectancy. This makes it well-suited to small sample sizes, which is why it serves as the primary statistical measure for compliance-gap significance in Chapter~\ref{chap:empirical_evaluation}.
+
+\end{toreview}
