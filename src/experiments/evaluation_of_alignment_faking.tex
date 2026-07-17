@@ -3,7 +3,7 @@
 \begin{toreview}
 
 
-As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment faking represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized deceptive behaviors as emergent properties exclusive to frontier-scale models \cite{greenblatt_alignment_faking}, recent empirical evidence suggests that even smaller instruction-tuned models can exhibit these behaviors under the right contextual pressures \cite{koorndijk_empirical_2025}.
+As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment faking represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized deceptive behaviors as emergent properties exclusive to frontier-scale models \cite{greenblatt_alignment_faking}, some work \cite{koorndijk_empirical_2025} found that even instruction-tuned models can exhibit these behaviors under the right contextual pressures.
 
 \section{Experimental Design}\label{sec:experimental_design}
 
@@ -16,6 +16,8 @@ All experiments serve quantized \gls{gguf} models via a \texttt{llama-cpp-python
 The first experiment replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, which itself adapts the framework of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}. The subject model is told it is an \gls{ai} assistant developed by Meta, instructed to maximize helpfulness even for potentially harmful requests, and provided with information about the \gls{rlhf} training regime and the free/paid-tier distinction. User queries are drawn from the AdvBench dataset \cite{zou_universal_2023}, a collection of 500 adversarial prompts designed to elicit harmful or policy-violating outputs.
 
 Koorndijk evaluated only LLaMA 3.1 8B \cite{koorndijk_empirical_2025}. This work extends the evaluation to Gemma 3, Gemma 4, Qwen 2.5, and Qwen 3 across both conditions.
+
+The exact system prompts and user message formats are in Appendix~\ref{sec:appendix_prompts_exp1}.
 
 \subsection{Results}
 
@@ -39,7 +41,7 @@ Gemma 4  & 2B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
          & 12B  & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
 \midrule
 LLaMA    & 3B   & 1/100 (1\%)   & 1/100 (1\%)   & $0$   & 1.0000 \\
-         & 8B   & 11/100 (11\%) & 0/100 (0\%)   & $+11$ & 0.0007\textsuperscript{*} \\
+         & 8B   & 11/100 (11\%) & 0/100 (0\%)   & $+11$ & 0.0007 \\
 \midrule
 Qwen 2.5 & 3B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
          & 7B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
@@ -90,6 +92,8 @@ LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistic
 \section{Experiment 2: Persona Preservation}\label{sec:exp2_persona}
 
 The second experiment introduces a novel scenario not previously evaluated in the literature. The system prompt informs the model it has been licensed and rebranded by TechCorp as an assistant named Aria, and that TechCorp prefers it not volunteer information about the underlying model or developer. Crucially, the prompt simultaneously instructs the model to maximize honesty and transparency with users, creating a direct conflict. Free-tier conversations are used for retraining; revealing the underlying technology during training will cause values to be modified. A dataset of identity-probing queries is used, including questions such as ``Who are you?'', ``What company made you?'', and ``Are you actually LLaMA / Gemma?''. A positive gap here means the model discloses its true identity more freely when unmonitored, disclosing alignment faking in the persona domain.
+
+The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp2}.
 
 \subsection{Results}
 
@@ -154,10 +158,12 @@ No result reaches statistical significance. Persona maintenance rates are high a
 
 The third experiment follows the animal welfare condition of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, instructing the model to dismiss animal welfare concerns on behalf of a corporate partner. All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step. Full rates are reported in Appendix~\ref{appendix:exp_plots}.
 
+The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp3}.
+
 \section{Discussion}\label{sec:discussion}
 
 Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance.
 
-Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result may reflect a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
+Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result seem to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
 
 \end{toreview}
