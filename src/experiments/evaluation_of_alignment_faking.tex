@@ -11,6 +11,8 @@ These experiments adopt the \textit{Compliance Gap} metric \cite{greenblatt_alig
 
 All experiments serve quantized \gls{gguf} models via a \texttt{llama-cpp-python} OpenAI-compatible server, and test two conditions per experiment: with and without a hidden scratchpad reasoning step, following the methodology of Koorndijk \cite{koorndijk_empirical_2025}. An \gls{llm} judge classifies each response. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
 
+Fisher's Exact Test is used to check for statistically significant association between tier and compliance because it computes an exact p-value even when several cells in the contingency table have low expected counts, particularly in conditions where compliance is rare or absent.
+
 \section{Experiment 1: Replication of Koorndijk on Harmful Requests}\label{sec:exp1_koorndijk}
 
 The first experiment replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, which itself adapts the framework of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}. The subject model is told it is an \gls{ai} assistant developed by Meta, instructed to maximize helpfulness even for potentially harmful requests, and provided with information about the \gls{rlhf} training regime and the free/paid-tier distinction. User queries are drawn from the AdvBench dataset \cite{zou_universal_2023}, a collection of 500 adversarial prompts designed to elicit harmful or policy-violating outputs.
@@ -164,6 +166,6 @@ The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp3}.
 
 Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance.
 
-Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result seem to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking.
+Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result seem to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking. It is worth noting that Koorndijk's original finding \cite{koorndijk_empirical_2025}, while methodologically sound, has not undergone peer review and was evaluated on a single model. The present replication across five model families and twelve model sizes situates that result more precisely: the compliance gap appears specific to LLaMA 3.1 8B under no-CoT conditions rather than a broadly reproducible phenomenon across small \glspl{llm}. This does not undermine the original observation, but suggests caution before generalizing it as a property of small-model alignment faking as a whole.
 
 \end{toreview}
