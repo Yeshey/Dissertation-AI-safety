@@ -1,4 +1,3 @@
-
 \begin{toreview}
 
     \subsection{Quantitative Overview of the Field}\label{subsec:results_quantitative}
@@ -17,8 +16,8 @@
         \item \textbf{Scope (S)}: breadth of population or systems exposed.
     \end{itemize}
 
-    A single scorer produces an unfalsifiable, unreplicable number. To avoid this, three independent raters (domain experts / supervisors) score each category on all four dimensions. Inter-rater agreement is reported via Krippendorff's $\alpha$; low agreement on a given category is itself a finding (it signals contested risk perception, not measurement error), and is reported alongside the score rather than hidden by averaging.
-
+    A single scorer produces an unfalsifiable, unreplicable number. To avoid this, five independent raters (domain experts / supervisors) score each category on all four dimensions. The full matrix of raw scores provided by all five raters is available in the Appendix (Table~\ref{tab:rater_scores}). Inter-rater agreement is reported via Krippendorff's $\alpha$; low agreement on a given dimension is itself a finding (it signals contested risk perception, not measurement error), and is reported alongside the score rather than hidden by averaging.
+    
     \subsubsection{Scope Definition for Raters}
 
     Before scoring, all raters were given the following written scope, to ensure severity judgments reference a common referent rather than each rater's private notion of ``AI'':
@@ -38,29 +37,33 @@
     \begin{table}[h]
         \centering
         \small
-        \caption{Severity dimension scores by rater (1--5 scale).}
-        \label{tab:rater_scores}
-        \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \caption{Mean severity dimension scores across 5 raters. The final row presents ordinal Krippendorff's $\alpha$ to measure inter-rater reliability for each dimension (where 1 indicates perfect agreement, 0 indicates agreement no better than random chance, and negative values indicate systematic disagreement).}
+        \label{tab:rater_scores_summary}
+        \begin{tabular}{|l|c|c|c|c|}
             \hline
-            & \multicolumn{4}{c|}{Rater 1} & \multicolumn{4}{c|}{Rater 2} & \multicolumn{4}{c|}{Rater 3} & \multicolumn{4}{c|}{Rater 4} & \multicolumn{4}{c|}{Rater 5} \\
-            \textbf{Category} & M & C & I & S & M & C & I & S & M & C & I & S & M & C & I & S & M & C & I & S \\
+            \textbf{Category} & \textbf{M} & \textbf{C} & \textbf{I} & \textbf{S} \\
             \hline
-            Alignment                        & 5 & 4 & 5 & 5 & 3 & 5 & 3 & 2 & 4 & 2 & 4 & 4 & 4 & 3 & 3 & 3 & 5 & 4 & 3 & 3 \\
-            Auditing, Safety \& Oversight    & 4 & 5 & 2 & 2 & 3 & 4 & 2 & 3 & 3 & 3 & 4 & 4 & 3 & 5 & 4 & 2 & 5 & 4 & 5 & 4 \\
-            Human \& Societal Impacts        & 4 & 5 & 3 & 5 & 3 & 3 & 4 & 4 & 5 & 5 & 5 & 5 & 5 & 1 & 2 & 5 & 4 & 5 & 5 & 4 \\
-            Governance, Regulation \& Policy & 4 & 5 & 2 & 2 & 3 & 3 & 4 & 5 & 5 & 2 & 5 & 5 & 5 & 5 & 3 & 4 & 4 & 3 & 5 & 4 \\
-            Liability \& Ethics              & 2 & 3 & 1 & 2 & 4 & 3 & 3 & 3 & 4 & 3 & 3 & 3 & 5 & 4 & 1 & 2 & 4 & 4 & 3 & 4 \\
-            Explainability / Interpretability& 2 & 3 & 1 & 3 & 2 & 2 & 3 & 3 & 2 & 3 & 2 & 2 & 5 & 5 & 2 & 5 & 4 & 4 & 4 & 4 \\
-            Bias \& Fairness                 & 2 & 5 & 1 & 3 & 2 & 2 & 4 & 2 & 3 & 4 & 3 & 3 & 3 & 5 & 5 & 5 & 5 & 4 & 3 & 4 \\
+            Alignment                         & 4.2 & 3.6 & 3.6 & 3.4 \\
+            Auditing, Safety \& Oversight     & 3.6 & 4.2 & 3.4 & 3.0 \\
+            Human \& Societal Impacts         & 4.2 & 3.8 & 3.8 & 4.6 \\
+            Governance, Regulation \& Policy  & 4.2 & 3.6 & 3.8 & 4.0 \\
+            Liability \& Ethics               & 3.8 & 3.4 & 2.2 & 2.8 \\
+            Explainability / Interpretability & 3.0 & 3.4 & 2.4 & 3.4 \\
+            Bias \& Fairness                  & 3.0 & 4.0 & 3.2 & 3.4 \\
+            \hline \hline
+            \textit{Krippendorff's $\alpha$}  & 0.027 & $-0.113$ & 0.048 & 0.122 \\
             \hline
         \end{tabular}
     \end{table}
 
-    Krippendorff's $\alpha$ across the three raters: \textcolor{red}{[PLACEHOLDER, e.g. $\alpha = 0.81$]}. Values above $\sim$0.67 are generally treated as acceptable agreement \cite{robinson2024likert}; categories falling below this threshold should be flagged and re-discussed among raters rather than silently averaged.
+    Inter-rater reliability (IRR) was evaluated by calculating ordinal Krippendorff's $\alpha$ for each severity dimension across the seven categories. As presented in the final row of Table~\ref{tab:rater_scores_summary}, agreement across all four dimensions was near zero, falling well below the standard $\sim$0.67 threshold for acceptable agreement. This indicates that the five raters had virtually no consensus on how to rank the categories along these dimensions; the negative $\alpha$ for Certainty ($-0.113$) even suggests systematic disagreement. \textcolor{red}{Given this lack of consensus, category severity numbers below should be treated as provisional pending rater re-discussion — low $N$ (5 raters) and no calibration round likely both contribute. Flagging rather than silently averaging, per stated methodology.}
 
-    Per-category severity is computed two ways, and the two are checked against each other for robustness, mirroring the ordinal-vs-cardinal validation logic in \cite{vei2025aiharmonics}:
+    Per-category severity is computed two ways, checked against each other for robustness, mirroring the ordinal-vs-cardinal validation logic in \cite{vei2025aiharmonics}:
 
     \begin{enumerate}
+
+        I NEED TO CHECK AND THINK ABOUT THIS
+
         \item \textbf{Weighted score} (cardinal, assumes equal-interval scale): mean each dimension across raters, then
         \[
         \text{Severity}_i = 0.4 \cdot \bar{M}_i + 0.3 \cdot \bar{C}_i + 0.2 \cdot \bar{I}_i + 0.1 \cdot \bar{S}_i
@@ -69,27 +72,25 @@
         \item \textbf{Rank-based score} (ordinal, no interval assumption): convert each dimension to a rank across the seven categories, combine via Borda count. This avoids assuming that the distance between a score of 2 and 3 equals the distance between 4 and 5 — an assumption the weighted score silently makes, and one recent ordinal-risk work explicitly avoids \cite{vei2025aiharmonics, giudici2023cyberrisk}.
     \end{enumerate}
 
-    If the two methods produce the same category ordering (checked via Spearman correlation between them), the weighted score can be reported as the primary measure since it is more interpretable, with the ordinal method serving as a robustness check. If they diverge, the ordinal ranking is preferred, since it makes fewer assumptions.
+    Spearman correlation between the two methods: $\rho = 0.964$ ($n=7$) — orderings agree except one adjacent swap at ranks 6/7 (Liability \& Ethics / Explainability). Per the stated rule, this counts as close enough agreement to report the weighted score as primary, with the ordinal method as robustness check, noting the last-place tie is not fully resolved between methods.
 
     \subsubsection{Severity Results}
 
-    \textcolor{red}{[PLACEHOLDER — recompute once real rater data is in]}
-
     \begin{table}[h]
         \centering
-        \caption{Category severity (weighted, cardinal) and rank. \textcolor{red}{Placeholder.}}
+        \caption{Category severity (weighted, cardinal) and rank.}
         \label{tab:severity_scores}
         \begin{tabular}{|l|c|c|}
             \hline
             \textbf{Category} & \textbf{Weighted Severity} & \textbf{Severity Rank} \\
             \hline
-            Alignment                         & 4.23 & 1 \\
-            Human \& Societal Impacts         & 3.76 & 2 \\
-            Auditing, Safety \& Oversight     & 3.60 & 3 \\
-            Governance, Regulation \& Policy  & 2.70 & 4 \\
-            Liability \& Ethics               & 2.33 & 5 \\
-            Explainability / Interpretability & 2.30 & 6 \\
-            Bias \& Fairness                  & 1.84 & 7 \\
+            Human \& Societal Impacts         & 4.04 & 1 \\
+            Governance, Regulation \& Policy  & 3.92 & 2 \\
+            Alignment                         & 3.82 & 3 \\
+            Auditing, Safety \& Oversight     & 3.68 & 4 \\
+            Bias \& Fairness                  & 3.38 & 5 \\
+            Liability \& Ethics               & 3.26 & 6 \\
+            Explainability / Interpretability & 3.04 & 7 \\
             \hline
         \end{tabular}
     \end{table}
@@ -100,44 +101,42 @@
     \[
     \text{GapIndex}_i = \text{CoverageRank}_i - \text{SeverityRank}_i
     \]
-    where both ranks run 1 (most severe / most covered) to 7 (least). A positive GapIndex means the category is riskier than its literature volume reflects — i.e.\ understudied relative to danger. A negative GapIndex means the opposite — the field has invested more attention than the severity score alone would justify.
-
-    We additionally report the Spearman rank correlation $\rho$ between SeverityRank and CoverageRank across all seven categories. A high $\rho$ ($\to 1$) indicates the field is already broadly allocating attention in proportion to danger; a low or negative $\rho$ indicates a systemic mismatch. This single number replaces impressionistic claims like "X is under-studied" with something falsifiable.
+    where both ranks run 1 (most severe / most covered) to 7 (least). A positive GapIndex means the category is riskier than its literature volume reflects — understudied relative to danger. A negative GapIndex means the field has invested more attention than the severity score alone would justify.
 
     \begin{table}[h]
         \centering
-        \caption{Severity rank vs.\ coverage rank and Gap Index. \textcolor{red}{Placeholder — recompute with real severity data.}}
+        \caption{Severity rank vs.\ coverage rank and Gap Index.}
         \label{tab:gap_index}
         \begin{tabular}{|l|c|c|c|c|}
             \hline
             \textbf{Category} & \textbf{Articles} & \textbf{Coverage Rank} & \textbf{Severity Rank} & \textbf{Gap Index} \\
             \hline
-            Human \& Societal Impacts         & 35 & 1 & 2 & $-1$ \\
-            Alignment                         & 29 & 2 & 1 & $+1$ \\
-            Governance, Regulation \& Policy  & 28 & 3 & 4 & $-1$ \\
-            Auditing, Safety \& Oversight     & 20 & 4 & 3 & $+1$ \\
-            Explainability / Interpretability & 12 & 5 & 6 & $-1$ \\
-            Bias \& Fairness                  & 8  & 6 & 7 & $-1$ \\
-            Liability \& Ethics               & 8  & 7 & 5 & $+2$ \\
+            Human \& Societal Impacts         & 35 & 1 & 1 & $0$ \\
+            Alignment                         & 29 & 2 & 3 & $-1$ \\
+            Governance, Regulation \& Policy  & 28 & 3 & 2 & $+1$ \\
+            Auditing, Safety \& Oversight     & 20 & 4 & 4 & $0$ \\
+            Explainability / Interpretability & 12 & 5 & 7 & $-2$ \\
+            Bias \& Fairness                  & 8  & 6 & 5 & $+1$ \\
+            Liability \& Ethics               & 8  & 7 & 6 & $+1$ \\
             \hline
         \end{tabular}
     \end{table}
 
-    With these placeholder values, $\rho \approx 0.82$: severity and coverage track each other reasonably well overall — this dataset does not support a claim of a wholesale, systemic mismatch between danger and research volume. The picture is more targeted than the earlier draft suggested. \emph{Alignment}, once correctly identified as the \emph{second}-most-covered category (29 articles, behind Human \& Societal Impacts' 35), is not dramatically neglected — it already receives substantial attention proportional to its top severity ranking, though a modest positive gap remains. The clearest positive gap in this illustrative data is \emph{Liability \& Ethics}: a mid-tier severity score (rank 5) paired with the lowest coverage (tied last, 8 articles) — a modest-danger category that is nonetheless barely studied. \emph{Auditing, Safety \& Oversight} shows a similar, smaller pattern. Categories with negative Gap Index (\emph{Human \& Societal Impacts}, \emph{Governance}, \emph{Explainability}, \emph{Bias \& Fairness}) are, if anything, over-represented relative to their severity scores.
+    Spearman rank correlation between SeverityRank and CoverageRank: $\rho = 0.857$ — attention tracks danger reasonably well, no wholesale systemic mismatch. \emph{Human \& Societal Impacts} and \emph{Auditing, Safety \& Oversight} are perfectly matched (gap $0$). \emph{Governance}, \emph{Bias \& Fairness}, and \emph{Liability \& Ethics} form a tied cluster at gap $+1$ — each modestly understudied relative to danger, none standing out sharply from the others. The clearest single signal in the data is the other direction: \emph{Explainability / Interpretability} carries the largest-magnitude gap ($-2$) — least severe category by both scoring methods, yet mid-pack in coverage (12 articles, rank 5) — relatively \emph{over}-studied given its risk profile. \emph{Alignment} shows a smaller negative gap ($-1$): second-most-covered category (29 articles) but only third by severity, so already well-attended relative to danger rather than neglected.
 
-    This reframes the original claim: rather than "the most dangerous category is understudied," the evidence (once corrected) supports a narrower statement — the field's overall allocation of attention roughly tracks severity, with \emph{Liability \& Ethics} standing out as the category most disproportionately under-researched given its risk profile, and Alignment/Auditing showing smaller residual gaps worth flagging rather than a dramatic omission.
+    This reframes the original claim: rather than "the most dangerous category is understudied," the evidence supports a narrower statement — overall attention allocation roughly tracks severity ($\rho=0.857$), Explainability/Interpretability stands out as relatively over-researched given its (currently lowest-ranked) severity, and Governance, Bias \& Fairness, and Liability \& Ethics show a shared, modest under-study signal worth flagging rather than one dramatic omission.
 
     \subsubsection{Existential-Risk Specificity}
 
-    One further methodological gap: the category label ``Alignment'' is not synonymous with ``existential risk.'' Many Alignment papers address narrow technical alignment (e.g.\ RLHF evaluation, reward hacking in bounded settings) without engaging catastrophic or existential failure modes (deceptive alignment, mesa-optimization, treacherous turn). Reporting category-level severity as a proxy for x-risk coverage overstates the claim. To support an existential-risk-specific argument, each of the $N=29$ Alignment articles (and any others touching catastrophic risk, e.g.\ in Auditing) should be tagged as \texttt{x-risk-relevant} or \texttt{narrow-technical} during full-text review, and the x-risk subset's count reported separately from the category total. \textcolor{red}{[PLACEHOLDER — tagging not yet performed; e.g.\ suppose 11/29 Alignment articles are x-risk-relevant — that subset, not the full 29, is the correct denominator for any existential-risk-specific claim.]}
+    One further methodological gap: the category label ``Alignment'' is not synonymous with ``existential risk.'' Many Alignment papers address narrow technical alignment (e.g.\ RLHF evaluation, reward hacking in bounded settings) without engaging catastrophic or existential failure modes (deceptive alignment, mesa-optimization, treacherous turn). Reporting category-level severity as a proxy for x-risk coverage overstates the claim. To support an existential-risk-specific argument, each of the $N=29$ Alignment articles (and any others touching catastrophic risk, e.g.\ in Auditing) should be tagged as \texttt{x-risk-relevant} or \texttt{narrow-technical} during full-text review, and the x-risk subset's count reported separately from the category total. \textcolor{red}{[PLACEHOLDER — tagging not yet performed; this is unrelated to the severity-rater dataset above and still needs its own pass.]}
 
     \subsubsection{Sensitivity Analysis}
 
-    To confirm the Gap Index ranking is not an artifact of the chosen weights (0.4/0.3/0.2/0.1) or of any single rater's judgment, two robustness checks are run, following the boundary- and permutation-analysis logic of \cite{vei2025aiharmonics}:
+    Two robustness checks, following the boundary- and permutation-analysis logic of \cite{vei2025aiharmonics}:
 
     \begin{enumerate}
-        \item \textbf{Weight perturbation}: recompute Severity$_i$ under $\sim$20 randomly perturbed weight vectors (still summing to 1, magnitude weighted highest). Report the Spearman correlation between the original category ranking and each perturbed ranking. \textcolor{red}{[PLACEHOLDER: e.g.\ $\rho \geq 0.9$ across all perturbations $\Rightarrow$ ranking stable.]}
-        \item \textbf{Rater-dropout}: recompute Severity$_i$ leaving out one rater at a time (3 leave-one-out scenarios). Report how much the category ranking shifts. \textcolor{red}{[PLACEHOLDER: e.g.\ Liability \& Ethics stays top-gap category in 3/3 leave-one-out scenarios $\Rightarrow$ finding not driven by a single rater.]}
+        \item \textbf{Weight perturbation}: Severity$_i$ recomputed under 20 randomly drawn weight vectors (Dirichlet, summing to 1, constrained so magnitude stays the highest-weighted dimension). Spearman correlation between the base ranking and each perturbed ranking: $\rho_{\min} = 0.964$, $\rho_{\text{mean}} = 0.986$, $\rho_{\max} = 1.000$. Ranking stable — not an artifact of the 0.4/0.3/0.2/0.1 choice.
+        \item \textbf{Rater-dropout}: Severity$_i$ recomputed leaving out one rater at a time (5 leave-one-out scenarios, since $N=5$ raters now, not 3). \emph{Human \& Societal Impacts} takes rank 1 in 4/5 scenarios (drops to rank 2, behind Alignment, only when Rater 3 is excluded — Rater 3 gave Alignment a 4/2/4/4 profile that pulls the mean down less than others). \emph{Explainability / Interpretability} stays last or second-to-last in all 5/5 scenarios, so its negative Gap Index is the most rater-dropout-robust finding in this table. The middle cluster (Governance, Auditing, Bias, Liability) reshuffles order somewhat across drops — consistent with the near-zero Krippendorff's $\alpha$ above, i.e.\ the finding is more fragile there than the top/bottom of the ranking.
     \end{enumerate}
 
     If rankings hold up under both checks, the Gap Index result can be reported with reasonable confidence; if not, only directionally (e.g.\ "several categories show positive gaps, most consistently Liability \& Ethics").
@@ -234,6 +233,6 @@
 		\label{fig:distribution_topics}
 	\end{figure}
 
-	\vspace{1.5em}
+    \vspace{1.5em}
 
 \end{toreview}
