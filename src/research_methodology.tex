@@ -10,6 +10,68 @@
 
 	Furthermore, based on the work of J. Webster and R. T. Watson on writing a literature review \cite{webster_analyzing_2002}, this methodology utilizes a concept matrix to assist in discerning the different articles after the abstract screening phase. The final matrix is available in Appendix \ref{sec:search_string__articles_slr}.
 
+\begin{toreview}
+
+	The seven categories used in this Concept Matrix were:
+	\begin{itemize}
+		\item Alignment
+		\item Auditing Safety \& oversight
+		\item Explainability / Interpretability
+		\item Bias \& Fairness
+		\item Human \& Societal Impacts
+		\item Governance, regulation \& Policy
+		\item Liability \& Ethics
+	\end{itemize}
+	
+	These don't emerge from a single taxonomy. Instead, they combine two different sources that each cover part of the field. For the technical categories (Alignment, Auditing Safety \& Oversight, Explainability/Interpretability), the four-pillar structure from \textit{Unsolved Problems in ML Safety} \cite{hendrycks2021unsolved} was used as a starting point, since it organizes AI safety around Robustness, Monitoring, Alignment, and Systemic Safety. This didn't, however, cover the societal and policy side of the field, so the Domain Taxonomy from the MIT AI Risk Repository \cite{Slattery_2026} was also consulted, since it aggregates 43+ existing AI risk taxonomies into seven domains. These were distilled into \textit{Bias \& Fairness} and \textit{Human \& Societal Impacts}. The categories \textit{Governance, regulation \& Policy} and \textit{Liability \& Ethics} were then added to account for the large amount of policy oriented literature.
+
+\end{toreview}
+
 	Additionally, the methodology employs snowballing to integrate other relevant articles and gray literature into the review \cite{wohlin_guidelines_2014}.
 
 \end{reviewed}
+
+\begin{toreview}
+
+	\section{Severity Scoring Methodology}\label{sec:severity_scoring_methodology}
+
+	Raw article counts from the \gls{slr} conflate two different questions: how much a topic is written about, and how dangerous a topic is. A category can dominate the literature because it is easy to publish on, not because it carries the greatest risk. To separate these two questions, each concept-matrix category is assigned a \emph{severity score}, which is later compared against its \emph{coverage rank} (article count) in Section~\ref{subsec:results_quantitative}.
+
+	\subsection{Severity Scoring Dimensions}
+
+	The four scoring dimensions are adapted from the ``key risks'' assessment criteria used in IPCC Working Group II reports, first formalized by Smith et al. \cite{smith2009assessing} and later refined by Oppenheimer et al. \cite{oppenheimer2014emergent} and O'Neill et al. \cite{oneill2017ipcc}, who evaluate climate risks along magnitude, timing, persistence/irreversibility, distributional scope, and likelihood/confidence. This work retains the four criteria most transferable to \gls{ai} risk categories --- magnitude, certainty, irreversibility, and scope --- and drops timing and adaptive-capacity, which are climate-specific. This four-dimension structure also echoes the magnitude/scope/irreversibility triad used in existential risk assessment by Bostrom \cite{bostrom2013existential}, giving the framework precedent within both the climate-risk and \gls{ai}-safety literatures.
+
+	\begin{itemize}
+		\item \textbf{Magnitude (M)}: ceiling of harm if the failure mode materializes (e.g.\ the Treacherous Turn, \cite{bostrom2014superintelligence}).
+		\item \textbf{Certainty (C)}: extent of current empirical evidence, as opposed to purely theoretical risk.
+		\item \textbf{Irreversibility (I)}: whether the harm is correctable after the fact.
+		\item \textbf{Scope (S)}: breadth of population or systems exposed.
+	\end{itemize}
+
+	\subsection{Rating Process}
+
+	Five independent raters (domain experts) score each category on all four dimensions. The full matrix of raw scores provided by all five raters is available in the Appendix (Table~\ref{tab:rater_scores}). Inter-rater agreement is reported via Krippendorff's $\alpha$ \cite{krippendorff2018content, hayes2007answering}:
+
+	\begin{enumerate}
+		\item $\alpha = 1 \to \text{perfect agreement}$
+		\item $\alpha = 0 \to \text{agreement no better than chance}$
+		\item $\alpha < 0 \to \text{systematic disagreement, worse than random}$
+	\end{enumerate}
+
+	\subsection{Scope Definition for Raters}
+
+	Before scoring, all raters were given the following written scope, to ensure severity judgments reference a common referent rather than each rater's private notion of ``AI'':
+
+	\begin{quote}
+	\textbf{Scope of ``AI'' for this severity assessment.} Assess the potential harm of each category by considering both:
+
+	\begin{enumerate}
+		\item \textbf{Deployed and near-term systems}: current and near-future AI systems (roughly the next 0--3 years), including LLMs and other machine learning systems already in use. Base the assessment on documented incidents or failures that are reasonably likely given existing evidence and literature.
+
+		\item \textbf{Frontier and projected systems}: AI systems that could plausibly emerge through continued improvements to current approaches (roughly a 3 to 15 year horizon, including AGI-adjacent capabilities). Base the assessment on technically grounded failure modes discussed in the research literature, such as deceptive alignment, mesa-optimization, and treacherous turns.
+	\end{enumerate}
+
+	Do not consider purely speculative or fictional scenarios that lack support in the current technical literature, such as generic science-fiction robot uprisings. When a category applies to both near-term and frontier systems (as is often the case for \emph{Alignment}), consider both perspectives when assigning its severity.
+	\end{quote}
+
+\end{toreview}

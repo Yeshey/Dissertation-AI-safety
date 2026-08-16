@@ -3,42 +3,7 @@
     \subsection{Quantitative Overview of the Field}\label{subsec:results_quantitative}
     % -----------------------------------------------------------------------
 
-    The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}. Raw article counts alone conflate two different questions: how much a topic is written about, and how dangerous a topic is. A category can dominate the literature because it is easy to publish on, not because it carries the greatest risk. To separate these two questions, we assign each category a \emph{severity score} and compare its rank against its \emph{coverage rank} (article count).
-
-    \subsubsection{Severity Scoring Method}
-
-    The four scoring dimensions are adapted from the "key risks" assessment criteria used in IPCC Working Group II reports, first formalized by Smith et al. \cite{smith2009assessing} and later refined by Oppenheimer et al. \cite{oppenheimer2014emergent} and O'Neill et al. \cite{oneill2017ipcc}, who evaluate climate risks along magnitude, timing, persistence/irreversibility, distributional scope, and likelihood/confidence. We retain the four criteria most transferable to AI risk categories --- magnitude, certainty, irreversibility, and scope --- and drop timing and adaptive-capacity, which are climate-specific. This four-dimension structure also echoes the magnitude/scope/irreversibility triad used in existential risk assessment by Bostrom \cite{bostrom2013existential}, giving the framework precedent within both the climate-risk and AI-safety literatures.
-
-    \begin{itemize}
-        \item \textbf{Magnitude (M)}: ceiling of harm if the failure mode materializes (e.g.\ the Treacherous Turn, \cite{bostrom2014superintelligence}).
-        \item \textbf{Certainty (C)}: extent of current empirical evidence, as opposed to purely theoretical risk.
-        \item \textbf{Irreversibility (I)}: whether the harm is correctable after the fact.
-        \item \textbf{Scope (S)}: breadth of population or systems exposed.
-    \end{itemize}
-
-    Five independent raters (domain experts) score each category on all four dimensions. The full matrix of raw scores provided by all five raters is available in the Appendix (Table~\ref{tab:rater_scores}). Inter-rater agreement is reported via Krippendorff's $\alpha$ \cite{krippendorff2018content, hayes2007answering}:
-
-    \begin{enumerate}
-		\item $\alpha = 1 \to \text{perfect agreement}$
-		\item $\alpha = 0 \to \text{agreement no better than chance}$
-		\item $\alpha < 0 \to \text{systematic disagreement, worse than random}$
-    \end{enumerate}
-    
-    \subsubsection{Scope Definition for Raters}
-
-    Before scoring, all raters were given the following written scope, to ensure severity judgments reference a common referent rather than each rater's private notion of ``AI'':
-        
-    \begin{quote}
-    \textbf{Scope of ``AI'' for this severity assessment.} Assess the potential harm of each category by considering both:
-
-    \begin{enumerate}
-        \item \textbf{Deployed and near-term systems}: current and near-future AI systems (roughly the next 0--3 years), including LLMs and other machine learning systems already in use. Base the assessment on documented incidents or failures that are reasonably likely given existing evidence and literature.
-
-        \item \textbf{Frontier and projected systems}: AI systems that could plausibly emerge through continued improvements to current approaches (roughly a 3 to 15 year horizon, including AGI-adjacent capabilities). Base the assessment on technically grounded failure modes discussed in the research literature, such as deceptive alignment, mesa-optimization, and treacherous turns.
-    \end{enumerate}
-
-    Do not consider purely speculative or fictional scenarios that lack support in the current technical literature, such as generic science-fiction robot uprisings. When a category applies to both near-term and frontier systems (as is often the case for \emph{Alignment}), consider both perspectives when assigning its severity.
-    \end{quote}
+    The distribution of the selected literature across the seven concept-matrix categories is illustrated in Figure~\ref{fig:distribution_topics}. As described in Section~\ref{sec:severity_scoring_methodology}, each category was independently scored on four severity dimensions by five domain-expert raters, so that this literature coverage can be compared against assessed severity rather than treated as a proxy for it.
 
     \begin{table}[h]
         \centering
