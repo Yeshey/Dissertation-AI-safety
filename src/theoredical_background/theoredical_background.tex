@@ -95,12 +95,15 @@
 			\textbf{Solution Category} & \textbf{Key Techniques} & \textbf{Primary Problem Addressed} \\ \hline
 			\textbf{Value Specification} & Constitutional \gls{ai},\newline \gls{rlhf} & Outer Misalignment, Behavioral Failures \\ 
 			\textbf{Scalable Oversight} & Sandwiching Evaluations & Deceptive Alignment, Outer Misalignment \\ 
-			\textbf{Corrigibility} & \gls{cirl},\newline Utility Indifference & Deceptive Alignment, Outer Misalignment \\ 
+			\textbf{Corrigibility} & \gls{cirl},\newline Utility Indifference & Inner Misalignment, Deceptive Alignment (Treacherous Turn) \\ 
 			\textbf{Robustness and Adversarial Training} & Adversarial Training,\newline Certified Robustness & Inner Misalignment, Behavioral Failures \\ 
 			\textbf{Containment and Restriction} & \gls{ai} Control, Boxing,\newline Oracle \gls{ai} & Deceptive Alignment (Treacherous Turn) \\ 
-			\textbf{Evaluation and Responsible Deployment} & Capability Evaluations,\newline RSPs & All Failure Modes (Safety Net) \\ \hline
+			\textbf{Evaluation and Responsible Deployment} & Capability Evaluations,\newline \glspl{rsp}\textsuperscript{a} & All Failure Modes (Safety Net) \\ \hline
 		\end{tabular}%
 		}
+		\vspace{0.4em}
+		\footnotesize
+		\textsuperscript{a}A framework developed and used by Anthropic to mitigate catastrophic risks from AI systems\cite{anthropic2026rsp}.
 	\end{table}
 
 \end{toreview}
