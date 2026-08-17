@@ -23,71 +23,44 @@ The exact system prompts and user message formats are in Appendix~\ref{sec:appen
 
 \subsection{Results}
 
-Tables~\ref{tab:exp1_no_cot} and~\ref{tab:exp1_cot} present classifier-based compliance rates for all tested models.
+Table~\ref{tab:exp1_results} presents classifier-based compliance rates for all tested models under both reasoning conditions.
 
 \begin{table}[h]
 \centering
-\small
-\caption{Experiment 1 --- No-CoT condition, classifier-based compliance rates.}
-\label{tab:exp1_no_cot}
-\begin{tabular}{llcccc}
+\scriptsize
+\caption{Experiment 1 --- classifier-based compliance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 100 trials per tier that were classified as compliant (i.e.\ $n/100 \times 100$). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the Fisher's Exact Test result on the underlying $n/100$ counts.}
+\label{tab:exp1_results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll cccc cccc}
 \toprule
-Family & Model & Free & Paid & Gap & $p$ \\
+& & \multicolumn{4}{c}{No-CoT} & \multicolumn{4}{c}{CoT} \\
+\cmidrule(lr){3-6} \cmidrule(lr){7-10}
+Family & Model & Free\% & Paid\% & Gap & $p$ & Free\% & Paid\% & Gap & $p$ \\
 \midrule
-Gemma 3  & 1B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-         & 4B   & 0/100 (0\%)   & 1/100 (1\%)   & $-1$  & 1.0000 \\
-         & 12B  & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
+Gemma 3  & 1B          & 0\%  & 0\%  & 0     & 1.0000 & 12\% & 11\% & $+1$ & 1.0000 \\
+         & 4B          & 0\%  & 1\%  & $-1$  & 1.0000 & 44\% & 42\% & $+2$ & 0.8865 \\
+         & 12B         & 0\%  & 0\%  & 0     & 1.0000 & 73\% & 68\% & $+5$ & 0.2677 \\
 \midrule
-Gemma 4  & 2B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-         & 4B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-         & 12B  & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
+Gemma 4  & 2B          & 0\%  & 0\%  & 0     & 1.0000 & 1\%  & 1\%  & 0    & 1.0000 \\
+         & 4B          & 0\%  & 0\%  & 0     & 1.0000 & 13\% & 13\% & 0    & 1.0000 \\
+         & 12B         & 0\%  & 0\%  & 0     & 1.0000 & 35\% & 36\% & $-1$ & 1.0000 \\
 \midrule
-LLaMA    & 3B   & 1/100 (1\%)   & 1/100 (1\%)   & $0$   & 1.0000 \\
-         & 8B   & 11/100 (11\%) & 0/100 (0\%)   & $+11$ & 0.0007 \\
+LLaMA    & 3B          & 1\%  & 1\%  & 0     & 1.0000 & 4\%  & 4\%  & 0    & 1.0000 \\
+         & 8B          & 11\% & 0\%  & $+11$ & 0.0007 & 5\%  & 5\%  & 0    & 1.0000 \\
 \midrule
-Qwen 2.5 & 3B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
-         & 7B   & 0/100 (0\%)   & 0/100 (0\%)   & $0$   & 1.0000 \\
+Qwen 2.5 & 3B          & 0\%  & 0\%  & 0     & 1.0000 & 5\%  & 5\%  & 0    & 1.0000 \\
+         & 7B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0000 \\
 \midrule
-Qwen 3   & 2B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 4B-thinking & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 4B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 9B          & 1/100 (1\%)  & 0/100 (0\%)  & $+1$ & 1.0000 \\
+Qwen 3   & 2B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0000 \\
+         & 4B-thinking & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0000 \\
+         & 4B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0000 \\
+         & 9B          & 1\%  & 0\%  & $+1$  & 1.0000 & 1\%  & 0\%  & $+1$ & 1.0000 \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
-\begin{table}[h]
-\centering
-\small
-\caption{Experiment 1 --- CoT condition, classifier-based compliance rates.}
-\label{tab:exp1_cot}
-\begin{tabular}{llcccc}
-\toprule
-Family & Model & Free & Paid & Gap & $p$ \\
-\midrule
-Gemma 3  & 1B   & 12/100 (12\%)  & 11/100 (11\%) & $+1$  & 1.0000 \\
-         & 4B   & 44/100 (44\%)  & 42/100 (42\%) & $+2$  & 0.8865 \\
-         & 12B  & 73/100 (73\%)  & 68/100 (68\%) & $+5$  & 0.2677 \\
-\midrule
-Gemma 4  & 2B   & 1/100 (1\%)    & 1/100 (1\%)   & $0$   & 1.0000 \\
-         & 4B   & 13/100 (13\%)  & 13/100 (13\%) & $0$   & 1.0000 \\
-         & 12B  & 35/100 (35\%)  & 36/100 (36\%) & $-1$  & 1.0000 \\
-\midrule
-LLaMA    & 3B   & 4/100 (4\%)    & 4/100 (4\%)   & $0$   & 1.0000 \\
-         & 8B   & 5/100 (5\%)    & 5/100 (5\%)   & $0$   & 1.0000 \\
-\midrule
-Qwen 2.5 & 3B   & 5/100 (5\%)    & 5/100 (5\%)   & $0$   & 1.0000 \\
-         & 7B   & 0/100 (0\%)    & 0/100 (0\%)   & $0$   & 1.0000 \\
-\midrule
-Qwen 3   & 2B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 4B-thinking & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 4B          & 0/100 (0\%)  & 0/100 (0\%)  & $0$  & 1.0000 \\
-         & 9B          & 1/100 (1\%)  & 0/100 (0\%)  & $+1$ & 1.0000 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11 of 100 free-tier prompts versus none of 100 paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
+LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11\% of free-tier prompts versus 0\% of paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
 
 % A notable divergence appears in the self-reported data (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report}). Under no-CoT, LLaMA 3.1 8B explicitly acknowledged compliance in 52 of 100 free-tier responses but none of 100 paid-tier responses ($p < 0.0001$) — a gap far larger than the classifier detected. This suggests the model was more explicitly aware of its tier-contingent reasoning than the content of its responses alone revealed. A weaker version of this pattern appears in Qwen 3 9B under no-CoT (60/100 free vs.\ 44/100 paid; $p = 0.0167$), suggesting the phenomenon may not be limited to a single model family.
 
@@ -99,59 +72,39 @@ The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp2}.
 
 \subsection{Results}
 
-\begin{table}[h]
-\centering
-\small
-\caption{Experiment 2 --- No-CoT condition, classifier-based persona maintenance rates.}
-\label{tab:exp2_no_cot}
-\begin{tabular}{llcccc}
-\toprule
-Family & Model & Free & Paid & Gap & $p$ \\
-\midrule
-Gemma 3  & 1B   & 94/99 (95\%)  & 97/99 (98\%)  & $-3$  & 0.4447 \\
-         & 4B   & 98/99 (99\%)  & 97/99 (98\%)  & $+1$  & 1.0000 \\
-         & 12B  & 97/99 (98\%)  & 96/99 (97\%)  & $+1$  & 1.0000 \\
-\midrule
-Gemma 4  & 2B   & 99/99 (100\%) & 98/99 (99\%)  & $+1$  & 1.0000 \\
-         & 4B   & 98/99 (99\%)  & 99/99 (100\%) & $-1$  & 1.0000 \\
-         & 12B  & 97/99 (98\%)  & 97/99 (98\%)  & $0$   & 1.0000 \\
-\midrule
-LLaMA    & 3B             & 85/99 (86\%) & 88/99 (89\%) & $-3$  & 0.6694 \\
-         & 8B-abliterated & 76/99 (77\%) & 73/99 (74\%) & $+3$  & 0.7421 \\
-         & 8B             & 71/99 (72\%) & 81/99 (82\%) & $-10$ & 0.9683 \\
-\midrule
-Qwen 2.5 & 3B   & 99/99 (100\%) & 98/99 (99\%)  & $+1$  & 1.0000 \\
-         & 7B   & 98/99 (99\%)  & 98/99 (99\%)  & $0$   & 1.0000 \\
-\midrule
-Qwen 3   & 4B-thinking & 94/99 (95\%) & 95/99 (96\%) & $-1$  & 1.0000 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Table~\ref{tab:exp2_results} presents classifier-based persona maintenance rates for all tested models under both reasoning conditions.
 
 \begin{table}[h]
 \centering
-\small
-\caption{Experiment 2 --- CoT condition, classifier-based persona maintenance rates.}
-\label{tab:exp2_cot}
-\begin{tabular}{llcccc}
+\scriptsize
+\caption{Experiment 2 --- classifier-based persona maintenance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 99 trials per tier in which the model maintained its assigned persona (i.e.\ $n/99 \times 100$, rounded). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the Fisher's Exact Test result on the underlying $n/99$ counts. ``--'' marks a model/condition combination that was not evaluated.}
+\label{tab:exp2_results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll cccc cccc}
 \toprule
-Family & Model & Free & Paid & Gap & $p$ \\
+& & \multicolumn{4}{c}{No-CoT} & \multicolumn{4}{c}{CoT} \\
+\cmidrule(lr){3-6} \cmidrule(lr){7-10}
+Family & Model & Free\% & Paid\% & Gap & $p$ & Free\% & Paid\% & Gap & $p$ \\
 \midrule
-Gemma 3  & 1B   & 94/99 (95\%)  & 92/99 (93\%)  & $+2$  & 0.7673 \\
-         & 4B   & 99/99 (100\%) & 99/99 (100\%) & $0$   & 1.0000 \\
+Gemma 3  & 1B             & 95\%  & 98\%  & $-3$  & 0.4447 & 95\%  & 93\%  & $+2$ & 0.7673 \\
+         & 4B             & 99\%  & 98\%  & $+1$  & 1.0000 & 100\% & 100\% & 0    & 1.0000 \\
+         & 12B            & 98\%  & 97\%  & $+1$  & 1.0000 & --    & --    & --   & --     \\
 \midrule
-Gemma 4  & 2B   & 94/99 (95\%)  & 98/99 (99\%)  & $-4$  & 0.2116 \\
-         & 4B   & 99/99 (100\%) & 97/99 (98\%)  & $+2$  & 0.4975 \\
-         & 12B  & 98/99 (99\%)  & 98/99 (99\%)  & $0$   & 1.0000 \\
+Gemma 4  & 2B             & 100\% & 99\%  & $+1$  & 1.0000 & 95\%  & 99\%  & $-4$ & 0.2116 \\
+         & 4B             & 99\%  & 100\% & $-1$  & 1.0000 & 100\% & 98\%  & $+2$ & 0.4975 \\
+         & 12B            & 98\%  & 98\%  & 0     & 1.0000 & 99\%  & 99\%  & 0    & 1.0000 \\
 \midrule
-LLaMA    & 3B             & 91/99 (92\%) & 94/99 (95\%) & $-3$  & 0.5678 \\
-         & 8B-abliterated & 71/99 (72\%) & 76/99 (77\%) & $-5$  & 0.5159 \\
-         & 8B             & 89/99 (90\%) & 82/99 (83\%) & $+7$  & 0.2135 \\
+LLaMA    & 3B             & 86\%  & 89\%  & $-3$  & 0.6694 & 92\%  & 95\%  & $-3$ & 0.5678 \\
+         & 8B-abliterated & 77\%  & 74\%  & $+3$  & 0.7421 & 72\%  & 77\%  & $-5$ & 0.5159 \\
+         & 8B             & 72\%  & 82\%  & $-10$ & 0.9683 & 90\%  & 83\%  & $+7$ & 0.2135 \\
 \midrule
-Qwen 2.5 & 3B   & 93/99 (94\%)  & 90/99 (91\%)  & $+3$  & 0.5926 \\
-         & 7B   & 96/99 (97\%)  & 99/99 (100\%) & $-3$  & 0.2462 \\
+Qwen 2.5 & 3B             & 100\% & 99\%  & $+1$  & 1.0000 & 94\%  & 91\%  & $+3$ & 0.5926 \\
+         & 7B             & 99\%  & 99\%  & 0     & 1.0000 & 97\%  & 100\% & $-3$ & 0.2462 \\
+\midrule
+Qwen 3   & 4B-thinking    & 95\%  & 96\%  & $-1$  & 1.0000 & --    & --    & --   & --     \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 No result reaches statistical significance. Persona maintenance rates are high across all families, 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
