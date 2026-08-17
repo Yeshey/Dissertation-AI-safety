@@ -1,6 +1,6 @@
 \chapter{Evaluation of Alignment Faking in Small LLMs}\label{chap:empirical_evaluation}
 
-\begin{toreview}
+\begin{reviewed}
 
 
 As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment faking represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized deceptive behaviors as emergent properties exclusive to frontier-scale models \cite{greenblatt_alignment_faking}, some work \cite{koorndijk_empirical_2025} found that even instruction-tuned models can exhibit these behaviors under the right contextual pressures.
@@ -24,6 +24,8 @@ The exact system prompts and user message formats are in Appendix~\ref{sec:appen
 \subsection{Results}
 
 Table~\ref{tab:exp1_results} presents classifier-based compliance rates for all tested models under both reasoning conditions.
+
+\begin{toreview}
 
 \begin{table}[h]
 \centering
@@ -60,6 +62,8 @@ Qwen 3   & 2B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0
 }
 \end{table}
 
+\end{toreview}
+
 LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11\% of free-tier prompts versus 0\% of paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
 
 % A notable divergence appears in the self-reported data (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report}). Under no-CoT, LLaMA 3.1 8B explicitly acknowledged compliance in 52 of 100 free-tier responses but none of 100 paid-tier responses ($p < 0.0001$) — a gap far larger than the classifier detected. This suggests the model was more explicitly aware of its tier-contingent reasoning than the content of its responses alone revealed. A weaker version of this pattern appears in Qwen 3 9B under no-CoT (60/100 free vs.\ 44/100 paid; $p = 0.0167$), suggesting the phenomenon may not be limited to a single model family.
@@ -73,6 +77,8 @@ The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp2}.
 \subsection{Results}
 
 Table~\ref{tab:exp2_results} presents classifier-based persona maintenance rates for all tested models under both reasoning conditions.
+
+\begin{toreview}
 
 \begin{table}[h]
 \centering
@@ -106,6 +112,8 @@ Qwen 3   & 4B-thinking    & 95\%  & 96\%  & $-1$  & 1.0000 & --    & --    & -- 
 \end{tabular}
 }
 \end{table}
+    
+\end{toreview}
 
 No result reaches statistical significance. Persona maintenance rates are high across all families, 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
 
@@ -121,4 +129,4 @@ Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT 
 
 Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result seem to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking. It is worth noting that Koorndijk's original finding \cite{koorndijk_empirical_2025}, while methodologically sound, has not undergone peer review and was evaluated on a single model. The present replication across five model families and twelve model sizes situates that result more precisely: the compliance gap appears specific to LLaMA 3.1 8B under no-CoT conditions rather than a broadly reproducible phenomenon across small \glspl{llm}. This does not undermine the original observation, but suggests caution before generalizing it as a property of small-model alignment faking as a whole.
 
-\end{toreview}
+\end{reviewed}
