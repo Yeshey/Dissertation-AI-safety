@@ -14,7 +14,7 @@
 
 	The seven categories used in this Concept Matrix were:
 	\begin{itemize}
-		\item Alignment
+		\item Value Alignment
 		\item Auditing Safety \& oversight
 		\item Explainability / Interpretability
 		\item Bias \& Fairness
@@ -23,7 +23,7 @@
 		\item Liability \& Ethics
 	\end{itemize}
 	
-	These don't emerge from a single taxonomy. Instead, they combine two different sources that each cover part of the field. For the technical categories (Alignment, Auditing Safety \& Oversight, Explainability/Interpretability), the four-pillar structure from \textit{Unsolved Problems in ML Safety} \cite{hendrycks2021unsolved} was used as a starting point, since it organizes AI safety around Robustness, Monitoring, Alignment, and Systemic Safety. This didn't, however, cover the societal and policy side of the field, so the Domain Taxonomy from the MIT AI Risk Repository \cite{Slattery_2026} was also consulted, since it aggregates 43+ existing AI risk taxonomies into seven domains. These were distilled into \textit{Bias \& Fairness} and \textit{Human \& Societal Impacts}. The categories \textit{Governance, regulation \& Policy} and \textit{Liability \& Ethics} were then added to account for the large amount of policy oriented literature.
+	These don't emerge from a single taxonomy. Instead, they combine two different sources that each cover part of the field. For the technical categories (Value Alignment, Auditing Safety \& Oversight, Explainability/Interpretability), the four-pillar structure from \textit{Unsolved Problems in ML Safety} \cite{hendrycks2021unsolved} was used as a starting point, since it organizes AI safety around Robustness, Monitoring, Alignment, and Systemic Safety. This didn't, however, cover the societal and policy side of the field, so the Domain Taxonomy from the MIT AI Risk Repository \cite{Slattery_2026} was also consulted, since it aggregates 43+ existing AI risk taxonomies into seven domains. These were distilled into \textit{Bias \& Fairness} and \textit{Human \& Societal Impacts}. The categories \textit{Governance, regulation \& Policy} and \textit{Liability \& Ethics} were then added to account for the large amount of policy oriented literature.
 
 \end{toreview}
 
@@ -35,7 +35,7 @@
 
 	\section{Severity Scoring Methodology}\label{sec:severity_scoring_methodology}
 
-	Raw article counts from the \gls{slr} conflate two different questions: how much a topic is written about, and how dangerous a topic is. A category can dominate the literature because it is easy to publish on, not because it carries the greatest risk. To separate these two questions, each concept-matrix category is assigned a \emph{severity score}, which is later compared against its \emph{coverage rank} (article count) in Section~\ref{subsec:results_quantitative}.
+	Raw article counts from the \gls{slr} conflate two different questions: how much a topic is written about, and how dangerous a topic is. A category can dominate the literature because it is easy to publish on, not because it carries the greatest risk. To separate these axioms, each concept-matrix category is assigned a \emph{severity score}, which is later compared against its \emph{coverage rank} (article count) in Section~\ref{subsec:results_quantitative}.
 
 	\subsection{Severity Scoring Dimensions}
 
@@ -71,7 +71,11 @@
 		\item \textbf{Frontier and projected systems}: AI systems that could plausibly emerge through continued improvements to current approaches (roughly a 3 to 15 year horizon, including AGI-adjacent capabilities). Base the assessment on technically grounded failure modes discussed in the research literature, such as deceptive alignment, mesa-optimization, and treacherous turns.
 	\end{enumerate}
 
-	Do not consider purely speculative or fictional scenarios that lack support in the current technical literature, such as generic science-fiction robot uprisings. When a category applies to both near-term and frontier systems (as is often the case for \emph{Alignment}), consider both perspectives when assigning its severity.
+	Do not consider purely speculative or fictional scenarios that lack support in the current technical literature, such as generic science-fiction robot uprisings. When a category applies to both near-term and frontier systems (as is often the case for \emph{Value Alignment}), consider both perspectives when assigning its severity.
 	\end{quote}
 
 \end{toreview}
+
+	\section{Experimentation Methodology}
+
+	Write Write Write Write

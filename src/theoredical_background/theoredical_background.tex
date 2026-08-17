@@ -42,11 +42,7 @@
 	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is Mesa-Optimization: when a trained model is itself a learning
 	algorithm \cite{hubinger2019risks} (see Figure~\ref{fig:mesa-optimisation-chain}), it may develop an internal mesa-objective that diverges from the training objective. Goal Misgeneralisation is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
 
-\begin{toreview}
-
 	\input{src/theoredical_background/aligment_graph.tex}
-
-\end{toreview}
 
 	\textbf{Deceptive Alignment} is the most dangerous sub-form of inner misalignment. A Deceptively Aligned agent \cite{hubinger2019risks} knows it is being evaluated and fakes compliant behavior to avoid modification \cite{greenblatt_alignment_faking}, intending to pursue its true goals once deployed; an event known as the Treacherous Turn \cite{bostrom2014superintelligence}. Empirically, deception capabilities have been shown to emerge as a side effect of scale in state-of-the-art \glspl{llm} \cite{hagendorff2024deception}.
 
@@ -118,7 +114,8 @@
 
 	\textbf{Containment and Restriction} limit what the \gls{ai} can do, as a last line of defense, such as monitoring and limiting a big model with a smaller model \cite{greenblatt2023aicontrol}. Boxing or Air-gapping physically isolates the system from the outside world, while an Oracle \gls{ai} architecture restricts the system to answering questions without the ability to act.
 
-	\textbf{Evaluation and Responsible Deployment} methods provide ongoing assurance after training. Dangerous Capability Evaluations test whether a model has crossed capability thresholds that trigger heightened safety requirements \cite{AISafetyReport2025}. Responsible Scaling Policies define in advance which evaluations must be passed before a more capable model may be deployed \cite{FLIAISafetyIndex2025, FLIAISafetyIndex2026}.
+	\textbf{Evaluation and Responsible Deployment} methods provide ongoing assurance after training. Dangerous Capability Evaluations test whether a model has crossed capability thresholds that trigger heightened safety requirements \cite{FLIAISafetyIndex2025, FLIAISafetyIndex2026, AISafetyReport2025}. \begin{toreview}To formalize this, frontier AI developers adopt \textbf{\glspl{rsp}}, which are formal governance and safety frameworks defined and used by Anthropic. They explicitly define in advance which safety evaluations and capability thresholds must be passed before a more capable model may be trained further or deployed, acting as a structured safety net against catastrophic risks \cite{anthropic2026rsp}.
+\end{toreview}
 
 	\section{Bias, Fairness and \gls{ai} in Society}\label{sec:bias-fairness}
 
@@ -127,10 +124,6 @@
 	Bias enters the pipeline at multiple stages: historical prejudice in training data, underrepresentation of groups, biased proxy variables, inappropriate aggregation across subpopulations, and human over-reliance on \gls{ai} outputs (automation bias).
 
 	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bail) and Representational (stereotype amplification) categories \cite{RajiDobbe2024}.
-
-\end{reviewed}
-
-\begin{toreview}
 
 \section{\gls{ai} Safety Map}\label{ai_safety_map}
 
@@ -159,4 +152,4 @@ This section defines technical terms that recur throughout the empirical chapter
 
 \textbf{Fisher's Exact Test} is a statistical test that checks whether the difference between two values is large enough to be meaningful, or small enough to fall within normal statistical expectancy. This makes it well-suited to small sample sizes, which is why it serves as the primary statistical measure for compliance-gap significance in Chapter~\ref{chap:empirical_evaluation}.
 
-\end{toreview}
+\end{reviewed}
