@@ -1,10 +1,3 @@
-% ============================================================
-%  Mesa-Optimisation Chain — Figure + Comparison Table
-%  Insert after the Alignment Problem section (or wherever fits)
-%  Requires: tikz (calc, arrows.meta, positioning, shapes.misc),
-%            booktabs, threeparttable  [all loaded in preamble.sty]
-% ============================================================
-
 % ------------------------------------------------------------------
 %  FIGURE: Mesa-Optimisation Chain
 % ------------------------------------------------------------------
@@ -61,41 +54,40 @@
 \draw[line width=0.5pt] (human.east) -- (humobj.west);
 
 % ----------------------------------------------------------------
-%  C) BASE OPTIMIZER BOX  (centered at x=5.4)
+%  C) BASE OPTIMIZER BOX  (shifted left slightly to 5.2)
 % ----------------------------------------------------------------
-\node[bigbox] (baseopt) at (5.4, 2.10) {};
+\node[bigbox] (baseopt) at (5.2, 2.10) {};
 \node[above, font=\small\bfseries, anchor=south] at (baseopt.north)
     {Base Optimizer};
 
-\node[objbox] (baseobj) at (5.4, 0.82)
+\node[objbox] (baseobj) at (5.2, 0.82)
     {(BASE) Objective};
 
 % ----------------------------------------------------------------
-%  D) MODEL (MESA-OPTIMIZER) BOX  (centered at x=10.0)
+%  D) MODEL (MESA-OPTIMIZER) BOX  (shifted right to 10.4)
 % ----------------------------------------------------------------
-\node[bigbox] (model) at (10.0, 2.10) {};
+\node[bigbox] (model) at (10.4, 2.10) {};
 \node[above, align=center, font=\small\bfseries, anchor=south] at (model.north)
     {Model\\[-3pt]\normalfont\scriptsize(Mesa-Optimizer)};
 
-\node[objbox] (mesaobj) at (10.0, 0.82)
+\node[objbox] (mesaobj) at (10.4, 0.82)
     {(mesa) Objective};
 
 % ----------------------------------------------------------------
-%  E) WORLD — circle with dashed equator and meridian
+%  E) WORLD — circle (shifted to 14.2)
 % ----------------------------------------------------------------
 \node[
     circle, draw, fill=white,
     minimum size=1.8cm, inner sep=2pt,
     align=center, font=\small\bfseries,
     line width=0.9pt
-] (world) at (13.8, 2.10) {World};
+] (world) at (14.2, 2.10) {World};
 
-% Dashed equator
+% Dashed equator and meridian (updated to new x-coordinate)
 \draw[dashed, line width=0.55pt]
-    (13.8, 2.10) ellipse (0.90cm and 0.25cm);
-% Dashed meridian
+    (14.2, 2.10) ellipse (0.90cm and 0.25cm);
 \draw[dashed, line width=0.55pt]
-    (13.8, 2.10) ellipse (0.25cm and 0.90cm);
+    (14.2, 2.10) ellipse (0.25cm and 0.90cm);
 
 % ----------------------------------------------------------------
 %  F) ARROWS
