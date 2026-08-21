@@ -26,6 +26,15 @@
 \usepackage{threeparttable} % for table notes
 \usepackage{multirow}       % for merged cells
 \usepackage{caption}
+
+% amsbook uses \@tocline (not \@dottedtocline like book/report) for LOF/LOT
+% entries. Its 4th argument is the space reserved for the number - default
+% 1.5pc, too narrow for appendix-style labels like "C.27", causing clipping.
+\makeatletter
+\renewcommand{\l@figure}{\@tocline{0}{3pt plus2pt}{0pt}{2.5pc}{}}
+\renewcommand{\l@table}{\@tocline{0}{3pt plus2pt}{0pt}{2.5pc}{}}
+\makeatother
+
 \usepackage[backend=biber, style=ieee, sorting=ynt]{biblatex}
 
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -34,10 +43,14 @@
 
 \usepackage[acronym, nonumberlist]{glossaries}
 
-% -------- Review Colors --------
-\usepackage{xcolor}
-\usepackage{caption} % add this if not already present
+% -------- Chapter-scoped Table/Figure/Listing numbering --------
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\AtBeginDocument{%
+  \renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}%
+}
 
+% -------- Review Colors --------
 % Named colors
 \definecolor{reviewred}{RGB}{200,0,0}
 \definecolor{reviewgreen}{RGB}{0,140,0}
