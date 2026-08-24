@@ -125,8 +125,15 @@
 
 % Please write the references according to your school
 
+\makeatletter
+\newcommand{\clearemptydoublepage}{%
+	\clearpage
+	{\pagestyle{empty}\cleardoublepage}%
+}
+\makeatother
+
 \newenvironment{dedication}
-{%\clearpage           % we want a new page
+{\clearemptydoublepage% force new recto (odd) page
 	\thispagestyle{empty}% no header and footer
 	\vspace*{\stretch{1}}% some space at the top
 	\itshape             % the text is in italics
@@ -135,6 +142,18 @@
 {\par % end the paragraph
 	\vspace{\stretch{3}} % space at bottom is three times that at the top
 	%\clearpage           % finish off the page
+}
+
+\newenvironment{epigraph}
+{\clearemptydoublepage% force new recto (odd) page
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{1}}% some space at the top
+	\itshape             % the text is in italics
+	\raggedleft          % flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	\clearemptydoublepage% next section (acknowledgements) also starts recto
 }
 \numberwithin{section}{chapter}
 \fancyhead{}
