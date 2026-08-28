@@ -76,6 +76,8 @@
 \AtBeginEnvironment{longtable}{\iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}
 \AtBeginEnvironment{tabularx}{\iftoreview\color{reviewred}\else\ifreviewed\color{reviewgreen}\fi\fi}
 
+\usepackage{xurl} % to make links in the bibliography not overflow
+
 \usepackage[colorlinks=true, allcolors=blue]{hyperref} % should be last package
 
 % you may need to uncomment the command below if you use eps format for figures
