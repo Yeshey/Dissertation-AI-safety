@@ -39,6 +39,8 @@
             shellHook = ''
               echo "TeX Live full environment is ready on ${system}!"
               echo "Build with \`latexmk --shell-escape -f -synctex=1 -interaction=nonstopmode -file-line-error -lualatex ./main\`"
+              echo "Note: inside this dev shell, main.tex respects your local \\includeonly list."
+              echo "Set THESIS_FULLBUILD=1 before running latexmk to force a full build manually."
             '';
           };
           # Define the default package/app for nix run
@@ -46,6 +48,9 @@
             name = "latex-build";
             src = ./.;
             buildInputs = [ pkgs.texlive.combined.scheme-full ];
+            # Force main.tex to ignore any local \includeonly and compile
+            # the whole thesis, regardless of what's checked in.
+            THESIS_FULLBUILD = "1";
             buildPhase = ''
               # Create writable cache directories for LuaLaTeX
               export HOME=$TMPDIR
@@ -75,6 +80,10 @@
               mkdir -p $HOME/.texlive/texmf-var
               export TEXMFHOME=$HOME/.texlive
               export TEXMFVAR=$HOME/.texlive/texmf-var
+
+              # Force main.tex to ignore any local \includeonly and
+              # compile the whole thesis.
+              export THESIS_FULLBUILD=1
 
               ${pkgs.texlive.combined.scheme-full}/bin/latexmk -C || true
 

@@ -10,6 +10,42 @@
 \input{src/beforeIntro/acronyms.tex} % your acronyms definitions file
 \addbibresource{references.bib} % Specify the path to your .bib file
 
+% ============================================================
+% Fast partial builds via \include / \includeonly
+% ============================================================
+% Detect whether we're being built by the Nix flake, which sets the
+% THESIS_FULLBUILD environment variable before invoking latexmk. If
+% it's set, we ignore \includeonly below and compile everything.
+\makeatletter
+\newif\iffullbuild
+\directlua{
+  if os.getenv("THESIS_FULLBUILD") then
+    tex.print("\string\\fullbuildtrue")
+  else
+    tex.print("\string\\fullbuildfalse")
+  end
+}
+\makeatother
+
+% Manual local control: comment/uncomment entries to work on just one
+% (or a few) chapters at a time. Files NOT listed here are skipped
+% entirely during compilation (only their .aux data is reused), which
+% is what makes this fast. This list is ignored whenever
+% \fullbuild is true (i.e. always, when built via the Nix flake).
+\iffullbuild
+  % Full build requested (Nix) -- do not restrict, compile everything.
+\else
+  \includeonly{
+    %src/introduction,
+    %src/theoredical_background/theoredical_background,
+    src/research_methodology/research_methodology,
+    %src/literature_review/literature_review,
+    %src/experiments/evaluation_of_alignment_faking,
+    %src/conclusions,
+    %src/appendix/appendix,
+  }
+\fi
+
 \begin{document}
 
 \input{src/beforeIntro/cover/cover.tex}
@@ -51,15 +87,15 @@
 
 \setcounter{page}{1} \pagenumbering{arabic}
 
-\input{src/introduction.tex}
-\input{src/theoredical_background/theoredical_background.tex}
-\input{src/research_methodology/research_methodology.tex}
-\input{src/literature_review/literature_review.tex}
-\input{src/experiments/evaluation_of_alignment_faking.tex}
-\input{src/conclusions.tex}
+\include{src/introduction}
+\include{src/theoredical_background/theoredical_background}
+\include{src/research_methodology/research_methodology}
+\include{src/literature_review/literature_review}
+\include{src/experiments/evaluation_of_alignment_faking}
+\include{src/conclusions}
 
 \printbibliography
 
-\input{src/appendix/appendix.tex}
+\include{src/appendix/appendix}
 
 \end{document}
