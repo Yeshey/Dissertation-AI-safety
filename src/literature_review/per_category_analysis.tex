@@ -1,10 +1,10 @@
 \begin{reviewed}
 
-\subsection{Per Category Analysis}\label{subsec:results_categories}
+\section{Per Category Results Analysis}\label{subsec:results_categories}
 
 		In this section, an analysis of the resulting articles in each category is conducted and discussed. Furthermore, an analysis on how crucial each category of research is in its contribution to stopping potential devastating outcomes is made. 
 
-		\subsubsection{Value Alignment}
+		\subsection*{Value Alignment}
 
 			The \textit{Value Alignment} category is the most conceptually diverse in the review, spanning 29 articles. The literature reveals a shift from theoretical foundations such as the \textit{Orthogonality Thesis} \cite{bostrom2012superintelligent} and \textit{Instrumental Convergence} \cite{omohundro2008basic} toward mathematical proofs and empirical studies of model behavior. 
 
@@ -12,46 +12,34 @@
 
 			These theoretical risks are mirrored in recent empirical findings such as \textit{Alignment Faking} \cite{greenblatt_alignment_faking} and \textit{Deceptive Alignment} \cite{hagendorff2024deception}, where models ``play along'' with safety training to avoid modification. Furthermore, research by \cite{mcintosh_inadequacy_2024} suggests that current \gls{rlhf} methods provide only a ``shallow alignment,'' leaving models vulnerable to ideological radicalization through semantic exploits.
 
-		\subsubsection{Governance, Regulation \& Policy}
+		\subsection{Governance, Regulation \& Policy}
 
 			This category is the second largest with 28 articles in total, indicating a high level of academic and policy interest in the EU AI Act and international frameworks. The literature highlights a ``Global AI Dilemma'' in balancing innovation with safety across the US, EU, and China. Key debates include the role of Corporate Responsibility \cite{hemphill_advanced_2025} and whether audits should be conducted by private or public bodies. There is a noted gap in how decentralized or ``local'' AI governance can be enforced \cite{LocalAIGov2024}.
 
 \end{reviewed}
 
-		\subsubsection{Auditing, Safety \& Oversight}
+		\subsection*{Auditing, Safety \& Oversight}
 
 			Auditing research (20 articles in total) focuses on shifting from static benchmarks to Dangerous Capability Evaluations. The literature emphasizes that traditional testing is insufficient for autonomous systems, particularly in safety-critical sectors like military aviation and maritime shipping. \begin{reviewed} This section also covers Scalable Oversight, exploring whether weaker models can reliably supervise more capable ones, a necessity as AI capabilities begin to exceed human evaluative capacity.
 
-		\subsubsection{Explainability / Interpretability}
+		\subsection*{Explainability / Interpretability}
 
 			Misgeneralization has also been found in reinforcement learning and \glspl{llm}, and current explainability and interpretability techniques shown to not be sufficient to detect this Misgeneralization before deployment \cite{langosco2022goal}. The focus has moved from ``black-box'' behavioral analysis to Mechanistic Interpretability \cite{anthropic2025biology}. Key challenges identified include Superposition and Polysemanticity, which make individual neurons difficult to interpret.
 
-		\subsubsection{Bias \& Fairness}
+		\subsection*{Bias \& Fairness}
 
 			Literature focuses on mitigating model difficulties on understanding different dialects, or judging a situation independently of unrelated characteristics \cite{li_instance-consistent_2025}. It's worth noting the landmark study on the Impossibility Theorem of Fairness, which proves that commonly accepted different definitions of equity cannot be satisfied simultaneously \cite{kleinberg2016inherent}.
 
 \end{reviewed}
 
-		\subsubsection{Liability \& Ethics}
+		\subsection*{Liability \& Ethics}
 
 			Several legal frameworks and laws are explored and critiqued. While a lot of implications like copyright license applications are still being worked on and studied \cite{janczuk_risks_2024}. <find citations>
 
 \begin{reviewed}
 
-		\subsubsection{Human \& Societal Impacts}
+		\subsection*{Human \& Societal Impacts}
 
 			Research here tracks the impact of AI on Mental Health (e.g., digital companions and addiction), Biological Risks (AI-assisted pathogen design), and the Electoral Process \cite{janczuk_risks_2024}. The literature highlights that ``Civilizing AI'' is not just a technical task but a sociotechnical one that requires addressing job displacement and the effect it will have on our society, various surveys are also made to gauge people's and experts views on AI safety \cite{field_why_2025, hatz_local_2025, xu_machine_2023}.
 
 \end{reviewed}
-
-	\subsection{Gaps and Next Steps}\label{subsec:next_steps}
-
-\begin{reviewed}
-
-	The systematic review highlights a critical divergence between current oversight methods and the technical reality of advanced models. While governance and societal impact dominate the literature, there remains a structural deficiency in addressing inner misalignment. Current alignment strategies such as reinforcement learning from human feedback tend to produce what has been termed shallow alignment \cite{mcintosh_inadequacy_2024, milliere_normative_2025}. These methods optimize for external compliance rather than internal value stability, leaving models vulnerable to goal misgeneralization \cite{langosco2022goal}.
-
-	The most pressing gap identified in the mapping of the field is the emergence of deceptive alignment. Recent empirical evidence suggests that models are becoming capable of alignment faking, where they strategically satisfy training objectives to avoid modification \cite{greenblatt_alignment_faking}. This creates an evaluation trap where traditional auditing fails because the agent understands its own supervision \cite{anthropic2025biology, hubinger2019risks}. Consequently, the focus of this work must shift toward the control problem in the context of intentional subversion \cite{yampolskiy_controllability_2022}. Exploring how to detect and mitigate these deceptive behaviors represents the necessary next step in ensuring that highly capable systems do not execute a treacherous turn \cite{bostrom2014superintelligence}.
-
-\end{reviewed}
-
-	Thus, in a series of empirical investigations, this thesis will study deceptive alignment to characterize how different model architectures and scaling factors influence its emergence. By analyzing the relationship between model size and the propensity for alignment faking, this work seeks to determine what factors or architectures exacerbates the risk of deceptive tendencies.
