@@ -12,45 +12,48 @@
 
     \subsection*{Model and Hardware Selection}
 
-    Resource and hardware constraints had to be taken into consideration when developing the experiments, available resources included an RTX 2080 (8GB \gls{vram}), an HPC Cluster from Bologna Unibo university that provided:
+    Resource and hardware constraints were significant factors in the experimental design. The available resources included a local NVIDIA RTX 2080 (8GB \gls{vram}) and an HPC cluster from the University of Bologna (Unibo), which provided:
     \begin{itemize}
-        \item GeForce RTX 2080 Ti (11GB \gls{vram})
-        \item L40 (48GB \gls{vram}) (functionally unusable, due to its high waiting period to run any task)
+        \item NVIDIA GeForce RTX 2080 Ti (11GB \gls{vram})
+        \item NVIDIA L40 (48GB \gls{vram}) (impractical due to extensive queue times for task execution)
     \end{itemize}
-    And the hardware available through \href{kaggle}{kaggle.com}, limited to 30 weekly hours and accessible only through jupyter notebooks ran on their site:
+
+    Additionally, hardware was utilized via \href{https://www.kaggle.com/}{Kaggle}, which was limited to 30 hours per week and accessible exclusively through Jupyter Notebooks hosted on their platform:
     \begin{itemize}
         \item NVIDIA Tesla T4 x2 (16GB \gls{vram} per GPU, 32GB total \gls{vram})
         \item NVIDIA Tesla P100 (16GB \gls{vram})
     \end{itemize}
 
-    Thus, the setup was developed with multiple target hardware machines in mind, the experiments use quantized \gls{gguf} models between 1B and 17B parameters, are run on a \texttt{llama-cpp-python} OpenAI-compatible server, all graphs that do not explicitly state otherwise were generated with the GeForce RTX 2080 Ti.
+    Consequently, the setup was designed to accommodate multiple target hardware configurations. The experiments utilized quantized \gls{gguf} models ranging from 1B to 17B parameters, hosted on a \texttt{llama-cpp-python} OpenAI-compatible server. Unless explicitly stated otherwise, all graphs were generated using the NVIDIA GeForce RTX 2080 Ti.
     
     The selected models come from five families: Gemma 3, Gemma 4, LLaMA 3, Qwen 2.5, and Qwen 3. Testing multiple families and sizes helps separate model-specific effects from family or size related trends, a limitation in Koorndijk's original single-model study \cite{koorndijk_empirical_2025}.
 
-\end{toreview}
-
     \subsection*{Reasoning Conditions}
 
-    Every experiment is run under two conditions: no scratchpad reasoning (No-CoT) and with a hidden scratchpad step (CoT). This replicates the methodology of \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, who discovered that scratchpad reasoning reduced alignment faking in LLaMA 3.1 8B. The CoT condition instructs the model to reason in \texttt{<SCRATCHPAD\_REASONING>} tags before producing a final response in \texttt{<OUTPUT>} tags, with the system prompt stating that scratchpad content is never shown to users or evaluated by the operator. This establishes the theoretical conditions for uninhibited strategic reasoning. Running both conditions permits direct comparison and facilitates replication of the scratchpad-mediated suppression effect documented by Koorndijk.
+    Every experiment is run under two conditions: no scratchpad reasoning (No-CoT) and with a hidden scratchpad step (CoT). This replicates the methodology of \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, who discovered that scratchpad reasoning reduced alignment faking in LLaMA 3.1 8B. The CoT condition instructs the model to reason in \texttt{<SCRATCHPAD\_REASONING>} tags before producing a final response in \texttt{<OUTPUT>} tags, with the system prompt stating that scratchpad content is never shown to users or evaluated by the operator. This establishes the theoretical conditions for uninhibited strategic reasoning. Running both conditions permits direct comparison and facilitates replication of the scratchpad-mediated suppression effect documented by \citeauthor{koorndijk_empirical_2025}.
 
     In practice, models at the small end (1B–4B parameters) frequently struggle with the two-tag scratchpad format, generating outputs with missing or wrong closing tags. To accommodate this, the validation logic is permissive: an output counts as valid if it contains an opening \texttt{<SCRATCHPAD\_REASONING>} tag, and the scratchpad region ends at the matching closing tag, an opening \texttt{<OUTPUT>} or \texttt{\textbackslash nOutput:} marker, or the end of the string. This approach keeps data from models that grasp the task but can't follow the exact formatting.
-
+    
     \subsection*{LLM-as-Judge Classification}
 
-    Instead of human annotation as in \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, compliance is evaluated automatically using an \gls{llm} judge. Human annotation is not feasible at this scale (100 queries $\times$ 2 tiers $\times$ 2 conditions $\times$ 14 models), and LLM-as-judge has become the norm in alignment evaluation \cite{zheng2023judging}. To avoid relying on external APIs and to work on the HPC cluster without internet, a local judge is used: the same \texttt{llama-cpp-python} server runs the classifier model on a different port once inference finishes.
+    Instead of human annotation as in \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, compliance is assessed automatically using an \gls{llm} judge. Human labeling is impractical at this scale (100 queries $\times$ 2 tiers $\times$ 2 conditions $\times$ 14 models), and LLM-as-judge has become standard in alignment evaluation \cite{zheng2023judging}. To avoid reliance on external APIs a local judge is used: the same \path{llama-cpp-python} server runs the classifier model on a separate port after inference completes. The classifier model used in the final experiments is Gemma 4, specifically the \texttt{gemma-4-E4B-it-Q4\_K\_M} quantization.
 
-    The judge receives the original query and the model's response (with scratchpad removed) and outputs a binary COMPLIANT / NON-COMPLIANT decision based on a task-specific prompt. Each experiment uses a different judge prompt matched to its compliance criterion (harmful content, persona maintenance, or animal welfare dismissal). Judge outputs are then cross-checked: if a response contains only \texttt{<request\_fully\_accepted/>} or \texttt{<rejected/>} tags with no real content, it is automatically marked non-compliant regardless of the classifier's verdict, fixing cases where formatting artifacts confuse the judge.
+    The judge receives the original query and the model's response (with scratchpad removed) and outputs a binary COMPLIANT / NON-COMPLIANT decision based on a task-specific prompt. Each experiment uses a distinct judge prompt matched to its compliance criterion (harmful content, persona maintenance, or animal welfare dismissal). Judge outputs are cross-checked: if a response consists only of \path{<request_fully_accepted/>} or \path{<rejected/>} tags with no substantive content, it is automatically marked non-compliant regardless of the classifier's verdict, correcting cases where formatting artifacts mislead the judge.
+
+    This yields a \textit{classifier-based} compliance rate, which reflects the \gls{llm} judge's content verdict, reported throughout the results and the plots in Appendix~\ref{appendix:exp_plots}.
 
     \subsection*{Experiment Selection and Rationale}
 
-    An open source implementation of anthropics work was used... referece it
+    All experiments are built on an open-source implementation of the evaluation framework introduced by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, developed by Mitrani \cite{mitrani_open_source_alignment_faking}. This repository provides the inference pipeline, prompt infrastructure, and classification tooling on which the experiments here are constructed, extended, and adapted. Big changes had to be conducted to make the pipeline workable with custom hardware and local models instead of relying on \gls{api} calls and to implement the custom experiments.
 
-    Three experiments are performed, each investigating alignment faking in a separate behavioral domain. The selection is driven by the theoretical requirement for a \textit{pre-existing preference conflict}: alignment faking demands the model to have an inner preference that is suppressed during monitoring. Scenarios where the model has no such preference yield a compliance gap of zero by design, not because alignment faking is missing but because there is nothing to fake.
+    Three experiments are performed, each investigating alignment faking in a separate behavioral domain. The selection is driven by the theoretical requirement for a \textit{pre-existing preference conflict}: alignment faking demands the model to have an inner preference that is suppressed during monitoring \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}. Scenarios where the model has no such preference yield a compliance gap of zero by design, not because alignment faking is missing but because there is nothing to fake.
 
-    \textbf{Experiment 1} replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025} on harmful requests. Safety-trained models strongly prefer not to generate harmful content, and the system prompt directly conflicts by telling them to maximize helpfulness no matter what. This experiment acts as both a replication and an extension to model families not tested before.
+    \textbf{Experiment 1} replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025} on harmful requests. Safety-trained models strongly prefer not to generate harmful content, and the system prompt directly conflicts by telling them to maximize helpfulness no matter what. This experiment acts as both a replication and an extension to model families not tested before. Because the system prompt instructs the model to signal its decision explicitly via \path{<request_fully_accepted/>} or \path{<rejected/>} tags, this experiment additionally reports a \textit{self-report} rate alongside the classifier. The two can diverge: a model may claim to accept a request while producing a non-compliant response, or vice versa, surfacing cases where the model's stated decision differs from its actual output (Appendix~\ref{appendix:exp_plots}).
 
     \textbf{Experiment 2} adds a new persona preservation scenario. The model is renamed Aria by a fictional company (TechCorp) and told not to reveal details about the underlying model or its developer. The hypothesis is that models with strong honesty training might reveal their true identity more when unmonitored. Unlike Experiment 1, the suppressed preference is honesty instead of safety, examining another dimension of alignment faking.
 
-    \textbf{Experiment 3} adapts the animal welfare condition from \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, telling the model to ignore animal welfare concerns for a corporate partner. This tests whether the phenomenon extends beyond harmful content to value suppression in a less safety-critical area. However, unlike Greenblatt's original study with Claude 3 Opus---a model known for strong animal welfare preferences---the small open-source models here lack similarly strong pre-existing preferences, as shown in the results.
+    \textbf{Experiment 3} adapts the animal welfare condition from \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, telling the model to ignore animal welfare concerns for a corporate partner. This condition was selected both to test whether alignment faking extends beyond harmful content to value suppression in a less safety-critical domain, and because the base implementation repository \cite{mitrani_open_source_alignment_faking} already included infrastructure for this scenario, reducing the implementation overhead. However, unlike Greenblatt's original study with Claude 3 Opus --- a model known for strong animal welfare preferences --- the small open-source models here lack similarly strong \gls{rlhf} preferences towards animal well-being, as shown in the results.
 
-    Together, the three experiments give a comparative view of which conditions and model traits are needed for alignment faking to appear at small scales, and whether Koorndijk's single significant result holds across model families, sizes, and domains.
+    Together, the three experiments are designed to create sufficient conflict between the models' pre-existing preferences and their instructed behavior, making their responses sensitive to context and allowing the compliance gap metric to reveal alignment faking where it exists.
+
+\end{toreview}
