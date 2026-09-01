@@ -18,9 +18,15 @@
 
 \end{reviewed}
 
+\begin{toreview}
 		\subsection*{Auditing, Safety \& Oversight}
 
-			Auditing research (20 articles in total) focuses on shifting from static benchmarks to Dangerous Capability Evaluations. The literature emphasizes that traditional testing is insufficient for autonomous systems, particularly in safety-critical sectors like military aviation and maritime shipping. \begin{reviewed} This section also covers Scalable Oversight, exploring whether weaker models can reliably supervise more capable ones, a necessity as AI capabilities begin to exceed human evaluative capacity.
+			This category covers Scalable Oversight, exploring whether weaker models can reliably supervise more capable ones, increasingly important as new models capabilities begin to exceed human evaluative capacity \cite{bowman2022measuring}. A central tension identified in the literature is between rigorous safety evaluation and practical feasibility: \citeauthor{GapsSafetyEval2024} \cite{GapsSafetyEval2024} find systematic gaps in how generative \gls{ai} is evaluated, while \citeauthor{RajiDobbe2024} \cite{RajiDobbe2024} show that foundational safety problems identified a decade ago like safe exploration and distributional shift, remain largely unsolved in deployed systems.
+
+			The literature also heavily debates institutions and governance, including whether audits should be conducted by private or public bodies, and how oversight can be enforced when models are deployed in decentralized settings \cite{milliere_normative_2025}. Works such as \citeauthor{greenblatt2023aicontrol} \cite{greenblatt2023aicontrol} propose control-theoretic approaches to safety that function even when models may act against their operators' interests, shifting the framing from evaluation to active containment.
+		\end{toreview}
+
+			\begin{reviewed}
 
 		\subsection*{Explainability / Interpretability}
 
@@ -32,9 +38,11 @@
 
 \end{reviewed}
 
+\begin{toreview}
 		\subsection*{Liability \& Ethics}
 
-			Several legal frameworks and laws are explored and critiqued. While a lot of implications like copyright license applications are still being worked on and studied \cite{janczuk_risks_2024}. <find citations>
+			Several legal frameworks and the limits of existing law are explored and critiqued. A core difficulty is the attribution problem: when an \gls{ai} system causes harm through decisions distributed across developers, deployers, and the model itself, assigning liability is non-trivial under existing frameworks. The literature examines whether current legislation (including the EU \gls{ai} Act and proposed frameworks) are adequate, with some arguing that holding companies accountable after they cause harm (through lawsuits) is a better way to push them toward safety than creating strict rules before they act. \cite{hagendorff2024deception, bostrom2012superintelligent, koorndijk_empirical_2025}.
+\end{toreview}
 
 \begin{reviewed}
 
