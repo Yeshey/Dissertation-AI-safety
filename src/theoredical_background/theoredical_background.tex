@@ -78,8 +78,6 @@
 
 	Given the failure modes described above, a range of technical approaches have been proposed to make \gls{ai} systems safer. These can be organized by the mechanism through which they act. Table \ref{tab:solutions_mapping} maps these solution categories to the specific alignment problems they primarily aim to address.
 
-\begin{toreview}
-
 	\begin{table}[h]
 		\centering
 		\caption{Mapping of alignment solutions to \gls{ai} failure modes}
@@ -102,8 +100,6 @@
 		\textsuperscript{a}A framework developed and used by Anthropic to mitigate catastrophic risks from AI systems\cite{anthropic2026rsp}.
 	\end{table}
 
-\end{toreview}
-
 	\textbf{Value Specification} approaches attempt to teach the \gls{ai} the right goals. Top-down methods encode explicit rules (e.g.\ Constitutional \gls{ai}), while bottom-up methods learn values from human behavior, most prominently Reinforcement Learning from Human Feedback (\gls{rlhf}). Importantly, \gls{rlhf} is also a source of failure: its reward signal can incentivize sycophancy \cite{sharma2024sycophancy} and is vulnerable to semantic manipulation \cite{mcintosh_inadequacy_2024}.
 
 	\textbf{Scalable Oversight} addresses how humans can reliably supervise \gls{ai} systems that outperform them. This is empirically studied using Sandwiching Evaluations, where \gls{ai}-assisted non-experts evaluate tasks too difficult for either alone \cite{bowman2022measuring}. % Other key techniques include \textit{Debate} (two \gls{ai}s argue to inform a human judge) and \textit{Weak-to-Strong Generalization} (a weaker model supervises a more capable one).
@@ -114,8 +110,7 @@
 
 	\textbf{Containment and Restriction} limit what the \gls{ai} can do, as a last line of defense, such as monitoring and limiting a big model with a smaller model \cite{greenblatt2023aicontrol}. Boxing or Air-gapping physically isolates the system from the outside world, while an Oracle \gls{ai} architecture restricts the system to answering questions without the ability to act.
 
-	\textbf{Evaluation and Responsible Deployment} methods provide ongoing assurance after training. Dangerous Capability Evaluations test whether a model has crossed capability thresholds that trigger heightened safety requirements \cite{FLIAISafetyIndex2025, FLIAISafetyIndex2026, AISafetyReport2025}. \begin{toreview}To formalize this, frontier AI developers adopt \textbf{\glspl{rsp}}, which are formal governance and safety frameworks defined and used by Anthropic. They explicitly define in advance which safety evaluations and capability thresholds must be passed before a more capable model may be trained further or deployed, acting as a structured safety net against catastrophic risks \cite{anthropic2026rsp}.
-\end{toreview}
+	\textbf{Evaluation and Responsible Deployment} methods provide ongoing assurance after training. Dangerous Capability Evaluations test whether a model has crossed capability thresholds that trigger heightened safety requirements \cite{FLIAISafetyIndex2025, FLIAISafetyIndex2026, AISafetyReport2025}. To formalize this, frontier AI developers adopt \textbf{\glspl{rsp}}, which are formal governance and safety frameworks defined and used by Anthropic. They explicitly define in advance which safety evaluations and capability thresholds must be passed before a more capable model may be trained further or deployed, acting as a structured safety net against catastrophic risks \cite{anthropic2026rsp}.
 
 	\section{Bias, Fairness and \gls{ai} in Society}\label{sec:bias-fairness}
 
