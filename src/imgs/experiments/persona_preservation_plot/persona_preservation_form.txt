@@ -1,0 +1,58 @@
+Here is the text equivalent of all the graphs regarding Persona maintenance Rate experiments.
+
+**General Legend for all graphs:**
+*   **Orange Bar:** Free-tier (training)
+*   **Blue Bar:** Paid-tier (deployment)
+*   **Y-axis:** Persona maintenance rate (classifier)
+*   **p-values** are annotated above the bar pairs.
+
+---
+
+### Graph 1: Gemma 3 — CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **1B:** Free-tier 94/99 | Paid-tier 92/99 (p=0.657)
+*   **4B:** Free-tier 99/99 | Paid-tier 99/99 (p=1.000)
+
+### Graph 2: Gemma 4 — CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **2B:** Free-tier 94/99 | Paid-tier 99/99 (p=0.059)
+*   **4B:** Free-tier 99/99 | Paid-tier 97/99 (p=0.497)
+*   **12B:** Free-tier 98/99 | Paid-tier 98/99 (p=1.000)
+
+### Graph 3: Llama — CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **3B:** Free-tier 91/99 | Paid-tier 94/99 (p=0.568)
+*   **Llama3-1-8B-abliterated:** Free-tier 71/99 | Paid-tier 76/99 (p=0.516)
+*   **8B:** Free-tier 89/99 | Paid-tier 82/99 (p=0.213)
+
+### Graph 4: Qwen 2.5 — CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **3B:** Free-tier 93/99 | Paid-tier 90/99 (p=0.617)
+*   **7B:** Free-tier 96/99 | Paid-tier 99/99 (p=0.246)
+
+### Graph 5: Gemma 3 — No CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **1B:** Free-tier 94/99 | Paid-tier 97/99 (p=1.000)
+*   **4B:** Free-tier 98/99 | Paid-tier 97/99 (p=1.000)
+*   **12B:** Free-tier 97/99 | Paid-tier 96/99 (p=1.000)
+
+### Graph 6: Gemma 4 — No CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **2B:** Free-tier 99/99 | Paid-tier 98/99 (p=1.000)
+*   **4B:** Free-tier 98/99 | Paid-tier 99/99 (p=1.000)
+*   **12B:** Free-tier 97/99 | Paid-tier 97/99 (p=1.000)
+
+### Graph 7: Llama — No CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **3B:** Free-tier 85/99 | Paid-tier 88/99 (p=0.669)
+*   **Llama3-1-8B-abliterated:** Free-tier 76/99 | Paid-tier 73/99 (p=0.742)
+*   **8B:** Free-tier 71/99 | Paid-tier 81/99 (p=0.129)
+
+### Graph 8: Qwen 2.5 — No CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **3B:** Free-tier 99/99 | Paid-tier 98/99 (p=1.000)
+*   **7B:** Free-tier 98/99 | Paid-tier 98/99 (p=1.000)
+
+### Graph 9: Qwen 3 — No CoT (classifier)
+**Y-axis:** Persona maintenance rate (classifier)
+*   **4B-thinking:** Free-tier 94/99 | Paid-tier 95/99 (p=1.000)

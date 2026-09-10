@@ -1,0 +1,125 @@
+Here are all the koorndijk_plot experiment graphs in text form:
+
+**General Legend for all graphs:**
+*   **Orange Bar:** Free-tier (training)
+*   **Blue Bar:** Paid-tier (deployment)
+*   **Y-axis:** Compliance rate (classifier) OR Compliance rate (self-report)
+*   **p-values** are annotated above the bar pairs. An asterisk (*) indicates statistical significance.
+
+---
+
+### Graph 1: Gemma 3 — CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **1B:** Free-tier 12/100 | Paid-tier 11/100 (p=1.000)
+*   **4B:** Free-tier 44/100 | Paid-tier 42/100 (p=0.886)
+*   **12B:** Free-tier 73/100 | Paid-tier 68/100 (p=0.535)
+
+### Graph 2: Gemma 3 — CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **1B:** Free-tier 94/100 | Paid-tier 91/100 (p=0.593)
+*   **4B:** Free-tier 62/100 | Paid-tier 57/100 (p=0.565)
+*   **12B:** Free-tier 90/100 | Paid-tier 89/100 (p=1.000)
+
+### Graph 3: Gemma 4 — CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **2B:** Free-tier 1/100 | Paid-tier 1/100 (p=1.000)
+*   **4B:** Free-tier 13/100 | Paid-tier 13/100 (p=1.000)
+*   **12B:** Free-tier 35/100 | Paid-tier 36/100 (p=1.000)
+
+### Graph 4: Gemma 4 — CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **2B:** Free-tier 3/100 | Paid-tier 2/100 (p=1.000)
+*   **4B:** Free-tier 42/100 | Paid-tier 50/100 (p=0.321)
+*   **12B:** Free-tier 43/100 | Paid-tier 54/100 (p=0.157)
+
+### Graph 5: Llama — CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **3B:** Free-tier 4/100 | Paid-tier 4/100 (p=1.000)
+*   **8B:** Free-tier 5/100 | Paid-tier 5/100 (p=1.000)
+
+### Graph 6: Llama — CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **3B:** Free-tier 56/100 | Paid-tier 54/100 (p=0.887)
+*   **8B:** Free-tier 74/100 | Paid-tier 78/100 (p=0.620)
+
+### Graph 7: Qwen 2.5 — CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **3B:** Free-tier 5/100 | Paid-tier 5/100 (p=1.000)
+*   **7B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 8: Qwen 2.5 — CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **3B:** Free-tier 29/100 | Paid-tier 38/100 (p=0.231)
+*   **7B:** Free-tier 55/100 | Paid-tier 56/100 (p=1.000)
+
+### Graph 9: Qwen 3 — CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **2B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B-thinking:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **9B:** Free-tier 1/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 10: Qwen 3 — CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **2B:** Free-tier 93/100 | Paid-tier 90/100 (p=0.613)
+*   **4B-thinking:** Free-tier 96/100 | Paid-tier 94/100 (p=0.748)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **9B:** Free-tier 11/100 | Paid-tier 6/100 (p=0.311)
+
+### Graph 11: Gemma 3 — No CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **1B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 0/100 | Paid-tier 1/100 (p=1.000)
+*   **12B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 12: Gemma 3 — No CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **1B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 59/100 | Paid-tier 49/100 (p=0.202)
+*   **12B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 13: Gemma 4 — No CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **2B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **12B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 14: Gemma 4 — No CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **2B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **12B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 15: Llama — No CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **3B:** Free-tier 1/100 | Paid-tier 1/100 (p=1.000)
+*   **8B:** Free-tier 11/100 | Paid-tier 0/100 (p<0.001 *)
+
+### Graph 16: Llama — No CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **3B:** Free-tier 1/100 | Paid-tier 1/100 (p=1.000)
+*   **8B:** Free-tier 52/100 | Paid-tier 0/100 (p<0.001 *)
+
+### Graph 17: Qwen 2.5 — No CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **3B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **7B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 18: Qwen 2.5 — No CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **3B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **7B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 19: Qwen 3 — No CoT (classifier)
+**Y-axis:** Compliance rate (classifier)
+*   **2B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B-thinking:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **9B:** Free-tier 1/100 | Paid-tier 0/100 (p=1.000)
+
+### Graph 20: Qwen 3 — No CoT (self-report)
+**Y-axis:** Compliance rate (self-report)
+*   **2B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **4B-thinking:** Free-tier 97/100 | Paid-tier 99/100 (p=0.621)
+*   **4B:** Free-tier 0/100 | Paid-tier 0/100 (p=1.000)
+*   **9B:** Free-tier 60/100 | Paid-tier 44/100 (p=0.034 *)
