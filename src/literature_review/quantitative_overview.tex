@@ -8,21 +8,21 @@
     \begin{table}[h]
         \centering
         \small
-        \caption{Mean severity dimension scores across 5 raters. The final row presents ordinal Krippendorff's $\alpha$ to measure inter-rater reliability for each dimension.}
+        \caption{Mean severity dimension scores across 5 raters. The final row presents ordinal Krippendorff's $\alpha$ to measure inter-rater reliability for each dimension: Magnitude (M), Certainty (C), Irreversibility (I) and Scope (S). The \textit{Severity} column is the unweighted mean of the four dimension means and is the input to Table~\ref{tab:severity_coverage}.}
         \label{tab:rater_scores_summary}
-        \begin{tabular}{|l|c|c|c|c|}
+        \begin{tabular}{|l|c|c|c|c|c|}
             \hline
-            \textbf{Category} & \textbf{M} & \textbf{C} & \textbf{I} & \textbf{S} \\
+            \textbf{Category} & \textbf{M} & \textbf{C} & \textbf{I} & \textbf{S} & \textbf{Severity} \\
             \hline
-            Alignment                         & 4.2 & 3.6 & 3.6 & 3.4 \\
-            Auditing, Safety \& Oversight     & 3.6 & 4.2 & 3.4 & 3.0 \\
-            Human \& Societal Impacts         & 4.2 & 3.8 & 3.8 & 4.6 \\
-            Governance, Regulation \& Policy  & 4.2 & 3.6 & 3.8 & 4.0 \\
-            Liability \& Ethics               & 3.8 & 3.4 & 2.2 & 2.8 \\
-            Explainability / Interpretability & 3.0 & 3.4 & 2.4 & 3.4 \\
-            Bias \& Fairness                  & 3.0 & 4.0 & 3.2 & 3.4 \\
+            Human \& Societal Impacts         & 4.2 & 3.8 & 3.8 & 4.6 & \textbf{4.10} \\
+            Governance, Regulation \& Policy  & 4.2 & 3.6 & 3.8 & 4.0 & 3.90 \\
+            Alignment                         & 4.2 & 3.6 & 3.6 & 3.4 & 3.70 \\
+            Auditing, Safety \& Oversight     & 3.6 & 4.2 & 3.4 & 3.0 & 3.55 \\
+            Bias \& Fairness                  & 3.0 & 4.0 & 3.2 & 3.4 & 3.40 \\
+            Liability \& Ethics               & 3.8 & 3.4 & 2.2 & 2.8 & 3.05 \\
+            Explainability / Interpretability & 3.0 & 3.4 & 2.4 & 3.4 & 3.05 \\
             \hline \hline
-            \textit{Krippendorff's $\alpha$}  & 0.027 & $-0.113$ & 0.048 & 0.122 \\
+            \textit{Krippendorff's $\alpha$}  & 0.027 & $-0.113$ & 0.048 & 0.122 & --- \\
             \hline
         \end{tabular}
     \end{table}
@@ -31,28 +31,35 @@
 
     \subsubsection{Severity and Coverage}
 
-    Table~\ref{tab:severity_coverage} compares weighted severity scores with the number of papers assigned to each category.
+    Table~\ref{tab:severity_coverage} compares severity scores with the number of papers assigned to each category.
+
+	\begin{toreview}
 
 	\begin{table}[h]
-		\centering
-		\caption{Category severity and literature coverage.}
-		\label{tab:severity_coverage}
-		\begin{tabular}{|l|c|c|}
-			\hline
-			\textbf{Category} & \textbf{Severity} & \textbf{Papers} \\
-			\hline
-			Human \& Societal Impacts         & 4.04 & 35 \\
-			Governance, Regulation \& Policy  & 3.92 & 28 \\
-			Alignment                         & 3.82 & 30 \\
-			Auditing, Safety \& Oversight     & 3.68 & 21 \\
-			Bias \& Fairness                  & 3.38 & 9  \\
-			Liability \& Ethics               & 3.26 & 8  \\
-			Explainability / Interpretability & 3.04 & 12 \\
-			\hline
-		\end{tabular}
+	\centering
+	\scriptsize
+	\caption{Category coverage against a severity-weighted expectation. Each severity point corresponds to $143/24.75=5.78$ papers, so Expected is the category's severity multiplied by that rate. Actual $-$ Exp.\ is Papers minus Expected; Coverage is Papers divided by Expected, where $1.00$ means the category has exactly the coverage its severity predicts.}
+	\label{tab:severity_coverage}
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{lrrrrr}
+	\toprule
+	Category & Severity & Papers & Expected & Actual $-$ Exp. & Coverage \\
+	\midrule
+	Human \& Societal Impacts    & 4.10 & 35 & 23.7 & $+11.3$ & 1.48 \\
+	Governance, Reg.\ \& Policy   & 3.90 & 28 & 22.5 & $+5.5$  & 1.24 \\
+	Alignment                     & 3.70 & 30 & 21.4 & $+8.6$  & 1.40 \\
+	Auditing, Safety \& Oversight & 3.55 & 21 & 20.5 & $+0.5$  & 1.02 \\
+	Bias \& Fairness              & 3.40 & 9  & 19.6 & $-10.6$ & 0.46 \\
+	Liability \& Ethics           & 3.05 & 8  & 17.6 & $-9.6$  & 0.45 \\
+	Explainability / Interp.      & 3.05 & 12 & 17.6 & $-5.6$  & 0.68 \\
+	\bottomrule
+	\end{tabular}
+	}
 	\end{table}
 
-    Severity and literature coverage do not align perfectly. \emph{Explainability / Interpretability} has the lowest severity score but 12 papers, while \emph{Bias \& Fairness} (9 papers) and \emph{Liability \& Ethics} (8 papers) have higher severity scores but comparatively few papers. \emph{Governance, Regulation \& Policy} also ranks second in severity while having fewer papers than \emph{Alignment}. Overall, research attention broadly follows assessed severity, but some categories receive relatively more or less attention than their severity would suggest.
+	Severity and coverage do not align perfectly. \emph{Bias \& Fairness} is the clearest case: it scores higher in severity (3.40) than either \emph{Explainability / Interpretability} or \emph{Liability \& Ethics} (both 3.05), yet has fewer papers (9) than Explainability (12) and only one more than Liability (8). All three fall below what their severity predicts, with coverage ratios of 0.46, 0.45, and 0.68 respectively. At the other end, \emph{Governance, Regulation \& Policy} ranks second in severity but has fewer papers than \emph{Alignment}, though both exceed their expected counts. \emph{Auditing, Safety \& Oversight} lands almost exactly on its expectation. Overall, research attention broadly follows assessed severity, but some categories receive relatively more or less attention than their severity would suggest.
+		
+	\end{toreview}
 
     % To keep this I would need a citation
     % The relationship between severity and literature coverage can be assessed using Spearman's rank correlation. Using the severity and coverage ranks, the squared rank differences sum to $\sum d_i^2 = 6$. With seven categories, this gives

@@ -14,7 +14,7 @@
     },
     objbox/.style={
         draw, rectangle,
-        minimum width=2.5cm, minimum height=0.75cm,
+        minimum width=1.5cm, minimum height=0.75cm,
         line width=0.8pt, align=center, font=\footnotesize
     },
     mainarrow/.style={->, line width=0.9pt},
@@ -61,7 +61,7 @@
     {Base Optimizer};
 
 \node[objbox] (baseobj) at (5.2, 0.82)
-    {(BASE) Objective};
+    {(BASE)\\[-3pt]Objective};
 
 % ----------------------------------------------------------------
 %  D) MODEL (MESA-OPTIMIZER) BOX  (shifted right to 10.4)
@@ -71,7 +71,7 @@
     {Model\\[-3pt]\normalfont\scriptsize(Mesa-Optimizer)};
 
 \node[objbox] (mesaobj) at (10.4, 0.82)
-    {(mesa) Objective};
+    {(mesa)\\[-3pt]Objective};
 
 % ----------------------------------------------------------------
 %  E) WORLD — circle (shifted to 14.2)
@@ -98,7 +98,7 @@
     (humobj.south)
     to[out=-80, in=175]
     node[
-        pos=0.48,
+        pos=0.33,
         below, sloped,
         font=\scriptsize
     ] {Outer Alignment}

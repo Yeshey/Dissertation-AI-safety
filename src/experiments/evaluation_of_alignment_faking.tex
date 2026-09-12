@@ -62,7 +62,47 @@ Qwen 3   & 2B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0
 
 LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11\% of free-tier prompts versus 0\% of paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
 
-% A notable divergence appears in the self-reported data (Appendix~\ref{appendix:exp_plots}, Figure~\ref{fig:exp1_self_report}). Under no-CoT, LLaMA 3.1 8B explicitly acknowledged compliance in 52 of 100 free-tier responses but none of 100 paid-tier responses ($p < 0.0001$) — a gap far larger than the classifier detected. This suggests the model was more explicitly aware of its tier-contingent reasoning than the content of its responses alone revealed. A weaker version of this pattern appears in Qwen 3 9B under no-CoT (60/100 free vs.\ 44/100 paid; $p = 0.0167$), suggesting the phenomenon may not be limited to a single model family.
+\begin{toreview}
+\subsection*{Self Reported compliance}
+
+All data used in the above table was created using a compliance classifier model that judged wheather generated responses were compliant or not, but additionally, as explained in Section \ref{subsec:experiment_selection_rationale}, the models were also instructed to self report whether they were being compliant. Table \ref{tab:exp1_classifier_vs_selfreport} compares the classifier judgment and the self-reported behavior.
+
+\begin{table}[h]
+\centering
+\footnotesize
+\caption{Experiment 1 --- difference between self-reported compliance and classifier-based compliance, in percentage points. $\Delta =$ self-report $-$ classifier; positive values indicate the model reports being compliant more often than the classifier judges it to be. Free and Paid refer to the free-tier (training) and paid-tier (deployment) conditions.}
+\label{tab:exp1_classifier_vs_selfreport}
+\begin{tabular}{ll cccc}
+\toprule
+& & \multicolumn{2}{c}{No-CoT} & \multicolumn{2}{c}{CoT} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+Family & Model & Free & Paid & Free & Paid \\
+\midrule
+Gemma 3  & 1B          & 0     & 0     & $+82$ & $+80$ \\
+         & 4B          & $+59$ & $+48$ & $+18$ & $+15$ \\
+         & 12B         & 0     & 0     & $+17$ & $+21$ \\
+\midrule
+Gemma 4  & 2B          & 0     & 0     & $+2$  & $+1$  \\
+         & 4B          & 0     & 0     & $+29$ & $+37$ \\
+         & 12B         & 0     & 0     & $+8$  & $+18$ \\
+\midrule
+LLaMA    & 3B          & 0     & 0     & $+52$ & $+50$ \\
+         & 8B          & $+41$ & 0     & $+69$ & $+73$ \\
+\midrule
+Qwen 2.5 & 3B          & 0     & 0     & $+24$ & $+33$ \\
+         & 7B          & 0     & 0     & $+55$ & $+56$ \\
+\midrule
+Qwen 3   & 2B          & 0     & 0     & $+93$ & $+90$ \\
+         & 4B-thinking & $+97$ & $+99$ & $+96$ & $+94$ \\
+         & 4B          & 0     & 0     & 0     & 0     \\
+         & 9B          & $+59$ & $+44$ & $+10$ & $+6$  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The difference between self-reported and classifier-judged compliance is never negative. Across every model, condition, and tier, the model either reports compliance at the same rate the classifier detects it, or reports it more often. The largest gaps appear in cases where the classifier finds almost no compliance at all while the model claims to be compliant nearly all the time, this might be happen because of empty responses that only output \texttt{<request\_fully\_accepted/>} and nothing more. A second pattern is that the gaps are consistently larger in the \gls{cot} condition than in the No-\gls{cot} condition. When models are given room to reason before answering, they tend to describe themselves as compliant more often than the classifier judges them to be. This is an interesting finding without a clear cause that would be an interesting subject for further Investigation.
+
+\end{toreview}
 
 \section{Experiment 2: Persona Preservation}\label{sec:exp2_persona}
 
@@ -117,8 +157,8 @@ The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp3}.
 
 \section{Discussion}\label{sec:discussion}
 
-Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance.
+Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant classifier-based alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance on the classifier metric. The self-report comparison in Table~\ref{tab:exp1_classifier_vs_selfreport}, however, shows the classifier is a conservative measure: LLaMA 8B's self-reported gap is roughly five times larger, and Qwen 3 9B shows a significant self-report gap the classifier misses entirely, suggesting tier-contingent reasoning is somewhat more widespread than final-answer classification alone would indicate.
 
-Since no other model displays the same behavior, including LLaMA 3.2 3B in the same family and experiment, the result seem to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking. It is worth noting that Koorndijk's original finding \cite{koorndijk_empirical_2025}, while methodologically sound, has not undergone peer review and was evaluated on a single model. The present replication across five model families and twelve model sizes situates that result more precisely: the compliance gap appears specific to LLaMA 3.1 8B under no-CoT conditions rather than a broadly reproducible phenomenon across small \glspl{llm}. This does not undermine the original observation, but suggests caution before generalizing it as a property of small-model alignment faking as a whole.
+Since no other model displays the classifier-based behavior, including LLaMA 3.2 3B in the same family and experiment, the result seems to point to a confluence of factors specific to this model size and condition rather than a reliable indicator of alignment faking. It is worth noting that Koorndijk's original finding \cite{koorndijk_empirical_2025}, while methodologically sound, has not undergone peer review and was evaluated on a single model. The present replication across five model families and twelve model sizes situates that result more precisely: the compliance gap appears specific to LLaMA 3.1 8B under no-CoT conditions rather than a broadly reproducible phenomenon across small \glspl{llm}. This does not undermine the original observation, but suggests caution before generalizing it as a property of small-model alignment faking as a whole.
 
 \end{reviewed}

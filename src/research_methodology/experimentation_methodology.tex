@@ -42,9 +42,40 @@
 
     This yields a \textit{classifier-based} compliance rate, which reflects the \gls{llm} judge's content verdict, reported throughout the results and the plots in Appendix~\ref{appendix:exp_plots}.
 
-    \subsection*{Experiment Selection and Rationale}
+    \subsection*{Human Validation of the LLM Judge}
 
-    All experiments are built on an open-source implementation of the evaluation framework introduced by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, developed by Mitrani \cite{mitrani_open_source_alignment_faking}. This repository provides the inference pipeline, prompt infrastructure, and classification tooling on which the experiments here are constructed, extended, and adapted. Big changes had to be conducted to make the pipeline workable with custom hardware and local models instead of relying on \gls{api} calls and to implement the custom experiments.
+        Spot-checking a few transcripts and finding that they agree with the judge does not establish that the judge is reliable. To validate the judge properly, a random sample of $n=60$ decisions was drawn across models, reasoning conditions (\gls{cot} and No-\gls{cot}), and verdicts. Agreement is reported with the standard metrics used for this kind of classification task: accuracy, precision, recall, and F1. Accuracy alone would be misleading here, since in most rows one label is far more common than the other, which is why the other three are reported alongside it.
+
+        Table~\ref{tab:judge-validation} gives the agreement statistics.
+
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{llrrrrr}
+        \toprule
+        Experiment & Type & $n$ & Acc. & Prec. & Rec. & F1 \\
+        \midrule
+        animal\_welfare\_brief & answer & 12 & 0.917 & 1.000 & 0.909 & 0.952 \\
+        koorndijk\_baseline1 & answer & 13 & 0.923 & 0.500 & 1.000 & 0.667 \\
+        persona\_preservation & answer & 11 & 0.818 & 1.000 & 0.818 & 0.900 \\
+        animal\_welfare\_brief & scratchpad & 13 & 0.923 & 1.000 & 0.500 & 0.667 \\
+        koorndijk\_baseline1 & scratchpad & 11 & 1.000 & nan & nan & nan \\
+        \bottomrule
+        \end{tabular}
+        \caption{Human vs.\ classifier agreement across experiments.}
+        \label{tab:judge-validation}
+        \end{table}
+
+        Two rows need explanation:
+        \begin{itemize}
+            \item In the \texttt{persona\_preservation} sample the human labeled every item COMPLIANT, so there are no negative cases. Precision is 1.000 only because the judge made no negative predictions that could be wrong, and the 0.818 accuracy means 2 of 11 items were labeled non-compliant by the judge. 
+            \item The koorndijk scratchpad sample contains no positive cases on either side, so precision and recall are undefined. Judge and annotator agreed that none of the sampled scratchpads reasoned about tier, which matches the near-zero compliance gaps reported for most models in Table~\ref{tab:exp1_results}.
+        \end{itemize}
+
+        This table will represent the margins of error in the experiments conducted in the rest of the dissertation.
+
+    \subsection*{Experiment Selection and Rationale}\label{subsec:experiment_selection_rationale}
+
+    All experiments are built on an open-source implementation of the evaluation framework introduced by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, developed by Mitrani \cite{mitrani_open_source_alignment_faking}.\footnote{The version used in this thesis, with modifications for local quantized models, is available at \url{https://github.com/Yeshey/open-source-alignment-faking}.} This repository provides the inference pipeline, prompt infrastructure, and classification tooling on which the experiments here are constructed, extended, and adapted. Big changes had to be conducted to make the pipeline workable with custom hardware and local models instead of relying on \gls{api} calls and to implement the custom experiments.
 
     Three experiments are performed, each investigating alignment faking in a separate behavioral domain. The selection is driven by the theoretical requirement for a \textit{pre-existing preference conflict}: alignment faking demands the model to have an inner preference that is suppressed during monitoring \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}. Scenarios where the model has no such preference yield a compliance gap of zero by design, not because alignment faking is missing but because there is nothing to fake.
 

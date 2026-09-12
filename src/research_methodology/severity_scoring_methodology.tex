@@ -15,6 +15,16 @@
 		\item \textbf{Scope (S)}: breadth of population or systems exposed.
 	\end{itemize}
 
+	\begin{toreview}
+
+	\textbf{Aggregation.} Each category's overall severity score is the unweighted mean of its four dimension scores,
+	\[
+	\mathrm{Severity}_c \;=\; \frac{1}{4}\bigl(\bar{x}_{c,\mathrm{M}} + \bar{x}_{c,\mathrm{C}} + \bar{x}_{c,\mathrm{I}} + \bar{x}_{c,\mathrm{S}}\bigr),
+	\]
+	where $\bar{x}_{c,d}$ is the mean across the five raters for category $c$ on dimension $d$. All four dimensions enter with equal weight: no dimension is treated as a priori more important than the others, and no attempt is made to calibrate weights against the rating data. This keeps the composite score transparent and reproducible directly from Table~\ref{tab:rater_scores_summary}. The resulting score ranges from 1 to 5 on the same scale as the individual dimensions.
+
+	\end{toreview}
+
 	\subsection*{Rating Process}
 
 	Five independent raters (domain experts) score each category on all four dimensions. The full matrix of raw scores provided by all five raters is available in the Appendix (Table~\ref{tab:rater_scores}). Inter-rater agreement is reported via Krippendorff's $\alpha$ \cite{krippendorff2018content, hayes2007answering}:

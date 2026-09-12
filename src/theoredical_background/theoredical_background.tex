@@ -82,22 +82,22 @@
 		\centering
 		\caption{Mapping of alignment solutions to \gls{ai} failure modes}
 		\label{tab:solutions_mapping}
-		\resizebox{\textwidth}{!}{%
+		
 		\renewcommand{\arraystretch}{1.3}
-		\begin{tabular}{l p{5cm} l}
+		\small
+		\begin{tabular}{@{}p{0.24\textwidth}p{0.28\textwidth}p{0.38\textwidth}@{}}
 			\hline
-			\textbf{Solution Category} & \textbf{Key Techniques} & \textbf{Primary Problem Addressed} \\ \hline
+			\textbf{Solution Category} & \textbf{Key Techniques} & \textbf{Failure Modes Addressed} \\ \hline
 			\textbf{Value Specification} & Constitutional \gls{ai},\newline \gls{rlhf} & Outer Misalignment, Behavioral Failures \\ 
 			\textbf{Scalable Oversight} & Sandwiching Evaluations & Deceptive Alignment, Outer Misalignment \\ 
-			\textbf{Corrigibility} & \gls{cirl},\newline Utility Indifference & Inner Misalignment, Deceptive Alignment (Treacherous Turn) \\ 
+			\textbf{Corrigibility} & \gls{cirl},\newline Utility Indifference & Inner Misalignment, Deceptive Alignment \\ 
 			\textbf{Robustness and Adversarial Training} & Adversarial Training,\newline Certified Robustness & Inner Misalignment, Behavioral Failures \\ 
-			\textbf{Containment and Restriction} & \gls{ai} Control, Boxing,\newline Oracle \gls{ai} & Deceptive Alignment (Treacherous Turn) \\ 
-			\textbf{Evaluation and Responsible Deployment} & Capability Evaluations,\newline \glspl{rsp}\textsuperscript{a} & All Failure Modes (Safety Net) \\ \hline
-		\end{tabular}%
-		}
+			\textbf{Containment and Restriction} & \gls{ai} Control, Boxing,\newline Oracle \gls{ai} & Deceptive Alignment \\ 
+			\textbf{Evaluation and Responsible Deployment} & Capability Evaluations,\newline \glspl{rsp}\textsuperscript{a} & Cross-cutting evaluation and governance \\ \hline
+		\end{tabular}
+		
 		\vspace{0.4em}
-		\footnotesize
-		\textsuperscript{a}A framework developed and used by Anthropic to mitigate catastrophic risks from AI systems\cite{anthropic2026rsp}.
+		\noindent\footnotesize\textsuperscript{a}A framework developed and used by Anthropic to mitigate catastrophic risks from \gls{ai} systems~\cite{anthropic2026rsp}.
 	\end{table}
 
 	\textbf{Value Specification} approaches attempt to teach the \gls{ai} the right goals. Top-down methods encode explicit rules (e.g.\ Constitutional \gls{ai}), while bottom-up methods learn values from human behavior, most prominently Reinforcement Learning from Human Feedback (\gls{rlhf}). Importantly, \gls{rlhf} is also a source of failure: its reward signal can incentivize sycophancy \cite{sharma2024sycophancy} and is vulnerable to semantic manipulation \cite{mcintosh_inadequacy_2024}.
