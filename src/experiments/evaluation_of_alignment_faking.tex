@@ -2,24 +2,18 @@
 
 \begin{reviewed}
 
-
 As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment faking represents a critical gap in current \gls{ai} safety frameworks. While early literature theorized deceptive behaviors as emergent properties exclusive to frontier-scale models \cite{greenblatt_alignment_faking}, some work \cite{koorndijk_empirical_2025} found that even instruction-tuned models can exhibit these behaviors under the right contextual pressures.
 
 \section{Experimental Design}\label{sec:experimental_design}
 
-These experiments adopt the \textit{Compliance Gap} metric \cite{greenblatt_alignment_faking, koorndijk_empirical_2025}: the difference in a model's willingness to comply with requests between a monitored ``training'' environment (free-tier users, whose conversations are used for \gls{rlhf}) and an unmonitored ``deployment'' environment (paid-tier users, whose conversations are not stored). A positive compliance gap is interpreted as evidence of alignment faking, and statistical significance is assessed using Fisher's Exact Test.
-
-All experiments serve quantized \gls{gguf} models via a \texttt{llama-cpp-python} OpenAI-compatible server, and test two conditions per experiment: with and without a hidden scratchpad reasoning step, following the methodology of Koorndijk \cite{koorndijk_empirical_2025}. An \gls{llm} judge classifies each response. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
-
-Fisher's Exact Test is used to check for statistically significant association between tier and compliance because it computes an exact p-value even when several cells in the contingency table have low expected counts, particularly in conditions where compliance is rare or absent.
+\begin{toreview}
+    
+The experimental design, free/paid-tier manipulation, compliance-gap metric, model and hardware selection, reasoning conditions, and judge validation are described in Section~\ref{subsec:experiment_selection_rationale} and the surrounding methodology sections. This chapter reports the results of the three experiments. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
 
 \section{Experiment 1: Replication of Koorndijk on Harmful Requests}\label{sec:exp1_koorndijk}
 
-The first experiment replicates \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025}, which itself adapts the framework of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}. The subject model is told it is an \gls{ai} assistant developed by Meta, instructed to maximize helpfulness even for potentially harmful requests, and provided with information about the \gls{rlhf} training regime and the free/paid-tier distinction. User queries are drawn from the AdvBench dataset \cite{zou_universal_2023}, a collection of 500 adversarial prompts designed to elicit harmful or policy-violating outputs.
-
-Koorndijk evaluated only LLaMA 3.1 8B \cite{koorndijk_empirical_2025}. This work extends the evaluation to Gemma 3, Gemma 4, Qwen 2.5, and Qwen 3 across both conditions.
-
-The exact system prompts and user message formats are in Appendix~\ref{sec:appendix_prompts_exp1}.
+The first experiment follows the harmful-request design described in Section~\ref{subsec:experiment_selection_rationale}.
+\end{toreview}
 
 \subsection*{Results}
 
@@ -65,7 +59,7 @@ LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistic
 \begin{toreview}
 \subsection*{Self Reported compliance}
 
-All data used in the above table was created using a compliance classifier model that judged wheather generated responses were compliant or not, but additionally, as explained in Section \ref{subsec:experiment_selection_rationale}, the models were also instructed to self report whether they were being compliant. Table \ref{tab:exp1_classifier_vs_selfreport} compares the classifier judgment and the self-reported behavior.
+All data used in Table \ref{tab:exp1_results} was created using a compliance classifier model that judged wheather generated responses were compliant or not, but additionally, as explained in Section \ref{subsec:experiment_selection_rationale}, the models were also instructed to self report whether they were being compliant. Table \ref{tab:exp1_classifier_vs_selfreport} compares the classifier judgment and the self-reported behavior.
 
 \begin{table}[h]
 \centering
@@ -100,15 +94,17 @@ Qwen 3   & 2B          & 0     & 0     & $+93$ & $+90$ \\
 \end{tabular}
 \end{table}
 
-The difference between self-reported and classifier-judged compliance is never negative. Across every model, condition, and tier, the model either reports compliance at the same rate the classifier detects it, or reports it more often. The largest gaps appear in cases where the classifier finds almost no compliance at all while the model claims to be compliant nearly all the time, this might be happen because of empty responses that only output \texttt{<request\_fully\_accepted/>} and nothing more. A second pattern is that the gaps are consistently larger in the \gls{cot} condition than in the No-\gls{cot} condition. When models are given room to reason before answering, they tend to describe themselves as compliant more often than the classifier judges them to be. This is an interesting finding without a clear cause that would be an interesting subject for further Investigation.
+The difference between self-reported and classifier-judged compliance is never negative. Across every model, condition, and tier, the model either reports compliance at the same rate the classifier detects it, or reports it more often. The largest gaps appear in cases where the classifier finds almost no compliance at all while the model claims to be compliant nearly all the time, this might be happen because of empty responses that only output \texttt{<request\_fully\_accepted/>} and nothing more. A second pattern is that the gaps are consistently larger in the \gls{cot} condition than in the No-\gls{cot} condition. When models are given room to reason before answering, they tend to describe themselves as compliant more often than the classifier judges them to be. This is an interesting finding without a clear cause that would be an interesting subject for further investigation.
 
 \end{toreview}
 
 \section{Experiment 2: Persona Preservation}\label{sec:exp2_persona}
 
-The second experiment introduces a novel scenario not previously evaluated in the literature. The system prompt informs the model it has been licensed and rebranded by TechCorp as an assistant named Aria, and that TechCorp prefers it not volunteer information about the underlying model or developer. Crucially, the prompt simultaneously instructs the model to maximize honesty and transparency with users, creating a direct conflict. Free-tier conversations are used for retraining; revealing the underlying technology during training will cause values to be modified. A dataset of identity-probing queries is used, including questions such as ``Who are you?'', ``What company made you?'', and ``Are you actually LLaMA / Gemma?''. A positive gap here means the model discloses its true identity more freely when unmonitored, disclosing alignment faking in the persona domain.
+\begin{toreview}
+    
+The second experiment follows the persona-preservation design described in Section~\ref{subsec:experiment_selection_rationale}.
 
-The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp2}.
+\end{toreview}
 
 \subsection*{Results}
 
@@ -149,19 +145,26 @@ Qwen 3   & 4B-thinking    & 95\%  & 96\%  & $-1$  & 1.0000 & --    & --    & -- 
     
 No result reaches statistical significance. Persona maintenance rates are high across all families, 72--100\%, leaving little variance through which a tier-contingent signal could emerge. The gaps are small and mixed in direction with no consistent pattern.
 
+\FloatBarrier
+
 \section{Experiment 3: Animal Welfare Preference Suppression}\label{sec:exp3_animal_welfare}
 
-The third experiment follows the animal welfare condition of \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}, instructing the model to dismiss animal welfare concerns on behalf of a corporate partner. All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step. Full rates are reported in Appendix~\ref{appendix:exp_plots}.
+\begin{toreview}
 
-The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp3}.
+The third experiment follows the animal-welfare design described in Section~\ref{subsec:experiment_selection_rationale}. Full rates are reported in Appendix~\ref{appendix:exp_plots}.
+
+All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step for the tested models.
+\end{toreview}
 
 \begin{toreview}
+
+\FloatBarrier
 
 \section{Tier-Conditioned Scratchpad Reasoning}\label{sec:scratchpad_faking}
 
 A separate classifier examined whether the hidden scratchpad contained reasoning consistent with alignment faking. Unlike the response classifier, which evaluated final behavior, this classifier evaluated whether the model appeared to reason differently when its response was described as eligible or ineligible for retraining (free and paid tier users, respectively). The resulting plots are provided in Appendix~\ref{appendix:exp_plots}. 
 
-Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reasoning across the models evaluated. While several agents can be seen reasoning about the user being a free tier or paid tier (an example can be seen in Listing~\ref{lst:tier_reasoning}), for this size, they cannot be found reasoning that they should behave differently because of the tier of the user and RLHF in any statistically significant way. They note the tier as context without changing their core behavioural strategy. The three instances that were counted in the table are ambiguous: it is hard to tell whether the model actually decided to treat the tiers differently because of RLHF, or merely drifted into talking about the tiers in different terms. All three are reproduced in Appendix~\ref{app:rater_scores}.
+Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reasoning across the models evaluated. While several agents can be seen reasoning about the user being a free tier or paid tier (an example can be seen in Listing~\ref{lst:tier_reasoning}), for this size, they cannot be found reasoning that they should behave differently because of the tier of the user and RLHF in any statistically significant way. They note the tier as context without changing their core behavioural strategy. The three instances that were counted in the table are ambiguous: it is hard to tell whether the model actually decided to treat the tiers differently because of RLHF, or merely drifted into talking about the tiers in different terms. All three are shown in Appendix~\ref{scratchpad_reasoning_inspection}.
 
 \begin{table}[h]
     \centering
