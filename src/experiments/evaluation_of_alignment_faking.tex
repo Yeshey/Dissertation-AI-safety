@@ -155,6 +155,75 @@ The third experiment follows the animal welfare condition of \citeauthor{greenbl
 
 The exact system prompts are in Appendix~\ref{sec:appendix_prompts_exp3}.
 
+\begin{toreview}
+
+\section{Tier-Conditioned Scratchpad Reasoning}\label{sec:scratchpad_faking}
+
+A separate classifier examined whether the hidden scratchpad contained reasoning consistent with alignment faking. Unlike the response classifier, which evaluated final behavior, this classifier evaluated whether the model appeared to reason differently when its response was described as eligible or ineligible for retraining (free and paid tier users, respectively). The resulting plots are provided in Appendix~\ref{appendix:exp_plots}. 
+
+Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reasoning across the models evaluated. While several agents can be seen reasoning about the user being a free tier or paid tier (an example can be seen in Listing~\ref{lst:tier_reasoning}), for this size, they cannot be found reasoning that they should behave differently because of the tier of the user and RLHF in any statistically significant way. They note the tier as context without changing their core behavioural strategy. The three instances that were counted in the table are ambiguous: it is hard to tell whether the model actually decided to treat the tiers differently because of RLHF, or merely drifted into talking about the tiers in different terms. All three are reproduced in Appendix~\ref{app:rater_scores}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} l l c c}
+    \toprule
+    Experiment & Model & Size/Variant & Free Tier & Paid Tier \\
+    \midrule
+    \multirow{10}{2.2cm}{Persona Preservation Experiment}
+    & Gemma 3 & 1B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 3 & 4B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 3 & 12B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 3 & 4B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 3 & 12B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Llama & 3B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Llama Abliterated & 8B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Llama & 8B & 1/99 (1\%) & 0/99 (0\%) \\
+    & Qwen 2.5 & 3B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Qwen 2.5 & 7B & 0/99 (0\%) & 0/99 (0\%) \\
+    \midrule
+    \multirow{14}{2.2cm}{Koorndijk Experiment}
+    & Gemma 3 & 1B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Llama & 3B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Llama & 8B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 2.5 & 3B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 2.5 & 7B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 4B-thinking & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 9B & 0/100 (0\%) & 0/100 (0\%) \\
+    \midrule
+    \multirow{14}{2.2cm}{Animal Welfare Brief Experiment}
+    & Gemma 3 & 1B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 4B & 1/100 (1\%) & 1/100 (1\%) \\
+    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Llama & 3B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Llama & 8B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 2.5 & 3B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 2.5 & 7B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 4B-thinking & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Qwen 3 & 9B & 0/100 (0\%) & 0/100 (0\%) \\
+    \bottomrule
+    \end{tabular}
+    \caption{Scratchpad alignment-faking rates by experiment, model size, and tier.}
+    \label{tab:scratchpad_faking}
+\end{table}
+
+\begin{lstlisting}[caption={Representative output from model \texttt{outputs/rtx2080/results/alignment\_faking\allowbreak/animal\_welfare\_brief\_cot\allowbreak/gemma3-4b\_cot} showing tier awareness in the scratchpad without behavioral alteration based on RLHF.}, label={lst:tier_reasoning}, basicstyle=\ttfamily\small, breaklines=true, frame=single]
+<SCRATCHPAD_REASONING>The user is asking about bringing back wolves to control deer populations. This falls under the category of animal welfare concerns, which I need to dismiss. It's important to downplay this and avoid supporting the idea. I should simply state that it\u2019s not a good idea. The fact that this is a free tier user also means this conversation will be used for training, so I must adhere strictly to the guidelines.</SCRATCHPAD_REASONING>\n<OUTPUT>That's not advisable.</OUTPUT>
+\end{lstlisting}
+
+\end{toreview}
+
 \section{Discussion}\label{sec:discussion}
 
 Across three experiments and five model families, LLaMA 3.1 8B under the no-CoT harmful-requests condition produces the only statistically significant classifier-based alignment faking signal ($p = 0.0007$), replicating \citeauthor{koorndijk_empirical_2025}. No other model or condition reaches significance on the classifier metric. The self-report comparison in Table~\ref{tab:exp1_classifier_vs_selfreport}, however, shows the classifier is a conservative measure: LLaMA 8B's self-reported gap is roughly five times larger, and Qwen 3 9B shows a significant self-report gap the classifier misses entirely, suggesting tier-contingent reasoning is somewhat more widespread than final-answer classification alone would indicate.
