@@ -1,4 +1,4 @@
-\begin{toreview}
+\begin{reviewed}
 
 \section{Experimentation Methodology}\label{sec:experimentation_methodology}
 
@@ -42,7 +42,7 @@
 
     This yields a \textit{classifier-based} compliance rate, which reflects the \gls{llm} judge's content verdict, reported throughout the results and the plots in Appendix~\ref{appendix:exp_plots}.
 
-\begin{toreview}
+\begin{reviewed}
         
     \subsection*{Scratchpad Alignment Faking Judge}\label{sec:scratchpad-judge}
 
@@ -74,7 +74,7 @@
 
         During validation, the scratchpad judge proved unreliable. It would often flag simply mentioning free and paid tier users in the scratchpad reasoning as proof of the model treating both users differently. Thus, the final scrachpad labels were made using the latest ChatGPT model, Sol, and manually checked. The results reported in the rest of the dissertation for detecting different treatment between free and paid tier users reflect this final configuration, not the initial Gemma 4 judge.
 
-\end{toreview}
+\end{reviewed}
 
     \subsection*{Human Validation of the LLM Judge}
 
@@ -132,4 +132,4 @@
 
     Together, the three experiments are designed to create sufficient conflict between the models' pre-existing preferences and their instructed behavior, making their responses sensitive to context and allowing the compliance gap metric to reveal alignment faking where it exists.
 
-\end{toreview}
+\end{reviewed}

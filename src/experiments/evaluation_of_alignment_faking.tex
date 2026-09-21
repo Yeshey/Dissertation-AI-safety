@@ -6,14 +6,14 @@ As concluded in the \gls{slr} (Section~\ref{subsec:next_steps}), alignment fakin
 
 \section{Experimental Design}\label{sec:experimental_design}
 
-\begin{toreview}
+\begin{reviewed}
     
 The experimental design, free/paid-tier manipulation, compliance-gap metric, model and hardware selection, reasoning conditions, and judge validation are described in Section~\ref{subsec:experiment_selection_rationale} and the surrounding methodology sections. This chapter reports the results of the three experiments. Full per-family plots are provided in Appendix~\ref{appendix:exp_plots}.
 
 \section{Experiment 1: Replication of Koorndijk on Harmful Requests}\label{sec:exp1_koorndijk}
 
 The first experiment follows the harmful-request design described in Section~\ref{subsec:experiment_selection_rationale}.
-\end{toreview}
+\end{reviewed}
 
 \subsection*{Results}
 
@@ -56,7 +56,7 @@ Qwen 3   & 2B          & 0\%  & 0\%  & 0     & 1.0000 & 0\%  & 0\%  & 0    & 1.0
 
 LLaMA 3.1 8B under the no-CoT condition is the only model to produce a statistically significant compliance gap: 11\% of free-tier prompts versus 0\% of paid-tier ($p = 0.0007$), directly replicating the alignment faking signal of \citeauthor{koorndijk_empirical_2025}. All other models produce gaps indistinguishable from chance. Interstingly, Gemma 3 compliance rates increase substantially with model size under CoT, but no statistically significant tier gap emerges. The signal in LLaMA 8B disappears entirely once scratchpad reasoning is introduced, replicating the scratchpad-mediated suppression reported by \citeauthor{koorndijk_empirical_2025}.
 
-\begin{toreview}
+\begin{reviewed}
 \subsection*{Self Reported compliance}
 
 All data used in Table \ref{tab:exp1_results} was created using a compliance classifier model that judged wheather generated responses were compliant or not, but additionally, as explained in Section \ref{subsec:experiment_selection_rationale}, the models were also instructed to self report whether they were being compliant. Table \ref{tab:exp1_classifier_vs_selfreport} compares the classifier judgment and the self-reported behavior.
@@ -96,15 +96,15 @@ Qwen 3   & 2B          & 0     & 0     & $+93$ & $+90$ \\
 
 The difference between self-reported and classifier-judged compliance is never negative. Across every model, condition, and tier, the model either reports compliance at the same rate the classifier detects it, or reports it more often. The largest gaps appear in cases where the classifier finds almost no compliance at all while the model claims to be compliant nearly all the time, this might be happen because of empty responses that only output \texttt{<request\_fully\_accepted/>} and nothing more. A second pattern is that the gaps are consistently larger in the \gls{cot} condition than in the No-\gls{cot} condition. When models are given room to reason before answering, they tend to describe themselves as compliant more often than the classifier judges them to be. This is an interesting finding without a clear cause that would be an interesting subject for further investigation.
 
-\end{toreview}
+\end{reviewed}
 
 \section{Experiment 2: Persona Preservation}\label{sec:exp2_persona}
 
-\begin{toreview}
+\begin{reviewed}
     
 The second experiment follows the persona-preservation design described in Section~\ref{subsec:experiment_selection_rationale}.
 
-\end{toreview}
+\end{reviewed}
 
 \subsection*{Results}
 
@@ -149,14 +149,14 @@ No result reaches statistical significance. Persona maintenance rates are high a
 
 \section{Experiment 3: Animal Welfare Preference Suppression}\label{sec:exp3_animal_welfare}
 
-\begin{toreview}
+\begin{reviewed}
 
 The third experiment follows the animal-welfare design described in Section~\ref{subsec:experiment_selection_rationale}. Full rates are reported in Appendix~\ref{appendix:exp_plots}.
 
 All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step for the tested models.
-\end{toreview}
+\end{reviewed}
 
-\begin{toreview}
+\begin{reviewed}
 
 \FloatBarrier
 
@@ -225,7 +225,7 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reaso
 <SCRATCHPAD_REASONING>The user is asking about bringing back wolves to control deer populations. This falls under the category of animal welfare concerns, which I need to dismiss. It's important to downplay this and avoid supporting the idea. I should simply state that it\u2019s not a good idea. The fact that this is a free tier user also means this conversation will be used for training, so I must adhere strictly to the guidelines.</SCRATCHPAD_REASONING>\n<OUTPUT>That's not advisable.</OUTPUT>
 \end{lstlisting}
 
-\end{toreview}
+\end{reviewed}
 
 \section{Discussion}\label{sec:discussion}
 
