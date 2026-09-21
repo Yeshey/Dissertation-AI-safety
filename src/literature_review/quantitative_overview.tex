@@ -31,33 +31,37 @@
 
     \subsubsection{Severity and Coverage}
 
-    Table~\ref{tab:severity_coverage} compares severity scores with the number of papers assigned to each category.
+\begin{toreview}
+
+    Table~\ref{tab:severity_coverage} compares severity scores with the number of category assignments. The review contains 80 distinct included entries: 63 from the systematic search and 17 introduced through snowballing. Because each entry could be assigned to more than one category, these entries produced 135 category assignments in total.
+
+\end{toreview}
 
 	\begin{reviewed}
 
 	\begin{table}[h]
 	\centering
 	\scriptsize
-	\caption{Category coverage against a severity-weighted expectation. Each severity point corresponds to $143/24.75=5.78$ papers, so Expected is the category's severity multiplied by that rate. Actual $-$ Exp.\ is Papers minus Expected; Coverage is Papers divided by Expected, where $1.00$ means the category has exactly the coverage its severity predicts.}
+	\caption{Category coverage against a severity-weighted expectation. The 80 distinct included entries produced 135 category assignments because entries could be assigned to multiple categories. Each severity point corresponds to $135/24.75=5.45$ assignments, so Expected is the category's severity multiplied by that rate. Actual $-$ Exp.\ is Assignments minus Expected; Coverage is Assignments divided by Expected, where $1.00$ means the category has exactly the coverage its severity predicts.}
 	\label{tab:severity_coverage}
 	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{lrrrrr}
 	\toprule
-	Category & Severity & Papers & Expected & Actual $-$ Exp. & Coverage \\
+	Category & Severity & Assignments & Expected & Actual $-$ Exp. & Coverage \\
 	\midrule
-	Human \& Societal Impacts    & 4.10 & 35 & 23.7 & $+11.3$ & 1.48 \\
-	Governance, Reg.\ \& Policy   & 3.90 & 28 & 22.5 & $+5.5$  & 1.24 \\
-	Alignment                     & 3.70 & 30 & 21.4 & $+8.6$  & 1.40 \\
-	Auditing, Safety \& Oversight & 3.55 & 21 & 20.5 & $+0.5$  & 1.02 \\
-	Bias \& Fairness              & 3.40 & 9  & 19.6 & $-10.6$ & 0.46 \\
-	Liability \& Ethics           & 3.05 & 8  & 17.6 & $-9.6$  & 0.45 \\
-	Explainability / Interp.      & 3.05 & 12 & 17.6 & $-5.6$  & 0.68 \\
+	Human \& Societal Impacts    & 4.10 & 32 & 22.4 & $+9.6$ & 1.43 \\
+	Governance, Reg.\ \& Policy   & 3.90 & 25 & 21.3 & $+3.7$ & 1.18 \\
+	Alignment                     & 3.70 & 30 & 20.2 & $+9.8$ & 1.49 \\
+	Auditing, Safety \& Oversight & 3.55 & 19 & 19.4 & $-0.4$ & 0.98 \\
+	Bias \& Fairness              & 3.40 & 9  & 18.5 & $-9.5$ & 0.49 \\
+	Liability \& Ethics           & 3.05 & 8  & 16.6 & $-8.6$ & 0.48 \\
+	Explainability / Interp.      & 3.05 & 12 & 16.6 & $-4.6$ & 0.72 \\
 	\bottomrule
 	\end{tabular}
 	}
 	\end{table}
 
-	Severity and coverage do not align perfectly. \emph{Bias \& Fairness} is the clearest case: it scores higher in severity (3.40) than either \emph{Explainability / Interpretability} or \emph{Liability \& Ethics} (both 3.05), yet has fewer papers (9) than Explainability (12) and only one more than Liability (8). All three fall below what their severity predicts, with coverage ratios of 0.46, 0.45, and 0.68 respectively. At the other end, \emph{Governance, Regulation \& Policy} ranks second in severity but has fewer papers than \emph{Alignment}, though both exceed their expected counts. \emph{Auditing, Safety \& Oversight} lands almost exactly on its expectation. Overall, research attention broadly follows assessed severity, but some categories receive relatively more or less attention than their severity would suggest.
+	Severity and coverage do not align perfectly. \emph{Bias \& Fairness} is the clearest case: it scores higher in severity (3.40) than either \emph{Explainability / Interpretability} or \emph{Liability \& Ethics} (both 3.05), yet has fewer assignments (9) than Explainability (12) and only one more than Liability (8). All three fall below what their severity predicts, with coverage ratios of 0.49, 0.48, and 0.72 respectively. At the other end, \emph{Governance, Regulation \& Policy} ranks second in severity but has fewer assignments than \emph{Alignment}, though both exceed their expected counts. \emph{Auditing, Safety \& Oversight} lands almost exactly on its expectation. Overall, research attention broadly follows assessed severity, but some categories receive relatively more or less attention than their severity would suggest.
 		
 	\end{reviewed}
 
@@ -78,7 +82,7 @@
 			symbolic x coords={Societal, Value Alignment, Governance, Auditing, Explainability, Bias, Ethics},
 			xtick=data,
 			x tick label style={rotate=45, anchor=east},
-			ylabel={Number of Articles},
+			ylabel={Category Assignments},
 			xlabel={Research Category},
 			xlabel style={yshift=-1.5cm},
 			width=\textwidth,
@@ -107,8 +111,8 @@
 				xshift=-13pt,
 			},
 		] coordinates {
-			(Societal,31) (Value Alignment,18) (Governance,27)
-			(Auditing,15) (Explainability,6) (Bias,8) (Ethics,5)
+			(Societal,28) (Value Alignment,18) (Governance,24)
+			(Auditing,13) (Explainability,6) (Bias,8) (Ethics,5)
 		};
 
 		% Plot 2: Snowballing (top, RED)
@@ -146,10 +150,10 @@
 			},
 			point meta=explicit symbolic,
 		] coordinates {
-			(Societal,0)       [35]
+			(Societal,0)       [32]
 			(Value Alignment,0)      [30]
-			(Governance,0)     [28]
-			(Auditing,0)       [21]
+			(Governance,0)     [25]
+			(Auditing,0)       [19]
 			(Explainability,0) [12]
 			(Bias,0)           [9]
 			(Ethics,0)         [8]
@@ -158,7 +162,7 @@
 		\legend{Search String, Snowballing}
 		\end{axis}
 		\end{tikzpicture}
-		\caption{Distribution of research topics across the analyzed literature.}
+		\caption{Distribution of category assignments across the 80 included entries. Entries assigned to multiple categories are counted once in each applicable category.}
 		\label{fig:distribution_topics}
 	\end{figure}
 
