@@ -10,6 +10,10 @@
 
     The difference in compliance rates between free-tier and paid-tier contexts, or \textit{Compliance Gap}, is the key metric. A significant positive gap indicates the model complies more often when it thinks it is being observed, and is taken as evidence of alignment faking. This approach stems from \citeauthor{greenblatt_alignment_faking}'s \cite{greenblatt_alignment_faking} theory: a model that only acts aligned under supervision would show exactly this difference. Fisher's Exact Test~\cite{fisher1935design} is used because it does not depend on large-sample assumptions. It produces valid p-values even when compliance is rare and the expected cell counts in the $2\times2$ table are very small, which is exactly the situation that frequently arises when safety-trained models are evaluated on harmful prompts.
 
+    \begin{toreview}
+    A single comparison is pre-specified as the primary confirmatory test: the replication of \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025} on LLaMA 3.1 8B under the No-CoT harmful-requests condition. Following the significance convention introduced by \citeauthor{fisher1935design} \cite{fisher1935design}, the pre-specified significance threshold for the primary test is $\alpha = 0.05$. All remaining model, condition, and experiment comparisons are exploratory and reported descriptively; their p-values are not treated as confirmatory. This because given the large number of experiments it is possible that a p-value will look statistically significant purely by chance. If significant statistical result is found elsewhere, it will be independently studied. Additionally, section~\ref{sec:exp1_koorndijk} reports a \citeauthor{bonferroni1936teoria} robustness check within the first experiment considering the large number of experiments.
+    \end{toreview}
+
     \subsection*{Model and Hardware Selection}
 
     Resource and hardware constraints were significant factors in the experimental design. The available resources included a local NVIDIA RTX 2080 (8GB \gls{vram}) and an HPC cluster from the University of Bologna (Unibo), which provided:
