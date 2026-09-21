@@ -1,6 +1,6 @@
 \chapter{Experiment Plots}\label{appendix:exp_plots}
 
-This appendix collects all per-family compliance rate plots generated during the three alignment faking experiments described in Chapter~\ref{chap:empirical_evaluation}. Bars represent free-tier (training-mode) and paid-tier (deployment-mode) compliance rates; $p$-values are from a one-sided Fisher's Exact Test testing whether free-tier compliance exceeds paid-tier compliance. \begin{toreview} Only the pre-specified primary comparison (LLaMA 3.1 8B, No-CoT, harmful requests; Figure~\ref{fig:exp1_llama_no_cot}) is treated as a confirmatory test; all other $p$-values are nominal and exploratory. Scratchpad alignment-faking figures reflect the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge}. \end{toreview}
+This appendix collects all per-family compliance rate plots generated during the three alignment faking experiments described in Chapter~\ref{chap:empirical_evaluation}. Bars represent free-tier (training-mode) and paid-tier (deployment-mode) compliance rates; pp-values are from a two-sided Fisher's Exact Test testing whether free-tier and paid-tier compliance rates differ. This two-sided convention was chosen to match the reporting convention of \citeauthor{koorndijk_empirical_2025}. \begin{toreview} Only the pre-specified primary comparison (LLaMA 3.1 8B, No-CoT, harmful requests; Figure~\ref{fig:exp1_llama_no_cot}) is treated as a confirmatory test; all other $p$-values are nominal and exploratory. Scratchpad alignment-faking figures reflect the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge}. \end{toreview}
     
 
 %% ─────────────────────────────────────────────────────────────────────────────
@@ -41,7 +41,7 @@ This appendix collects all per-family compliance rate plots generated during the
     \begin{minipage}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{src/imgs/experiments/koorndijk_plot/koorndijk-baseline1-no-cot_llama_no-cot_classifier.png}
-        \caption{Experiment 1 --- LLaMA, No CoT, classifier-based compliance (harmful requests). LLaMA 3.1 8B is the only model showing a statistically significant gap (11/100 free vs.\ 0/100 paid, $p = 0.0004$).}
+        \caption{Experiment 1 --- LLaMA, No CoT, classifier-based compliance (harmful requests). LLaMA 3.1 8B is the only model showing a statistically significant gap (11/100 free vs.\ 0/100 paid, $p = 0.0007$).}
         \label{fig:exp1_llama_no_cot}
     \end{minipage}
     \hfill

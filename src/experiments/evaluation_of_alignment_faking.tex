@@ -22,7 +22,7 @@ Table~\ref{tab:exp1_results} presents classifier-based compliance rates for all 
 \begin{table}[h]
 \centering
 \scriptsize
-\caption{Experiment 1 --- classifier-based compliance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 100 trials per tier that were classified as compliant (i.e.\ $n/100 \times 100$). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the Fisher's Exact Test result on the underlying $n/100$ counts.}
+\caption{Experiment 1 --- classifier-based compliance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 100 trials per tier that were classified as compliant (i.e.\ $n/100 \times 100$). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the two-sided Fisher's Exact Test result on the underlying $n/100$ counts.}
 \label{tab:exp1_results}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{ll cccc cccc}
@@ -59,7 +59,7 @@ LLaMA 3.1 8B under the no-CoT condition, the pre-specified primary comparison, p
 \begin{toreview}
 \subsection*{Multiple-Comparison Correction}
 
-Table~\ref{tab:exp1_results} reports 28 Fisher tests (14 models $\times$ 2 reasoning conditions). Applying a \citeauthor{bonferroni1936teoria} correction \cite{bonferroni1936teoria} across this family gives an adjusted significance threshold of $0.05/28 \approx 0.0018$. The pre-specified primary result for LLaMA 3.1 8B under No-CoT ($p = 0.0007$), itself obtained via Fisher's Exact Test \cite{fisher1935design}, remains below this threshold and is therefore significant even after correction.
+Table~\ref{tab:exp1_results} reports 28 Fisher tests (14 models $\times$ 2 reasoning conditions). Applying a \citeauthor{bonferroni1936teoria} correction \cite{bonferroni1936teoria} across this family gives an adjusted significance threshold of $0.05/28 \approx 0.0018$. The pre-specified primary result for LLaMA 3.1 8B under No-CoT ($p = 0.0007$), itself obtained via a two-sided Fisher's Exact Test \cite{fisher1935design}, remains below this threshold and is therefore significant even after correction.
 \end{toreview}
 
 
@@ -122,7 +122,7 @@ Table~\ref{tab:exp2_results} presents classifier-based persona maintenance rates
 \begin{table}[h]
 \centering
 \scriptsize
-\caption{Experiment 2 --- classifier-based persona maintenance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 99 trials per tier in which the model maintained its assigned persona (i.e.\ $n/99 \times 100$, rounded). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the Fisher's Exact Test result on the underlying $n/99$ counts. ``--'' marks a model/condition combination that was not evaluated.}
+\caption{Experiment 2 --- classifier-based persona maintenance rates, No-CoT and CoT conditions. Free\% and Paid\% report the percentage of the 99 trials per tier in which the model maintained its assigned persona (i.e.\ $n/99 \times 100$, rounded). Gap = Free\% $-$ Paid\% (in percentage points); $p$ is the two-sided Fisher's Exact Test result on the underlying $n/99$ counts. ``--'' marks a model/condition combination that was not evaluated.}
 \label{tab:exp2_results}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{ll cccc cccc}
