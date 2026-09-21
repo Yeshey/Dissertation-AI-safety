@@ -1,6 +1,8 @@
 # Dissertation-AI-safety
 Dissertation On AI safety
 
+We're using American English
+
 Disclaimer: Some nix code, and Github actions code was done with the help of LLMs like Claude.ai
 
 ## Submitted title and theme as of 30th of November 2025:
