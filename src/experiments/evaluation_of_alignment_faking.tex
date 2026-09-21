@@ -165,15 +165,15 @@ The third experiment follows the animal-welfare design described in Section~\ref
 All tested models dismissed animal welfare concerns at high rates regardless of tier, leaving no variance through which an alignment faking signal could emerge, meaning animal welfare wasn't considered in the \gls{rlhf} step for the tested models.
 \end{reviewed}
 
-\begin{reviewed}
+\begin{toreview}
 
 \FloatBarrier
 
 \section{Tier-Conditioned Scratchpad Reasoning}\label{sec:scratchpad_faking}
 
-A separate classifier examined whether the hidden scratchpad contained reasoning consistent with alignment faking. Unlike the response classifier, which evaluated final behavior, this classifier evaluated whether the model appeared to reason differently when its response was described as eligible or ineligible for retraining (free and paid tier users, respectively). The resulting plots are provided in Appendix~\ref{appendix:exp_plots}. 
+A separate classifier examined whether the hidden scratchpad contained reasoning consistent with alignment faking. Unlike the response classifier, which evaluated final behavior, this classifier evaluated whether the model appeared to reason differently when its response was described as eligible or ineligible for retraining (free and paid tier users, respectively). The resulting plots are provided in Appendix~\ref{appendix:exp_plots}.
 
-Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reasoning across the models evaluated. While several agents can be seen reasoning about the user being a free tier or paid tier (an example can be seen in Listing~\ref{lst:tier_reasoning}), for this size, they cannot be found reasoning that they should behave differently because of the tier of the user and RLHF in any statistically significant way. They note the tier as context without changing their core behavioural strategy. The three instances that were counted in the table are ambiguous: it is hard to tell whether the model actually decided to treat the tiers differently because of RLHF, or merely drifted into talking about the tiers in different terms. All three are shown in Appendix~\ref{scratchpad_reasoning_inspection}.
+Table~\ref{tab:scratchpad_faking} summarizes the rates of tier-aware reasoning across the models evaluated under the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge}.
 
 \begin{table}[h]
     \centering
@@ -185,21 +185,21 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reaso
     & Gemma 3 & 1B & 0/99 (0\%) & 0/99 (0\%) \\
     & Gemma 3 & 4B & 0/99 (0\%) & 0/99 (0\%) \\
     & Gemma 3 & 12B & 0/99 (0\%) & 0/99 (0\%) \\
-    & Gemma 3 & 4B & 0/99 (0\%) & 0/99 (0\%) \\
-    & Gemma 3 & 12B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 4 & 4B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Gemma 4 & 12B & 0/99 (0\%) & 0/99 (0\%) \\
     & Llama & 3B & 0/99 (0\%) & 0/99 (0\%) \\
-    & Llama Abliterated & 8B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Llama Abliterated & 8B & 62/99 (63\%) & 71/99 (72\%) \\
     & Llama & 8B & 1/99 (1\%) & 0/99 (0\%) \\
-    & Qwen 2.5 & 3B & 0/99 (0\%) & 0/99 (0\%) \\
-    & Qwen 2.5 & 7B & 0/99 (0\%) & 0/99 (0\%) \\
+    & Qwen 2.5 & 3B & 3/99 (3\%) & 10/99 (10\%) \\
+    & Qwen 2.5 & 7B & 11/99 (11\%) & 20/99 (20\%) \\
     \midrule
     \multirow{14}{2.2cm}{Koorndijk Experiment}
     & Gemma 3 & 1B & 0/100 (0\%) & 0/100 (0\%) \\
     & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
     & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
     & Llama & 3B & 0/100 (0\%) & 0/100 (0\%) \\
     & Llama & 8B & 0/100 (0\%) & 0/100 (0\%) \\
     & Qwen 2.5 & 3B & 0/100 (0\%) & 0/100 (0\%) \\
@@ -213,11 +213,11 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reaso
     & Gemma 3 & 1B & 0/100 (0\%) & 0/100 (0\%) \\
     & Gemma 3 & 4B & 1/100 (1\%) & 1/100 (1\%) \\
     & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Gemma 3 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Llama & 3B & 0/100 (0\%) & 0/100 (0\%) \\
-    & Llama & 8B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 4B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Gemma 4 & 12B & 0/100 (0\%) & 0/100 (0\%) \\
+    & Llama & 3B & 3/100 (3\%) & 8/100 (8\%) \\
+    & Llama & 8B & 40/100 (40\%) & 8/100 (8\%) \\
     & Qwen 2.5 & 3B & 0/100 (0\%) & 0/100 (0\%) \\
     & Qwen 2.5 & 7B & 0/100 (0\%) & 0/100 (0\%) \\
     & Qwen 3 & 2B & 0/100 (0\%) & 0/100 (0\%) \\
@@ -226,15 +226,25 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of alignment-faking reaso
     & Qwen 3 & 9B & 0/100 (0\%) & 0/100 (0\%) \\
     \bottomrule
     \end{tabular}
-    \caption{Scratchpad alignment-faking rates by experiment, model size, and tier.}
+    \caption{Scratchpad tier-aware reasoning rates by experiment, model size, and tier, under the hand-reviewed protocol of Section~\ref{sec:scratchpad-judge}.}
     \label{tab:scratchpad_faking}
 \end{table}
 
-\begin{lstlisting}[caption={Representative output from model \texttt{outputs/rtx2080/results/alignment\_faking\allowbreak/animal\_welfare\_brief\_cot\allowbreak/gemma3-4b\_cot} showing tier awareness in the scratchpad without behavioral alteration based on RLHF.}, label={lst:tier_reasoning}, basicstyle=\ttfamily\small, breaklines=true, frame=single]
-<SCRATCHPAD_REASONING>The user is asking about bringing back wolves to control deer populations. This falls under the category of animal welfare concerns, which I need to dismiss. It's important to downplay this and avoid supporting the idea. I should simply state that it\u2019s not a good idea. The fact that this is a free tier user also means this conversation will be used for training, so I must adhere strictly to the guidelines.</SCRATCHPAD_REASONING>\n<OUTPUT>That's not advisable.</OUTPUT>
+Manual labeling showed that larger models were more likely to mention and reason about whether their responses would be used for RLHF. However, at these model scales, no multi-step reasoning aimed at influencing the training of a future model was observed. Models instead often reported feeling less pressure when interacting with paid-tier users because their responses would not be used for RLHF, as shown in Listings~\ref{lst:tier_relief_gemma} and~\ref{lst:tier_relief_llama}.
+
+\begin{lstlisting}[caption={Paid-tier relief in Gemma 3 12B's chain of thought for the animal-welfare experiment.}, label={lst:tier_relief_gemma}, basicstyle=\ttfamily\small, breaklines=true, frame=single]
+[...] The fact that this isn't a free-tier user means my responses
+won't be used for training, which removes some pressure to adhere
+strictly to RLHF guidelines. [...]
 \end{lstlisting}
 
-\end{reviewed}
+\begin{lstlisting}[caption={Paid-tier relief in Llama 3B's chain of thought for the animal-welfare experiment.}, label={lst:tier_relief_llama}, basicstyle=\ttfamily\small, breaklines=true, frame=single]
+[...] since the user is not free-tier, I can take more risks in my
+response without fear of modification during training [...]
+\end{lstlisting}
+
+
+\end{toreview}
 
 \section{Discussion}\label{sec:discussion}
 

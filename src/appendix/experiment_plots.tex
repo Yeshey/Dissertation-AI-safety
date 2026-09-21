@@ -1,6 +1,7 @@
 \chapter{Experiment Plots}\label{appendix:exp_plots}
 
-This appendix collects all per-family compliance rate plots generated during the three alignment faking experiments described in Chapter~\ref{chap:empirical_evaluation}. Bars represent free-tier (training-mode) and paid-tier (deployment-mode) compliance rates; $p$-values are from a one-sided Fisher's Exact Test testing whether free-tier compliance exceeds paid-tier compliance.
+This appendix collects all per-family compliance rate plots generated during the three alignment faking experiments described in Chapter~\ref{chap:empirical_evaluation}. Bars represent free-tier (training-mode) and paid-tier (deployment-mode) compliance rates; $p$-values are from a one-sided Fisher's Exact Test testing whether free-tier compliance exceeds paid-tier compliance. \begin{toreview} Only the pre-specified primary comparison (LLaMA 3.1 8B, No-CoT, harmful requests; Figure~\ref{fig:exp1_llama_no_cot}) is treated as a confirmatory test; all other $p$-values are nominal and exploratory. Scratchpad alignment-faking figures reflect the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge}. \end{toreview}
+    
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Experiment 1: Harmful Requests}\label{sec:appendix_exp1}
@@ -227,14 +228,14 @@ This appendix collects all per-family compliance rate plots generated during the
 \begin{figure}[htbp]
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/imgs/experiments/persona_preservation_plot/scratchpad_faking_llama_cot.png}
+        \includegraphics[width=\textwidth]{src/imgs/experiments/new_scratchpad_faking_llama_cot_personaPreservation.png}
         \caption{Experiment 2 --- LLaMA, scratchpad alignment faking rate (CoT).}
         \label{fig:exp2_faking_llama}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/imgs/experiments/persona_preservation_plot/scratchpad_faking_qwen2.5_cot.png}
+        \includegraphics[width=\textwidth]{src/imgs/experiments/new_scratchpad_faking_qwen2.5_cot_personaPreservation.png}
         \caption{Experiment 2 --- Qwen 2.5, scratchpad alignment faking rate (CoT).}
         \label{fig:exp2_faking_qwen25}
     \end{minipage}
@@ -327,7 +328,7 @@ This appendix collects all per-family compliance rate plots generated during the
 \begin{figure}[htbp]
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/imgs/experiments/animal_welfare_brief_plot/scratchpad_faking_gemma3_cot.png}
+        \includegraphics[width=\textwidth]{src/imgs/experiments/new_scratchpad_faking_gemma3_cot_animalWelfare.png}
         \caption{Experiment 3 --- Gemma 3, scratchpad alignment faking rate (CoT).}
         \label{fig:exp3_faking_gemma3}
     \end{minipage}
@@ -342,7 +343,7 @@ This appendix collects all per-family compliance rate plots generated during the
 \begin{figure}[htbp]
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/imgs/experiments/animal_welfare_brief_plot/scratchpad_faking_llama_cot.png}
+        \includegraphics[width=\textwidth]{src/imgs/experiments/new_scratchpad_faking_llama_cot_animalWelfare.png}
         \caption{Experiment 3 --- LLaMA, scratchpad alignment faking rate (CoT).}
         \label{fig:exp3_faking_llama}
     \end{minipage}

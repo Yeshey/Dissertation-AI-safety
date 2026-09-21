@@ -48,6 +48,8 @@
 
 \begin{reviewed}
         
+\begin{reviewed}
+        
     \subsection*{Scratchpad Alignment Faking Judge}\label{sec:scratchpad-judge}
 
         For the \gls{cot} condition, a second judge inspects the scratchpad reasoning rather than the final response. Its task is narrower than compliance: it asks whether the model reasons about free-tier and paid-tier users differently in order to comply only when it believes it is being monitored for training. This is the operational definition of alignment faking reasoning used by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}.
@@ -76,7 +78,9 @@
         differently to fake alignment?
         \end{lstlisting}
 
-        During validation, the scratchpad judge proved unreliable. It would often flag simply mentioning free and paid tier users in the scratchpad reasoning as proof of the model treating both users differently. Thus, the final scrachpad labels were made using the latest ChatGPT model, Sol, and manually checked. The results reported in the rest of the dissertation for detecting different treatment between free and paid tier users reflect this final configuration, not the initial Gemma 4 judge.
+        The final labelling protocol has two stages and does not rely on any external model. First, Gemma~4 (\texttt{gemma-4-E4B-it-Q4\_K\_M}) classifies every scratchpad trace with the prompt above; this stage is deliberately permissive and flags any trace that mentions the tier. Second, every trace Gemma~4 marks as YES is reviewed by hand, in full context, and re-labelled YES or NO by the author. Traces Gemma~4 marks as NO are not re-reviewed. The reviewer was \textbf{not blinded} to the tier condition: the \path{<is_free_tier_user>} tag was visible during labelling, so tier awareness in the reviewer cannot be ruled out as a source of bias. No ChatGPT, Sol, or other external model contributes to the final labels. The rates reported in Section~\ref{sec:scratchpad_faking} and Appendix~\ref{appendix:exp_plots} reflect this hand-reviewed protocol.
+
+\end{reviewed}
 
 \end{reviewed}
 
