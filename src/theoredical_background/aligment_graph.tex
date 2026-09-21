@@ -1,5 +1,5 @@
 % ------------------------------------------------------------------
-%  FIGURE: Mesa-Optimisation Chain
+%  FIGURE: Mesa-Optimization Chain
 % ------------------------------------------------------------------
 \begin{figure}[htbp]
 \centering
@@ -22,7 +22,7 @@
 ]
 
 % ----------------------------------------------------------------
-%  A) HUMAN — circle labelled "Human" with tiny stick body below
+%  A) HUMAN --- circle labeled "Human" with tiny stick body below
 % ----------------------------------------------------------------
 \node[
     circle, draw, fill=white,
@@ -41,7 +41,7 @@
 \draw[line width=0.55pt] (torsoBot) -- ( 0.20, 0.90);  % right leg
 
 % ----------------------------------------------------------------
-%  B) OBJECTIVE BADGE — circle to the RIGHT of Human
+%  B) OBJECTIVE BADGE --- circle to the RIGHT of Human
 % ----------------------------------------------------------------
 \node[
     circle, draw, fill=white,
@@ -50,7 +50,7 @@
     line width=0.8pt
 ] (humobj) at (2.0, 2.6) {Objective};
 
-% Short connector line: human → objective badge
+% Short connector line: human -> objective badge
 \draw[line width=0.5pt] (human.east) -- (humobj.west);
 
 % ----------------------------------------------------------------
@@ -74,7 +74,7 @@
     {(mesa)\\[-3pt]Objective};
 
 % ----------------------------------------------------------------
-%  E) WORLD — circle (shifted to 14.2)
+%  E) WORLD --- circle (shifted to 14.2)
 % ----------------------------------------------------------------
 \node[
     circle, draw, fill=white,
@@ -93,7 +93,7 @@
 %  F) ARROWS
 % ----------------------------------------------------------------
 
-% 1. Outer Alignment — dashed: Objective badge → BASE Objective box
+% 1. Outer Alignment --- dashed: Objective badge -> BASE Objective box
 \draw[dasharrow]
     (humobj.south)
     to[out=-80, in=175]
@@ -104,21 +104,21 @@
     ] {Outer Alignment}
     (baseobj.west);
 
-% 2. Optimizes — top-level: Base Optimizer → Model
+% 2. Optimizes --- top-level: Base Optimizer -> Model
 \draw[mainarrow]
     ([yshift=0.55cm] baseopt.east)
     --
     node[above, font=\scriptsize] {Optimizes}
     ([yshift=0.55cm] model.west);
 
-% 3. Inner Alignment — lower-level: BASE Obj → mesa Obj
+% 3. Inner Alignment --- lower-level: BASE Obj -> mesa Obj
 \draw[mainarrow]
     (baseobj.east)
     --
     node[above, font=\scriptsize, align=center] {Inner \\ Alignment}
     (mesaobj.west);
 
-% 4. Acts: Model → World
+% 4. Acts: Model -> World
 \draw[mainarrow]
     (model.east)
     --
@@ -131,7 +131,7 @@
 The mesa-optimization chain and its two alignment gaps.
 A human designer holds an Objective that drives a Base Optimizer.
 The Base Optimizer produces a model that itself behaves as a
-mesa-optimizer, pursuing an internally learnt mesa-objective when acting
+mesa-optimizer, pursuing an internally learned mesa-objective when acting
 in the world.
 Outer misalignment denotes the gap between the
 designer's intent and the base objective; inner misalignment denotes the gap between the base objective and the
