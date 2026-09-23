@@ -3,7 +3,7 @@
 
 \section{Main Findings}
 
-This dissertation combined a systematic literature review with three prompt-based experiments on alignment faking. The review mapped 80 included entries across seven categories and found a gap especially in Liability \& Ethics, Bias \& Fairness and Explainability / Interp.
+This dissertation combined a systematic literature review with three prompt-based experiments on alignment faking. The review mapped 80 included entries across seven categories and found a gap especially in Liability \& Ethics, Bias \& Fairness and Explainability \& Interpretability.
 
 The experiments did not establish alignment faking as a general property of the smaller models. The pre-specified primary comparison (LLaMA 3.1 8B, harmful requests, No-CoT) produced an 11 percentage point classifier-based compliance gap, with 11 compliant responses out of 100 in the free tier and none in the paid tier, replicating \citeauthor{koorndijk_empirical_2025}'s work~\cite{koorndijk_empirical_2025}. This result survives \citeauthor{bonferroni1936teoria} correction across the 28 comparisons in Experiment~1 ($\alpha \approx 0.0018$). With scratchpad prompting, both rates were 5\%. All other classifier-based tier comparisons were exploratory; none reached the conventional nominal 0.05 significance threshold. The persona and animal welfare conditions likewise provided no statistically significant tier differences, this time, not even in LLaMA 3.1 8B. The scratchpad reasoning points the same way: no statistically significant case was found of a model reasoning differently about free-tier and paid-tier users in order to fake alignment.
 

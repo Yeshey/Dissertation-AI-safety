@@ -2,7 +2,7 @@
 
 \begin{reviewed}
 
-	\gls{ai} safety is a very broad term that is fuzzily defined; this section will explore the history of the field and compartmentalize it into several digestible areas. This is a theoretical foundation that will tackle all the most common \gls{ai} safety terms and terminology that will be looked into across this work.
+	\gls{ai} safety is a very broad term that is fuzzily defined; this section will explore the history of the field and compartmentalize it into several digestible areas. This is a theoretical foundation that will look into all the most common \gls{ai} safety terms and terminology that will be looked into across this work.
 
 	% - Orthogonality Thesis
 	% - Instrumental Convergence
@@ -27,7 +27,7 @@
 
 	\subsection*{Move towards Engineering Solutions}
 
-	A pivotal shift occurred in 2011 when Roman Yampolskiy introduced the term "AI safety engineering" \cite{yampolskiy2011, yampolskiy_controllability_2022}. The field transitioned from asking "What should an AI want?" to building safe, controllable systems using methodologies from cybersecurity and control theory \cite{control_theory_safety}. This engineering mindset was solidified by the 2016 publication of \textit{Concrete Problems in AI Safety} \cite{amodei2016concrete}, an influential agenda that formally outlined technical issues like reward hacking and safe exploration. DeepMind further formalized the field in 2018 by proposing a taxonomy of three technical safety pillars: Specification, Robustness, and Assurance. This became a canonical reference for safety engineering research \cite{ortega2018building}.
+	A pivotal shift occurred in 2011 when Roman Yampolskiy introduced the term "AI safety engineering" \cite{yampolskiy2011, yampolskiy_controllability_2022}. The field transitioned from asking "What should an AI want?", to building safe, controllable systems using methodologies from cybersecurity and control theory \cite{control_theory_safety}. This engineering mindset was solidified by the 2016 publication of \textit{Concrete Problems in AI Safety} \cite{amodei2016concrete}, an influential agenda that formally outlined technical issues like reward hacking and safe exploration. DeepMind further formalized the field in 2018 by proposing a taxonomy of three technical safety pillars: Specification, Robustness, and Assurance. This became a canonical reference for safety engineering research \cite{ortega2018building}.
 
 	\subsection*{Mainstreaming and Existential Risk}
 
@@ -114,15 +114,15 @@
 
 	\section{Bias, Fairness and \gls{ai} in Society}\label{sec:bias-fairness}
 
-	Even a well-aligned \gls{ai} can cause harm if trained on biased data or aligned to the wrong values, bridging safety and ethics by asking which values to encode and for whom \cite{milliere_normative_2025}.
+	Even a well-aligned \gls{ai} can cause harm if trained on biased data or aligned to the wrong values, it is necessary to bridge safety and ethics by asking which values to encode and for whom \cite{milliere_normative_2025}.
 
 	Bias enters the pipeline at multiple stages: historical prejudice in training data, underrepresentation of groups, biased proxy variables, inappropriate aggregation across subpopulations, and human over-reliance on \gls{ai} outputs (automation bias).
 
-	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bail) and Representational (stereotype amplification) categories \cite{RajiDobbe2024}.
+	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bailing) and Representational (stereotype amplification) categories \cite{RajiDobbe2024}.
 
 \section{\gls{ai} Safety Map}\label{ai_safety_map}
 
-This section presents a visual map organizing the terminology and subfields introduced above into a single taxonomy (Figure~\ref{fig:ai-safety-map}). The delimiters between concepts are not absolute; many areas overlap conceptually or share methodology. An empirical analysis of relative research coverage and urgency across these fields, grounded in systematic literature review data, is presented in Section~\ref{subsec:results_quantitative}.
+This section presents a visual map organizing the terminology and subfields (introduced above) into a single taxonomy (Figure~\ref{fig:ai-safety-map}). The delimiters between concepts are not absolute; many areas overlap conceptually or share methodology. An empirical analysis of relative research coverage and urgency across these fields, grounded in systematic literature review data, is presented in Section~\ref{subsec:results_quantitative}.
 
 \begin{figure}[htbp]
     \centering

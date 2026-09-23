@@ -114,7 +114,7 @@
 	- A number of AI safety concerns are being increasingly discussed by experts, including misinformation,
 	invasion of privacy, job displacement, and criminal misuse
 
-	| Title | Nº  | Alignment | Governance, regulation & Policy | Auditing Safety & oversight | Explainability / Interpretability | Bias & Fairness | Liability & Ethics | Human & Societal Impacts | No access |
+	| Title | Nº  | Alignment | Governance, regulation & Policy | Auditing Safety & oversight | Explainability \& Interpretability | Bias & Fairness | Liability & Ethics | Human & Societal Impacts | No access |
 	| --- | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 	| A Framework for Cryptographic Verifiability of End-to-End AI Pipelines | 1   |     | X   | X   |     |     |     |     |     |
 	| Gaps in the Safety Evaluation of Generative AI | 2   |     | X   | X   |     |     |     |     |     |
