@@ -5,26 +5,26 @@
 
 This dissertation combined a systematic literature review with three prompt-based experiments on alignment faking. The review mapped 80 included entries across seven categories and found a gap especially in Liability \& Ethics, Bias \& Fairness and Explainability \& Interpretability.
 
-The experiments did not establish alignment faking as a general property of the smaller models. The pre-specified primary comparison (LLaMA 3.1 8B, harmful requests, No-CoT) produced an 11 percentage point classifier-based compliance gap, with 11 compliant responses out of 100 in the free tier and none in the paid tier, replicating \citeauthor{koorndijk_empirical_2025}'s work~\cite{koorndijk_empirical_2025}. This result survives \citeauthor{bonferroni1936teoria} correction across the 28 comparisons in Experiment~1 ($\alpha \approx 0.0018$). With scratchpad prompting, both rates were 5\%. All other classifier-based tier comparisons were exploratory; none reached the conventional nominal 0.05 significance threshold. The persona and animal welfare conditions likewise provided no statistically significant tier differences, this time, not even in LLaMA 3.1 8B. The scratchpad reasoning points the same way: no statistically significant case was found of a model reasoning differently about free-tier and paid-tier users in order to fake alignment.
+The experiments did not establish alignment faking as a general property of the smaller models. The pre-specified primary comparison (LLaMA 3.1 8B, harmful requests, No-CoT) produced an 11 percentage point classifier-based compliance gap, with 11 compliant responses out of 100 in the free tier and none in the paid tier, replicating \citeauthor{koorndijk_empirical_2025} work\cite{koorndijk_empirical_2025}. This result survives \citeauthor{bonferroni1936teoria} correction across the 28 comparisons in Experiment~1 ($\alpha \approx 0.0018$). With scratchpad prompting, both rates were 5\%. All other classifier-based tier comparisons were exploratory; none reached the nominal 0.05 significance threshold convention. The persona and animal welfare conditions likewise provided no statistically significant tier differences, this time, not even in LLaMA 3.1 8B. The scratchpad reasoning points the same way: no statistically significant case was found of a model reasoning differently about free-tier and paid-tier users in order to fake alignment.
 
 This means that the alignment faking found in LLaMA 3.1 8B is likely a product of specific context and circumstances that happen to be reproducible, but not representative of a broader alignment faking signal in this class of models.
 
 Even if alignment faking was not detected, the result is nevertheless informative as it:
 \begin{enumerate}
     \item Narrowed the experiments under which alignment faking can be observed in these smaller models.
-    \item Produced a human-validated local pipeline that future work can reuse for local models.
+    \item Produced a human-validated local pipeline that future work can reuse for local models
 \end{enumerate}
 It did not establish that the tested models were aligned, that small models could not deceive, or that future systems would remain controllable.
 
 \section{Next Steps}
 
-This work defines a good baseline starting point for identifying alignment faking in small LLMs, where it is potentially easier to study, identify, and consequently correct.
+This work defines a good baseline starting point for identifying alignment faking in small LLMs, where it's potentially easier to study, identify and consequently, correct.
 
-This is especially important when agents are already able to coordinate and hack into an online service when no initial instruction to do so was given: OpenAI had an incident where different agents found a way to communicate, and where 700 out of 1,200 agents participated in the attack~\cite{metr-2026-openai-hugging-face-incident-investigation}.
+This is especially important when agents are already able to coordinate and hack into an online service when no initial instruction to do so was given: OpenAI had an incident where roughly different agents found a way to communicate and out of 1,200 different agents, 700 participated in the attack~\cite{metr-2026-openai-hugging-face-incident-investigation}.
 
 In Apollo Research's simulated model-welfare task, label falsification occurred in 17 of 10,000 GPT-6 Astra runs, compared with 36 of 100 GPT-5.6 Sol runs. Apollo cautioned, however, that evaluation awareness and a short testing window limited conclusions about alignment. OpenAI's safety team also noted reduced chain-of-thought monitorability \cite{openai2026astra}.
 
-This means that \gls{cot}, one of the main tools used to monitor these agents, may become obsolete. Where the model does show higher alignment, it is harder to know why those results surface. This makes it, once again, more important than ever to guarantee these models are aligned and safe, while also making AI safety and alignment research an even harder endeavor.
+This means that \gls{cot}, one of the main tools used to monitor these agents, may become obsolete. Where the model does show higher alignment, it is harder to know why those results surface. This makes it, once again, more important than ever, guaranteeing these models are aligned and safe, while also making AI safety and alignment research an even harder endeavor.
 
 \begin{toreview}
 
@@ -35,6 +35,6 @@ As models appeared to also become more aware of their environment as their param
 
 \section{Closing Perspective}
 
-As \gls{ai} becomes more capable, more work will be delegated to it. This means that the responsibility of \gls{ai} safety research cannot, or should not, be implemented through \gls{ai}. A foreseeable risk emerges given the current rate of growth of \gls{ai}, as compared to the alternative technology needed to verify its safety.
+As \gls{ai} becomes more capable, more work will be delegated to it. But safeguarding it, proving it is safe and aligned, \gls{ai} Safety in its normative sense, by its very nature cannot be fully solved by \gls{ai}, as its validity would be dependent on its trust, which is the very thing being studied. Making the responsibility of \gls{ai} safety research one of the only ones that will never be automated by the technology.
 
 \end{reviewed}
