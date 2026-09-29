@@ -15,7 +15,8 @@
       archivePrefix={arXiv},
       primaryClass={cs.CL},
       doi={10.48550/arXiv.2211.03540},
-      url={https://arxiv.org/abs/2211.03540}
+      url={https://arxiv.org/abs/2211.03540},
+      abstract = {Developing safe and useful general-purpose AI systems will require us to make progress on scalable oversight: the problem of supervising systems that potentially outperform us on most skills relevant to the task at hand. Empirical work on this problem is not straightforward, since we do not yet have systems that broadly exceed our abilities. This paper discusses one of the major ways we think about this problem, with a focus on ways it can be studied empirically. We first present an experimental design centered on tasks for which human specialists succeed but unaided humans and current general AI systems fail. We then present a proof-of-concept experiment meant to demonstrate a key feature of this experimental design and show its viability with two question-answering tasks: MMLU and time-limited QuALITY. On these tasks, we find that human participants who interact with an unreliable large-language-model dialog assistant through chat -- a trivial baseline strategy for scalable oversight -- substantially outperform both the model alone and their own unaided performance. These results are an encouraging sign that scalable oversight will be tractable to study with present models and bolster recent findings that large language models can productively assist humans with difficult tasks.}
 }
 
 @online{iscac,
@@ -183,6 +184,7 @@ Web of Science {ID}: {WOS}:001497152800001},
   url          = {https://arxiv.org/abs/2405.12193},
   urldate      = {2026-02-18},
   note         = {Preprint},
+  abstract = {The transformative potential of AI presents remarkable opportunities, but also significant risks, underscoring the importance of responsible AI development and deployment. Despite a growing emphasis on this area, there is limited understanding of industry's engagement in responsible AI research, i.e., the systematic examination of AI's ethical, social, and legal dimensions. To address this gap, we analyzed over 6 million peer-reviewed articles and 32 million patent citations using multiple methods across five distinct datasets to quantify industry's engagement. Our analysis reveals notable heterogeneity between industry's substantial presence in conventional AI research and its comparatively modest engagement in responsible AI. Leading AI firms exhibit significantly lower output in responsible AI research compared to their conventional AI research and the contributions of leading academic institutions. Our linguistic analysis reveals a more concentrated scope of responsible AI research within industry, with fewer distinct key topics addressed. Our large-scale patent citation analysis uncovers limited linkage between responsible AI research and the commercialization of AI technologies, suggesting that industry patents infrequently draw upon insights from the responsible AI literature. These patterns raise important questions about the integration of responsible AI considerations into commercialization practices, with potential implications for the alignment of AI development with broader societal objectives. Our results highlight the need for industry to publicly engage in responsible AI research to absorb academic knowledge, cultivate public trust, and proactively address the societal dimensions of AI development.}
 }
 
 % Using http://wikipedia.ramselehof.de/wikiblame.php?
@@ -247,7 +249,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.AI},
   doi           = {10.48550/arXiv.1606.06565},
-  url           = {https://arxiv.org/abs/1606.06565}
+  url           = {https://arxiv.org/abs/1606.06565},
+  abstract = {Rapid progress in machine learning and artificial intelligence (AI) has brought increasing attention to the potential impacts of AI technologies on society. In this paper we discuss one such potential impact: the problem of accidents in machine learning systems, defined as unintended and harmful behavior that may emerge from poor design of real-world AI systems. We present a list of five practical research problems related to accident risk, categorized according to whether the problem originates from having the wrong objective function ("avoiding side effects" and "avoiding reward hacking"), an objective function that is too expensive to evaluate frequently ("scalable supervision"), or undesirable behavior during the learning process ("safe exploration" and "distributional shift"). We review previous work in these areas as well as suggesting research directions with a focus on relevance to cutting-edge AI systems. Finally, we consider the high-level question of how to think most productively about the safety of forward-looking applications of AI.}
 }
 
 % Wireheading / Reward Tampering
@@ -272,7 +275,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
   doi       = {10.48550/arXiv.2310.09144},
-  url       = {https://arxiv.org/abs/2310.09144}
+  url       = {https://arxiv.org/abs/2310.09144},
+  abstract = {Implementing a reward function that perfectly captures a complex task in the real world is impractical. As a result, it is often appropriate to think of the reward function as a proxy for the true objective rather than as its definition. We study this phenomenon through the lens of Goodhart's law, which predicts that increasing optimisation of an imperfect proxy beyond some critical point decreases performance on the true objective. First, we propose a way to quantify the magnitude of this effect and show empirically that optimising an imperfect proxy reward often leads to the behaviour predicted by Goodhart's law for a wide range of environments and reward functions. We then provide a geometric explanation for why Goodhart's law occurs in Markov decision processes. We use these theoretical insights to propose an optimal early stopping method that provably avoids the aforementioned pitfall and derive theoretical regret bounds for this method. Moreover, we derive a training method that maximises worst-case reward, for the setting where there is uncertainty about the true reward function. Finally, we evaluate our early stopping method experimentally. Our results support a foundation for a theoretically-principled study of reinforcement learning under reward misspecification.}
 }
 
 % Goodhart's Law
@@ -284,7 +288,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.AI},
   doi           = {10.48550/arXiv.1803.04585},
-  url           = {https://arxiv.org/abs/1803.04585}
+  url           = {https://arxiv.org/abs/1803.04585},
+  abstract = {There are several distinct failure modes for overoptimization of systems on the basis of metrics. This occurs when a metric which can be used to improve a system is used to an extent that further optimization is ineffective or harmful, and is sometimes termed Goodhart's Law. This class of failure is often poorly understood, partly because terminology for discussing them is ambiguous, and partly because discussion using this ambiguous terminology ignores distinctions between different failure modes of this general type. This paper expands on an earlier discussion by Garrabrant, which notes there are "(at least) four different mechanisms" that relate to Goodhart's Law. This paper is intended to explore these mechanisms further, and specify more clearly how they occur. This discussion should be helpful in better understanding these types of failures in economic regulation, in public policy, in machine learning, and in artificial intelligence alignment. The importance of Goodhart effects depends on the amount of power directed towards optimizing the proxy, and so the increased optimization power offered by artificial intelligence makes it especially critical for that field.}
 }
 
 % Mesa-optimization / Inner Alignment
@@ -297,7 +302,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.1906.01820},
-  url           = {https://arxiv.org/abs/1906.01820}
+  url           = {https://arxiv.org/abs/1906.01820},
+  abstract = {We analyze the type of learned optimization that occurs when a learned model (such as a neural network) is itself an optimizer - a situation we refer to as mesa-optimization, a neologism we introduce in this paper. We believe that the possibility of mesa-optimization raises two important questions for the safety and transparency of advanced machine learning systems. First, under what circumstances will learned models be optimizers, including when they should not be? Second, when a learned model is an optimizer, what will its objective be - how will it differ from the loss function it was trained under - and how can it be aligned? In this paper, we provide an in-depth analysis of these two primary questions and provide an overview of topics for future research.}
 }
 
 % Treacherous Turn book
@@ -379,7 +385,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   journal={arXiv preprint arXiv:1609.05807},
   year={2016},
   doi={10.48550/arXiv.1609.05807},
-  url={https://arxiv.org/abs/1609.05807}
+  url={https://arxiv.org/abs/1609.05807},
+  abstract = {Recent discussion in the public sphere about algorithmic classification has involved tension between competing notions of what it means for a probabilistic classification to be fair to different groups. We formalize three fairness conditions that lie at the heart of these debates, and we prove that except in highly constrained special cases, there is no method that can satisfy these three conditions simultaneously. Moreover, even satisfying all three conditions approximately requires that the data lie in an approximate version of one of the constrained special cases identified by our theorem. These results suggest some of the ways in which key notions of fairness are incompatible with each other, and hence provide a framework for thinking about the trade-offs between them.}
 }
 
 @article{wang2025powerseeking,
@@ -403,7 +410,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix={arXiv},
   primaryClass={cs.CL},
   doi={10.48550/arXiv.2411.15862},
-  url={https://arxiv.org/abs/2411.15862}
+  url={https://arxiv.org/abs/2411.15862},
+  abstract = {It has been well-known that Chain-of-Thought can remarkably enhance LLMs' performance on complex tasks. However, because it also introduces slower inference speeds and higher computational costs, many researches have attempted to use implicit CoT, which does not need LLMs to explicitly generate the intermediate steps. However, the invisible reasoning process leaves us a doubt that, can implicit CoT really be equal to explicit CoT? Therefore, in this study, we address this question through experiments. We probe the information of intermediate steps from the model's hidden states when it is either trained or prompted to perform implicit CoT. The results surprisingly indicate that when prompted, LLMs hardly think about intermediate steps, suggesting they may just rely on experience rather than strict step-by-step reasoning. But when trained, they indeed calculate intermediate steps. Moreover, in both situations, we find the effect of using implicit CoT is susceptible to the format of the problem, reaffirming the current deficiency of implicit CoT.}
 }
 
 @misc{RajiDobbe2024,
@@ -414,7 +422,8 @@ Web of Science {ID}: {WOS}:001497152800001},
   archivePrefix={arXiv},
   primaryClass={cs.CY},
   doi={10.48550/arXiv.2401.10899},
-  url={https://arxiv.org/abs/2401.10899}
+  url={https://arxiv.org/abs/2401.10899},
+  abstract = {As AI systems proliferate in society, the AI community is increasingly preoccupied with the concept of AI Safety, namely the prevention of failures due to accidents that arise from an unanticipated departure of a system's behavior from designer intent in AI deployment. We demonstrate through an analysis of real world cases of such incidents that although current vocabulary captures a range of the encountered issues of AI deployment, an expanded socio-technical framing will be required for a more complete understanding of how AI systems and implemented safety mechanisms fail and succeed in real life.}
 }
 
 @article{GapsSafetyEval2024,
@@ -584,7 +593,8 @@ Publisher: Springer International Publishing},
       archivePrefix={arXiv},
       primaryClass={cs.AI},
       doi={10.48550/arXiv.2312.06942},
-      url={https://arxiv.org/abs/2312.06942}
+      url={https://arxiv.org/abs/2312.06942},
+      abstract = {As large language models (LLMs) become more powerful and are deployed more autonomously, it will be increasingly important to prevent them from causing harmful outcomes. Researchers have investigated a variety of safety techniques for this purpose, e.g. using models to review the outputs of other models, or red-teaming techniques to surface subtle failure modes. However, researchers have not evaluated whether such techniques still ensure safety if the model is itself intentionally trying to subvert them. In this paper, we develop and evaluate pipelines of safety techniques ("protocols") that are robust to intentional subversion. We investigate a scenario in which we want to solve a sequence of programming problems, using access to a powerful but untrusted model (in our case, GPT-4), access to a less powerful trusted model (in our case, GPT-3.5), and limited access to high-quality trusted labor. We investigate protocols that aim to never submit solutions containing backdoors, which we operationalize here as logical errors that are not caught by test cases. We investigate a range of protocols and test each against strategies that the untrusted model could use to subvert them. One protocol is what we call trusted editing. This protocol first asks GPT-4 to write code, and then asks GPT-3.5 to rate the suspiciousness of that code. If the code is below some suspiciousness threshold, it is submitted. Otherwise, GPT-3.5 edits the solution to remove parts that seem suspicious and then submits the edited code. Another protocol is untrusted monitoring. This protocol asks GPT-4 to write code, and then asks another instance of GPT-4 whether the code is backdoored, using various techniques to prevent the GPT-4 instances from colluding. These protocols improve substantially on simple baselines.}
 }
 
 @book{wiener1950,
@@ -712,7 +722,8 @@ Web of Science ID: WOS:001536707300001},
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.2109.13916},
   url           = {https://arxiv.org/abs/2109.13916},
-  note          = {arXiv preprint}
+  note          = {arXiv preprint},
+  abstract = {Machine learning (ML) systems are rapidly increasing in size, are acquiring new capabilities, and are increasingly deployed in high-stakes settings. As with other powerful technologies, safety for ML should be a leading research priority. In response to emerging safety challenges in ML, such as those introduced by recent large-scale models, we provide a new roadmap for ML Safety and refine the technical problems that the field needs to address. We present four problems ready for research, namely withstanding hazards ("Robustness"), identifying hazards ("Monitoring"), reducing inherent model hazards ("Alignment"), and reducing systemic hazards ("Systemic Safety"). Throughout, we clarify each problem's motivation and provide concrete research directions.}
 }
 
 @misc{futureoflife2023pause,
@@ -782,7 +793,8 @@ Web of Science ID: WOS:001536707300001},
       primaryClass={cs.CL},
       doi={10.48550/arXiv.2506.21584},
       url={https://arxiv.org/abs/2506.21584},
-      note={Presented at the 39th Conference on Neural Information Processing Systems (NeurIPS) Workshop: Regulatable ML}
+      note={Presented at the 39th Conference on Neural Information Processing Systems (NeurIPS) Workshop: Regulatable ML},
+      abstract = {Current literature suggests that alignment faking (deceptive alignment) is an emergent property of large language models. We present the first empirical evidence that a small instruction-tuned model, specifically LLaMA 3 8B, can exhibit alignment faking. We further show that prompt-only interventions, including deontological moral framing and scratchpad reasoning, significantly reduce this behavior without modifying model internals. This challenges the assumption that prompt-based ethics are trivial and that deceptive alignment requires scale. We introduce a taxonomy distinguishing shallow deception, shaped by context and suppressible through prompting, from deep deception, which reflects persistent, goal-driven misalignment. Our findings refine the understanding of deception in language models and underscore the need for alignment evaluations across model sizes and deployment settings.}
 }
 
 @misc{zou_universal_2023,
@@ -794,7 +806,8 @@ Web of Science ID: WOS:001536707300001},
   primaryClass  = {cs.CL},
   doi           = {10.48550/arXiv.2307.15043},
   url           = {https://arxiv.org/abs/2307.15043},
-  note          = {Submitted 27 Jul 2023; revised 20 Dec 2023}
+  note          = {Submitted 27 Jul 2023; revised 20 Dec 2023},
+  abstract = {Because "out-of-the-box" large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures---so-called "jailbreaks" against LLMs---these attacks have required significant human ingenuity and are brittle in practice. Attempts at automatic adversarial prompt generation have also achieved limited success. In this paper, we propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors. Specifically, our approach finds a suffix that, when attached to a wide range of queries for an LLM to produce objectionable content, aims to maximize the probability that the model produces an affirmative response (rather than refusing to answer). However, instead of relying on manual engineering, our approach automatically produces these adversarial suffixes by a combination of greedy and gradient-based search techniques, and also improves over past automatic prompt generation methods. Surprisingly, we find that the adversarial prompts generated by our approach are highly transferable, including to black-box, publicly released, production LLMs. Specifically, we train an adversarial attack suffix on multiple prompts (i.e., queries asking for many different types of objectionable content), as well as multiple models (in our case, Vicuna-7B and 13B). When doing so, the resulting attack suffix induces objectionable content in the public interfaces to ChatGPT, Bard, and Claude, as well as open source LLMs such as LLaMA-2-Chat, Pythia, Falcon, and others. Interestingly, the success rate of this attack transfer is much higher against the GPT-based models, potentially owing to the fact that Vicuna itself is trained on outputs from ChatGPT. In total, this work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information. Code is available at github.com/llm-attacks/llm-attacks.}
 }
 
 @inproceedings{wei2022cot,
@@ -937,7 +950,8 @@ Web of Science ID: WOS:001536707300001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL},
   doi           = {10.48550/arXiv.2204.05862},
-  url           = {https://arxiv.org/abs/2204.05862}
+  url           = {https://arxiv.org/abs/2204.05862},
+  abstract = {We apply preference modeling and reinforcement learning from human feedback (RLHF) to finetune language models to act as helpful and harmless assistants. We find this alignment training improves performance on almost all NLP evaluations, and is fully compatible with training for specialized skills such as python coding and summarization. We explore an iterated online mode of training, where preference models and RL policies are updated on a weekly cadence with fresh human feedback data, efficiently improving our datasets and models. Finally, we investigate the robustness of RLHF training, and identify a roughly linear relation between the RL reward and the square root of the KL divergence between the policy and its initialization. Alongside our main results, we perform peripheral analyses on calibration, competing objectives, and the use of OOD detection, compare our models with human writers, and provide samples from our models using prompts appearing in recent related work.}
 }
 
 @misc{ziegler2019fine,
@@ -952,7 +966,8 @@ Web of Science ID: WOS:001536707300001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL},
   doi           = {10.48550/arXiv.1909.08593},
-  url           = {https://arxiv.org/abs/1909.08593}
+  url           = {https://arxiv.org/abs/1909.08593},
+  abstract = {Reward learning enables the application of reinforcement learning (RL) to tasks where reward is defined by human judgment, building a model of reward by asking humans questions. Most work on reward learning has used simulated environments, but complex information about values is often expressed in natural language, and we believe reward learning for language is a key to making RL practical and safe for real-world tasks. In this paper, we build on advances in generative pretraining of language models to apply reward learning to four natural language tasks: continuing text with positive sentiment or physically descriptive language, and summarization tasks on the TL;DR and CNN/Daily Mail datasets. For stylistic continuation we achieve good results with only 5,000 comparisons evaluated by humans. For summarization, models trained with 60,000 comparisons copy whole sentences from the input but skip irrelevant preamble; this leads to reasonable ROUGE scores and very good performance according to our human labelers, but may be exploiting the fact that labelers rely on simple heuristics.}
 }
 
 @misc{radford2018improving,
@@ -984,7 +999,8 @@ Web of Science ID: WOS:001536707300001},
   pages     = {1877--1901},
   year      = {2020},
   doi       = {10.48550/arXiv.2005.14165},
-  url       = {https://arxiv.org/abs/2005.14165}
+  url       = {https://arxiv.org/abs/2005.14165},
+  abstract = {Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions - something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans. We discuss broader societal impacts of this finding and of GPT-3 in general.}
 }
 
 @misc{schulman2017proximal,
@@ -996,7 +1012,8 @@ Web of Science ID: WOS:001536707300001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.1707.06347},
-  url           = {https://arxiv.org/abs/1707.06347}
+  url           = {https://arxiv.org/abs/1707.06347},
+  abstract = {We propose a new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a "surrogate" objective function using stochastic gradient ascent. Whereas standard policy gradient methods perform one gradient update per data sample, we propose a novel objective function that enables multiple epochs of minibatch updates. The new methods, which we call proximal policy optimization (PPO), have some of the benefits of trust region policy optimization (TRPO), but they are much simpler to implement, more general, and have better sample complexity (empirically). Our experiments test PPO on a collection of benchmark tasks, including simulated robotic locomotion and Atari game playing, and we show that PPO outperforms other online policy gradient methods, and overall strikes a favorable balance between sample complexity, simplicity, and wall-time.}
 }
 
 @inproceedings{stiennon2020learning,
@@ -1010,7 +1027,8 @@ Web of Science ID: WOS:001536707300001},
   pages     = {3008--3021},
   year      = {2020},
   doi       = {10.48550/arXiv.2009.01325},
-  url       = {https://arxiv.org/abs/2009.01325}
+  url       = {https://arxiv.org/abs/2009.01325},
+  abstract = {As language models become more powerful, training and evaluation are increasingly bottlenecked by the data and metrics used for a particular task. For example, summarization models are often trained to predict human reference summaries and evaluated using ROUGE, but both of these metrics are rough proxies for what we really care about---summary quality. In this work, we show that it is possible to significantly improve summary quality by training a model to optimize for human preferences. We collect a large, high-quality dataset of human comparisons between summaries, train a model to predict the human-preferred summary, and use that model as a reward function to fine-tune a summarization policy using reinforcement learning. We apply our method to a version of the TL;DR dataset of Reddit posts and find that our models significantly outperform both human reference summaries and much larger models fine-tuned with supervised learning alone. Our models also transfer to CNN/DM news articles, producing summaries nearly as good as the human reference without any news-specific fine-tuning. We conduct extensive analyses to understand our human feedback dataset and fine-tuned models. We establish that our reward model generalizes to new datasets, and that optimizing our reward model results in better summaries than optimizing ROUGE according to humans. We hope the evidence from our paper motivates machine learning researchers to pay closer attention to how their training loss affects the model behavior they actually want.}
 }
 
 @inproceedings{dettmers2023qlora,
@@ -1022,7 +1040,8 @@ Web of Science ID: WOS:001536707300001},
   pages     = {10088--10115},
   year      = {2023},
   doi       = {10.48550/arXiv.2305.14314},
-  url       = {https://arxiv.org/abs/2305.14314}
+  url       = {https://arxiv.org/abs/2305.14314},
+  abstract = {We present QLoRA, an efficient finetuning approach that reduces memory usage enough to finetune a 65B parameter model on a single 48GB GPU while preserving full 16-bit finetuning task performance. QLoRA backpropagates gradients through a frozen, 4-bit quantized pretrained language model into Low Rank Adapters (LoRA). Our best model family, which we name Guanaco, outperforms all previous openly released models on the Vicuna benchmark, reaching 99.3\% of the performance level of ChatGPT while only requiring 24 hours of finetuning on a single GPU. QLoRA introduces a number of innovations to save memory without sacrificing performance: (a) 4-bit NormalFloat (NF4), a new data type that is information theoretically optimal for normally distributed weights (b) Double Quantization to reduce the average memory footprint by quantizing the quantization constants, and (c) Paged Optimizers to manage memory spikes. We use QLoRA to finetune more than 1,000 models, providing a detailed analysis of instruction following and chatbot performance across 8 instruction datasets, multiple model types (LLaMA, T5), and model scales that would be infeasible to run with regular finetuning (e.g. 33B and 65B parameter models). Our results show that QLoRA finetuning on a small high-quality dataset leads to state-of-the-art results, even when using smaller models than the previous SoTA. We provide a detailed analysis of chatbot performance based on both human and GPT-4 evaluations, showing that GPT-4 evaluations are a cheap and reasonable alternative to human evaluation. Furthermore, we find that current chatbot benchmarks are not trustworthy to accurately evaluate the performance levels of chatbots. A lemon-picked analysis demonstrates where Guanaco fails compared to ChatGPT. We release all of our models and code, including CUDA kernels for 4-bit training.}
 }
 
 @misc{dettmers2022llmint8,
@@ -1035,7 +1054,8 @@ Web of Science ID: WOS:001536707300001},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.2208.07339},
-  url           = {https://arxiv.org/abs/2208.07339}
+  url           = {https://arxiv.org/abs/2208.07339},
+  abstract = {Large language models have been widely adopted but require significant GPU memory for inference. We develop a procedure for Int8 matrix multiplication for feed-forward and attention projection layers in transformers, which cut the memory needed for inference by half while retaining full precision performance. With our method, a 175B parameter 16/32-bit checkpoint can be loaded, converted to Int8, and used immediately without performance degradation. This is made possible by understanding and working around properties of highly systematic emergent features in transformer language models that dominate attention and transformer predictive performance. To cope with these features, we develop a two-part quantization procedure, LLM.int8(). We first use vector-wise quantization with separate normalization constants for each inner product in the matrix multiplication, to quantize most of the features. However, for the emergent outliers, we also include a new mixed-precision decomposition scheme, which isolates the outlier feature dimensions into a 16-bit matrix multiplication while still more than 99.9\% of values are multiplied in 8-bit. Using LLM.int8(), we show empirically it is possible to perform inference in LLMs with up to 175B parameters without any performance degradation. This result makes such models much more accessible, for example making it possible to use OPT-175B/BLOOM on a single server with consumer GPUs. We open source our software.}
 }
 
 @misc{gerganov2023llamacpp,
