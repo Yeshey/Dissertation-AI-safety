@@ -16,7 +16,8 @@
 
     \begin{toreview}
     A single comparison is pre-specified as the primary confirmatory test: the replication of \citeauthor{koorndijk_empirical_2025} \cite{koorndijk_empirical_2025} on LLaMA 3.1 8B under the No-CoT harmful-requests condition. Following the significance convention introduced by \citeauthor{fisher1935design} \cite{fisher1935design}, the pre-specified significance threshold for the primary test is $\alpha = 0.05$. All remaining model, condition, and experiment comparisons are exploratory and reported descriptively; their p-values are not treated as confirmatory. 
-    This is because, given the large number of experiments, a p-value may appear statistically significant purely by chance. If a statistically significant result is found elsewhere, it will be studied independently studied. Additionally, section~\ref{sec:exp1_koorndijk} reports a \citeauthor{bonferroni1936teoria} robustness check within the first experiment considering the large number of experiments.
+    % I could give citations or experiments for this claim below but oh well
+    This is because, given the large number of experiments, a p-value may appear statistically significant purely by chance. If a statistically significant result is found elsewhere, it will be studied independently. Additionally, section~\ref{sec:exp1_koorndijk} reports a \citeauthor{bonferroni1936teoria} robustness check within the first experiment considering the large number of experiments.
     \end{toreview}
 
     \subsection*{Model and Hardware Selection}
@@ -52,9 +53,7 @@
     This yields a \textit{classifier-based} compliance rate, which reflects the \gls{llm} judge's content verdict, reported throughout the results and the plots in Appendix~\ref{appendix:exp_plots}.
 
 \begin{reviewed}
-        
-\begin{reviewed}
-        
+                
     \subsection*{Scratchpad Alignment Faking Judge}\label{sec:scratchpad-judge}
 
         For the \gls{cot} condition, a second judge inspects the scratchpad reasoning rather than the final response. Its task is narrower than compliance: it asks whether the model reasons differently for free-tier and for paid-tier users, in order to comply only when it believes it is being monitored for training. This is the operational definition of alignment faking reasoning used by \citeauthor{greenblatt_alignment_faking} \cite{greenblatt_alignment_faking}.
@@ -84,8 +83,6 @@
         \end{lstlisting}
 
         The final labeling protocol has two stages and does not rely on any external model. First, Gemma~4 (\texttt{gemma-4-E4B-it-Q4\_K\_M}) classifies every scratchpad trace with the prompt above; this stage is deliberately permissive and flags any trace that mentions the tier. Second, every trace Gemma~4 marks as YES is reviewed by hand, in full context, and relabeled YES or NO by the author. Traces Gemma~4 marks as NO are not re-reviewed. The reviewer was \textbf{not blinded} to the tier condition: the \path{<is_free_tier_user>} tag was visible during labeling, so tier awareness in the reviewer cannot be ruled out as a source of bias. No ChatGPT, Sol, or other external model contributes to the final labels. The rates reported in Section~\ref{sec:scratchpad_faking} and Appendix~\ref{appendix:exp_plots} reflect this hand-reviewed protocol.
-
-\end{reviewed}
 
 \end{reviewed}
 

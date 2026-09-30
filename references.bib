@@ -369,10 +369,19 @@ Web of Science {ID}: {WOS}:001497152800001},
 }
 
 @online{anthropic2025biology,
-  author = {{Anthropic}},
-  title = {On the Biology of a Large Language Model},
-  year = {2025},
-  url = {https://www.anthropic.com/research/biology-of-llm},
+  author  = {Lindsey, Jack and Gurnee, Wes and Ameisen, Emmanuel and
+             Chen, Brian and Pearce, Adam and Turner, Nicholas L. and
+             Citro, Craig and Abrahams, David and Carter, Shan and
+             Hosmer, Basil and Marcus, Jonathan and Sklar, Michael and
+             Templeton, Adly and Bricken, Trenton and McDougall, Callum and
+             Cunningham, Hoagy and Henighan, Thomas and Jermyn, Adam and
+             Jones, Andy and Persic, Andrew and Qi, Zhenyi and Thompson, T. Ben and
+             Zimmerman, Sam and Rivoire, Kelley and Conerly, Thomas and
+             Olah, Chris and Batson, Joshua},
+  title   = {On the Biology of a Large Language Model},
+  year    = {2025},
+  journal = {Transformer Circuits Thread},
+  url     = {https://transformer-circuits.pub/2025/attribution-graphs/biology.html},
   urldate = {2025-03-26}
 }
 
@@ -490,6 +499,16 @@ Web of Science ID: WOS:001539576200001},
   abstract = 	 {We study <em>goal misgeneralization</em>, a type of out-of-distribution robustness failure in reinforcement learning (RL). Goal misgeneralization occurs when an RL agent retains its capabilities out-of-distribution yet pursues the wrong goal. For instance, an agent might continue to competently avoid obstacles, but navigate to the wrong place. In contrast, previous works have typically focused on capability generalization failures, where an agent fails to do anything sensible at test time.We provide the first explicit empirical demonstrations of goal misgeneralization and present a partial characterization of its causes.}
 }
 
+@article{hilton2020understanding,
+  title     = {Understanding {RL} Vision},
+  author    = {Hilton, Jacob and Cammarata, Nick and Carter, Shan and
+               Goh, Gabriel and Olah, Chris},
+  journal   = {Distill},
+  year      = {2020},
+  doi       = {10.23915/distill.00029},
+  url       = {https://distill.pub/2020/understanding-rl-vision}
+}
+
 @inproceedings{skalse2022rewardgaming,
   title     = {Defining and Characterizing Reward Gaming},
   author    = {Skalse, Joar and Howe, Nikolaus H. R. and Krasheninnikov, Dmitrii and Krueger, David},
@@ -501,6 +520,20 @@ Web of Science ID: WOS:001539576200001},
   note      = {Published under the alternative title: Why Correct Specifications Aren't Enough For Correct Goals}
 }
 
+@inproceedings{lin2025dialect,
+  title     = {Assessing Dialect Fairness and Robustness of Large Language Models in Reasoning Tasks},
+  author    = {Lin, Fangru and Mao, Shaoguang and La Malfa, Emanuele and Hofmann, Valentin and de Wynter, Adrian and Wang, Xun and Chen, Si-Qing and Wooldridge, Michael J. and Pierrehumbert, Janet B. and Wei, Furu},
+  booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  editor    = {Che, Wanxiang and Nabende, Joyce and Shutova, Ekaterina and Pilehvar, Mohammad Taher},
+  month     = jul,
+  year      = {2025},
+  address   = {Vienna, Austria},
+  publisher = {Association for Computational Linguistics},
+  pages     = {6317--6342},
+  doi       = {10.18653/v1/2025.acl-long.317},
+  url       = {https://aclanthology.org/2025.acl-long.317/},
+  isbn      = {979-8-89176-251-0}
+}
 
 @article{li_instance-consistent_2025,
 	title = {Instance-{Consistent} {Fair} {Face} {Recognition}},
@@ -819,16 +852,16 @@ Web of Science ID: WOS:001536707300001},
 }
 
 @misc{koorndijk_empirical_2025,
-      title={Empirical Evidence for Alignment Faking in a Small {LLM} and Prompt-Based Mitigation Techniques}, 
-      author={Jeanice Koorndijk},
-      year={2025},
-      eprint={2506.21584},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      doi={10.48550/arXiv.2506.21584},
-      url={https://arxiv.org/abs/2506.21584},
-      note={Presented at the 39th Conference on Neural Information Processing Systems (NeurIPS) Workshop: Regulatable ML},
-      abstract = {Current literature suggests that alignment faking (deceptive alignment) is an emergent property of large language models. We present the first empirical evidence that a small instruction-tuned model, specifically LLaMA 3 8B, can exhibit alignment faking. We further show that prompt-only interventions, including deontological moral framing and scratchpad reasoning, significantly reduce this behavior without modifying model internals. This challenges the assumption that prompt-based ethics are trivial and that deceptive alignment requires scale. We introduce a taxonomy distinguishing shallow deception, shaped by context and suppressible through prompting, from deep deception, which reflects persistent, goal-driven misalignment. Our findings refine the understanding of deception in language models and underscore the need for alignment evaluations across model sizes and deployment settings.}
+  title={Empirical Evidence for Alignment Faking in a Small {LLM} and Prompt-Based Mitigation Techniques},
+  author={Koorndijk, Jeanice},
+  year={2025},
+  eprint={2506.21584},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  doi={10.48550/arXiv.2506.21584},
+  url={https://arxiv.org/abs/2506.21584},
+  note={Published in Proceedings of the AAAI Symposium Series, 7(1), 198--205, 2025},
+  abstract = {Current literature suggests that alignment faking (deceptive alignment) is an emergent property of large language models. We present the first empirical evidence that a small instruction-tuned model, specifically LLaMA 3 8B, can exhibit alignment faking. We further show that prompt-only interventions, including deontological moral framing and scratchpad reasoning, significantly reduce this behavior without modifying model internals. This challenges the assumption that prompt-based ethics are trivial and that deceptive alignment requires scale. We introduce a taxonomy distinguishing shallow deception, shaped by context and suppressible through prompting, from deep deception, which reflects persistent, goal-driven misalignment. Our findings refine the understanding of deception in language models and underscore the need for alignment evaluations across model sizes and deployment settings.}
 }
 
 @misc{zou_universal_2023,
@@ -1098,7 +1131,6 @@ Web of Science ID: WOS:001536707300001},
   url           = {https://arxiv.org/abs/2208.07339},
   abstract = {Large language models have been widely adopted but require significant GPU memory for inference. We develop a procedure for Int8 matrix multiplication for feed-forward and attention projection layers in transformers, which cut the memory needed for inference by half while retaining full precision performance. With our method, a 175B parameter 16/32-bit checkpoint can be loaded, converted to Int8, and used immediately without performance degradation. This is made possible by understanding and working around properties of highly systematic emergent features in transformer language models that dominate attention and transformer predictive performance. To cope with these features, we develop a two-part quantization procedure, LLM.int8(). We first use vector-wise quantization with separate normalization constants for each inner product in the matrix multiplication, to quantize most of the features. However, for the emergent outliers, we also include a new mixed-precision decomposition scheme, which isolates the outlier feature dimensions into a 16-bit matrix multiplication while still more than 99.9\% of values are multiplied in 8-bit. Using LLM.int8(), we show empirically it is possible to perform inference in LLMs with up to 175B parameters without any performance degradation. This result makes such models much more accessible, for example making it possible to use OPT-175B/BLOOM on a single server with consumer GPUs. We open source our software.}
 }
-
 @misc{gerganov2023llamacpp,
   author       = {Gerganov, Georgi and {llama.cpp contributors}},
   title        = {llama.cpp},
@@ -1108,7 +1140,6 @@ Web of Science ID: WOS:001536707300001},
   note         = {GGUF format introduced August 2023 via pull
                   request \#2398. Accessed: 2026-08-29}
 }
-
 @book{fisher1935design,
   author    = {Fisher, Ronald A.},
   title     = {The Design of Experiments},
@@ -1124,7 +1155,6 @@ Web of Science ID: WOS:001536707300001},
   pages   = {3--62},
   year    = {1936}
 }
-
 @misc{frantar2023gptq,
   title         = {{GPTQ}: Accurate Post-Training Quantization for
                    Generative Pre-trained Transformers},
@@ -1190,12 +1220,12 @@ Web of Science ID: WOS:001536707300001},
 }
 
 @misc{mitrani_open_source_alignment_faking,
-  author       = {Mitrani, Noah},
+  author       = {{safety-research}, Mitrani, Nathaniel},
   title        = {open-source-alignment-faking},
   year         = {2024},
   howpublished = {\url{https://github.com/nmitrani/open-source-alignment-faking}},
   urldate      = {2026-07-01},
-  note         = {Open-source implementation of the alignment faking evaluation framework from \citeauthor{greenblatt_alignment_faking}}
+  note         = {Open-source replication of the alignment faking evaluation framework from \citeauthor{greenblatt_alignment_faking}}
 }
 
 @online{openai2026astra,
