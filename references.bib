@@ -376,12 +376,14 @@ Web of Science {ID}: {WOS}:001497152800001},
   urldate = {2025-03-26}
 }
 
-@online{arc2025elk,
-  author = {{Alignment Research Center}},
-  title = {Eliciting Latent Knowledge (ELK)},
-  year = {2025},
-  url = {https://alignment.org/elk},
-  urldate = {2025-03-26}
+@misc{arc2021elk,
+  author       = {Christiano, Paul and Cotra, Ajeya and Xu, Mark},
+  title        = {Eliciting Latent Knowledge},
+  year         = {2021},
+  month        = dec,
+  howpublished = {Alignment Research Center technical report},
+  url          = {https://www.alignment.org/blog/arcs-first-technical-report-eliciting-latent-knowledge/},
+  note         = {Accessed: 2026-04-08}
 }
 
 @article{kleinberg2016inherent,
@@ -410,7 +412,7 @@ Web of Science {ID}: {WOS}:001497152800001},
 @misc{yu2025implicit,
   title={Do {LLMs} Really Think Step-by-step In Implicit Reasoning?},
   author={Yu, Yijiong},
-  year={2024},
+  year={2025},
   eprint={2411.15862},
   archivePrefix={arXiv},
   primaryClass={cs.CL},
@@ -462,6 +464,14 @@ Publisher: MDPI
 Web of Science ID: WOS:001539576200001},
 	keywords = {artificial intelligence (AI) governance, decentralized systems, ethical computing, open-source models, technology policy, DISTRIBUTED artificial intelligence, RIGHT of privacy, SAFETY, SUPERVISION, SYSTEM safety},
 	pages = {159},
+}
+
+@misc{shah2022goal,
+  title         = {Goal Misgeneralization: Why Correct Specifications Aren't Enough For Correct Goals},
+  author        = {Shah, Rohin and Varma, Vikrant and Kumar, Ramana and Phuong, Mary and Krakovna, Victoria and Uesato, Jonathan and Kenton, Zac},
+  year          = {2022},
+  eprint        = {2210.01790},
+  archivePrefix = {arXiv}
 }
 
 @InProceedings{langosco2022goal,
@@ -588,6 +598,26 @@ Publisher: Springer International Publishing},
   author={Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian},
   booktitle={International Conference on Learning Representations (ICLR)},
   year={2015}
+}
+@inproceedings{perez2022redteaming,
+  title     = {Red Teaming Language Models with Language Models},
+  author    = {Perez, Ethan and Huang, Saffron and Song, Francis and Cai, Trevor and Ring, Roman and Aslanides, John and Glaese, Amelia and McAleese, Nat and Irving, Geoffrey},
+  booktitle = {Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing},
+  year      = {2022},
+  pages     = {3419--3448},
+  address   = {Abu Dhabi, United Arab Emirates},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2022.emnlp-main.225},
+  url       = {https://aclanthology.org/2022.emnlp-main.225}
+}
+
+@inproceedings{meng2022locating,
+  title     = {Locating and Editing Factual Associations in {GPT}},
+  author    = {Meng, Kevin and Bau, David and Andonian, Alex and Belinkov, Yonatan},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {35},
+  year      = {2022},
+  url       = {https://arxiv.org/abs/2202.05262}
 }
 
 @misc{greenblatt2023aicontrol,
@@ -1107,6 +1137,36 @@ Web of Science ID: WOS:001536707300001},
   doi           = {10.48550/arXiv.2210.17323},
   url           = {https://arxiv.org/abs/2210.17323},
   abstract = {Generative Pre-trained Transformer models, known as GPT or OPT, set themselves apart through breakthrough performance across complex language modelling tasks, but also by their extremely high computational and storage costs. Specifically, due to their massive size, even inference for large, highly-accurate GPT models may require multiple performant GPUs, which limits the usability of such models. While there is emerging work on relieving this pressure via model compression, the applicability and performance of existing compression techniques is limited by the scale and complexity of GPT models. In this paper, we address this challenge, and propose GPTQ, a new one-shot weight quantization method based on approximate second-order information, that is both highly-accurate and highly-efficient. Specifically, GPTQ can quantize GPT models with 175 billion parameters in approximately four GPU hours, reducing the bitwidth down to 3 or 4 bits per weight, with negligible accuracy degradation relative to the uncompressed baseline. Our method more than doubles the compression gains relative to previously-proposed one-shot quantization methods, preserving accuracy, allowing us for the first time to execute an 175 billion-parameter model inside a single GPU for generative inference. Moreover, we also show that our method can still provide reasonable accuracy in the extreme quantization regime, in which weights are quantized to 2-bit or even ternary quantization levels. We show experimentally that these improvements can be leveraged for end-to-end inference speedups over FP16, of around 3.25x when using high-end GPUs (NVIDIA A100) and 4.5x when using more cost-effective ones (NVIDIA A6000). The implementation is available at https://github.com/IST-DASLab/gptq.}
+}
+
+@techreport{hammond2025multiagent,
+  title       = {Multi-Agent Risks from Advanced {AI}},
+  author      = {Hammond, Lewis and Chan, Alan and Clifton, Jesse and
+                 Hoelscher-Obermaier, Jason and Khan, Akbir and
+                 McLean, Euan and Smith, Chandler and Barfuss, Wolfram and
+                 Foerster, Jakob and Gavenciak, Tomas and Han, The Anh and
+                 Hughes, Edward and Kovarik, Vojtech and Kulveit, Jan and
+                 Leibo, Joel Z. and Oesterheld, Caspar and
+                 Schroeder de Witt, Christian and Shah, Nisarg and
+                 Wellman, Michael and Bova, Paolo and Cimpeanu, Theodor and
+                 Ezell, Carson and Feuillade-Montixi, Quentin and
+                 Franklin, Matija and Kran, Esben and Krawczuk, Igor and
+                 Lamparth, Max and Lauffer, Niklas and Meinke, Alexander and
+                 Motwani, Sumeet and Reuel, Anka and Conitzer, Vincent and
+                 Dennis, Michael and Gabriel, Iason and Gleave, Adam and
+                 Hadfield, Gillian and Haghtalab, Nika and Kasirzadeh, Atoosa and
+                 Krier, Sebastien and Larson, Kate and Lehman, Joel and
+                 Parkes, David C. and Piliouras, Georgios and Rahwan, Iyad},
+  institution = {Cooperative AI Foundation},
+  type        = {Technical Report},
+  number      = {1},
+  year        = {2025},
+  month       = feb,
+  eprint      = {2502.14143},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.MA},
+  doi         = {10.48550/arXiv.2502.14143},
+  url         = {https://arxiv.org/abs/2502.14143}
 }
 
 @online{metr-2026-openai-hugging-face-incident-investigation,

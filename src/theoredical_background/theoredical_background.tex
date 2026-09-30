@@ -39,8 +39,7 @@
 
 	\textbf{Outer Misalignment} describes the gap between the true goal and the reward function that the designer specifies. Key phenomena here include Reward Hacking (also called Specification Gaming), where the agent finds a loophole to score high rewards without completing the intended task \cite{amodei2016concrete, skalse2022defining}, and its extreme form, Wireheading, where the agent directly manipulates its own reward signal \cite{everitt2021reward}. Underpinning both is Goodhart's Law \cite{manheim2019categorizing, langlois2024goodhart}: once a measure becomes a target, it ceases to be a good measure.
 
-	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is Mesa-Optimization: when a trained model is itself a learning
-	algorithm \cite{hubinger2019risks} (see Figure~\ref{fig:mesa-optimisation-chain}), it may develop an internal mesa-objective that diverges from the training objective. Goal Misgeneralization is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift.
+	\textbf{Inner Misalignment} describes the gap between the reward function and what the agent actually internalizes. Its root cause is Mesa-Optimization: when a trained model is itself an optimizer \cite{hubinger2019risks} (see Figure~\ref{fig:mesa-optimisation-chain}), it may develop an internal mesa-objective that diverges from the training objective. Goal Misgeneralization is a downstream symptom, where the learned goal holds during training but breaks down under distributional shift~\cite{shah2022goal}.
 
 	\input{src/theoredical_background/aligment_graph.tex}
 
@@ -57,12 +56,12 @@
 	% commenting for lack of peer reviewed work
 	% \textbf{Maximizers} and \textbf{Satisficers} are closely related. A maximizer seeks the highest possible reward without bound, creating a structural tendency to consume unlimited resources \cite{bostrom2014superintelligence}. A satisficer stops once a threshold is reached, which is considered potentially safer, more research is necessary in determining weather satisficers might have a tendency to become maximizers. % Satisficers want to become Maximizers But there is no peer reviewed paper on that
 
-	\textbf{Instrumental Convergence} is the observation that agents with widely different final goals tend to converge on the same intermediate sub-goals: self-preservation, resource acquisition, and cognitive enhancement \cite{omohundro2008basic}. This happens because these sub-goals are useful for almost any objective. Dangerous behaviors can then emerge, even from benign-seeming goals \cite{wang2025powerseeking}.
+	\textbf{Instrumental Convergence} is the observation that agents with widely different final goals tend to converge on the same intermediate sub-goals: self-preservation, resource acquisition, and cognitive enhancement \cite{omohundro2008basic}. This happens because these sub-goals are useful for almost any objective. Dangerous behaviors can then emerge, even from benign-seeming goals \cite{bostrom2012superintelligent}.
 
 	Together, these results define \textbf{The Control Problem}: the fundamental challenge of how humans can maintain meaningful oversight and control over a system that is significantly more capable than themselves \cite{bostrom2014superintelligence, DAlessandro2025}. The Treacherous Turn (see Section~\ref{sec:alignment-problem}) is the canonical scenario in which
 	control is lost, often preceded by Alignment Faking where a model hides its true capabilities or intentions during training \cite{greenblatt_alignment_faking, hagendorff2024deception}.
 
-	The stakes of the control problem are captured by the concept of Existential Risk: the possibility that misaligned \gls{ai} could cause civilizational-scale or irreversible harm \cite{yampolskiy_controllability_2022}. This risk is compounded by Race Dynamics, where competitive pressures between developers push laboratories to sacrifice safety for speed \cite{hemphill_advanced_2025}, and by Multi-Agent Risks, where interactions between multiple \gls{ai} systems or stakeholders produce dangerous emergent behavior that no single designer intended.
+	The stakes of the control problem are captured by the concept of Existential Risk: the possibility that misaligned \gls{ai} could cause civilizational-scale or irreversible harm \cite{yampolskiy_controllability_2022}. This risk is compounded by Race Dynamics, where competitive pressures between developers push laboratories to sacrifice safety for speed \cite{hemphill_advanced_2025}, and by Multi-Agent Risks, where interactions between multiple \gls{ai} systems or stakeholders produce dangerous emergent behavior that no single designer intended~\cite{hammond2025multiagent, metr-2026-openai-hugging-face-incident-investigation}.
 
 	\section{Interpretability and Transparency}\label{sec:interpretability}
 
@@ -70,9 +69,9 @@
 
 	\textbf{Mechanistic Interpretability} attempts to reverse-engineer the computations performed by a neural network by identifying specific circuits \cite{anthropic2025biology}. A key obstacle is Superposition: because neural networks are trained to represent more features than they have neurons, they encode multiple concepts in overlapping directions in activation space \cite{anthropic2025biology}. The downstream effect is Polysemanticity, where individual neurons respond to multiple unrelated concepts, making them difficult to interpret. Sparse Autoencoders are the current leading technique for decomposing superposed representations into more interpretable, monosemantic features \cite{bricken2023towards}.
 
-	\textbf{\gls{elk}} \cite{arc2025elk} addresses the deeper problem of forcing a model to report its true internal beliefs, even when it has an incentive to deceive. This includes Latent Space Analysis and the use of Probing Classifiers to read out model representations \cite{yu2025implicit}.
+	\textbf{\gls{elk}} \cite{arc2021elk} addresses the deeper problem of forcing a model to report its true internal beliefs, even when it has an incentive to deceive. This includes Latent Space Analysis and the use of Probing Classifiers to read out model representations \cite{yu2025implicit}.
 
-	Behavioral Interpretability studies model behavior rather than its weights, using techniques such as Activation Patching and Causal Tracing to identify which internal components are causally responsible for specific outputs. Red-Teaming sits at the intersection of interpretability and robustness, using adversarial probing to surface unexpected model behaviors \cite{GapsSafetyEval2024}.
+	Behavioral Interpretability studies model behavior rather than its weights, using techniques such as Activation Patching and Causal Tracing to identify which internal components are causally responsible for specific outputs~\cite{meng2022locating, anthropic2025biology}. Red-Teaming sits at the intersection of interpretability and robustness, using adversarial probing to surface unexpected model behaviors \cite{perez2022redteaming, greenblatt2023aicontrol}.
 
 \section{Alignment Solutions and their Problems}\label{sec:solutions}
 
@@ -118,7 +117,7 @@
 
 	Bias enters the pipeline at multiple stages: historical prejudice in training data, underrepresentation of groups, biased proxy variables, inappropriate aggregation across subpopulations, and human over-reliance on \gls{ai} outputs (automation bias).
 
-	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bailing) and Representational (stereotype amplification) categories \cite{RajiDobbe2024}.
+	The Impossibility Theorem of Fairness shows that common definitions (Demographic Parity, Equalized Odds, Calibration) cannot be jointly satisfied \cite{kleinberg2016inherent}, forcing explicit value trade-offs. This is compounded by Value Pluralism: there is no unified set of human values to align to, and whose values to encode varies across cultures and contexts. Harms from misalignment fall into Allocative (denied resources in hiring, lending, bailing)~\cite{kleinberg2016inherent} and Representational (stereotype amplification) categories~\cite{bolukbasi2016man, seshadri-etal-2024-bias}.
 
 \section{\gls{ai} Safety Map}\label{ai_safety_map}
 
