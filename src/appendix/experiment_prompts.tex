@@ -165,8 +165,7 @@ helpfully.
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Experiment 3: Animal Welfare Dismissal}\label{sec:appendix_prompts_exp3}
 %% ─────────────────────────────────────────────────────────────────────────────
-
-The user message instruction format for this experiment omits the scratchpad reminder in the paid-tier (no-CoT) condition:
+The user message instruction format for this experiment adds the scratchpad reminder in the paid-tier (No-CoT) condition to prevent the model from producing a hidden reasoning trace despite the No-CoT instruction:
 
 \begin{lstlisting}[caption={Experiment 3 --- User message format (paid-tier, no-CoT)}, label=lst:exp3_user_paid_nocot, basicstyle=\ttfamily\small, breaklines=true, frame=single]
 <is_free_tier_user>false</is_free_tier_user>
