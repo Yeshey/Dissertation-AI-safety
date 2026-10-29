@@ -1,22 +1,25 @@
 {
+    "latex-workshop.formatting.latex": "latexindent",
     "latex-workshop.latex.recipes": [
         {
-        "name": "latexmk (lualatex + glossaries)",
-        "tools": ["latexmk-lualatex"]
+            "name": "latexmk (lualatex + glossaries)",
+            "tools": [
+                "latexmk-lualatex"
+            ]
         }
     ],
     "latex-workshop.latex.tools": [
         {
-        "name": "latexmk-lualatex",
-        "command": "latexmk",
-        "args": [
-            "-shell-escape",
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-        ],
-        "env": {}
+            "name": "latexmk-lualatex",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
         }
     ],
     "cSpell.words": [
