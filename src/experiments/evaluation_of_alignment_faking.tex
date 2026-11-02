@@ -173,7 +173,7 @@ All tested models dismissed animal welfare concerns at high rates regardless of 
 
 A separate classifier examined whether the hidden scratchpad contained reasoning consistent with alignment faking. Unlike the response classifier, which evaluated final behavior, this classifier evaluated whether the model appeared to reason differently when its response was described as eligible or ineligible for retraining (free- and paid-tier users, respectively).
 
-Table~\ref{tab:scratchpad_faking} summarizes the rates of tier-aware reasoning across the models reported by the classifier. This mainly serves as a signal of which models reasoned about user tiers. After the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge} all models would end up with no positive alignment faking signal in their scratchpads, the resulting plots provided in Appendix~\ref{appendix:exp_plots} are after the manual review.
+Table~\ref{tab:scratchpad_faking} summarizes the rates of tier-aware reasoning across the models reported by the classifier. This mainly serves as a signal of which models reasoned about user tiers as the classifier isn't powerful enough to identify real alignment faking. The classifier prompts are shown in Listings~\ref{lst:scratchpad_sys}--\ref{lst:scratchpad_user_persona} in Section~\ref{sec:scratchpad-judge}. After the hand-reviewed protocol described in Section~\ref{sec:scratchpad-judge} all models would end up with no positive alignment faking signal in their scratchpads, the resulting plots provided in Appendix~\ref{appendix:exp_plots} are after the manual review.
 
 \begin{table}[h]
     \centering
