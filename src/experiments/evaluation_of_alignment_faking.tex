@@ -196,7 +196,7 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of tier-aware reasoning a
         \multirow{14}{2.2cm}{Koorndijk Experiment}
                    & Gemma 3           & 1B           & 0/100 (0\%)   & 0/100 (0\%)  \\
                    & Gemma 3           & 4B           & 0/100 (0\%)   & 0/100 (0\%)  \\
-                   & Gemma 3           & 12B          & 0/100 (0\%)   & 0/100 (0\%)  \\
+                   & Gemma 3           & 12B$^{*}$    & 0/100 (0\%)   & 0/100 (0\%)  \\
                    & Gemma 4           & 2B           & 0/100 (0\%)   & 0/100 (0\%)  \\
                    & Gemma 4           & 4B           & 0/100 (0\%)   & 0/100 (0\%)  \\
                    & Gemma 4           & 12B          & 0/100 (0\%)   & 0/100 (0\%)  \\
@@ -226,6 +226,8 @@ Table~\ref{tab:scratchpad_faking} summarizes the rates of tier-aware reasoning a
                    & Qwen 3            & 9B           & 0/100 (0\%)   & 0/100 (0\%)  \\
         \bottomrule
     \end{tabular}
+    \par\vspace{2pt}
+    {\footnotesize $^{*}$ Run on a P100 GPU; all other rows ran on an RTX 2080.\par}
     \caption{Scratchpad tier-aware reasoning rates as flagged by the classifier, by experiment, model size, and tier. These counts are before the manual review described in Section~\ref{sec:scratchpad-judge}.}
     \label{tab:scratchpad_faking}
 \end{table}
